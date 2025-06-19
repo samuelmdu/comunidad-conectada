@@ -1,0 +1,40 @@
+  /* ============================= */
+  /*     # VARIABLES: COLORES      */
+  /* ============================= */
+
+  :root {
+      --gris: #D7DEE8;
+      --azul-claro: #699AFF;
+      --azul-medio: #4D7ECA;
+      --azul-oscuro: #29588F;
+      --blanco: #FFFFFF;
+      --negro: #000000;
+  }
+
+  /* ============================= */
+  /*     # COMPONENTE: GLOBALES    */
+  /* ============================= */
+
+  * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: "Montserrat", sans-serif;
+  }
+
+  /* ============================= */
+  /*     # COMPONENTE: NAVBAR      */
+  /* ============================= */
+
+  /*     # NAVBAR:   CLASES         */
+
+
+  /*     # NAVBAR:   IDS         */
+
+  /* ============================= */
+  /*     # COMPONENTE: FOOTER      */
+  /* ============================= */
+
+  /*     # FOOTER:   CLASES         */
+
+  /*     # FOOTER:   IDS         */
