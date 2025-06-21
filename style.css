@@ -22,14 +22,82 @@
       font-family: "Montserrat", sans-serif;
   }
 
+  body,
+  html {
+      overflow-x: hidden;
+  }
+
   /* ============================= */
   /*     # COMPONENTE: NAVBAR      */
   /* ============================= */
 
   /*     # NAVBAR:   CLASES         */
 
+  .menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 4rem;
+      background-color: var(--gris);
+  }
 
-  /*     # NAVBAR:   IDS         */
+  .logo {
+      margin-left: 2rem;
+      height: 40px;
+      width: 200px;
+  }
+
+  .options {
+      display: flex;
+      gap: 3rem;
+      margin-right: 8rem;
+  }
+
+  .options a {
+
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: var(--azul-oscuro);
+  }
+
+  .options a:hover {
+
+      color: var(--azul-claro);
+  }
+
+  .options li {
+      list-style: none;
+  }
+
+  .burger {
+      display: none;
+  }
+
+
+  /*     # NAVBAR:   MEDIA QUERIES       */
+
+  @media (max-width: 1083px) {
+      .options {
+          display: none;
+
+      }
+
+      .burger {
+          display: block;
+          margin-right: 2rem;
+          font-size: 40px;
+          color: var(--azul-oscuro);
+          transition: 0.10s;
+      }
+
+      .burger:hover {
+          cursor: pointer;
+          color: var(--azul-claro);
+          transition: 0.10s;
+      }
+
+  }
 
   /* ============================= */
   /*     # COMPONENTE: FOOTER      */
@@ -37,4 +105,154 @@
 
   /*     # FOOTER:   CLASES         */
 
+  .site-footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: static;
+      width: 100%;
+      max-height: auto;
+      bottom: 0;
+      background-color: var(--gris);
+      gap: 4vh;
+  }
+
+  .site-footer a {
+      color: var(--azul-oscuro);
+      text-decoration: none;
+  }
+
+  .site-footer a:hover {
+      color: var(--azul-claro);
+      text-decoration: none;
+      transition: 0.10s;
+  }
+
+  .slogan-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      text-align: center;
+  }
+
+  .text-logos h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--azul-oscuro);
+
+  }
+
+  .text-logos p {
+      margin-bottom: 0.5rem;
+      color: var(--azul-oscuro);
+  }
+
+  .links-container {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+      color: var(--azul-oscuro);
+  }
+
+  .ayuda-container,
+  .comunidad-container,
+  .contactenos-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+
+  .arrow-container i {
+      display: none;
+  }
+
+  .icon-container {
+      display: flex;
+      justify-content: center;
+      gap: 4vh;
+      width: 100%;
+      font-size: 29px;
+      color: var(--blanco);
+  }
+
+  .icon-container i {
+      color: var(--blanco);
+  }
+
+  .circle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      background-color: var(--azul-oscuro);
+  }
+
+
+  .circle:hover {
+      transition: 0.10s;
+      background-color: var(--azul-claro);
+  }
+
+  .copyright-container {
+      display: flex;
+      height: 4vh;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      background-color: var(--azul-medio);
+      color: var(--blanco);
+      font-size: 0.8rem;
+  }
+
+
+
   /*     # FOOTER:   IDS         */
+
+
+  /*     # FOOTER:   MEDIA QUERIES         */
+
+  @media (max-width: 620px) {
+
+      .text-logos {
+          max-width: 80%;
+      }
+
+      .links-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2rem;
+      }
+
+      .links-container a {
+          display: none;
+
+      }
+
+      .arrow-container {
+          display: flex;
+          align-items: center;
+      }
+
+      .arrow-container:hover {
+          cursor: pointer;
+          color: var(--azul-claro);
+      }
+
+      .arrow-container i {
+          display: flex;
+          align-items: center;
+          font-size: 35px;
+      }
+  }
+
+  @media (max-width: 1176px) {
+      .text-logos {
+          max-width: 80%;
+      }
+
+  }
