@@ -175,47 +175,13 @@
         text-transform: uppercase;
         padding: 0 5%;
         line-height: 1.2;
+        padding: auto;
     }
 
-    @media (max-width: 1150px) {
+    @media (max-width: 830px) {
         .hero {
-            height: 35vw;
+            height: 30vw;
             min-height: 220px;
-        }
-
-        .hero-title {
-            font-size: 8vw;
-            margin-bottom: 1.5vw;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero {
-            height: 45vw;
-            min-height: 200px;
-        }
-
-        .hero-title {
-            font-size: 9vw;
-            margin-bottom: 2vw;
-        }
-    }
-
-
-    @media (max-width: 480px) {
-        .hero {
-            height: 65vw;
-            min-height: 180px;
-        }
-
-        .hero-title {
-            font-size: 10vw;
-            margin-bottom: 3vw;
-        }
-
-        .hero-subtitle {
-            font-size: 3.5vw;
-            max-width: 95%;
         }
     }
 
