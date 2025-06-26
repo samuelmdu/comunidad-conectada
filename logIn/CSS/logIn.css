@@ -1,0 +1,129 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+        --gris: #D7DEE8;
+        --azul-claro: #699AFF;
+        --azul-medio: #4D7ECA;
+        --azul-oscuro: #29588F;
+        --blanco: #FFFFFF;
+        --negro: #000000;
+        --glacial-blue: #7181A6;
+    }
+
+body{
+    background-image: url('../IMG/barrio-escalante3.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.content-container{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    background-color: rgba(107, 145, 224, 0.45);
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.texts-container{
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.texts-container h1{
+    font-size: 4rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.texts-container h1 span{
+    font-size: 4.8rem;
+    font-weight: 900;
+}
+
+.texts-container p{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.forms-container{
+    background-color: white;
+    height: auto;
+    padding: 50px;
+    margin: 75px;
+    border-radius: 20px;
+}
+
+.forms-container h2{
+    font-size: 2.2rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--glacial-blue);
+    margin: 35px auto 45px;
+}
+
+.forms-field label{
+    display: block;
+    font-size: 1.2rem;
+    color: var(--glacial-blue);
+    margin: 15px auto;
+}
+
+.forms-input{
+    width: 100%;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    border: none;
+    box-shadow: 0px 0px 10px 1px #354c7675;
+    padding: 5px 10px 5px 15px;
+    margin: 0px auto 15px;
+    color: var(--glacial-blue);
+}
+
+input.forms-input::placeholder {
+    color: var(--glacial-blue);
+}
+
+.forms-container button{
+    width: 100%;
+    padding: 5px;
+    border-radius: 50px;
+    background-color: var(--glacial-blue);
+    border: none;
+    box-shadow: 0px 0px 10px 1px #354c7675;
+    color: white;
+    font-size: 1.2rem;
+    margin: 40px auto;
+    text-transform: uppercase;
+}
+
+
+.forms-container button:hover{
+    background-color: var(--azul-oscuro);
+    box-shadow: 0px 0px 10px 1px #354c7675;
+    transition-duration: 1s;
+}
+
+.forms-container p{
+    color: var(--glacial-blue);
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.forms-container p span{
+    font-weight: 700;
+}
+
+.forms-container p a{
+    color: var(--glacial-blue);
+    text-decoration: none;
+}
