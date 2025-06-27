@@ -4,11 +4,13 @@
 
 :root {
     --gris: #D7DEE8;
+    --gris-oscuro: #6b6b6b;
     --azul-claro: #699AFF;
     --azul-medio: #4D7ECA;
     --azul-oscuro: #29588F;
     --blanco: #FFFFFF;
     --negro: #000000;
+
 }
 
 
@@ -149,7 +151,7 @@ html {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('/assets/images/hero/Emprendimientos.png');
+    background-image: url('../../assets/images/hero/Eventos.PNG');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
@@ -177,6 +179,55 @@ html {
     }
 }
 
+/* ============================= */
+/*     # COMPONENTE: TITLES      */
+/* ============================= */
+
+.back-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2%;
+    font-weight: bold;
+    color: var(--gris-oscuro)
+}
+
+.back-container a {
+    text-decoration: none;
+    color: var(--gris-oscuro)
+}
+
+.back-container a:hover {
+
+    color: var(--azul-medio)
+}
+
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+.title-container h1 {
+    color: var(--azul-oscuro);
+
+}
+
+.title-container p {
+    margin-top: 1%;
+    color: var(--azul-oscuro);
+    max-width: 40%;
+    min-width: 40%;
+
+}
+
+.title-text-container {
+    display: flex;
+    justify-content: center;
+}
 
 /* ============================= */
 /*     # COMPONENTE: CARDS      */
@@ -185,7 +236,7 @@ html {
 .exterior-cards-container {
     display: flex;
     justify-content: center;
-
+    margin-top: 2%;
 }
 
 .cards-container {
@@ -193,7 +244,7 @@ html {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     width: 60%;
-    margin-top: 2%;
+
 }
 
 .card {
@@ -203,7 +254,6 @@ html {
     box-shadow: 0 6px 12px #29598f91;
     transition: all 0.3s ease-out;
     min-width: 200px;
-
 }
 
 .card:hover {
@@ -216,7 +266,7 @@ html {
     background-position: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-image: url('/assets/images/rapha.png');
+    background-image: url("../../assets/images/emprendimientos/logos/Calle\ 33.png");
     height: 70%;
 }
 
@@ -260,12 +310,46 @@ html {
     }
 }
 
-@media (max-width: 400px) {
-    .cards-container {
-        width: 75%;
-    }
+
+
+/* ============================= */
+/*     # COMPONENTE: PUBLISH EVENT*/
+/* ============================= */
+
+.publish-event-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2%;
+    color: var(--blanco);
+    height: 40vh;
+    background-color: var(--azul-oscuro);
 }
 
+.publish-event-text-container {
+    margin-left: 4%;
+    font-style: italic;
+}
+
+.publish-event-text-container h2 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.publish-event-text-container h1 {
+    font-size: 5rem;
+}
+
+.publish-event-container a {
+    text-decoration: none;
+    color: var(--blanco);
+}
+
+.publish-event-container a:hover {
+
+    transition: 0.10s;
+    color: var(--gris);
+}
 
 /* ============================= */
 /*     # COMPONENTE: FOOTER     */
@@ -492,5 +576,54 @@ html {
 
     .copyright-container {
         font-size: .8rem;
+    }
+}
+
+/* Ajusted para celular */
+@media (max-width: 400px) {
+    .cards-container {
+        width: 75%;
+    }
+
+    .title-text-container p {
+        margin-top: 5%;
+        min-width: 90%;
+        font-size: 0.7rem;
+    }
+
+    .back-container {
+        margin-top: 12%;
+    }
+
+    .title-container h1 {
+        margin-top: 8%;
+        width: 95%;
+        text-align: center;
+
+    }
+
+    .exterior-cards-container {
+        margin-top: 10%;
+        margin-bottom: 2%;
+    }
+
+    .publish-event-container {
+        margin-top: 20%;
+    }
+
+    .publish-event-text-container {
+        margin-left: 2%;
+    }
+
+    .publish-event-text-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .publish-event-text-container h1 {
+        font-size: 4rem;
+    }
+
+    .publish-event-text-container p {
+        font-size: 0.8rem;
     }
 }
