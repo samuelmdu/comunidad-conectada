@@ -182,13 +182,13 @@ html {
 /*     # COMPONENTE: CARDS      */
 /* ============================= */
 
-.exterior-cards-container {
+.exterior-advertisement-container {
     display: flex;
     justify-content: center;
 
 }
 
-.cards-container {
+.advertisement-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
@@ -243,25 +243,25 @@ html {
 /* ===== # CARDS: MEDIA QUERIES ===== */
 
 @media (max-width: 1400px) {
-    .cards-container {
+    .advertisement-container {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 1035px) {
-    .cards-container {
+    .advertisement-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 679px) {
-    .cards-container {
+    .advertisement-container {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
 @media (max-width: 400px) {
-    .cards-container {
+    .advertisement-container {
         width: 75%;
     }
 }

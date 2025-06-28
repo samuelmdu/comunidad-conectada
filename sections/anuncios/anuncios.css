@@ -151,7 +151,7 @@ html {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('../../assets/images/hero/Eventos.PNG');
+    background-image: url('../../assets/images/hero/Anuncios.png');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
@@ -230,7 +230,7 @@ html {
 }
 
 /* ============================= */
-/*     # COMPONENTE: CARDS      */
+/*     # COMPONENTE: ANUNCIOS      */
 /* ============================= */
 
 .exterior-advertisement-container {
@@ -244,50 +244,48 @@ html {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     width: 60%;
-
 }
 
-.card {
-    height: 450px;
-    width: 280px;
-    border-radius: 20px;
-    box-shadow: 0 6px 12px #29598f91;
-    transition: all 0.3s ease-out;
-    min-width: 200px;
+.route-card {
+    display: flex;
+    background-color: var(--blanco);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    min-height: 203px;
+    transition: transform 0.3s;
 }
 
-.card:hover {
+.left-bar {
+    width: 8px;
+    background-color: var(--azul-claro);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.route-card:hover {
     transform: translateY(-5px);
 }
 
-.card-image {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-image: url("../../assets/images/emprendimientos/logos/Calle\ 33.png");
-    height: 70%;
-}
-
-.card-text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 30%;
-    margin-left: 10%;
-}
-
-.card-title {
+.route-card h3 {
     color: var(--azul-oscuro);
-    font-size: 1.5rem;
-    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
 }
 
-.card-subtitle {
+.route-details p {
+    margin-bottom: 0.5rem;
     color: var(--azul-oscuro);
-    font-size: 0.9rem;
+    line-height: 1.5;
+    font-size: 1.1rem;
+
 }
 
 /* ===== # CARDS: MEDIA QUERIES ===== */
@@ -313,7 +311,7 @@ html {
 
 
 /* ============================= */
-/*     # COMPONENTE: PUBLISH EVENT*/
+/*     # COMPONENTE: PUBLISH ANUNCIO*/
 /* ============================= */
 
 .publish-event-container {
