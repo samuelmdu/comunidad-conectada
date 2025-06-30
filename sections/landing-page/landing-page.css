@@ -1,0 +1,269 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+}
+
+
+:root {
+        --gris: #D7DEE8;
+        --azul-claro: #699AFF;
+        --azul-medio: #4D7ECA;
+        --azul-oscuro: #29588F;
+        --blanco: #FFFFFF;
+        --negro: #000000;
+    }
+
+
+.container {
+    background-image: linear-gradient(#02023E, #054994);
+    inset: 0;
+    position: fixed;
+    z-index: -1;
+}
+
+.space {
+    --size: 2px;
+    --space-layer: 
+        4vw 50vh 0 #fff,
+        18vw 88vh 0 #fff,
+        73vw 14vh 0 #fff;
+    
+    width: var(--size);
+    height: var(--size);
+    background: white;
+    box-shadow: var(--space-layer);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+}
+
+.space {
+    animation: move var(--duration) linear infinite;
+}
+
+@keyframes move {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100vh); }
+}
+
+
+.hero-section{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-section img{
+    width: 10%;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: 500;
+}
+h1 span{
+    font-style: italic;
+    font-weight: 900;
+}
+
+
+.text-container{
+    padding: 100px;
+}
+
+.text-items{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 100px;
+    align-items: center;
+    text-align: center;
+    padding: 100px 50px;
+}
+
+.text-items p{
+    direction: ltr;
+    font-size: 1.1rem;
+}
+
+
+
+
+
+
+h2{
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+h3{
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.tech-container{
+    padding: 80px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: #01011e89 ;
+}
+.tech-container h2{
+    margin-bottom: 60px;
+}
+
+.tech-planet-card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.planet-card{
+    justify-content: center;
+    text-align: center;
+    padding: 0px 80px;
+}
+
+.planet-card img{
+    width: 100%;
+}
+
+.anima1 img{
+    animation: rotacion 5s linear infinite;
+}
+.anima2 img{
+    animation: rotacion 15s alternate-reverse ease-in-out infinite;
+}
+.anima3 img{
+    animation: rotacion 10s reverse infinite;
+}
+
+
+@keyframes rotacion {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.team-container{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px;
+}
+
+.team-person-card{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    direction: ltr;
+    text-align: center;
+    padding: 20px;
+    margin: 120px 40px;
+    align-items: center;
+}
+
+.img-planet-person{
+    display: flex;
+    justify-content: end;
+}
+
+.team-person-card img{
+    width: 35%;
+    justify-content: center;
+    text-align: center;
+}
+
+.team-person-card h3{
+    font-style: italic;
+    font-size: 1.7rem;
+    padding-top: 70px;
+}
+.team-person-card p{
+    font-size: 1.7rem;
+    font-weight: 300;
+}
+
+.op2{
+    direction: rtl;
+}
+
+.exterior-site-footer{
+    display: flex;
+    justify-content: center;
+}
+
+
+.site-footer {
+    display: flex;
+    align-items: center;
+    position: static;
+    max-height: auto;
+    bottom: 0;
+    margin: 45px;
+    gap: 4vw;
+}
+
+.site-footer a {
+    text-decoration: none;
+}
+
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    gap: 4vh;
+    width: 100%;
+    font-size: 29px;
+    color: var(--blanco);
+}
+
+.icon-container i {
+    color: var(--blanco);
+    text-decoration: none;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    box-shadow: 0px 0px 20px -5px white;
+    transition: .5s;
+}
+
+.circle:hover {
+    background-color: var(--blanco);
+    color: #054994;
+    transition: 1s;
+}
+
+.circle:hover i{
+    color: #054994;
+    transition: 1s;
+}
+
+.copyright-container {
+    display: flex;
+    height: 6vh;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blanco);
+    color: var(--azul-oscuro);
+    font-size: 1.3rem;
+}
+
+.copyright-container p{
+    color: (var(--azul-oscuro)); 
+}
+
