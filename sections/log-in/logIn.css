@@ -24,9 +24,16 @@ body {
 }
 
 .content-container {
+    background-color: rgba(107, 145, 224, 0.45);
+    display: flex;
+    justify-content: center;
+}
+
+.content-container-limit{
+    width: 100%;
+    max-width: max-content;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    background-color: rgba(107, 145, 224, 0.45);
     height: 100vh;
     align-items: center;
     justify-content: center;
