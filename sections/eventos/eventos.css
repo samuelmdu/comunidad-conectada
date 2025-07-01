@@ -233,13 +233,13 @@ html {
 /*     # COMPONENTE: CARDS      */
 /* ============================= */
 
-.exterior-advertisement-container {
+.exterior-cards-container {
     display: flex;
     justify-content: center;
     margin-top: 2%;
 }
 
-.advertisement-container {
+.cards-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
@@ -293,19 +293,19 @@ html {
 /* ===== # CARDS: MEDIA QUERIES ===== */
 
 @media (max-width: 1400px) {
-    .advertisement-container {
+    .cards-container {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (max-width: 1035px) {
-    .advertisement-container {
+    .cards-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 679px) {
-    .advertisement-container {
+    .cards-container {
         grid-template-columns: repeat(1, 1fr);
     }
 }
@@ -318,7 +318,7 @@ html {
 
 .publish-event-container {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-top: 2%;
     color: var(--blanco);
@@ -349,6 +349,28 @@ html {
 
     transition: 0.10s;
     color: var(--gris);
+}
+
+.publish-event-text-container p {
+    max-width: 550px;
+}
+
+.publish-event-text-container button {
+    width: 40%;
+    height: 40px;
+    color: var(--azul-oscuro);
+    border-radius: 20px;
+    border-style: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+.publish-event-text-container button:hover {
+    transform: translateY(-5px);
+    transition: 0.10s;
+    cursor: pointer;
+    background-color: var(--gris);
 }
 
 /* ============================= */
@@ -580,9 +602,9 @@ html {
 }
 
 /* Ajusted para celular */
-@media (max-width: 400px) {
-    .advertisement-container {
-        width: 75%;
+@media (max-width: 435px) {
+    .cards-container {
+        width: 65%;
     }
 
     .title-text-container p {
@@ -602,13 +624,17 @@ html {
 
     }
 
-    .exterior-advertisement-container {
+    .exterior-cards-container {
         margin-top: 10%;
         margin-bottom: 2%;
     }
 
     .publish-event-container {
         margin-top: 20%;
+        flex-direction: column;
+
+        height: 50vh;
+
     }
 
     .publish-event-text-container {
@@ -624,6 +650,27 @@ html {
     }
 
     .publish-event-text-container p {
-        font-size: 0.8rem;
+        margin-top: 10%;
+        font-size: 1rem;
+        max-width: 95%;
+        text-align: center;
+    }
+
+    .publish-event-text-container button {
+        margin-top: 10%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .cards-container {
+        width: 75%;
+    }
+
+
+    .publish-event-container {
+
+        height: 70vh;
+
     }
 }

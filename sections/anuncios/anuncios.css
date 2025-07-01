@@ -316,7 +316,7 @@ html {
 
 .publish-event-container {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-top: 2%;
     color: var(--blanco);
@@ -348,6 +348,29 @@ html {
     transition: 0.10s;
     color: var(--gris);
 }
+
+.publish-event-text-container p {
+    max-width: 550px;
+}
+
+.publish-event-text-container button {
+    width: 40%;
+    height: 40px;
+    color: var(--azul-oscuro);
+    border-radius: 20px;
+    border-style: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+.publish-event-text-container button:hover {
+    transform: translateY(-5px);
+    transition: 0.10s;
+    cursor: pointer;
+    background-color: var(--gris);
+}
+
 
 /* ============================= */
 /*     # COMPONENTE: FOOTER     */
@@ -578,7 +601,7 @@ html {
 }
 
 /* Ajusted para celular */
-@media (max-width: 400px) {
+@media (max-width: 430px) {
     .advertisement-container {
         width: 75%;
     }
@@ -607,10 +630,14 @@ html {
 
     .publish-event-container {
         margin-top: 20%;
+        flex-direction: column;
+        height: 40vh;
+
     }
 
     .publish-event-text-container {
         margin-left: 2%;
+        width: 90%;
     }
 
     .publish-event-text-container h2 {
@@ -618,10 +645,32 @@ html {
     }
 
     .publish-event-text-container h1 {
-        font-size: 4rem;
+        font-size: 2.8rem;
     }
 
     .publish-event-text-container p {
-        font-size: 0.8rem;
+        margin-top: 10%;
+        font-size: 1rem;
+        max-width: 95%;
+        text-align: center;
+    }
+
+    .publish-event-text-container button {
+        margin-top: 10%;
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 380px) {
+    .cards-container {
+        width: 75%;
+    }
+
+
+    .publish-event-container {
+
+        height: 60vh;
+
     }
 }
