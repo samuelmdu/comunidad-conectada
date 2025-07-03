@@ -35,6 +35,15 @@ html {
 
 /* ===== # NAVBAR: CLASES ===== */
 
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    background-color: var(--gris); 
+}
+
 .menu {
     display: flex;
     justify-content: space-between;
