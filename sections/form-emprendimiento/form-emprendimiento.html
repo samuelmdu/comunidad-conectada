@@ -58,36 +58,92 @@
 
         <form class="formEmprendimiento">
             <div class="columna1">
-                <label>Nombre del emprendimiento</label>
-                <input type="text" required>
+            <!-- GRUPO EMPRENDIMIENTO-->
+                <div class="formulario-grupo" id="grupo-descripcion">
+                    <label class="formulario-label">Nombre del emprendimiento</label>
+                    <div class="formulario-grupo-input">
+                        <input type="text" required>
+                    </div>
+                    <p class="formulario-input-error">
+                    El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+                    </p>
+                </div>
+                
 
-                <label>Descripción breve:</label>
+            <!-- GRUPO DESCRIPCION-->
+                <div class="formulario-grupo" id="grupo-descripcion"></div>
+                <label class="formulario-label">Descripción breve:</label>
                 <textarea rows="4" required></textarea>
+                <p class="formulario-input-error">
+                    La descripción debe tener entre 10 y 300 caracteres.
+                </p>
 
-                <label>Categoría:</label>
-                <label><input type="radio" name="categoria" value="alimentos" required> Alimentos y bebidas</label>
-                <label><input type="radio" name="categoria" value="moda"> Moda y accesorios</label>
-                <label><input type="radio" name="categoria" value="tecnologia"> Tecnología / Servicios digitales</label>
-                <label><input type="radio" name="categoria" value="arte"> Arte y diseño</label>
-                <label><input type="radio" name="categoria" value="educacion"> Educación / Cursos</label>
+            <!-- GRUPO CATEGORIAS-->
+                <div class="formulario-grupo" id="grupo-categoria">
+                    <label>Categoría:</label>
+                    <label><input type="radio" name="categoria" value="alimentos" required> Alimentos y bebidas</label>
+                    <label><input type="radio" name="categoria" value="moda"> Moda y accesorios</label>
+                    <label><input type="radio" name="categoria" value="tecnologia"> Tecnología / Servicios digitales</label>
+                    <label><input type="radio" name="categoria" value="arte"> Arte y diseño</label>
+                    <label><input type="radio" name="categoria" value="educacion"> Educación / Cursos</label>
+                    <p class="formulario-input-error">
+                        Debes seleccionar una categoría para tu emprendimiento.
+                    </p>
+                </div>
+                    
+                <!-- REVISARRRR esto porque puede ser que no se necesite categorizar-->
+                <!-- GRUPO OTRO--> 
                 <label>
                 <input type="radio" name="categoria" value="otro"> Otro:
                 <input type="text" placeholder="Especificar...">
                 </label>
+                <p class="formulario-input-error">
+                    Si elegiste "Otro", debes especificar la categoría.
+                </p>
+                
             </div>
 
             <div class="columna2">
-                <label>Nombre del emprendedor/a:</label>
-                <input type="text" required>
+            <!-- GRUPO USUARIO-->
+                <div class="formulario-grupo" id="grupo-usuario">
+                    <label>Nombre del emprendedor/a:</label>
+                    <input type="text" required>
+                    <p class="formulario-input-error">
+                        El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
+                    </p>
+                </div>
+                
 
-                <label>Correo electrónico de contacto:</label>
-                <input type="email" required>
+            <!-- GRUPO COOREO-->
+                <div class="formulario-grupo" id="grupo-correo">
+                    <label>Correo electrónico de contacto:</label>
+                    <input type="email" required>
+                    <p class="formulario-input-error">
+                        Debes ingresar un correo válido. Ejemplo: usuario@dominio.com
+                    </p>
+                </div>
+                
 
-                <label>Número de teléfono (opcional):</label>
-                <input type="tel">
+            <!-- GRUPO NUMERO-->
+                <div class="formulario-grupo" id="grupo-numero">
+                    <label>Número de teléfono (opcional):</label>
+                    <input type="tel">
+                    <p class="formulario-input-error">
+                        El número debe tener 8 dígitos y solo contener números.
+                    </p>
+                </div>
+                
 
-                <label>Ubicación:</label>
-                <input type="text" required>
+            <!-- GRUPO UBICACION-->
+                <div class="formulario-grupo" id="grupo-ubicacion">
+                    <label>Ubicación:</label>
+                    <div class="formulario-grupo-input">
+                        <input type="text" required>
+                    </div>
+                    <p class="formulario-input-error">
+                        La ubicación no puede estar vacía y debe tener al menos 4 caracteres.
+                    </p>
+                </div>
 
                 <label>Red social o sitio web (opcional):</label>
                 <input type="url">
@@ -100,7 +156,12 @@
                     nuestra plataforma.
                 </p>
 
+            <!-- GRUPO BOTON-->
                 <button type="submit">Enviar</button>
+                <p class="formulario-mensaje-error" id="mensaje-error-general">
+                    Por favor, completá correctamente todos los campos obligatorios antes de enviar.
+                </p>
+
             </div>
         </form>
     </main>

@@ -421,17 +421,15 @@
 }
 
 .formEmprendimiento {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 32px;
-    justify-content: space-between;
 }
 
 .columna1, .columna2 {
-    flex: 1 1 45%;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 40px;
 }
 
 input[type="text"],
@@ -439,6 +437,7 @@ input[type="email"],
 input[type="tel"],
 input[type="url"],
 input[type="file"],
+input[type="radio"],
 textarea {
     padding: 0.8rem;
     border-radius: 8px;
@@ -483,14 +482,16 @@ button[type="submit"]:hover {
     margin-top: 1rem;
 }
 
+.formulario-input-error{
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .formEmprendimiento {
         flex-direction: column;
-    }
-
-    .columna1, .columna2 {
-        flex: 1 1 100%;
-        width: 100%;
+        grid-template-columns: 1fr;
     }
 }
