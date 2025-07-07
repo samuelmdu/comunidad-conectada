@@ -141,7 +141,7 @@ header {
 
 .hero {
     width: 100%;
-    height: 60vh;
+    height: 65vh;
     min-height: 250px;
     position: relative;
     display: flex;
@@ -150,10 +150,18 @@ header {
     align-items: center;
     overflow: hidden;
     background-color: var(--azul-oscuro);
+    margin-top: 4rem;
+}
+
+#hero-emprendimientos-generales {
+    height: 50vh;
 }
 
 #hero-emprendimientos-especificos {
-    height: 50vh;
+    height: 40vh;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0 0 0 2%;
 }
 
 .hero-background {
@@ -162,11 +170,15 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('/assets/images/emprendimientos/coverPhotos/SANTO\ PECADO.jpg');
+    background-image: url('/assets/images/hero/Emprendimientos.png');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
     z-index: 1;
+}
+
+#hero-background-emprendimientos-especificos {
+    background-image: url(../../assets/images/emprendimientos/coverPhotos/SANTO\ PECADO.jpg);
 }
 
 .hero-title {
@@ -179,15 +191,28 @@ header {
     margin-bottom: 1vw;
     text-transform: uppercase;
     padding: 0 5%;
+    line-height: 1.2;
     padding: auto;
 }
 
 #hero-title-emprendimientos-especificos {
     text-align: left;
-    margin-bottom: 1vw;
-    text-transform: uppercase;
-    top: 40%;
-    right: 19.5%;
+    margin-bottom: 0%;
+    padding: 0%;
+    width: auto;
+    max-width: 90%;
+}
+
+@media (max-width: 1200px) {
+    #hero-title-emprendimientos-especificos {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 700px) {
+    #hero-emprendimientos-especificos {
+        height: 20vh;
+    }
 }
 
 @media (max-width: 830px) {
@@ -197,15 +222,51 @@ header {
     }
 }
 
+/* ============================= */
+/*   EMPRENDIMIENTOS GENERALES   */
+/* ============================= */
+
+.descubre-nuestros-emprendimientos {
+    height: 42.5vh;
+    text-align: center;
+    padding: 0 12%;
+    padding-top: 8%;
+}
+
+.descubre-nuestros-emprendimientos h2 {
+    color: var(--azul-oscuro);
+    font-size: 32px;
+    font-weight: 400;
+}
 
 /* ============================= */
 /*     # COMPONENTE: CARDS      */
 /* ============================= */
 
+/* Introducción a los cards */
+.introduccion-a-cards {
+    height: 10vh;
+    padding: 0 2%;
+    padding-top: 4%;
+
+}
+
+.introduccion-a-cards p {
+    color: var(--azul-oscuro);
+    font-size: 28px;
+}
+
+#nuevas-propuestas {
+    text-align: right;
+}
+
+/* Cards */
+
 .exterior-advertisement-container {
     display: flex;
     justify-content: center;
-
+    margin-top: 2%;
+    width: 100%;
 }
 
 .advertisement-container {
@@ -213,7 +274,17 @@ header {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     width: 60%;
-    margin-top: 2%;
+}
+
+
+/* Segunda sección de cards */
+#cards-to-the-left .advertisement-container {
+    margin-left: 0;
+    margin-right: 15%;
+} 
+
+#cards-to-the-left {
+    margin-bottom: 10%;
 }
 
 .card {
@@ -223,7 +294,6 @@ header {
     box-shadow: 0 6px 12px #29598f91;
     transition: all 0.3s ease-out;
     min-width: 200px;
-
 }
 
 .card:hover {
@@ -236,8 +306,32 @@ header {
     background-position: center;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-image: url('/assets/images/rapha.png');
+    background-image: url("../../assets/images/emprendimientos/logos/Calle\ 33.png");
     height: 70%;
+}
+
+#la-chismosa .card-image {
+    background-image: url(../../assets/images/emprendimientos/logos/La\ Chismosa.png);
+}
+
+#santo-pecado .card-image {
+    background-image: url(../../assets/images/emprendimientos/logos/Santo\ Pecado.png);
+}
+
+#beer-factory .card-image {
+    background-image: url(../../assets/images/emprendimientos/logos/Beer\ Factory.png);
+}
+
+#la-central .card-image{
+    background-image: url(../../assets/images/emprendimientos/logos/La\ Central.png);
+}
+
+#sasta-pub .card-image{
+    background-image: url(../../assets/images/emprendimientos/logos/Sasta\ Pub.png);
+}
+
+#samadhi .card-image {
+    background-image: url(../../assets/images/emprendimientos/logos/Samadhi.jpg);
 }
 
 .card-text-container {
@@ -280,15 +374,40 @@ header {
     }
 }
 
-@media (max-width: 400px) {
-    .advertisement-container {
-        width: 75%;
-    }
+.conoce-nuestros-emprendimientos {
+    height: 100vh;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8%;
 }
 
+.conoce-nuestros-emprendimientos h1 {
+    color: var(--azul-oscuro);
+    font-size: 44px;
+    text-align: center;
+    width: 100%;
+}
+
+.construyendo-una-comunidad {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.construyendo-una-comunidad h1 {
+    color: var(--azul-oscuro);
+    font-size: 44px;
+    text-align: center;
+    font-weight: 400;
+    width: 100%;
+}
 
 /* ============================= */
-/*INFORMACIÓN DE EMPRENDIMIENTOS*/
+/*  EMPRENDIMIENTOS ESPECÍFICOS  */
 /* ============================= */
 
 /* General */
@@ -314,7 +433,6 @@ header {
 }
 
 /* Izquierda */
-
 .enterprise-info-left {
     width: 100%;
     height: 100%;
@@ -331,6 +449,22 @@ header {
     weigth: 100%;
     height: 30%;
 }
+
+.enterprise-location h1 {
+    margin-bottom: 4%;
+}
+
+.enterprise-location a {
+    text-decoration: none;
+    color: var(--azul-oscuro);
+    font-size: 18px;
+    display: inline;
+}
+
+.enterprise-location a:hover {
+    color: var(--azul-claro);
+}
+
 
 
 /* Derecha */
@@ -461,8 +595,12 @@ header {
         padding: 4% 8%;
     }
 
-    .enterprise-bottom-left h1{
+    .enterprise-bottom-left h1 {
         margin-bottom: 4%;
+    }
+
+    .enterprise-location a {
+        font-size: 12px;
     }
 
     /* Derecha */
