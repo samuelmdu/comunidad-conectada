@@ -258,6 +258,7 @@ html {
 
 .card:hover {
     transform: translateY(-5px);
+    cursor: pointer;
 }
 
 .card-image {
@@ -270,6 +271,30 @@ html {
     height: 70%;
 }
 
+.card-image.perros {
+    background-image: url('../../assets/images/eventos/parque-perros.jpg');
+}
+
+.card-image.luces {
+    background-image: url('../../assets/images/eventos/luces.jpg');
+}
+
+.card-image.concierto {
+    background-image: url('../../assets/images/eventos/concierto.jpg');
+}
+
+.card-image.feria {
+    background-image: url('../../assets/images/eventos/feria.jpg');
+}
+
+.card-image.caminata {
+    background-image: url('../../assets/images/eventos/caminata.jpg');
+}
+
+.card-image.taller {
+    background-image: url('../../assets/images/eventos/taller.jpg');
+}
+
 .card-text-container {
     display: flex;
     flex-direction: column;
@@ -277,12 +302,14 @@ html {
     width: 100%;
     height: 30%;
     margin-left: 10%;
+    gap: 10%;
 }
 
 .card-title {
     color: var(--azul-oscuro);
     font-size: 1.5rem;
     font-weight: bold;
+    max-width: 90%;
 }
 
 .card-subtitle {
@@ -610,7 +637,7 @@ html {
     .title-text-container p {
         margin-top: 5%;
         min-width: 90%;
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 
     .back-container {
