@@ -390,6 +390,22 @@ header {
     width: 100%;
 }
 
+.construyendo-una-comunidad {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.construyendo-una-comunidad h1 {
+    color: var(--azul-oscuro);
+    font-size: 44px;
+    text-align: center;
+    font-weight: 400;
+    width: 100%;
+}
+
 /* ============================= */
 /*  EMPRENDIMIENTOS ESPECÍFICOS  */
 /* ============================= */
