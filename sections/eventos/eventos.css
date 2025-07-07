@@ -158,6 +158,11 @@ html {
     z-index: 1;
 }
 
+.hero-background.luces {
+
+    background-image: url('../../assets/images/eventos/luces.jpg');
+}
+
 .hero-title {
     color: var(--blanco);
     font-size: 7vw;
@@ -244,7 +249,10 @@ html {
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
     width: 60%;
+}
 
+.cards-container a {
+    text-decoration: none;
 }
 
 .card {
@@ -398,6 +406,244 @@ html {
     transition: 0.10s;
     cursor: pointer;
     background-color: var(--gris);
+}
+
+
+/* ============================= */
+/*  EMPRENDIMIENTOS ESPECÍFICOS  */
+/* ============================= */
+
+/* General */
+.enterprise-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 50vh;
+}
+
+.enterprise-info h1 {
+    color: var(--azul-oscuro);
+    font-size: 24px;
+    font-weight: 900;
+    cursor: default;
+}
+
+.enterprise-info p {
+    color: var(--azul-oscuro);
+    font-size: 18px;
+    margin-top: 4%;
+    cursor: default;
+}
+
+/* Izquierda */
+.enterprise-info-left {
+    width: 100%;
+    height: 100%;
+    padding: 8% 10%;
+    padding-right: 20%;
+}
+
+.enterprise-top-left {
+    weight: 100%;
+    height: 80%;
+}
+
+.enterprise-bottom-left {
+    weigth: 100%;
+    height: 30%;
+}
+
+.enterprise-location h1 {
+    margin-bottom: 4%;
+}
+
+.enterprise-location a {
+    text-decoration: none;
+    color: var(--azul-oscuro);
+    font-size: 18px;
+    display: inline;
+}
+
+.enterprise-location a:hover {
+    color: var(--azul-claro);
+}
+
+
+
+/* Derecha */
+.enterprise-info-right {
+    width: 100%;
+    height: 100%;
+    padding: 8% 10%;
+    padding-right: 20%;
+}
+
+.enterprise-top-right {
+    weight: 100%;
+    height: 80%;
+}
+
+.enterprise-schedules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.enterprise-bottom-right {
+    weigth: 100%;
+    height: 30%;
+}
+
+.area-code {
+    display: inline;
+}
+
+.enterprise-phone .area-code {
+    color: var(--azul-claro);
+}
+
+.phone-number {
+    display: inline;
+
+}
+
+.enterprise-phone h1 {
+    margin-bottom: 4%;
+}
+
+@media (max-width: 1200px) {
+    .enterprise-info {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        text-align: center;
+    }
+
+    /* Izquierda */
+    .enterprise-info-left {
+        width: 100%;
+        height: 50%;
+        padding: 2% 4%;
+        margin: 0%;
+    }
+
+    .enterprise-top-left {
+        margin-bottom: 2%;
+        padding: 0 12%;
+    }
+
+    /* Derecha */
+    .enterprise-info-right {
+        width: 100%;
+        height: 50%;
+        padding: 2% 4%;
+        margin: 0%;
+    }
+
+    /* General */
+    .enterprise-top-left .enterprise-bottom-left .enterprise-top-right .enterprise-bottom-right {
+        width: 100%;
+        height: auto;
+    }
+
+    .enterprise-info p {
+        margin-top: 0.5%;
+    }
+
+    /* Derecha */
+    .enterprise-top-right {
+        margin-bottom: 2%;
+    }
+
+    /* Días y Horas */
+    .enterprise-days {
+        text-align: right;
+        padding-right: 6%;
+    }
+
+    .enterprise-hours {
+        text-align: left;
+        padding-left: 1.5%;
+    }
+
+    .enterprise-phone h1 {
+        margin-bottom: 1%;
+    }
+
+    .enterprise-phone p {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    /* General */
+    .enterprise-info h1 {
+        font-size: 18px;
+    }
+
+    .enterprise-info p {
+        font-size: 12px;
+    }
+
+    /* Izquierda */
+    .enterprise-top-left {
+        padding: 0% 8%;
+        padding-top: 8%;
+        padding-bottom: 4%;
+    }
+
+    .enterprise-bottom-left {
+        padding: 4% 8%;
+    }
+
+    .enterprise-bottom-left h1 {
+        margin-bottom: 4%;
+    }
+
+    .enterprise-location a {
+        font-size: 12px;
+    }
+
+    /* Derecha */
+    .enterprise-info-right {
+        padding: 0% 20%;
+    }
+
+    .enterprise-top-right {
+        padding: 4% 1%;
+    }
+
+    .enterprise-top-right h1 {
+        margin-bottom: 4%;
+    }
+
+    .enterprise-top-right p {
+        font-size: 12px;
+    }
+
+    .enterprise-days {
+        text-align: center;
+        padding-right: 0%;
+    }
+
+    .enterprise-hours {
+        text-align: center;
+        padding-left: 0%;
+    }
+
+    .enterprise-bottom-right {
+        padding: 8% 8%;
+    }
+
+    .enterprise-phone h1 {
+        margin-bottom: 4%;
+    }
+
+    .enterprise-phone p {
+        font-size: 16px;
+    }
 }
 
 /* ============================= */
