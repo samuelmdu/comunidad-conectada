@@ -1,0 +1,24 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --gris: #D7DEE8;
+    --azul-claro: #699AFF;
+    --azul-medio: #4D7ECA;
+    --azul-oscuro: #29588F;
+    --blanco: #FFFFFF;
+    --negro: #000000;
+    --glacial-blue: #7181A6;
+}
+
+body {
+    background-image: url('/assets/images/registro/barrio-escalante2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}

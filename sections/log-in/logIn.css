@@ -23,13 +23,21 @@ body {
     background-size: cover;
 }
 
+.content-container-out{
+    background-color: rgba(107, 145, 224, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .content-container {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    background-color: rgba(107, 145, 224, 0.45);
     height: 100vh;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    max-width: 1500px;
 }
 
 .texts-container {
