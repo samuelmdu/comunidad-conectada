@@ -141,7 +141,7 @@ header {
 
 .hero {
     width: 100%;
-    height: 60vh;
+    height: 65vh;
     min-height: 250px;
     position: relative;
     display: flex;
@@ -150,10 +150,14 @@ header {
     align-items: center;
     overflow: hidden;
     background-color: var(--azul-oscuro);
+    margin-top: 4rem;
 }
 
 #hero-emprendimientos-especificos {
-    height: 50vh;
+    height: 40vh;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0 0 0 2%;
 }
 
 .hero-background {
@@ -162,11 +166,15 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('/assets/images/emprendimientos/coverPhotos/SANTO\ PECADO.jpg');
+    background-image: url('/assets/images/hero/Emprendimientos.png');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
     z-index: 1;
+}
+
+#hero-background-emprendimientos-especificos {
+    background-image: url(../../assets/images/emprendimientos/coverPhotos/SANTO\ PECADO.jpg);
 }
 
 .hero-title {
@@ -179,15 +187,28 @@ header {
     margin-bottom: 1vw;
     text-transform: uppercase;
     padding: 0 5%;
+    line-height: 1.2;
     padding: auto;
 }
 
 #hero-title-emprendimientos-especificos {
     text-align: left;
-    margin-bottom: 1vw;
-    text-transform: uppercase;
-    top: 40%;
-    right: 19.5%;
+    margin-bottom: 0%;
+    padding: 0%;
+    width: auto;
+    max-width: 90%;
+}
+
+@media (max-width: 1200px) {
+    #hero-title-emprendimientos-especificos {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 700px) {
+    #hero-emprendimientos-especificos {
+        height: 20vh;
+    }
 }
 
 @media (max-width: 830px) {
@@ -331,6 +352,22 @@ header {
     height: 30%;
 }
 
+.enterprise-location h1 {
+    margin-bottom: 4%;
+}
+
+.enterprise-location a {
+    text-decoration: none;
+    color: var(--azul-oscuro);
+    font-size: 18px;
+    display: inline;
+}
+
+.enterprise-location a:hover {
+    color: var(--azul-claro);
+}
+
+
 
 /* Derecha */
 .enterprise-info-right {
@@ -460,8 +497,12 @@ header {
         padding: 4% 8%;
     }
 
-    .enterprise-bottom-left h1{
+    .enterprise-bottom-left h1 {
         margin-bottom: 4%;
+    }
+
+    .enterprise-location a {
+        font-size: 12px;
     }
 
     /* Derecha */
