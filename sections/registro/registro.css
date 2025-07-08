@@ -253,6 +253,25 @@ input.formulario__input::placeholder {
     border: 2px solid #9c0505;
 }
 
+
+
+.volver-login p {
+    color: var(--glacial-blue);
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.volver-login p span {
+    font-weight: 700;
+}
+
+.volver-login p a {
+    color: var(--glacial-blue);
+    text-decoration: none;
+}
+
 /*----------RESPONSIVE---------------*/
 
 @media(max-width:800px){
