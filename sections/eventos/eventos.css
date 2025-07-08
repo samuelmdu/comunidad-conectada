@@ -272,9 +272,28 @@ html {
     background-image: url('../../assets/images/eventos/concierto.jpg');
 }
 
-.card-image.feria {
+.card-image.feriaagricultor {
     background-image: url('../../assets/images/eventos/feria.jpg');
 }
+
+.card-image.cine {
+    background-image: url('../../assets/images/eventos/cine.jpeg');
+}
+
+.card-image.carnaval {
+    background-image: url('../../assets/images/eventos/carnaval.jpg');
+}
+
+.card-image.torneo {
+    background-image: url('../../assets/images/eventos/torneo.png');
+}
+
+.card-image.feriapasta {
+    background-image: url('../../assets/images/eventos/pasta.png');
+}
+
+
+
 
 .card-image.caminata {
     background-image: url('../../assets/images/eventos/caminata.jpg');
@@ -283,6 +302,8 @@ html {
 .card-image.taller {
     background-image: url('../../assets/images/eventos/taller.jpg');
 }
+
+
 
 .card-text-container {
     display: flex;

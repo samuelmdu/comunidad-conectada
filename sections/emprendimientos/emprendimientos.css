@@ -616,6 +616,67 @@ header {
     }
 }
 
+/* ==================================== */
+/* #COMPONENTE: CREATE ENTREPRENEURSHIP */
+/* ==================================== */
+
+.create-entrepreneurship-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+    color: var(--blanco);
+    height: 40vh;
+    background-color: var(--azul-oscuro);
+}
+
+.create-entrepreneurship-text-container {
+    margin-left: 4%;
+    font-style: italic;
+    padding-right: 2%;
+}
+
+.create-entrepreneurship-text-container h2 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.create-entrepreneurship-text-container h1 {
+    font-size: 5rem;
+}
+
+.create-entrepreneurship-container a {
+    text-decoration: none;
+    color: var(--blanco);
+}
+
+.create-entrepreneurship-container a:hover {
+    transition: 0.10s;
+    color: var(--gris);
+}
+
+.create-entrepreneurship-text-container p {
+    max-width: 550px;
+}
+
+.create-entrepreneurship-text-container button {
+    width: 40%;
+    height: 40px;
+    color: var(--azul-oscuro);
+    border-radius: 20px;
+    border-style: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+.create-entrepreneurship-text-container button:hover {
+    transform: translateY(-5px);
+    transition: 0.10s;
+    cursor: pointer;
+    background-color: var(--gris);
+}
+
 /* ============================= */
 /*     # COMPONENTE: FOOTER     */
 /* ============================= */
