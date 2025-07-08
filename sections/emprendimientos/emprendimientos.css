@@ -37,7 +37,6 @@ html {
 
 header {
     width: 100%;
-    position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -139,9 +138,13 @@ header {
 /*     # COMPONENTE: HERO       */
 /* ============================= */
 
+/* ============================= */
+/*     # COMPONENTE: HERO       */
+/* ============================= */
+
 .hero {
     width: 100%;
-    height: 65vh;
+    height: 60vh;
     min-height: 250px;
     position: relative;
     display: flex;
@@ -150,19 +153,8 @@ header {
     align-items: center;
     overflow: hidden;
     background-color: var(--azul-oscuro);
-    margin-top: 4rem;
 }
 
-#hero-emprendimientos-generales {
-    height: 50vh;
-}
-
-#hero-emprendimientos-especificos {
-    height: 40vh;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 0 0 0 2%;
-}
 
 .hero-background {
     width: 100%;
@@ -170,15 +162,16 @@ header {
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('/assets/images/hero/Emprendimientos.png');
+    background-image: url('../../assets/images/hero/Emprendimientos.png');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
     z-index: 1;
 }
 
-#hero-background-emprendimientos-especificos {
-    background-image: url(../../assets/images/emprendimientos/coverPhotos/SANTO\ PECADO.jpg);
+.hero-background.luces {
+
+    background-image: url('../../assets/images/eventos/luces.jpg');
 }
 
 .hero-title {
@@ -195,26 +188,6 @@ header {
     padding: auto;
 }
 
-#hero-title-emprendimientos-especificos {
-    text-align: left;
-    margin-bottom: 0%;
-    padding: 0%;
-    width: auto;
-    max-width: 90%;
-}
-
-@media (max-width: 1200px) {
-    #hero-title-emprendimientos-especificos {
-        font-size: 8vw;
-    }
-}
-
-@media (max-width: 700px) {
-    #hero-emprendimientos-especificos {
-        height: 20vh;
-    }
-}
-
 @media (max-width: 830px) {
     .hero {
         height: 30vw;
@@ -227,10 +200,10 @@ header {
 /* ============================= */
 
 .descubre-nuestros-emprendimientos {
-    height: 42.5vh;
+
     text-align: center;
-    padding: 0 12%;
-    padding-top: 8%;
+
+
 }
 
 .descubre-nuestros-emprendimientos h2 {
@@ -281,7 +254,7 @@ header {
 #cards-to-the-left .advertisement-container {
     margin-left: 0;
     margin-right: 15%;
-} 
+}
 
 #cards-to-the-left {
     margin-bottom: 10%;
@@ -322,11 +295,11 @@ header {
     background-image: url(../../assets/images/emprendimientos/logos/Beer\ Factory.png);
 }
 
-#la-central .card-image{
+#la-central .card-image {
     background-image: url(../../assets/images/emprendimientos/logos/La\ Central.png);
 }
 
-#sasta-pub .card-image{
+#sasta-pub .card-image {
     background-image: url(../../assets/images/emprendimientos/logos/Sasta\ Pub.png);
 }
 
@@ -825,6 +798,10 @@ header {
     .text-logos p {
         font-size: 1rem;
         text-align: justify;
+    }
+
+    .contact-info-container {
+        display: none;
     }
 
     .ayuda-container,

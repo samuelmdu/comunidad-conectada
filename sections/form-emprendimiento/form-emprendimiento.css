@@ -343,6 +343,10 @@
             text-align: justify;
         }
 
+        .contact-info-container {
+            display: none;
+        }
+
         .ayuda-container,
         .comunidad-container,
         .contactenos-container {
@@ -395,101 +399,101 @@
 
     }
 
-/* ============================= */
-/*   # COMPONENTE: FORMULARIO   */
-/* ============================= */
+    /* ============================= */
+    /*   # COMPONENTE: FORMULARIO   */
+    /* ============================= */
 
-.contenedor-form {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 1rem 2rem;
-}
+    .contenedor-form {
+        max-width: 1200px;
+        margin: 3rem auto;
+        padding: 1rem 2rem;
+    }
 
-.intro-form {
-    text-align: center;
-    margin-bottom: 2rem;
-}
+    .intro-form {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
 
-.intro-form h2 {
-    color: var(--azul-oscuro);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
+    .intro-form h2 {
+        color: var(--azul-oscuro);
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
 
-.resaltado {
-    color: var(--azul-claro);
-}
+    .resaltado {
+        color: var(--azul-claro);
+    }
 
-.formulario-emprendimiento {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: space-between;
-}
-
-.columna {
-    flex: 1 1 45%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="url"],
-input[type="file"],
-textarea {
-    padding: 0.8rem;
-    border-radius: 8px;
-    border: 1px solid var(--gris);
-    font-size: 1rem;
-    background-color: #f4f6fa;
-    color: var(--azul-oscuro);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 80px;
-}
-
-.categorias label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: var(--azul-oscuro);
-    font-weight: 500;
-}
-
-button[type="submit"] {
-    background-color: var(--azul-oscuro);
-    color: var(--blanco);
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    width: fit-content;
-    align-self: start;
-    transition: 0.2s;
-}
-
-button[type="submit"]:hover {
-    background-color: var(--azul-medio);
-}
-
-.nota-final {
-    font-size: 0.9rem;
-    color: var(--azul-oscuro);
-    margin-top: 1rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
     .formulario-emprendimiento {
-        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
     }
 
     .columna {
-        flex: 1 1 100%;
+        flex: 1 1 45%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
-}
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="url"],
+    input[type="file"],
+    textarea {
+        padding: 0.8rem;
+        border-radius: 8px;
+        border: 1px solid var(--gris);
+        font-size: 1rem;
+        background-color: #f4f6fa;
+        color: var(--azul-oscuro);
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .categorias label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--azul-oscuro);
+        font-weight: 500;
+    }
+
+    button[type="submit"] {
+        background-color: var(--azul-oscuro);
+        color: var(--blanco);
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        width: fit-content;
+        align-self: start;
+        transition: 0.2s;
+    }
+
+    button[type="submit"]:hover {
+        background-color: var(--azul-medio);
+    }
+
+    .nota-final {
+        font-size: 0.9rem;
+        color: var(--azul-oscuro);
+        margin-top: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .formulario-emprendimiento {
+            flex-direction: column;
+        }
+
+        .columna {
+            flex: 1 1 100%;
+        }
+    }

@@ -344,6 +344,10 @@
             text-align: justify;
         }
 
+        .contact-info-container {
+            display: none;
+        }
+
         .ayuda-container,
         .comunidad-container,
         .contactenos-container {
@@ -448,6 +452,37 @@
     }
 
     /* ============================= */
+    /*     # COMPONENTE: TITLES      */
+    /* ============================= */
+
+
+    .title-container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        margin-top: 4%;
+    }
+
+    .title-container h1 {
+        color: var(--azul-oscuro);
+
+    }
+
+    .title-container p {
+        margin-top: 1%;
+        color: var(--azul-oscuro);
+        max-width: 40%;
+        min-width: 40%;
+
+    }
+
+    .title-text-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ============================= */
     /*     # COMPONENTE: TRANSPORTE  */
     /* ============================= */
 
@@ -473,6 +508,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(366px, 1fr));
         gap: 5rem;
+
     }
 
     .route-card {

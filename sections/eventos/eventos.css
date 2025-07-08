@@ -188,32 +188,13 @@ html {
 /*     # COMPONENTE: TITLES      */
 /* ============================= */
 
-.back-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 2%;
-    font-weight: bold;
-    color: var(--gris-oscuro)
-}
-
-.back-container a {
-    text-decoration: none;
-    color: var(--gris-oscuro)
-}
-
-.back-container a:hover {
-
-    color: var(--azul-medio)
-}
-
 
 .title-container {
     display: flex;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    margin-top: 2%;
+    margin-top: 4%;
 }
 
 .title-container h1 {
@@ -644,6 +625,44 @@ html {
     .enterprise-phone p {
         font-size: 16px;
     }
+
+    .enterprise-description {
+        margin-top: 3%;
+    }
+
+    .enterprise-description p {
+        font-size: 1.1rem;
+        margin-top: 5%;
+    }
+
+    .enterprise-description h1 {
+        font-size: 1.4rem;
+    }
+
+    .enterprise-location h1 {
+        font-size: 1.4rem;
+    }
+
+    .enterprise-location a {
+        font-size: 1.1rem;
+    }
+
+    .enterprise-info-right p {
+        margin-top: 5%;
+        font-size: 1.1rem;
+    }
+
+    .enterprise-info-right h1 {
+        font-size: 1.6rem;
+    }
+
+    .enterprise-hours b {
+        font-size: 0.8rem;
+    }
+
+    .enterprise-info-right {
+        width: 100%;
+    }
 }
 
 /* ============================= */
@@ -841,9 +860,15 @@ html {
         align-items: start;
         gap: 2rem;
         padding: 0px 0px 0px 15px;
+
     }
 
+
     .links-container a {
+        display: none;
+    }
+
+    .contact-info-container {
         display: none;
     }
 
@@ -891,7 +916,7 @@ html {
     }
 
     .title-container h1 {
-        margin-top: 8%;
+        margin-top: 12%;
         width: 95%;
         text-align: center;
 
@@ -905,7 +930,6 @@ html {
     .publish-event-container {
         margin-top: 20%;
         flex-direction: column;
-
         height: 50vh;
 
     }

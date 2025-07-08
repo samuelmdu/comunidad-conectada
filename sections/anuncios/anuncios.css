@@ -183,32 +183,13 @@ html {
 /*     # COMPONENTE: TITLES      */
 /* ============================= */
 
-.back-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 2%;
-    font-weight: bold;
-    color: var(--gris-oscuro)
-}
-
-.back-container a {
-    text-decoration: none;
-    color: var(--gris-oscuro)
-}
-
-.back-container a:hover {
-
-    color: var(--azul-medio)
-}
-
 
 .title-container {
     display: flex;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    margin-top: 2%;
+    margin-top: 4%;
 }
 
 .title-container h1 {
@@ -307,7 +288,6 @@ html {
         grid-template-columns: repeat(1, 1fr);
     }
 }
-
 
 
 /* ============================= */
@@ -556,6 +536,10 @@ html {
         text-align: justify;
     }
 
+    .contact-info-container {
+        display: none;
+    }
+
     .ayuda-container,
     .comunidad-container,
     .contactenos-container {
@@ -601,15 +585,15 @@ html {
 }
 
 /* Ajusted para celular */
-@media (max-width: 430px) {
-    .advertisement-container {
-        width: 75%;
+@media (max-width: 435px) {
+    .cards-container {
+        width: 65%;
     }
 
     .title-text-container p {
         margin-top: 5%;
         min-width: 90%;
-        font-size: 0.7rem;
+        font-size: 1rem;
     }
 
     .back-container {
@@ -617,13 +601,14 @@ html {
     }
 
     .title-container h1 {
-        margin-top: 8%;
+        margin-top: 12%;
         width: 95%;
         text-align: center;
 
+
     }
 
-    .exterior-advertisement-container {
+    .exterior-cards-container {
         margin-top: 10%;
         margin-bottom: 2%;
     }
@@ -631,21 +616,22 @@ html {
     .publish-event-container {
         margin-top: 20%;
         flex-direction: column;
-        height: 40vh;
-
+        height: 50vh;
+        margin-bottom: 10%;
     }
 
-    .publish-event-text-container {
-        margin-left: 2%;
-        width: 90%;
+    .title-container {
+        margin-bottom: 20%;
     }
 
     .publish-event-text-container h2 {
         font-size: 1.4rem;
+
     }
 
     .publish-event-text-container h1 {
-        font-size: 2.8rem;
+        font-size: 4rem;
+
     }
 
     .publish-event-text-container p {
@@ -657,9 +643,8 @@ html {
 
     .publish-event-text-container button {
         margin-top: 10%;
-        width: 100%;
+        width: 80%;
     }
-
 }
 
 @media (max-width: 380px) {
@@ -670,7 +655,7 @@ html {
 
     .publish-event-container {
 
-        height: 60vh;
+        height: 70vh;
 
     }
 }
