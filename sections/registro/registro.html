@@ -10,6 +10,107 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+    <main>
+
+            <form action="#" class="formulario" id="formulario">
+
+            <!-- GRUPO USUARIO-->
+                <div class="formulario__grupo" id="grupo__usuario">
+                    <label class="formulario__label">Nombre de usuario</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="usuario" id="usuario" placeholder="Usuario">
+                        <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario__input-error  ">
+                        El usuario debe tener mínimo 4 caracteres y máximo 16 y solo admite
+                        números, letras, guión y guión bajo.
+                    </p>
+                </div>
+
+                <!-- GRUPO NOMBRE-->
+                <div class="formulario__grupo" id="grupo__nombre">
+                    <label class="formulario__label">Nombre completo</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Steph Delgado">
+                        <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario__input-error">
+                        El nombre debe tener mínimo 3 maximo 45 y solo se admiten
+                        letras y espacios
+                    </p>
+                </div>
+
+                <!-- GRUPO CONTRASEÑA-->
+                <div class="formulario__grupo" id="grupo__password">
+                    <label class="formulario__label">Contraseña</label>
+                    <div class="formulario__grupo-input">
+                        <input type="password" class="formulario__input" name="password" id="password">
+                        <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario__input-error">
+                        La contraseña debe ser de 4 a 12 digitos
+                    </p>
+                </div>
+
+
+                <!-- GRUPO CONTRASEÑA2-->
+                <div class="formulario__grupo" id="grupo__password2">
+                    <label class="formulario__label">Repetir contraseña</label>
+                    <div class="formulario__grupo-input">
+                        <input type="password" class="formulario__input" name="password2" id="password2">
+                        <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario__input-error">
+                        Las contraseñas no coinciden
+                    </p>
+                </div>
+
+                <!-- GRUPO CORREO-->
+                <div class="formulario__grupo" id="grupo__correo">
+                    <label class="formulario__label">Correo electronico</label>
+                    <div class="formulario__grupo-input">
+                        <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                        <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario__input-error">
+                        Debe agregar un correo con la siguiente estructura dato1@dato2.com
+                        dato1 acepta letras,guión bajo y números
+                        dato2 acepta solo letras
+                    </p>
+                </div>
+
+                <!-- GRUPO Telefono-->
+                <div class="formulario__grupo " id="grupo__telefono">
+                    <label class="formulario__label">Teléfono</label>
+                    <div class="formulario__grupo-input">
+                        <input type="number" class="formulario__input" name="telefono" id="telefono">
+                        <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario__input-error">
+                        El número debe tener entre 8 y 11 dígitos
+                    </p>
+                </div>
+
+
+                <!-- GRUPO DE CAMPOS REQUERIDOS-->
+                <div class="formulario__mensaje " id="formulario__mensaje">
+                    <p><i class='bx bxs-ghost'>Error: Debes completar todos los campos</i></p>
+                </div>
+
+                <!-- GRUPO ENVIAR-->
+                <div class="formulario__grupo formulario__grupo-btn-enviar">
+                    <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                        El formulario se envió correctamente
+                    </p>
+                    <input type="submit" class="formulario__btn" value="Enviar">
+                </div>
+
+
+
+            </form>
+
+        </main>
+        
+        <script src="registro.js"></script>
 </body>
 </html>

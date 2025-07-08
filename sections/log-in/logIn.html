@@ -22,24 +22,33 @@
 
             <div class="forms-container">
                 <h2>Iniciar Sesión</h2>
-                <form action="">
-                    <div class="forms-field">
+
+
+                <form action="#" id="formulario">
+
+
+                    <div class="forms-field" id="grupo_email">
                         <label>Correo Electrónico</label>
                         <input type="email" class="forms-input" name="forms-email" placeholder="Ingresa tu email..."
                             required>
                     </div>
-                    <div class="forms-field">
+
+
+                    <div class="forms-field" id="grupo_password">
                         <label>Contraseña</label>
                         <input type="password" class="forms-input" name="forms-password"
                             placeholder="Ingresa tu contraseña..." required>
                     </div>
+                    <!-- <input type="submit" class="formulario__btn" value="Entrar"> -->
                     <button id="logIn-button">Entrar</button>
                 </form>
+
+                
                 <p>¿No tienes una cuenta? <span><a href="#">Crear Cuenta</a></span></p>
             </div>
         </div>
-        
     </div>
+    <script src="login.js"></script>
 </body>
 
 </html>
