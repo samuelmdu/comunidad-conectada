@@ -1,46 +1,31 @@
-//PASO 1:Obtener el html por medio del DOM
 const inputs = document.querySelectorAll('#formulario input');
 
 const formulario = document.getElementById("formulario");
 
-// EXPRESION REGULAR
-/*
-persona1 = {
-    nombre = "stephanie",
-    apellido= "delgado",
-    edad= 50
-}
-console.log(persona1.nombre, persona1.apellido) ----- stephanie delgado
 
-persona1[edad]=50
-
-*/
-
-//  "52"--52
 const expresiones ={
     usuario : /^[a-zA-Z0-9\_\-]{4,16}$/ , //Admite letras mayusculas, minusculas, números, guion bajo y guion. Rango caracteres 4 a 16
     nombre : /^[a-zA-ZÀ-ÿ\s]{3,45}$/ , //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
     password:/^.{4,12}$/, //Acepta todo Rango de 4 a 12
     correo :/^[a-zA-Z0-9\_]+@[a-zA-Z]+\.[a-zA-Z]+$/ , //Estructura dato1@dato2.dato3 dato1:acepta letras minusculas y mayusculas, numeros, y acepta guion bajo  dato2 y 3 : Aceptan solo letras mayusculas y minusculas
-    telefono :/^\d{8,11}$/ //Acepta digitos Rango es de 8 a 11
+    telefono :/^\d{8,11}$/ , //Acepta digitos Rango es de 8 a 11
+    cedula :/^\d{9}$/ ,
 }
-
 const campos={
     usuario: false,
     nombre: false,
     password: false,
     correo: false,
-    telefono: false
+    telefono: false,
+    cedula: false
 }
 
 
-//PASO 3: CREAR LAS ACCIONES FUNCIONES
-// e = <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Steph Delgado">
 const validarFormulario = (e)=>{
     switch(e.target.name){ // --- "nombre" e.target.class --- formulario__input
         case "usuario":
             //validar funcion
-            //       parametro1 = condiciones, parametro2 = e.target, parametro = identificador = ""
+
             validarCampo(expresiones.usuario,e.target,"usuario")
         break;
         case "nombre":
@@ -63,6 +48,10 @@ const validarFormulario = (e)=>{
         case "telefono":
             //telefono
             validarCampo(expresiones.telefono,e.target,"telefono")
+        break;
+        case "cedula":
+            //cedula
+            validarCampo(expresiones.cedula,e.target,"cedula")
         break;
     }
 }
@@ -111,14 +100,6 @@ const validarPassword2=()=>{
 }
 
 
-//PASO 2: Recorrer y Escuchar los eventos
-/*
-lista=[56,35,48,7]
-console.log(lista[indice]) --- 56
-lista.forEach((num)=>{
-    console.log(num) --- 56 -- 35 --- 48--7
-}
-*/
 inputs.forEach((input)=>{
     input.addEventListener("keyup",validarFormulario)//KEYUP EVENTO CUANDO PRESIONAMOS UNA TECLA
     input.addEventListener("blur",validarFormulario)//BLUR CUANDO QUITAMOS EL CURSOR/SELECCION
