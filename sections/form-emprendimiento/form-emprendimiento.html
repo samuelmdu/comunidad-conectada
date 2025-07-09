@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="form-emprendimiento.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -63,6 +65,7 @@
                     <label class="formulario-label">Nombre del emprendimiento</label>
                     <div class="formulario-grupo-input">
                         <input type="text" required class="formulario-input" name="emprendimiento" id="emprendimiento" placeholder="La Chismosa">
+                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     </div>
                     <p class="formulario-input-error">
                     El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
@@ -74,6 +77,7 @@
                 <div class="formulario-grupo" id="grupo-descripcion">
                     <label class="formulario-label" >Descripción breve:</label>
                     <textarea rows="4" required class="formulario-input" name="discripcion" id="descripcion" ></textarea>
+                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     <p class="formulario-input-error">
                         La descripción debe tener entre 10 y 300 caracteres.
                     </p>
@@ -95,6 +99,7 @@
                             <!-- GRUPO OTRO--> 
                             <label><input type="radio" name="categoria" value="otro" > Otro:
                             <input type="text" class="formulario-input" placeholder="Especificar..." id="categoria">
+                            <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                             </label>
                         </div>
                     
@@ -114,6 +119,7 @@
                 <div class="formulario-grupo" id="grupo-usuario" >
                     <label class="formulario-label">Nombre del emprendedor/a:</label>
                     <input type="text" required class="formulario-input" name="usuario" id="usuario">
+                    <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     <p class="formulario-input-error">
                         El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
                     </p>
@@ -124,6 +130,7 @@
                 <div class="formulario-grupo" id="grupo-correo">
                     <label class="formulario-label">Correo electrónico de contacto:</label>
                     <input type="email" required class="formulario-input" name="correo" id="correo">
+                    <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     <p class="formulario-input-error">
                         Debes ingresar un correo válido. Ejemplo: usuario@dominio.com
                     </p>
@@ -134,6 +141,7 @@
                 <div class="formulario-grupo" id="grupo-numero">
                     <label class="formulario-label">Número de teléfono (opcional):</label>
                     <input type="tel" class="formulario-input" name="numero" id="numero">
+                    <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     <p class="formulario-input-error">
                         El número debe tener 8 dígitos y solo contener números.
                     </p>
@@ -145,6 +153,7 @@
                     <label class="formulario-label">Ubicación:</label>
                     <div class="formulario-grupo-input">
                         <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion">
+                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     </div>
                     <p class="formulario-input-error">
                         La ubicación no puede estar vacía y debe tener al menos 4 caracteres.
@@ -163,6 +172,7 @@
                 </p>
 
             <!-- GRUPO TERMINOS Y CONDICIONES-->
+            <!-- AQUIIIIII quede-->
                 <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
                     <label class="formulario-label">
                         <input type="checkbox" class="formulario__checkbox" name="terminos" id="terminos">
