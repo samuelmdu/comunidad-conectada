@@ -71,54 +71,59 @@
                 
 
             <!-- GRUPO DESCRIPCION-->
-                <div class="formulario-grupo" id="grupo-descripcion"></div>
-                <label class="formulario-label" >Descripción breve:</label>
-                <textarea rows="4" required class="formulario-input" name="discripcion" id="descripcion" ></textarea>
-                <p class="formulario-input-error">
-                    La descripción debe tener entre 10 y 300 caracteres.
-                </p>
+                <div class="formulario-grupo" id="grupo-descripcion">
+                    <label class="formulario-label" >Descripción breve:</label>
+                    <textarea rows="4" required class="formulario-input" name="discripcion" id="descripcion" ></textarea>
+                    <p class="formulario-input-error">
+                        La descripción debe tener entre 10 y 300 caracteres.
+                    </p>
+                </div>
 
             <!-- GRUPO CATEGORIAS-->
                 <div class="formulario-grupo" id="grupo-categoria">
                     <label class="formulario-label">Categoría:</label>
-                    <label><input type="radio" name="categoria" value="alimentos" required id="categoria"> Alimentos y bebidas</label>
-                    <label><input type="radio" name="categoria" value="moda" id="categoria"> Moda y accesorios</label>
-                    <label><input type="radio" name="categoria" value="tecnologia" id="categoria"> Tecnología / Servicios digitales</label>
-                    <label><input type="radio" name="categoria" value="arte" id="categoria"> Arte y diseño</label>
-                    <label><input type="radio" name="categoria" value="educacion" id="categoria"> Educación / Cursos</label>
+                        <div class="categoria-opciones">
+                            <label><input type="radio" name="categoria" value="alimentos" required id="categoria"> Alimentos y bebidas</label>
+                            <label><input type="radio" name="categoria" value="moda" id="categoria"> Moda y accesorios</label>
+                            <label><input type="radio" name="categoria" value="tecnologia" id="categoria"> Tecnología / Servicios digitales</label>
+                            <label><input type="radio" name="categoria" value="arte" id="categoria"> Arte y diseño</label>
+                            <label><input type="radio" name="categoria" value="educacion" id="categoria"> Educación / Cursos</label>
+                            <!-- <p class="formulario-input-error">
+                                Debes seleccionar una categoría para tu emprendimiento.
+                            </p> --> 
+                            <!-- REVISARRRR esto porque puede ser que no se necesite categorizar-->
+                            <!-- GRUPO OTRO--> 
+                            <label><input type="radio" name="categoria" value="otro" > Otro:
+                            <input type="text" class="formulario-input" placeholder="Especificar..." id="categoria">
+                            </label>
+                        </div>
+                    
                     <p class="formulario-input-error">
-                        Debes seleccionar una categoría para tu emprendimiento.
+                        Si elegiste "Otro", debes especificar la categoría.
                     </p>
+
                 </div>
                     
-                <!-- REVISARRRR esto porque puede ser que no se necesite categorizar-->
-                <!-- GRUPO OTRO--> 
-                <label>
-                <input type="radio" name="categoria" value="otro" > Otro:
-                <input type="text" class="formulario-input" placeholder="Especificar..." id="categoria">
-                </label>
-                <p class="formulario-input-error">
-                    Si elegiste "Otro", debes especificar la categoría.
-                </p>
+                
                 
             </div>
 
             <div class="columna2">
                 <!-- AQUI QUEDE-->
             <!-- GRUPO USUARIO-->
-                <div class="formulario-grupo" id="grupo-usuario" class="formulario-input" name="emprendimiento" id="emprendimiento">
-                    <label>Nombre del emprendedor/a:</label>
-                    <input type="text" required>
+                <div class="formulario-grupo" id="grupo-usuario" >
+                    <label class="formulario-label">Nombre del emprendedor/a:</label>
+                    <input type="text" required class="formulario-input" name="usuario" id="usuario">
                     <p class="formulario-input-error">
                         El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
                     </p>
                 </div>
                 
 
-            <!-- GRUPO COOREO-->
+            <!-- GRUPO CORREO-->
                 <div class="formulario-grupo" id="grupo-correo">
-                    <label>Correo electrónico de contacto:</label>
-                    <input type="email" required>
+                    <label class="formulario-label">Correo electrónico de contacto:</label>
+                    <input type="email" required class="formulario-input" name="correo" id="correo">
                     <p class="formulario-input-error">
                         Debes ingresar un correo válido. Ejemplo: usuario@dominio.com
                     </p>
@@ -127,8 +132,8 @@
 
             <!-- GRUPO NUMERO-->
                 <div class="formulario-grupo" id="grupo-numero">
-                    <label>Número de teléfono (opcional):</label>
-                    <input type="tel">
+                    <label class="formulario-label">Número de teléfono (opcional):</label>
+                    <input type="tel" class="formulario-input" name="numero" id="numero">
                     <p class="formulario-input-error">
                         El número debe tener 8 dígitos y solo contener números.
                     </p>
@@ -137,19 +142,19 @@
 
             <!-- GRUPO UBICACION-->
                 <div class="formulario-grupo" id="grupo-ubicacion">
-                    <label>Ubicación:</label>
+                    <label class="formulario-label">Ubicación:</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" required>
+                        <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion">
                     </div>
                     <p class="formulario-input-error">
                         La ubicación no puede estar vacía y debe tener al menos 4 caracteres.
                     </p>
                 </div>
 
-                <label>Red social o sitio web (opcional):</label>
+                <label class="formulario-label">Red social o sitio web (opcional):</label>
                 <input type="url">
 
-                <label>Sube una imagen o logo (opcional):</label>
+                <label class="formulario-label">Sube una imagen o logo (opcional):</label>
                 <input type="file" accept="image/*">
 
                 <p class="notaFinal">
@@ -157,11 +162,26 @@
                     nuestra plataforma.
                 </p>
 
-            <!-- GRUPO BOTON-->
-                <button type="submit">Enviar</button>
-                <p class="formulario-mensaje-error" id="mensaje-error-general">
-                    Por favor, completá correctamente todos los campos obligatorios antes de enviar.
-                </p>
+            <!-- GRUPO TERMINOS Y CONDICIONES-->
+                <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
+                    <label class="formulario-label">
+                        <input type="checkbox" class="formulario__checkbox" name="terminos" id="terminos">
+                        <b class="formulario__span">Acepto los terminos y condiciones</b>
+                    </label>
+                </div>
+
+            <!-- GRUPO DE CAMPOS REQUERIDOS-->
+              <div class="formulario-mensaje " id="formulario-mensaje">
+                <p><i class='bx bxs-ghost'>Por favor, completá correctamente todos los campos obligatorios antes de enviar.</i></p>
+              </div>
+
+            <!-- GRUPO BOTON ENVIAR-->
+               <div class="formulario-grupo formulario-grupo-btn-enviar">
+                    <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">
+                    El formulario se envió correctamente
+                    </p>
+                    <input type="submit" class="formulario-btn" value="Enviar">
+              </div>
 
             </div>
         </form>

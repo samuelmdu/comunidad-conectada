@@ -424,27 +424,40 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+    justify-content: space-between;
 }
 
 .columna1, .columna2 {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 }
+
+
+
+
+.formulario-label{
+    display: block;
+    padding: 10px 0;
+}
+
+
+
+
 
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="url"],
 input[type="file"],
-input[type="radio"],
 textarea {
-    padding: 0.8rem;
+    padding: 12.8px;
     border-radius: 8px;
     border: 1px solid var(--gris);
     font-size: 1rem;
     background-color: #f4f6fa;
     color: var(--azul-oscuro);
+    width: 100%;
 }
 
 textarea {
@@ -452,14 +465,14 @@ textarea {
     min-height: 80px;
 }
 
-.categoria label {
+.categoria-opciones label{
     display: block;
     margin-bottom: 8px;
     color: var(--azul-oscuro);
     font-weight: 500;
 }
 
-button[type="submit"] {
+.formulario-btn[type="submit"] {
     background-color: var(--azul-oscuro);
     color: var(--blanco);
     border: none;
@@ -472,7 +485,7 @@ button[type="submit"] {
     transition: 0.2s;
 }
 
-button[type="submit"]:hover {
+.formulario-btn[type="submit"]:hover {
     background-color: var(--azul-medio);
 }
 
