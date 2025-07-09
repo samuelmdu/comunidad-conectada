@@ -165,7 +165,7 @@ html {
 
 .hero-title {
     color: var(--blanco);
-    font-size: 7vw;
+    font-size: 5rem;
     font-weight: 700;
     text-align: center;
     position: relative;
