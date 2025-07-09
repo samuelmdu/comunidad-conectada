@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -21,30 +22,59 @@
             </div>
 
             <div class="forms-container">
-                <h2>Iniciar Sesión</h2>
+
+                <form action="#" class="formulario" id="formulario">
+
+                <div class="formulario__grupo-titulo">
+                    <h2>Iniciar Sesión</h2>
+                </div>
 
 
-                <form action="#" id="formulario">
-
-
-                    <div class="forms-field" id="grupo_email">
-                        <label>Correo Electrónico</label>
-                        <input type="email" class="forms-input" name="forms-email" placeholder="Ingresa tu email..."
-                            required>
-                    </div>
-
-
-                    <div class="forms-field" id="grupo_password">
-                        <label>Contraseña</label>
-                        <input type="password" class="forms-input" name="forms-password"
-                            placeholder="Ingresa tu contraseña..." required>
-                    </div>
-                    <!-- <input type="submit" class="formulario__btn" value="Entrar"> -->
-                    <button id="logIn-button">Entrar</button>
-                </form>
+                <!-- GRUPO CORREO-->
+                <div class="formulario__grupo" id="grupo__correo">
+                <label class="formulario__label">Correo electronico</label>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                    <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                </div>
+                <p class="formulario__input-error">
+                    Correo inválido. Usa el formato nombre@dominio.com
+                </p>
+                </div>
 
                 
-                <p>¿No tienes una cuenta? <span><a href="../registro/registro.html">Crear Cuenta</a></span></p>
+                <!-- GRUPO CONTRASEÑA-->
+                <div class="formulario__grupo" id="grupo__password">
+                <label class="formulario__label">Contraseña</label>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password">
+                    <i class='formulario__validacion-estado bx bxs-x-circle'></i>
+                </div>
+                <p class="formulario__input-error">
+                    La contraseña debe ser de 4 a 12 digitos.
+                </p>
+                </div>
+
+
+                <!-- GRUPO ENVIAR-->
+                <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">
+                    El formulario se envió correctamente
+                </p>
+                <input type="submit" class="formulario__btn" value="Entrar">
+                <div class="volver-login">
+                    <p>¿No tienes una cuenta aún? <span><a href="../registro/registro.html">Crear Cuenta</a></span></p>
+                </div>
+                
+                </div>
+
+
+                <!-- GRUPO DE CAMPOS REQUERIDOS-->
+                <div class="formulario__mensaje " id="formulario__mensaje">
+                <p>Error: Completa todos los campos para enviar...</i></p>
+                </div>
+
+            </form>
             </div>
         </div>
     </div>
