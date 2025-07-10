@@ -27,6 +27,7 @@ main{
     background-color: rgba(107, 145, 224, 0.45);
     display: grid;
     grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -132,10 +133,12 @@ input.formulario__input::placeholder {
 
 /* TEXTO QUE SALE AL INGRESAR ALGO INCORRECTO */
 .formulario__input-error{
-    font-size: .9rem;
+    font-size: .8rem;
     margin-top: 5px;
     text-align: justify;
+    font-style: italic;
     display: none;
+    color: #9c0505;
 }
 
 /*CSS LLAMADO POR EL JS*/

@@ -169,10 +169,12 @@ input.formulario__input::placeholder {
 
 /* TEXTO QUE SALE AL INGRESAR ALGO INCORRECTO */
 .formulario__input-error{
-    font-size: .9rem;
+    font-size: .8rem;
+    font-style: italic;
     margin-top: 5px;
     text-align: justify;
     display: none;
+    color: #9c0505;
 }
 
 /*CSS LLAMADO POR EL JS*/
