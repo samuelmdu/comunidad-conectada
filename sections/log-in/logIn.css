@@ -24,7 +24,7 @@ body {
 }
 
 /* contener con opacidad */
-.content-container-out{
+.content-container-out {
     background-color: rgba(107, 145, 224, 0.45);
     display: flex;
     align-items: center;
@@ -80,7 +80,7 @@ body {
     align-items: center;
 }
 
-.site-container{
+.site-container {
     display: flex;
 }
 
@@ -111,7 +111,7 @@ body {
 
 /*----------FORMULARIO---------------*/
 
-.formulario{
+.formulario {
     display: inline;
     padding: 20px;
     min-height: 85vh;
@@ -125,7 +125,7 @@ body {
     margin: 0px auto;
 }
 
-.formulario__label{
+.formulario__label {
     display: block;
     font-size: 1.2rem;
     color: var(--glacial-blue);
@@ -133,11 +133,11 @@ body {
     margin-top: 20px;
 }
 
-.formulario__grupo-input{
+.formulario__grupo-input {
     position: relative;
 }
 
-.formulario__input{
+.formulario__input {
     width: 100%;
     border-radius: 50px;
     font-size: 1.2rem;
@@ -150,7 +150,7 @@ body {
     transition: all 1s;
 }
 
-.formulario__input:focus{
+.formulario__input:focus {
     box-shadow: 0 0 5px 0px #15b54a;
 }
 
@@ -159,7 +159,7 @@ input.formulario__input::placeholder {
 }
 
 /* ICONO DE ERROR O EXITO */
-.formulario__validacion-estado{
+.formulario__validacion-estado {
     position: absolute;
     bottom: 15px;
     right: 5px;
@@ -168,7 +168,7 @@ input.formulario__input::placeholder {
 }
 
 /* TEXTO QUE SALE AL INGRESAR ALGO INCORRECTO */
-.formulario__input-error{
+.formulario__input-error {
     font-size: .8rem;
     font-style: italic;
     margin-top: 5px;
@@ -178,16 +178,16 @@ input.formulario__input::placeholder {
 }
 
 /*CSS LLAMADO POR EL JS*/
-.formulario__input-error-activo{
+.formulario__input-error-activo {
     display: block;
 }
 
 
-.formulario__grupo-terminos{
+.formulario__grupo-terminos {
     text-align: center;
 }
 
-.formulario__mensaje{
+.formulario__mensaje {
     text-align: center;
     padding: 20px 0px 0px;
     border-radius: 50px;
@@ -199,16 +199,16 @@ input.formulario__input::placeholder {
 }
 
 /*llamada por el js*/
-.formulario__mensaje-activo{
+.formulario__mensaje-activo {
     display: block;
 }
 
 
-.formulario__grupo-btn-enviar{
+.formulario__grupo-btn-enviar {
     text-align: center;
 }
 
-.formulario__mensaje-exito{
+.formulario__mensaje-exito {
     font-size: 1rem;
     color: #15b54a;
     font-weight: 600;
@@ -219,11 +219,11 @@ input.formulario__input::placeholder {
 
 
 /*css llamado po js*/
-.formulario__mensaje-exito-activo{
+.formulario__mensaje-exito-activo {
     display: block;
 }
 
-.formulario__btn{
+.formulario__btn {
     width: 100%;
     padding: 5px 0px;
     border-radius: 50px;
@@ -237,29 +237,30 @@ input.formulario__input::placeholder {
     transition-duration: 1s;
 }
 
-.formulario__btn:hover{
+.formulario__btn:hover {
     background-color: var(--azul-oscuro);
     box-shadow: 0px 0px 10px 1px #354c7675;
     transition-duration: 1s;
+    cursor: pointer;
 }
 
 /*---------VALIDACIONES--------------*/
 
-.formulario__grupo-correcto .formulario__validacion-estado{
+.formulario__grupo-correcto .formulario__validacion-estado {
     color: #15b54a;
     opacity: 1;
 }
 
-.formulario__grupo-incorrecto .formulario__label{
+.formulario__grupo-incorrecto .formulario__label {
     color: #9c0505;
 }
 
-.formulario__grupo-incorrecto .formulario__validacion-estado{
+.formulario__grupo-incorrecto .formulario__validacion-estado {
     color: #9c0505;
     opacity: 1;
 }
 
-.formulario__grupo-incorrecto .formulario__input{
+.formulario__grupo-incorrecto .formulario__input {
     border: 2px solid #9c0505;
 }
 
@@ -284,14 +285,14 @@ input.formulario__input::placeholder {
 
 /*----------RESPONSIVE---------------*/
 
-@media(max-width:800px){
-    .formulario{
+@media(max-width:800px) {
+    .formulario {
         grid-template-columns: 1fr;
     }
 
     .formulario__grupo-terminos,
     .formulario__mensaje,
-    .formulario__grupo-btn-enviar{
+    .formulario__grupo-btn-enviar {
         grid-column: 1;
     }
 }
