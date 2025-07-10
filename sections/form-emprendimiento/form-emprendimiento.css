@@ -423,7 +423,7 @@
 .formEmprendimiento {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
+    gap: 80px;
     justify-content: space-between;
 }
 
@@ -432,22 +432,6 @@
     flex-direction: column;
     gap: 20px;
 }
-
-
-
-
-.formulario-label{
-    display: block;
-    padding: 10px 0;
-}
-
-.formulario-grupo-input{
-    position: relative;
-}
-
-
-
-
 
 input[type="text"],
 input[type="email"],
@@ -485,7 +469,6 @@ textarea {
     font-size: 16px;
     cursor: pointer;
     width: fit-content;
-    
     transition: 0.2s;
 }
 
@@ -499,11 +482,102 @@ textarea {
     margin-top: 1rem;
 }
 
+
+
+.formulario-label{
+    display: block;
+    padding: 10px 0;
+}
+
+.formulario-grupo{
+    position: relative;
+    width: 100%;
+}
+
+
+.formulario-validacion-estado{
+    position: absolute;
+    right: 10px;
+    padding: 7px;
+    font-size: 20px;
+
+}
+
 .formulario-input-error{
     color: red;
     font-size: 12px;
     display: none;
 }
+
+/*CSS LLAMADO POR EL JS*/
+.formulario__input-error-activo{
+    display: block;
+}
+
+.formulario-checkbox{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin: 0 10px
+}
+
+.formulario-grupo-terminos,
+.formulario-mensaje,
+.formulario-grupo-btn-enviar{
+    grid-column: span 2;
+}
+
+.formulario-grupo-terminos{
+    text-align: center;
+}
+
+.formulario-mensaje{
+    color: rgb(184, 55, 55);
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1.2em;
+    display: none;
+}
+
+/*llamada por el js*/
+.formulario-mensaje-activo{
+    display: block;
+}
+
+.formulario-mensaje-exito{
+    font-size: 1.5em;
+    color: #15b54a;
+    padding: 40px ;
+    text-align: center;
+    display: none;
+}
+
+/*css llamado po js*/
+.formulario-mensaje-exito-activo{
+    display: block;
+}
+
+/*---------VALIDACIONES--------------*/
+
+.formulario-grupo-correcto .formulario-validacion-estado{
+    color: #15b54a;
+    opacity: 1;
+}
+
+.formulario-grupo-incorrecto .formulario-label{
+    color: #9c0505;
+}
+
+.formulario-grupo-incorrecto .formulario-validacion-estado{
+    color: #9c0505;
+    opacity: 1;
+}
+
+.formulario-grupo-incorrecto .formulario-input{
+    border: 2px solid #9c0505;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
