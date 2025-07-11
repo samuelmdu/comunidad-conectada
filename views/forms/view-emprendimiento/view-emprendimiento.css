@@ -1,0 +1,93 @@
+ /* ============================= */
+ /*   # COMPONENTE: FORMULARIO   */
+ /* ============================= */
+
+ .form {
+     max-width: 1200px;
+     margin: 48px auto;
+     padding: 16px 32px;
+ }
+
+ .intro {
+     text-align: center;
+     margin-bottom: 32px;
+ }
+
+ .intro h2 {
+     color: var(--azul-oscuro);
+     font-size: 32px;
+     margin-bottom: 16px;
+ }
+
+ .resaltado {
+     color: var(--azul-claro);
+ }
+
+ .vistaEmprendimiento {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 40px;
+ }
+
+ /*revisar esto como los paddinfs */
+ .columna1,
+ .columna2 {
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+ }
+
+ /*esto para darle formato y estilo a las casillas*/
+ .dato {
+     padding: 13px;
+     border-radius: 8px;
+     border: 1px solid var(--gris);
+     font-size: 16px;
+     background-color: #f4f6fa;
+     color: var(--azul-oscuro);
+ }
+
+ .archivo {
+     width: 100%;
+     max-width: 300px;
+     border-radius: 8px;
+     margin: 10px 0;
+ }
+
+ button {
+     background-color: var(--azul-oscuro);
+     color: var(--blanco);
+     border: none;
+     padding: 0.8rem 1.5rem;
+     border-radius: 8px;
+     font-size: 1rem;
+     cursor: pointer;
+     width: fit-content;
+     align-self: start;
+     transition: 0.2s;
+ }
+
+ .aprobar:hover {
+     background-color: rgb(49, 133, 81);
+ }
+
+ .declinar:hover {
+     background-color: rgb(192, 55, 55);
+ }
+
+ .notaFinal {
+     font-size: 14px;
+     color: var(--azul-oscuro);
+     margin-top: 16px;
+ }
+
+ /* Responsive */
+ @media (max-width: 768px) {
+     .vistaEmprendimiento {
+         display: grid;
+         grid-template-columns: 1fr;
+     }
+
+     /*.columna {
+    }*/
+ }

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Comunidad Conectada</title>
-
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +13,7 @@
         rel="stylesheet">
     <!--Header/Footer CSS-->
     <link rel="stylesheet" href="../../../assets/styles/global.css">
-    <link rel="stylesheet" href="calendario.css">
+    <link rel="stylesheet" href="vistaReporte.css">
 </head>
 
 <body>
@@ -25,22 +24,22 @@
                 Comunidad <span>Conectada</span>
             </h1>
             <ul class="options">
-                <a href="../feed/feed.html">
+                <a href="../../public-views/feed/feed.html">
                     <li>INICIO</li>
                 </a>
-                <a href="../evento/evento.html">
+                <a href="../../public-views/evento/evento.html">
                     <li>EVENTO</li>
                 </a>
-                <a href="../anuncio/anuncio.html">
+                <a href="../../public-views/anuncio/anuncio.html">
                     <li>ANUNCIO</li>
                 </a>
-                <a href="../emprendimiento/emprendimiento.html">
+                <a href="../../public-views/emprendimiento/emprendimiento.html">
                     <li>EMPRENDIMIENTO</li>
                 </a>
-                <a href="../transporte/transporte.html">
+                <a href="../../public-views/transporte/transporte.html">
                     <li>TRANSPORTE</li>
                 </a>
-                <a href="../../forms/form-reporte/form-reporte.html">
+                <a href="form-reporte.html">
                     <li>REPORTES</li>
                 </a>
                 <a>
@@ -51,13 +50,62 @@
         </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-background"></div>
-        <h1 class="hero-title">CALENDARIO</h1>
-    </section>
+    <div class="form">
+        <section class="intro">
+            <h2>Vista de Reporte <span class="resaltado">- Panel de Administración</span></h2>
+            <p>
+                Estás revisando un reporte enviado por un miembro de la comunidad. Aquí podrás visualizar los detalles
+                completos del caso,
+                verificar la evidencia y tomar una acción según corresponda.
+            </p>
+            <p>
+                Usá los botones <strong>Aprobar</strong> o <strong>Declinar</strong> al final del reporte para registrar
+                una respuesta.
+            </p>
+        </section>
 
-    <h1>Trabajo en progreso</h1>
+
+        <form class="vistaReporte">
+            <div class="columna1">
+                <label>Nombre del reporte:</label>
+                <p class="dato">Ruidos molestos en la madrugada</p>
+
+                <label>Tipo de reporte:</label>
+                <p class="dato">Ruido / Convivencia</p>
+
+                <label>Descripción del reporte:</label>
+                <p class="dato" id="textoGrande">
+                    En la esquina de la calle principal hay una vivienda donde todos los fines de semana hay música a
+                    alto volumen desde las 11pm hasta la madrugada.
+                </p>
+
+                <label>¿Has notificado esto antes a alguien? ¿A quién?</label>
+                <p class="dato">Sí, se notificó a la policía municipal el sábado pasado.</p>
+            </div>
+
+            <div class="columna2">
+                <label>Nombre del remitente:</label>
+                <p class="dato">María Fernández</p>
+
+                <label>Correo electrónico:</label>
+                <p class="dato">maria.fernandez@email.com</p>
+
+                <label>Foto o evidencia del problema:</label>
+                <img src="../../assets/images/rapha.png" alt="Evidencia del reporte" class="archivo" />
+
+                <p class="notaFinal">
+                    Este reporte fue recibido. El área correspondiente será notificada.
+                </p>
+
+                <!-- BOTONES DE ACCIÓN -->
+                <div class="acciones-admin">
+                    <button class="aprobar"> Aprobar</button>
+                    <button class="declinar"> Declinar</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
 
     <footer>
         <div class="exterior-site-footer">

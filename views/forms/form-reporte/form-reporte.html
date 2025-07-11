@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Comunidad Conectada</title>
-
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +13,7 @@
         rel="stylesheet">
     <!--Header/Footer CSS-->
     <link rel="stylesheet" href="../../../assets/styles/global.css">
-    <link rel="stylesheet" href="calendario.css">
+    <link rel="stylesheet" href="form-reporte.css">
 </head>
 
 <body>
@@ -25,22 +24,22 @@
                 Comunidad <span>Conectada</span>
             </h1>
             <ul class="options">
-                <a href="../feed/feed.html">
+                <a href="../../public-views/feed/feed.html">
                     <li>INICIO</li>
                 </a>
-                <a href="../evento/evento.html">
+                <a href="../../public-views/evento/evento.html">
                     <li>EVENTO</li>
                 </a>
-                <a href="../anuncio/anuncio.html">
+                <a href="../../public-views/anuncio/anuncio.html">
                     <li>ANUNCIO</li>
                 </a>
-                <a href="../emprendimiento/emprendimiento.html">
+                <a href="../../public-views/emprendimiento/emprendimiento.html">
                     <li>EMPRENDIMIENTO</li>
                 </a>
-                <a href="../transporte/transporte.html">
+                <a href="../../public-views/transporte/transporte.html">
                     <li>TRANSPORTE</li>
                 </a>
-                <a href="../../forms/form-reporte/form-reporte.html">
+                <a href="form-reporte.html">
                     <li>REPORTES</li>
                 </a>
                 <a>
@@ -51,13 +50,54 @@
         </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-background"></div>
-        <h1 class="hero-title">CALENDARIO</h1>
-    </section>
+    <div class="form">
+        <section class="intro">
+            <h2>¿Tienes algo que reportar? <span class="resaltado">¡Hazlo saber!</span></h2>
+            <p>
+                Este formulario es para que puedas comunicar un reporte, queja o problema que esté
+                afectando a tu comunidad. Puedes hacerlo de forma anónima.
+            </p>
+        </section>
 
-    <h1>Trabajo en progreso</h1>
+        <form class="form-reporte">
+            <div class="columna1">
+                <label>Nombre del reporte:</label>
+                <input type="text" required />
+
+                <label>Tipo de reporte:</label>
+                <input type="text" required />
+
+                <label>Descripción del reporte:</label>
+                <textarea rows="4" required></textarea>
+
+                <label>¿Has notificado esto antes a alguien? ¿A quién?</label>
+                <input type="text" required />
+
+            </div>
+
+            <div class="columna2">
+                <label>Deseas que tu queja sea anonima</label>
+                <label><input type="radio" name="anonimo" value="Sí" required /> Sí</label>
+                <label><input type="radio" name="anonimo" value="No" /> No</label>
+
+                <label>Tu nombre (opcional si elegiste anónimo):</label>
+                <input type="text" required />
+
+                <label>Correo electrónico (opcional, para dar seguimiento):</label>
+                <input type="email" required />
+
+                <label>Foto o evidencia del problema (opcional):</label>
+                <input type="file" accept="image/*" />
+
+                <p class="notaFinal">
+                    Tu reporte será revisada y canalizada al área correspondiente.
+                    Agradecemos tu participación para mejorar juntos la comunidad.
+                </p>
+
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
 
     <footer>
         <div class="exterior-site-footer">

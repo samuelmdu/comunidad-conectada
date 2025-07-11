@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar Evento - Comunidad Conectada</title>
+
+  <!-- Remix Icon + Montserrat -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+  <!--Header/Footer CSS-->
+  <link rel="stylesheet" href="../../../assets/styles/global.css">
+  <link rel="stylesheet" href="form-evento.css" />
+</head>
+
+<body>
+
+  <header>
+    <nav class="menu">
+      <h1 class="title-header">
+        Comunidad <span>Conectada</span>
+      </h1>
+      <ul class="options">
+        <a href="../../public-views/feed/feed.html">
+          <li>INICIO</li>
+        </a>
+        <a href="../../public-views/evento/evento.html">
+          <li>EVENTO</li>
+        </a>
+        <a href="../../public-views/anuncio/anuncio.html">
+          <li>ANUNCIO</li>
+        </a>
+        <a href="../../public-views/emprendimiento/emprendimiento.html">
+          <li>EMPRENDIMIENTO</li>
+        </a>
+        <a href="../../public-views/transporte/transporte.html">
+          <li>TRANSPORTE</li>
+        </a>
+        <a href="form-reporte.html">
+          <li>REPORTES</li>
+        </a>
+        <a>
+          <i class="ri-account-circle-fill icon-profile"></i>
+        </a>
+      </ul>
+      <div class="burger"><i class="ri-menu-line"></i></div>
+    </nav>
+  </header>
+
+  <!-- FORMULARIO DE EVENTO -->
+  <div class="form">
+    <section class="intro">
+      <h2>¿Organizas un evento? <span class="resaltado">¡Regístralo aquí!</span></h2>
+      <p>
+        Este formulario es para registrar evento comunitarios que se llevarán a cabo en tu barrio. Una vez enviado,<br>
+        será revisado por el equipo antes de su publicación.
+      </p>
+    </section>
+
+    <form class="form-evento">
+      <div class="columna1">
+        <label>Nombre del evento:</label>
+        <input type="text" required />
+
+        <label>Descripción breve del evento:</label>
+        <textarea rows="4" required></textarea>
+
+        <label>Fecha del evento:</label>
+        <input type="date" required />
+
+        <label>Lugar o dirección del evento:</label>
+        <input type="text" required />
+      </div>
+
+      <div class="columna2">
+        <label>Persona de contacto (nombre):</label>
+        <input type="text" required />
+
+        <label>Teléfono de contacto (opcional):</label>
+        <input type="tel" />
+
+        <label>Sube una imagen, afiche o archivo relacionado (opcional):</label>
+        <input type="file" accept="image/*" />
+
+        <p class="notaFinal">
+          Este evento será revisado por el equipo antes de ser publicado en la plataforma. Asegúrate de que los datos
+          sean correctos.
+        </p>
+
+        <button type="submit">Registrar evento</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="exterior-site-footer">
+      <div class="site-footer">
+        <!--Slogan -->
+
+        <section class="slogan-container">
+          <div class="text-logos">
+            <h1>Comunidad <span>Conectada</span></h1>
+            <h3>Fortaleciendo Comunidades, Forjando Conexiones</h3>
+            <p>Somos el sitio web que te permite estar al tanto de los evento, conocer emprendimiento y al
+              mismo tiempo, ser escuchado(a)...</p>
+          </div>
+        </section>
+        <section class="links-container">
+          <!--Ayuda-->
+          <div class="ayuda-container">
+            <div class="arrow-container">
+              <i class="ri-arrow-drop-down-line"></i>
+              <h4>SERVICIOS</h4>
+            </div>
+            <a href="../../public-views/evento/evento.html">Evento</a>
+            <a href="../../forms/form-reporte/form-reporte.html">Reportes</a>
+            <a href="../../public-views/calendario/calendario.html">Calendario</a>
+          </div>
+          <!--Comunidad-->
+          <div class="comunidad-container">
+
+            <div class="arrow-container">
+              <i class="ri-arrow-drop-down-line"></i>
+              <h4>COMUNIDAD</h4>
+            </div>
+
+            <a href="../../public-views/feed/feed.html">Inicio</a>
+            <a href="../../public-views/anuncio/anuncio.html">Anuncio</a>
+            <a href="../../public-views/emprendimiento/emprendimiento.html">Emprendimiento</a>
+            <a href="../../public-views/transporte/transporte.html">Transporte</a>
+          </div>
+          <!--Contáctenos-->
+          <div class="contactenos-container">
+            <div class="arrow-container">
+              <i class="ri-arrow-drop-down-line"></i>
+              <h4>CONTÁCTENOS</h4>
+            </div>
+            <div class="contact-info-container">
+              <p href="">Teléfono </p>
+              <p href="">(+506) 2222 2222</p>
+              <p href="">Correo Electrónico</p>
+              <p href="">comu@conectada.com</p>
+            </div>
+          </div>
+        </section>
+
+        <!--Redes sociales-->
+        <section class="icon-container">
+          <span class="circle"><a href="https://mail.google.com/mail/u/0/#inbox"><i class="ri-at-line"></i></a></span>
+          <span class="circle"><a href="https://api.whatsapp.com/message/TVM3RN532LFSM1?autoload=1&app_absent=0"><i
+                class="ri-phone-line"></i></a></span>
+          <span class="circle"><a href="https://www.facebook.com/p/San-Rafael-es-Pura-Vida-100092185267522/"><i
+                class="ri-facebook-circle-fill"></i></a></span>
+          <span class="circle"><a href="https://www.instagram.com/sanra_es_puravida1885/"><i
+                class="ri-instagram-line"></i></a></span>
+          <span class="circle"><a href="https://x.com/ldacr"><i class="ri-twitter-x-line"></i></a></span>
+        </section>
+      </div>
+    </div>
+    <!--Copyright-->
+    <section class="copyright-container">
+      <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
+    </section>
+  </footer>
+</body>
+
+</html>
