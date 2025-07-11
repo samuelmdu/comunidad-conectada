@@ -235,7 +235,7 @@ header {
 
 .descubre-nuestros-emprendimientos h2 {
     color: var(--azul-oscuro);
-    font-size: 32px;
+    font-size: 200%;
     font-weight: 400;
 }
 
@@ -248,16 +248,13 @@ header {
     height: 10vh;
     padding: 0 2%;
     padding-top: 4%;
-
+    margin-bottom: 4%;
 }
 
 .introduccion-a-cards p {
     color: var(--azul-oscuro);
     font-size: 28px;
-}
-
-#nuevas-propuestas {
-    text-align: right;
+    text-align: center;
 }
 
 /* Cards */
@@ -272,14 +269,15 @@ header {
 .advertisement-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    width: 60%;
+    gap: 0.5%;
+    width: 98%;
+    justify-items: center;
 }
 
 
 /* Segunda sección de cards */
 #exterior-advertisement-container-entrepeneurship2 {
-    margin-bottom: 20%;
+    margin-bottom: 10%;
 } 
 
 #exterior-advertisement-container-entrepeneurship1 {
@@ -321,6 +319,10 @@ header {
     background-image: url(../../assets/images/emprendimientos/logos/Beer\ Factory.png);
 }
 
+#calle-33 .card-image {
+    background-image: url(../../assets/images/emprendimientos/logos/Calle\ 33.png);
+}
+
 #la-central .card-image{
     background-image: url(../../assets/images/emprendimientos/logos/La\ Central.png);
 }
@@ -331,6 +333,10 @@ header {
 
 #samadhi .card-image {
     background-image: url(../../assets/images/emprendimientos/logos/Samadhi.jpg);
+}
+
+#lulupulus .card-image {
+    background-image: url(../../assets/images/emprendimientos/logos/Lupulus.png);
 }
 
 .card-text-container {
@@ -374,35 +380,47 @@ header {
 }
 
 .conoce-nuestros-emprendimientos {
-    height: 100vh;
+    height: 50vh;
     margin-top: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 8%;
+    margin-bottom: 5%;
 }
 
 .conoce-nuestros-emprendimientos h1 {
     color: var(--azul-oscuro);
-    font-size: 44px;
+    font-size: 280%;
     text-align: center;
     width: 100%;
+    transition: 0.8s;
+}
+
+.conoce-nuestros-emprendimientos h1:hover {
+    color: var(--azul-claro);
 }
 
 .construyendo-una-comunidad {
-    height: 100vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 8%;
+    margin-top: 2%;
 }
 
 .construyendo-una-comunidad h1 {
     color: var(--azul-oscuro);
-    font-size: 44px;
+    font-size: 280%;
     text-align: center;
     font-weight: 400;
     width: 100%;
+    transition: 0.8s;
+}
+
+.construyendo-una-comunidad h1:hover {
+    color: var(--azul-claro);
 }
 
 /* ============================= */
