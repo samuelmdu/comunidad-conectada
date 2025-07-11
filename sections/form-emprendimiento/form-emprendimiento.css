@@ -483,7 +483,6 @@ textarea {
 }
 
 
-
 .formulario-label{
     display: block;
     padding: 10px 0;
@@ -500,9 +499,8 @@ textarea {
     right: 10px;
     padding: 7px;
     font-size: 20px;
-
+    opacity: 0;
 }
-
 .formulario-input-error{
     color: red;
     font-size: 12px;
@@ -510,7 +508,7 @@ textarea {
 }
 
 /*CSS LLAMADO POR EL JS*/
-.formulario__input-error-activo{
+.formulario-input-error-activo{
     display: block;
 }
 
@@ -556,6 +554,11 @@ textarea {
 /*css llamado po js*/
 .formulario-mensaje-exito-activo{
     display: block;
+}
+
+/*Esconder el input de  otro*/
+#grupo-otro {
+    display: none;
 }
 
 /*---------VALIDACIONES--------------*/

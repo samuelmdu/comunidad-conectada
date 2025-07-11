@@ -61,7 +61,7 @@
         <form action="#" class="formEmprendimiento" id="formulario">
             <div class="columna1">
             <!-- GRUPO EMPRENDIMIENTO-->
-                <div class="formulario-grupo" id="grupo-descripcion">
+                <div class="formulario-grupo" id="grupo-emprendimiento">
                     <label class="formulario-label">Nombre del emprendimiento</label>
                     <div class="formulario-grupo-input">
                         <input type="text" required class="formulario-input" name="emprendimiento" id="emprendimiento" placeholder="La Chismosa">
@@ -76,43 +76,44 @@
             <!-- GRUPO DESCRIPCION-->
                 <div class="formulario-grupo" id="grupo-descripcion">
                     <label class="formulario-label" >Descripción breve:</label>
-                    <textarea rows="4" required class="formulario-input" name="discripcion" id="descripcion" ></textarea>
-                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        <div class="formulario-grupo-input">
+                            <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion" ></textarea>
+                            <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        </div>
                     <p class="formulario-input-error">
                         La descripción debe tener entre 10 y 300 caracteres.
                     </p>
                 </div>
 
-            <!-- GRUPO CATEGORIAS-->
+            <!-- GRUPO CATEGORIAS -->
                 <div class="formulario-grupo" id="grupo-categoria">
                     <label class="formulario-label">Categoría:</label>
-                        <div class="categoria-opciones">
-                            <label><input type="radio" name="categoria" value="alimentos" required id="categoria"> Alimentos y bebidas</label>
-                            <label><input type="radio" name="categoria" value="moda" id="categoria"> Moda y accesorios</label>
-                            <label><input type="radio" name="categoria" value="tecnologia" id="categoria"> Tecnología / Servicios digitales</label>
-                            <label><input type="radio" name="categoria" value="arte" id="categoria"> Arte y diseño</label>
-                            <label><input type="radio" name="categoria" value="educacion" id="categoria"> Educación / Cursos</label>
-                            <!-- <p class="formulario-input-error">
-                                Debes seleccionar una categoría para tu emprendimiento.
-                            </p> --> 
-                            <!-- REVISARRRR esto porque puede ser que no se necesite categorizar-->
-                            <!-- GRUPO OTRO--> 
-                            <label><input type="radio" name="categoria" value="otro" > Otro:
-                            <input type="text" class="formulario-input" placeholder="Especificar..." id="categoria">
-                            <i class='formulario-validacion-estado bx bxs-x-circle'></i>
-                            </label>
-                        </div>
-                    
+                    <div class="categoria-opciones">
+                        <label><input type="radio" name="categoria" value="alimentos" required> Alimentos y bebidas</label>
+                        <label><input type="radio" name="categoria" value="moda"> Moda y accesorios</label>
+                        <label><input type="radio" name="categoria" value="tecnologia"> Tecnología / Servicios digitales</label>
+                        <label><input type="radio" name="categoria" value="arte"> Arte y diseño</label>
+                        <label><input type="radio" name="categoria" value="educacion"> Educación / Cursos</label>
+                        <label><input type="radio" name="categoria" value="otro"> Otro:</label>
+                    </div>
+                </div>
+
+            <!-- GRUPO OTRO (SOLO SE MUESTRA SI SE ELIGE 'Otro') -->
+                <div class="formulario-grupo" id="grupo-otro">
+                    <div class="formulario-grupo-input">
+                        <input type="text" class="formulario-input" placeholder="Especificar..." name="otro" id="otro">
+                        <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                    </div>
                     <p class="formulario-input-error">
                         Si elegiste "Otro", debes especificar la categoría.
                     </p>
-
                 </div>
 
+
             <!-- GRUPO USUARIO-->
-                <div class="formulario-grupo" id="grupo-usuario" >
+                <div class="formulario-grupo" id="grupo-nombre" >
                     <label class="formulario-label">Nombre del emprendedor/a:</label>
-                    <input type="text" required class="formulario-input" name="usuario" id="usuario">
+                    <input type="text" required class="formulario-input" name="nombre" id="nombre">
                     <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     <p class="formulario-input-error">
                         El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
@@ -138,9 +139,9 @@
                 
 
             <!-- GRUPO NUMERO-->
-                <div class="formulario-grupo" id="grupo-numero">
-                    <label class="formulario-label">Número de teléfono (opcional):</label>
-                    <input type="tel" class="formulario-input" name="numero" id="numero">
+                <div class="formulario-grupo" id="grupo-telefono">
+                    <label class="formulario-label">Número de teléfono:</label>
+                    <input type="tel" required class="formulario-input" name="telefono" id="telefono">
                     <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                     <p class="formulario-input-error">
                         El número debe tener 8 dígitos y solo contener números.
@@ -194,9 +195,7 @@
               </div>
             </div>
         </form>
-        <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">
-                    El formulario se envió correctamente
-                    </p>
+        <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió correctamente </p>
 
     </main>
 
@@ -283,6 +282,7 @@
             <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
         </section>
     </footer>
+    <script src="form-emprendimiento.js"></script>
 </body>
 
 </html>
