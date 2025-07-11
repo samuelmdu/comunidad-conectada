@@ -1,537 +1,582 @@
- /* ============================= */
- /*     # COMPONENTE: HERO       */
- /* ============================= */
-
- .hero {
-     width: 100%;
-     height: 60vh;
-     min-height: 250px;
-     position: relative;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     overflow: hidden;
-     background-color: var(--azul-oscuro);
- }
-
-
- .hero-background {
-     width: 100%;
-     height: 100%;
-     position: absolute;
-     top: 0;
-     left: 0;
-     background-image: url('../../../assets/images/hero/Emprendimientos.png');
-     background-size: cover;
-     background-position: center;
-     opacity: 0.3;
-     z-index: 1;
- }
-
- .hero-background.luces {
-     background-image: url('../../../assets/images/evento/luces.jpg');
- }
-
- .hero-title {
-     color: var(--blanco);
-     font-size: 5rem;
-     font-weight: 700;
-     text-align: center;
-     position: relative;
-     z-index: 2;
-     margin-bottom: 1vw;
-     text-transform: uppercase;
-     padding: 0 5%;
-     line-height: 1.2;
-     padding: auto;
- }
-
- @media (max-width: 830px) {
-     .hero {
-         height: 30vw;
-         min-height: 220px;
-     }
- }
-
- /* ============================= */
- /*   emprendimiento GENERALES   */
- /* ============================= */
-
- .descubre-nuestros-emprendimiento {
-
-     text-align: center;
-
-
- }
-
- .descubre-nuestros-emprendimiento h2 {
-     color: var(--azul-oscuro);
-     font-size: 32px;
-     font-weight: 400;
- }
-
- /* ============================= */
- /*     # COMPONENTE: CARDS      */
- /* ============================= */
-
- /* Introducción a los cards */
- .introduccion-a-cards {
-     height: 10vh;
-     padding: 0 2%;
-     padding-top: 4%;
-
- }
-
- .introduccion-a-cards p {
-     color: var(--azul-oscuro);
-     font-size: 28px;
- }
-
- #nuevas-propuestas {
-     text-align: right;
- }
-
- /* Cards */
-
- .exterior-advertisement-container {
-     display: flex;
-     justify-content: center;
-     margin-top: 2%;
-     width: 100%;
- }
-
- .advertisement-container {
-     display: grid;
-     grid-template-columns: repeat(4, 1fr);
-     gap: 2rem;
-     width: 60%;
- }
-
-
- /* Segunda sección de cards */
- #cards-to-the-left .advertisement-container {
-     margin-left: 0;
-     margin-right: 15%;
- }
-
- #cards-to-the-left {
-     margin-bottom: 10%;
- }
-
- .card {
-     height: 450px;
-     width: 280px;
-     border-radius: 20px;
-     box-shadow: 0 6px 12px #29598f91;
-     transition: all 0.3s ease-out;
-     min-width: 200px;
- }
-
- .card:hover {
-     transform: translateY(-5px);
- }
-
- .card-image {
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center;
-     border-top-left-radius: 20px;
-     border-top-right-radius: 20px;
-     background-image: url("../../../assets/images/emprendimiento/logos/Calle\ 33.png");
-     height: 70%;
- }
-
- #la-chismosa .card-image {
-     background-image: url('../../../assets/images/emprendimiento/logos/La Chismosa.png');
- }
-
- #santo-pecado .card-image {
-     background-image: url('../../../assets/images/emprendimiento/logos/Santo Pecado.png');
- }
-
- #beer-factory .card-image {
-     background-image: url('../../../assets/images/emprendimiento/logos/Beer Factory.png');
- }
-
- #la-central .card-image {
-     background-image: url('../../../assets/images/emprendimiento/logos/La Central.png');
- }
-
- #sasta-pub .card-image {
-     background-image: url('../../../assets/images/emprendimiento/logos/Sasta Pub.png');
- }
-
- #samadhi .card-image {
-     background-image: url('../../../assets/images/emprendimiento/logos/Samadhi.jpg');
- }
-
- .card-text-container {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     width: 100%;
-     height: 30%;
-     margin-left: 10%;
- }
-
- .card-title {
-     color: var(--azul-oscuro);
-     font-size: 1.5rem;
-     font-weight: bold;
- }
-
- .card-subtitle {
-     color: var(--azul-oscuro);
-     font-size: 0.9rem;
- }
-
- /* ===== # CARDS: MEDIA QUERIES ===== */
-
- @media (max-width: 1400px) {
-     .advertisement-container {
-         grid-template-columns: repeat(3, 1fr);
-     }
- }
-
- @media (max-width: 1035px) {
-     .advertisement-container {
-         grid-template-columns: repeat(2, 1fr);
-     }
- }
-
- @media (max-width: 679px) {
-     .advertisement-container {
-         grid-template-columns: repeat(1, 1fr);
-     }
- }
-
- .conoce-nuestros-emprendimiento {
-     height: 100vh;
-     margin-top: 5%;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     padding: 0 8%;
- }
-
- .conoce-nuestros-emprendimiento h1 {
-     color: var(--azul-oscuro);
-     font-size: 44px;
-     text-align: center;
-     width: 100%;
- }
-
- .construyendo-una-comunidad {
-     height: 100vh;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     padding: 0 8%;
- }
-
- .construyendo-una-comunidad h1 {
-     color: var(--azul-oscuro);
-     font-size: 44px;
-     text-align: center;
-     font-weight: 400;
-     width: 100%;
- }
-
- /* ============================= */
- /*  emprendimiento ESPECÍFICOS  */
- /* ============================= */
-
- /* General */
- .enterprise-info {
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-     width: 100%;
-     height: 50vh;
- }
-
- .enterprise-info h1 {
-     color: var(--azul-oscuro);
-     font-size: 24px;
-     font-weight: 900;
-     cursor: default;
- }
-
- .enterprise-info p {
-     color: var(--azul-oscuro);
-     font-size: 18px;
-     margin-top: 4%;
-     cursor: default;
- }
-
- /* Izquierda */
- .enterprise-info-left {
-     width: 100%;
-     height: 100%;
-     padding: 8% 10%;
-     padding-right: 20%;
- }
-
- .enterprise-top-left {
-     width: 100%;
-     height: 80%;
- }
-
- .enterprise-bottom-left {
-     width: 100%;
-     height: 30%;
- }
-
- .enterprise-location h1 {
-     margin-bottom: 4%;
- }
-
- .enterprise-location a {
-     text-decoration: none;
-     color: var(--azul-oscuro);
-     font-size: 18px;
-     display: inline;
- }
-
- .enterprise-location a:hover {
-     color: var(--azul-claro);
- }
-
-
-
- /* Derecha */
- .enterprise-info-right {
-     width: 100%;
-     height: 100%;
-     padding: 8% 10%;
-     padding-right: 20%;
- }
-
- .enterprise-top-right {
-     width: 100%;
-     height: 80%;
- }
-
- .enterprise-schedules {
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-
- }
-
- .enterprise-bottom-right {
-     width: 100%;
-     height: 30%;
- }
-
- .area-code {
-     display: inline;
- }
-
- .enterprise-phone .area-code {
-     color: var(--azul-claro);
- }
-
- .phone-number {
-     display: inline;
-
- }
-
- .enterprise-phone h1 {
-     margin-bottom: 4%;
- }
-
- @media (max-width: 1200px) {
-     .enterprise-info {
-         display: flex;
-         flex-wrap: wrap;
-         height: auto;
-         text-align: center;
-     }
-
-     /* Izquierda */
-     .enterprise-info-left {
-         width: 100%;
-         height: 50%;
-         padding: 2% 4%;
-         margin: 0%;
-     }
-
-     .enterprise-top-left {
-         margin-bottom: 2%;
-         padding: 0 12%;
-     }
-
-     /* Derecha */
-     .enterprise-info-right {
-         width: 100%;
-         height: 50%;
-         padding: 2% 4%;
-         margin: 0%;
-     }
-
-     /* General */
-     .enterprise-top-left .enterprise-bottom-left .enterprise-top-right .enterprise-bottom-right {
-         width: 100%;
-         height: auto;
-     }
-
-     .enterprise-info p {
-         margin-top: 0.5%;
-     }
-
-     /* Derecha */
-     .enterprise-top-right {
-         margin-bottom: 2%;
-     }
-
-     /* Días y Horas */
-     .enterprise-days {
-         text-align: right;
-         padding-right: 6%;
-     }
-
-     .enterprise-hours {
-         text-align: left;
-         padding-left: 1.5%;
-     }
-
-     .enterprise-phone h1 {
-         margin-bottom: 1%;
-     }
-
-     .enterprise-phone p {
-         font-size: 20px;
-     }
-
- }
-
- @media (max-width: 430px) {
-
-     /* General */
-     .enterprise-info h1 {
-         font-size: 18px;
-     }
-
-     .enterprise-info p {
-         font-size: 12px;
-     }
-
-     /* Izquierda */
-     .enterprise-top-left {
-         padding: 0% 8%;
-         padding-top: 8%;
-         padding-bottom: 4%;
-     }
-
-     .enterprise-bottom-left {
-         padding: 4% 8%;
-     }
-
-     .enterprise-bottom-left h1 {
-         margin-bottom: 4%;
-     }
-
-     .enterprise-location a {
-         font-size: 12px;
-     }
-
-     /* Derecha */
-     .enterprise-info-right {
-         padding: 0% 20%;
-     }
-
-     .enterprise-top-right {
-         padding: 4% 1%;
-     }
-
-     .enterprise-top-right h1 {
-         margin-bottom: 4%;
-     }
-
-     .enterprise-top-right p {
-         font-size: 12px;
-     }
-
-     .enterprise-days {
-         text-align: center;
-         padding-right: 0%;
-     }
-
-     .enterprise-hours {
-         text-align: center;
-         padding-left: 0%;
-     }
-
-     .enterprise-bottom-right {
-         padding: 8% 8%;
-     }
-
-     .enterprise-phone h1 {
-         margin-bottom: 4%;
-     }
-
-     .enterprise-phone p {
-         font-size: 16px;
-     }
- }
-
- /* ==================================== */
- /* #COMPONENTE: CREATE ENTREPRENEURSHIP */
- /* ==================================== */
-
- .create-entrepreneurship-container {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin-top: 2%;
-     color: var(--blanco);
-     height: 40vh;
-     background-color: var(--azul-oscuro);
- }
-
- .create-entrepreneurship-text-container {
-     margin-left: 4%;
-     font-style: italic;
-     padding-right: 2%;
- }
-
- .create-entrepreneurship-text-container h2 {
-     font-size: 2rem;
-     font-weight: normal;
- }
-
- .create-entrepreneurship-text-container h1 {
-     font-size: 5rem;
- }
-
- .create-entrepreneurship-container a {
-     text-decoration: none;
-     color: var(--blanco);
- }
-
- .create-entrepreneurship-container a:hover {
-     transition: 0.10s;
-     color: var(--gris);
- }
-
- .create-entrepreneurship-text-container p {
-     max-width: 550px;
- }
-
- .create-entrepreneurship-text-container button {
-     width: 40%;
-     height: 40px;
-     color: var(--azul-oscuro);
-     border-radius: 20px;
-     border-style: none;
-     font-size: 1.1rem;
-     font-weight: bold;
-     margin-top: 5%;
- }
-
- .create-entrepreneurship-text-container button:hover {
-     transform: translateY(-5px);
-     transition: 0.10s;
-     cursor: pointer;
-     background-color: var(--gris);
- }
+/* ============================= */
+/*     # COMPONENTE: HERO       */
+/* ============================= */
+
+.hero {
+    width: 100%;
+    height: 60vh;
+    min-height: 250px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: var(--azul-oscuro);
+}
+
+#hero-emprendimientos-generales {
+    height: 50vh;
+}
+
+#hero-emprendimientos-especificos {
+    height: 40vh;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0 0 0 2%;
+}
+
+.hero-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('/assets/images/hero/Emprendimientos.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero-background.cheese {
+    background-image: url('../../../assets/images/emprendimiento/logos/Santo\ Pecado.png');
+}
+
+.hero-title {
+    color: var(--blanco);
+    font-size: 5rem;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1vw;
+    text-transform: uppercase;
+    padding: 0 5%;
+    line-height: 1.2;
+    padding: auto;
+}
+
+
+
+@media (max-width: 1200px) {
+    #hero-title-emprendimientos-especificos {
+        font-size: 8vw;
+    }
+}
+
+@media (max-width: 700px) {
+    #hero-emprendimientos-especificos {
+        height: 20vh;
+    }
+}
+
+@media (max-width: 830px) {
+    .hero {
+        height: 30vw;
+        min-height: 220px;
+    }
+}
+
+/* ============================= */
+/*   EMPRENDIMIENTOS GENERALES   */
+/* ============================= */
+
+.descubre-nuestros-emprendimientos {
+    height: 42.5vh;
+    text-align: center;
+    padding: 0 12%;
+    padding-top: 8%;
+}
+
+.descubre-nuestros-emprendimientos h2 {
+    color: var(--azul-oscuro);
+    font-size: 200%;
+    font-weight: 400;
+}
+
+/* ============================= */
+/*     # COMPONENTE: CARDS      */
+/* ============================= */
+
+/* Introducción a los cards */
+.introduccion-a-cards {
+    height: 10vh;
+    padding: 0 2%;
+    padding-top: 4%;
+    margin-bottom: 4%;
+}
+
+.introduccion-a-cards p {
+    color: var(--azul-oscuro);
+    font-size: 28px;
+    text-align: center;
+}
+
+/* Cards */
+
+.exterior-advertisement-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    width: 100%;
+}
+
+.advertisement-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5%;
+    width: 98%;
+    justify-items: center;
+}
+
+.advertisement-container a {
+    text-decoration: none;
+}
+
+
+/* Segunda sección de cards */
+#exterior-advertisement-container-entrepeneurship2 {
+    margin-bottom: 10%;
+}
+
+#exterior-advertisement-container-entrepeneurship1 {
+    margin-bottom: 10%;
+}
+
+.card {
+    height: 450px;
+    width: 280px;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px #29598f91;
+    transition: all 0.3s ease-out;
+    min-width: 200px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 70%;
+}
+
+#la-chismosa .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/La\ Chismosa.png');
+}
+
+#santo-pecado .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/Santo\ Pecado.png');
+}
+
+#beer-factory .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/Beer\ Factory.png');
+}
+
+#calle-33 .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/Calle\ 33.png');
+}
+
+#la-central .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/La\ Central.png');
+}
+
+#sasta-pub .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/Sasta\ Pub.png');
+}
+
+#samadhi .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/Samadhi.jpg');
+}
+
+#lulupulus .card-image {
+    background-image: url('../../../assets/images/emprendimiento/logos/Lupulus.png');
+}
+
+.card-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 30%;
+    margin-left: 10%;
+}
+
+.card-title {
+    color: var(--azul-oscuro);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-subtitle {
+    color: var(--azul-oscuro);
+    font-size: 0.9rem;
+}
+
+/* ===== # CARDS: MEDIA QUERIES ===== */
+
+@media (max-width: 1400px) {
+    .advertisement-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1035px) {
+    .advertisement-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 679px) {
+    .advertisement-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.conoce-nuestros-emprendimientos {
+    height: 50vh;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8%;
+    margin-bottom: 5%;
+}
+
+.conoce-nuestros-emprendimientos h1 {
+    color: var(--azul-oscuro);
+    font-size: 280%;
+    text-align: center;
+    width: 100%;
+    transition: 0.8s;
+}
+
+.conoce-nuestros-emprendimientos h1:hover {
+    color: var(--azul-claro);
+}
+
+.construyendo-una-comunidad {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8%;
+    margin-top: 2%;
+}
+
+.construyendo-una-comunidad h1 {
+    color: var(--azul-oscuro);
+    font-size: 280%;
+    text-align: center;
+    font-weight: 400;
+    width: 100%;
+    transition: 0.8s;
+}
+
+.construyendo-una-comunidad h1:hover {
+    color: var(--azul-claro);
+}
+
+/* ============================= */
+/*  EMPRENDIMIENTOS ESPECÍFICOS  */
+/* ============================= */
+
+/* General */
+.enterprise-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 50vh;
+}
+
+.enterprise-info h1 {
+    color: var(--azul-oscuro);
+    font-size: 24px;
+    font-weight: 900;
+    cursor: default;
+}
+
+.enterprise-info p {
+    color: var(--azul-oscuro);
+    font-size: 18px;
+    margin-top: 4%;
+    cursor: default;
+}
+
+/* Izquierda */
+.enterprise-info-left {
+    width: 100%;
+    height: 100%;
+    padding: 8% 10%;
+    padding-right: 20%;
+}
+
+.enterprise-top-left {
+    weight: 100%;
+    height: 80%;
+}
+
+.enterprise-bottom-left {
+    weigth: 100%;
+    height: 30%;
+}
+
+.enterprise-location h1 {
+    margin-bottom: 4%;
+}
+
+.enterprise-location a {
+    text-decoration: none;
+    color: var(--azul-oscuro);
+    font-size: 18px;
+    display: inline;
+}
+
+.enterprise-location a:hover {
+    color: var(--azul-claro);
+}
+
+
+
+/* Derecha */
+.enterprise-info-right {
+    width: 100%;
+    height: 100%;
+    padding: 8% 10%;
+    padding-right: 20%;
+}
+
+.enterprise-top-right {
+    weight: 100%;
+    height: 80%;
+}
+
+.enterprise-schedules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+
+.enterprise-bottom-right {
+    weigth: 100%;
+    height: 30%;
+}
+
+.area-code {
+    display: inline;
+}
+
+.enterprise-phone .area-code {
+    color: var(--azul-claro);
+}
+
+.phone-number {
+    display: inline;
+
+}
+
+.enterprise-phone h1 {
+    margin-bottom: 4%;
+}
+
+@media (max-width: 1200px) {
+    .enterprise-info {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        text-align: center;
+    }
+
+    /* Izquierda */
+    .enterprise-info-left {
+        width: 100%;
+        height: 50%;
+        padding: 2% 4%;
+        margin: 0%;
+    }
+
+    .enterprise-top-left {
+        margin-bottom: 2%;
+        padding: 0 12%;
+    }
+
+    /* Derecha */
+    .enterprise-info-right {
+        width: 100%;
+        height: 50%;
+        padding: 2% 4%;
+        margin: 0%;
+    }
+
+    /* General */
+    .enterprise-top-left .enterprise-bottom-left .enterprise-top-right .enterprise-bottom-right {
+        width: 100%;
+        height: auto;
+    }
+
+    .enterprise-info p {
+        margin-top: 0.5%;
+    }
+
+    /* Derecha */
+    .enterprise-top-right {
+        margin-bottom: 2%;
+    }
+
+    /* Días y Horas */
+    .enterprise-days {
+        text-align: right;
+        padding-right: 6%;
+    }
+
+    .enterprise-hours {
+        text-align: left;
+        padding-left: 1.5%;
+    }
+
+    .enterprise-phone h1 {
+        margin-bottom: 1%;
+    }
+
+    .enterprise-phone p {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    /* General */
+    .enterprise-info h1 {
+        font-size: 18px;
+    }
+
+    .enterprise-info p {
+        font-size: 12px;
+    }
+
+    /* Izquierda */
+    .enterprise-top-left {
+        padding: 0% 8%;
+        padding-top: 8%;
+        padding-bottom: 4%;
+    }
+
+    .enterprise-bottom-left {
+        padding: 4% 8%;
+    }
+
+    .enterprise-bottom-left h1 {
+        margin-bottom: 4%;
+    }
+
+    .enterprise-location a {
+        font-size: 12px;
+    }
+
+    /* Derecha */
+    .enterprise-info-right {
+        padding: 0% 20%;
+    }
+
+    .enterprise-top-right {
+        padding: 4% 1%;
+    }
+
+    .enterprise-top-right h1 {
+        margin-bottom: 4%;
+    }
+
+    .enterprise-top-right p {
+        font-size: 12px;
+    }
+
+    .enterprise-days {
+        text-align: center;
+        padding-right: 0%;
+    }
+
+    .enterprise-hours {
+        text-align: center;
+        padding-left: 0%;
+    }
+
+    .enterprise-bottom-right {
+        padding: 8% 8%;
+    }
+
+    .enterprise-phone h1 {
+        margin-bottom: 4%;
+    }
+
+    .enterprise-phone p {
+        font-size: 16px;
+    }
+}
+
+
+/* ==================================== */
+/* #COMPONENTE: CREATE ENTREPRENEURSHIP */
+/* ==================================== */
+
+.create-entrepreneurship-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2%;
+    color: var(--blanco);
+    height: 40vh;
+    background-color: var(--azul-oscuro);
+}
+
+.create-entrepreneurship-text-container {
+    margin-left: 4%;
+    font-style: italic;
+    padding-right: 2%;
+}
+
+.create-entrepreneurship-text-container h2 {
+    font-size: 2rem;
+    font-weight: normal;
+}
+
+.create-entrepreneurship-text-container h1 {
+    font-size: 5rem;
+}
+
+.create-entrepreneurship-container a {
+    text-decoration: none;
+    color: var(--blanco);
+}
+
+.create-entrepreneurship-container a:hover {
+    transition: 0.10s;
+    color: var(--gris);
+}
+
+.create-entrepreneurship-text-container p {
+    max-width: 550px;
+}
+
+.create-entrepreneurship-text-container button {
+    width: 40%;
+    height: 40px;
+    color: var(--azul-oscuro);
+    border-radius: 20px;
+    border-style: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+.create-entrepreneurship-text-container button:hover {
+    transform: translateY(-5px);
+    transition: 0.10s;
+    cursor: pointer;
+    background-color: var(--gris);
+}
