@@ -2,470 +2,470 @@
  /*     # COMPONENTE: HERO       */
  /* ============================= */
 
- .hero {
-     width: 100%;
-     height: 60vh;
-     min-height: 250px;
-     position: relative;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     overflow: hidden;
-     background-color: var(--azul-oscuro);
- }
-
- .hero-background {
-     width: 100%;
-     height: 100%;
-     position: absolute;
-     background-image: url('../../../assets/images/hero/barrio.jpg');
-     background-size: cover;
-     background-position: center;
-     opacity: 0.5;
-     z-index: 1;
- }
-
- .hero-background.luces {
-
-     background-image: url('../../../assets/images/evento/luces.jpg');
- }
-
- .hero h2 {
-     color: var(--blanco);
-     z-index: 2;
-
- }
-
- .hero-title {
-     color: var(--blanco);
-     font-size: 5rem;
-     text-align: center;
-     position: relative;
-     z-index: 2;
-     margin-bottom: 1vw;
-     text-transform: uppercase;
-     padding: 0 5%;
-     line-height: 1.2;
-     padding: auto;
- }
-
-
- @media (max-width: 830px) {
-     .hero {
-         height: 30vw;
-         min-height: 220px;
-     }
- }
-
-
- /* ============================= */
- /*     # COMPONENTE: anuncio      */
- /* ============================= */
-
- .exterior-advertisement-container {
-     display: flex;
-     justify-content: center;
-     margin-top: 2%;
- }
-
- .advertisement-container {
-     display: grid;
-     grid-template-columns: repeat(4, 1fr);
-     gap: 2rem;
-     width: 60%;
- }
-
- .route-card {
-     display: flex;
-     background-color: var(--blanco);
-     border-radius: 10px;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-     min-height: 203px;
-     transition: transform 0.3s;
- }
-
- .left-bar {
-     width: 8px;
-     background-color: var(--azul-claro);
-     border-top-left-radius: 10px;
-     border-bottom-left-radius: 10px;
- }
-
- .card-content {
-     padding: 1.5rem;
-     flex: 1;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between;
- }
-
- .route-card:hover {
-     transform: translateY(-5px);
- }
-
- .route-card h3 {
-     color: var(--azul-oscuro);
-     margin-bottom: 1rem;
-     font-size: 1.4rem;
- }
-
- .route-details p {
-     margin-bottom: 0.5rem;
-     color: var(--azul-oscuro);
-     line-height: 1.5;
-     font-size: 1.1rem;
-
- }
-
- /* ===== # CARDS: MEDIA QUERIES ===== */
-
- @media (max-width: 1400px) {
-     .advertisement-container {
-         grid-template-columns: repeat(3, 1fr);
-     }
- }
-
- @media (max-width: 1035px) {
-     .advertisement-container {
-         grid-template-columns: repeat(2, 1fr);
-     }
- }
-
- @media (max-width: 679px) {
-     .advertisement-container {
-         grid-template-columns: repeat(1, 1fr);
-     }
- }
-
-
-
- /* ============================= */
- /*     # COMPONENTE: TITLES      */
- /* ============================= */
-
-
- .title-container {
-     display: flex;
-     justify-content: center;
-     text-align: center;
-     flex-direction: column;
-     margin-top: 4%;
- }
-
- .title-container h1 {
-     color: var(--azul-oscuro);
-
- }
-
- .title-container p {
-     margin-top: 1%;
-     color: var(--azul-oscuro);
-     max-width: 40%;
-     min-width: 40%;
-
- }
-
- .title-text-container {
-     display: flex;
-     justify-content: center;
- }
-
- /* ============================= */
- /*     # COMPONENTE: CARDS      */
- /* ============================= */
-
- .exterior-cards-container {
-     display: flex;
-     justify-content: center;
-     margin-top: 2%;
-
- }
-
- .cards-container {
-     display: grid;
-     grid-template-columns: repeat(4, 1fr);
-     gap: 2rem;
-     width: 60%;
- }
-
- .cards-container a {
-     text-decoration: none;
- }
-
- .card {
-     height: 450px;
-     width: 280px;
-     border-radius: 20px;
-     box-shadow: 0 6px 12px #29598f91;
-     transition: all 0.3s ease-out;
-     min-width: 200px;
- }
-
- .card:hover {
-     transform: translateY(-5px);
-     cursor: pointer;
- }
-
- .card-image {
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center;
-     border-top-left-radius: 20px;
-     border-top-right-radius: 20px;
-     background-image: url("../../../assets/images/emprendimiento/logos/Calle\ 33.png");
-     height: 70%;
- }
-
- .card-image.chismosa {
-     background-image: url('../../../assets/images/emprendimiento/logos/La\ Chismosa.png');
- }
-
- .card-image.santopecado {
-     background-image: url('../../../assets/images/emprendimiento/logos/Santo\ Pecado.png');
- }
-
- .card-image.beerfactory {
-     background-image: url('../../../assets/images/emprendimiento/logos/Beer\ Factory.png');
- }
-
- .card-image.lacentral {
-     background-image: url('../../../assets/images/emprendimiento/logos/La\ Central.png');
- }
-
- .card-image.perros {
-     background-image: url('../../../assets/images/evento/parque-perros.jpg');
- }
-
- .card-image.luces {
-     background-image: url('../../../assets/images/evento/luces.jpg');
- }
-
- .card-image.concierto {
-     background-image: url('../../../assets/images/evento/concierto.jpg');
- }
-
- .card-image.feriaagricultor {
-     background-image: url('../../../assets/images/evento/feria.jpg');
- }
-
- .card-text-container {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     width: 100%;
-     height: 30%;
-     margin-left: 10%;
-     gap: 10%;
- }
-
- .card-title {
-     color: var(--azul-oscuro);
-     font-size: 1.5rem;
-     font-weight: bold;
-     max-width: 90%;
- }
-
- .card-subtitle {
-     color: var(--azul-oscuro);
-     font-size: 0.9rem;
- }
-
- /* ===== # CARDS: MEDIA QUERIES ===== */
-
- @media (max-width: 1400px) {
-     .cards-container {
-         grid-template-columns: repeat(3, 1fr);
-     }
- }
-
- @media (max-width: 1035px) {
-     .cards-container {
-         grid-template-columns: repeat(2, 1fr);
-     }
- }
-
- @media (max-width: 679px) {
-     .cards-container {
-         grid-template-columns: repeat(1, 1fr);
-     }
- }
-
-
-
- /* ============================= */
- /*     # COMPONENTE: PUBLISH EVENT*/
- /* ============================= */
-
- .publish-event-container {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin-top: 2%;
-     color: var(--blanco);
-     height: 40vh;
-     background-color: var(--azul-oscuro);
- }
-
- .publish-event-text-container {
-     margin-left: 4%;
-     font-style: italic;
- }
-
- .publish-event-text-container h2 {
-     font-size: 2rem;
-     font-weight: normal;
- }
-
- .publish-event-text-container h1 {
-     font-size: 5rem;
- }
-
- .publish-event-container a {
-     text-decoration: none;
-     color: var(--blanco);
- }
-
- .publish-event-container a:hover {
-
-     transition: 0.10s;
-     color: var(--gris);
- }
-
- .publish-event-text-container p {
-     max-width: 550px;
- }
-
- .publish-event-text-container button {
-     width: 40%;
-     height: 40px;
-     color: var(--azul-oscuro);
-     border-radius: 20px;
-     border-style: none;
-     font-size: 1.1rem;
-     font-weight: bold;
-     margin-top: 5%;
- }
-
- .publish-event-text-container button:hover {
-     transform: translateY(-5px);
-     transition: 0.10s;
-     cursor: pointer;
-     background-color: var(--gris);
- }
-
-
- /* ============================= */
- /*     # COMPONENTE: TRANSPORTE  */
- /* ============================= */
-
- .transport-section {
-     width: 80%;
-     margin: 2rem auto;
-     padding: 2rem 0;
- }
-
- .transport-header {
-     text-align: center;
-     margin-bottom: 3rem;
- }
-
- .transport-header h1 {
-     color: var(--azul-oscuro);
-     font-size: 2rem;
-     text-transform: uppercase;
-     margin-bottom: 0.5rem;
- }
-
- .route-container {
-     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(366px, 1fr));
-     gap: 5rem;
-
- }
-
- .route-card {
-     display: flex;
-     background-color: var(--blanco);
-     border-radius: 10px;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-     min-height: 203px;
-     transition: transform 0.3s;
- }
-
- .left-bar {
-     width: 8px;
-     background-color: var(--azul-claro);
-     border-top-left-radius: 10px;
-     border-bottom-left-radius: 10px;
- }
-
- .card-content {
-     padding: 1.5rem;
-     flex: 1;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between;
- }
-
- .route-card:hover {
-     transform: translateY(-5px);
- }
-
- .route-card h3 {
-     color: var(--azul-oscuro);
-     margin-bottom: 1rem;
-     font-size: 1.4rem;
- }
-
- .route-details p {
-     margin-bottom: 0.5rem;
-     color: var(--azul-oscuro);
-     line-height: 1.5;
-     font-size: 1.1rem;
-
- }
-
- /* Ajusted para celular */
- @media (max-width: 435px) {
-     .cards-container {
-         width: 65%;
-     }
-
-     .title-text-container p {
-         margin-top: 5%;
-         min-width: 90%;
-         font-size: 1rem;
-     }
-
-     .back-container {
-         margin-top: 12%;
-     }
-
-     .title-container h1 {
-         margin-top: 12%;
-         width: 95%;
-         text-align: center;
-
-     }
-
-     .exterior-cards-container {
-         margin-top: 10%;
-         margin-bottom: 2%;
-
-     }
-
- }
-
- @media (max-width: 380px) {
-     .cards-container {
-         width: 75%;
-     }
-
-
-     .publish-event-container {
-
-         height: 70vh;
-
-     }
- }
+    .hero {
+        width: 100%;
+        height: 60vh;
+        min-height: 250px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        background-color: var(--azul-oscuro);
+    }
+
+    .hero-background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-image: url('../../../assets/images/hero/barrio.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        z-index: 1;
+    }
+
+    .hero-background.luces {
+
+        background-image: url('../../../assets/images/evento/luces.jpg');
+    }
+
+    .hero h2 {
+        color: var(--blanco);
+        z-index: 2;
+
+    }
+
+    .hero-title {
+        color: var(--blanco);
+        font-size: 5rem;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 1vw;
+        text-transform: uppercase;
+        padding: 0 5%;
+        line-height: 1.2;
+        padding: auto;
+    }
+
+
+    @media (max-width: 830px) {
+        .hero {
+            height: 30vw;
+            min-height: 220px;
+        }
+    }
+
+
+    /* ============================= */
+    /*     # COMPONENTE: anuncio      */
+    /* ============================= */
+
+    .exterior-advertisement-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2%;
+    }
+
+    .advertisement-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        width: 60%;
+    }
+
+    .route-card {
+        display: flex;
+        background-color: var(--blanco);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        min-height: 203px;
+        transition: transform 0.3s;
+    }
+
+    .left-bar {
+        width: 8px;
+        background-color: var(--azul-claro);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .route-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .route-card h3 {
+        color: var(--azul-oscuro);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .route-details p {
+        margin-bottom: 0.5rem;
+        color: var(--azul-oscuro);
+        line-height: 1.5;
+        font-size: 1.1rem;
+
+    }
+
+    /* ===== # CARDS: MEDIA QUERIES ===== */
+
+    @media (max-width: 1400px) {
+        .advertisement-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 1035px) {
+        .advertisement-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 679px) {
+        .advertisement-container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+
+
+    /* ============================= */
+    /*     # COMPONENTE: TITLES      */
+    /* ============================= */
+
+
+    .title-container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        margin-top: 4%;
+    }
+
+    .title-container h1 {
+        color: var(--azul-oscuro);
+
+    }
+
+    .title-container p {
+        margin-top: 1%;
+        color: var(--azul-oscuro);
+        max-width: 40%;
+        min-width: 40%;
+
+    }
+
+    .title-text-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ============================= */
+    /*     # COMPONENTE: CARDS      */
+    /* ============================= */
+
+    .exterior-cards-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 2%;
+
+    }
+
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        width: 60%;
+    }
+
+    .cards-container a {
+        text-decoration: none;
+    }
+
+    .card {
+        height: 450px;
+        width: 280px;
+        border-radius: 20px;
+        box-shadow: 0 6px 12px #29598f91;
+        transition: all 0.3s ease-out;
+        min-width: 200px;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        cursor: pointer;
+    }
+
+    .card-image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        background-image: url("../../../assets/images/emprendimiento/logos/Calle\ 33.png");
+        height: 70%;
+    }
+
+    .card-image.chismosa {
+        background-image: url('../../../assets/images/emprendimiento/logos/La\ Chismosa.png');
+    }
+
+    .card-image.santopecado {
+        background-image: url('../../../assets/images/emprendimiento/logos/Santo\ Pecado.png');
+    }
+
+    .card-image.beerfactory {
+        background-image: url('../../../assets/images/emprendimiento/logos/Beer\ Factory.png');
+    }
+
+    .card-image.lacentral {
+        background-image: url('../../../assets/images/emprendimiento/logos/La\ Central.png');
+    }
+
+    .card-image.perros {
+        background-image: url('../../../assets/images/evento/parque-perros.jpg');
+    }
+
+    .card-image.luces {
+        background-image: url('../../../assets/images/evento/luces.jpg');
+    }
+
+    .card-image.concierto {
+        background-image: url('../../../assets/images/evento/concierto.jpg');
+    }
+
+    .card-image.feriaagricultor {
+        background-image: url('../../../assets/images/evento/feria.jpg');
+    }
+
+    .card-text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 30%;
+        margin-left: 10%;
+        gap: 10%;
+    }
+
+    .card-title {
+        color: var(--azul-oscuro);
+        font-size: 1.5rem;
+        font-weight: bold;
+        max-width: 90%;
+    }
+
+    .card-subtitle {
+        color: var(--azul-oscuro);
+        font-size: 0.9rem;
+    }
+
+    /* ===== # CARDS: MEDIA QUERIES ===== */
+
+    @media (max-width: 1400px) {
+        .cards-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 1035px) {
+        .cards-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 679px) {
+        .cards-container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+
+
+    /* ============================= */
+    /*     # COMPONENTE: PUBLISH EVENT*/
+    /* ============================= */
+
+    .publish-event-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2%;
+        color: var(--blanco);
+        height: 40vh;
+        background-color: var(--azul-oscuro);
+    }
+
+    .publish-event-text-container {
+        margin-left: 4%;
+        font-style: italic;
+    }
+
+    .publish-event-text-container h2 {
+        font-size: 2rem;
+        font-weight: normal;
+    }
+
+    .publish-event-text-container h1 {
+        font-size: 5rem;
+    }
+
+    .publish-event-container a {
+        text-decoration: none;
+        color: var(--blanco);
+    }
+
+    .publish-event-container a:hover {
+
+        transition: 0.10s;
+        color: var(--gris);
+    }
+
+    .publish-event-text-container p {
+        max-width: 550px;
+    }
+
+    .publish-event-text-container button {
+        width: 40%;
+        height: 40px;
+        color: var(--azul-oscuro);
+        border-radius: 20px;
+        border-style: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-top: 5%;
+    }
+
+    .publish-event-text-container button:hover {
+        transform: translateY(-5px);
+        transition: 0.10s;
+        cursor: pointer;
+        background-color: var(--gris);
+    }
+
+
+    /* ============================= */
+    /*     # COMPONENTE: TRANSPORTE  */
+    /* ============================= */
+
+    .transport-section {
+        width: 80%;
+        margin: 2rem auto;
+        padding: 2rem 0;
+    }
+
+    .transport-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .transport-header h1 {
+        color: var(--azul-oscuro);
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    .route-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(366px, 1fr));
+        gap: 5rem;
+
+    }
+
+    .route-card {
+        display: flex;
+        background-color: var(--blanco);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        min-height: 203px;
+        transition: transform 0.3s;
+    }
+
+    .left-bar {
+        width: 8px;
+        background-color: var(--azul-claro);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .route-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .route-card h3 {
+        color: var(--azul-oscuro);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .route-details p {
+        margin-bottom: 0.5rem;
+        color: var(--azul-oscuro);
+        line-height: 1.5;
+        font-size: 1.1rem;
+
+    }
+
+    /* Ajusted para celular */
+    @media (max-width: 435px) {
+        .cards-container {
+            width: 65%;
+        }
+
+        .title-text-container p {
+            margin-top: 5%;
+            min-width: 90%;
+            font-size: 1rem;
+        }
+
+        .back-container {
+            margin-top: 12%;
+        }
+
+        .title-container h1 {
+            margin-top: 12%;
+            width: 95%;
+            text-align: center;
+
+        }
+
+        .exterior-cards-container {
+            margin-top: 10%;
+            margin-bottom: 2%;
+
+        }
+
+    }
+
+    @media (max-width: 380px) {
+        .cards-container {
+            width: 75%;
+        }
+
+
+        .publish-event-container {
+
+            height: 70vh;
+
+        }
+    }
