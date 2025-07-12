@@ -538,6 +538,11 @@ textarea {
     display: none;
 }
 
+#formulario-grupo-btn-enviar{
+    display: flex;
+  justify-content: center; /* Centra horizontalmente */
+}
+
 /*llamada por el js*/
 .formulario-mensaje-activo{
     display: block;
