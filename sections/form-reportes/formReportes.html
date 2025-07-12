@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="formReportes.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -55,67 +57,58 @@
       </p>
     </section>
 
-    <form class="formReporte">
+    <form action="#" class="formReporte"  id="formulario">
       <div class="columna1">
         <!-- GRUPO REPORTE -->
         <div class="formulario-grupo" id="grupo-reporte">
-        <label class="formulario-label">Nombre del reporte:</label>
-        <div class="formulario-grupo-input">
-            <input type="text" required class="formulario-input" name="reporte" id="reporte">
-            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
-        </div>
-        <p class="formulario-input-error">
-            El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
-        </p>
+            <label class="formulario-label">Nombre del reporte:</label>
+            <div class="formulario-grupo-input">
+                <input type="text" required class="formulario-input" name="reporte" id="reporte">
+                <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+            </div>
+            <p class="formulario-input-error">
+                El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+            </p>
         </div>
 
         <!-- GRUPO TIPO -->
         <div class="formulario-grupo" id="grupo-tipo">
-        <label class="formulario-label">Tipo de reporte:</label>
-        <div class="formulario-grupo-input">
-            <input type="text" required class="formulario-input" name="tipo" id="tipo">
-            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
-        </div>
-        <p class="formulario-input-error">
-            El tipo debe tener entre 4 y 40 caracteres.
-        </p>
+            <label class="formulario-label">Tipo de reporte:</label>
+            <div class="formulario-grupo-input">
+                <input type="text" required class="formulario-input" name="tipo" id="tipo">
+                <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+            </div>
+            <p class="formulario-input-error">
+                El tipo debe tener entre 4 y 40 caracteres.
+            </p>
         </div>
 
         <!-- GRUPO DESCRIPCION -->
         <div class="formulario-grupo" id="grupo-descripcion">
-        <label class="formulario-label">Descripción del reporte:</label>
-        <div class="formulario-grupo-input">
-            <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"></textarea>
-            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
-        </div>
-        <p class="formulario-input-error">
-            La descripción debe tener entre 10 y 300 caracteres.
-        </p>
+            <label class="formulario-label">Descripción del reporte:</label>
+            <div class="formulario-grupo-input">
+                <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"></textarea>
+                <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+            </div>
+            <p class="formulario-input-error">
+                La descripción debe tener entre 10 y 300 caracteres.
+            </p>
         </div>
 
         <!-- GRUPO NOTIFICADO -->
         <div class="formulario-grupo" id="grupo-notificado">
-        <label class="formulario-label">¿Has notificado esto antes a alguien? ¿A quién?</label>
-        <div class="formulario-grupo-input">
-            <input type="text" required class="formulario-input" name="notificado" id="notificado">
-            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
-        </div>
-        <p class="formulario-input-error">
-            Debe contener entre 3 y 100 caracteres.
-        </p>
+            <label class="formulario-label">¿Has notificado esto antes a alguien? ¿A quién?</label>
+            <div class="formulario-grupo-input">
+                <input type="text" required class="formulario-input" name="notificado" id="notificado">
+                <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+            </div>
+            <p class="formulario-input-error">
+                Debe contener entre 3 y 100 caracteres.
+            </p>
         </div>
     </div>
 
     <div class="columna2">
-        <!-- GRUPO ANONIMO -->
-        <div class="formulario-grupo" id="grupo-anonimo">
-        <label class="formulario-label">Deseas que tu queja sea anónima</label>
-        <div class="formulario-grupo-input">
-            <label><input type="radio" name="anonimo" value="Si" required> Sí</label>
-            <label><input type="radio" name="anonimo" value="No"> No</label>
-        </div>
-        </div>
-
         <!-- GRUPO NOMBRE (OPCIONAL) -->
         <div class="formulario-grupo" id="grupo-nombre">
         <label class="formulario-label">Tu nombre (opcional si elegiste anónimo):</label>
@@ -130,7 +123,7 @@
 
         <!-- GRUPO CORREO (OPCIONAL) -->
         <div class="formulario-grupo" id="grupo-correo">
-        <label class="formulario-label">Correo electrónico (opcional, para dar seguimiento):</label>
+        <label class="formulario-label">Correo electrónico (para dar seguimiento):</label>
         <div class="formulario-grupo-input">
             <input type="email" class="formulario-input" name="correo" id="correo">
             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
@@ -254,6 +247,7 @@
             <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
         </section>
     </footer>
+    <script src="formReportes.js"></script>
 </body>
 
 </html>
