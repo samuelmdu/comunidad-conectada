@@ -34,20 +34,18 @@
     .hero h2 {
         color: var(--blanco);
         z-index: 2;
-
+        font-size: 2rem;
+        text-transform: uppercase;
     }
 
     .hero-title {
         color: var(--blanco);
         font-size: 5rem;
+        font-weight: 900;
         text-align: center;
         position: relative;
         z-index: 2;
-        margin-bottom: 1vw;
         text-transform: uppercase;
-        padding: 0 5%;
-        line-height: 1.2;
-        padding: auto;
     }
 
 
@@ -161,9 +159,8 @@
     .title-container p {
         margin-top: 1%;
         color: var(--azul-oscuro);
-        max-width: 40%;
+        max-width: 80%;
         min-width: 40%;
-
     }
 
     .title-text-container {
