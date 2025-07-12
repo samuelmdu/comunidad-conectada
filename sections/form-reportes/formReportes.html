@@ -57,41 +57,118 @@
 
     <form class="formReporte">
       <div class="columna1">
-        <label>Nombre del reporte:</label>
-        <input type="text" required />
+        <!-- GRUPO REPORTE -->
+        <div class="formulario-grupo" id="grupo-reporte">
+        <label class="formulario-label">Nombre del reporte:</label>
+        <div class="formulario-grupo-input">
+            <input type="text" required class="formulario-input" name="reporte" id="reporte">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+        </div>
+        <p class="formulario-input-error">
+            El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+        </p>
+        </div>
 
-        <label>Tipo de reporte:</label>
-        <input type="text" required />
+        <!-- GRUPO TIPO -->
+        <div class="formulario-grupo" id="grupo-tipo">
+        <label class="formulario-label">Tipo de reporte:</label>
+        <div class="formulario-grupo-input">
+            <input type="text" required class="formulario-input" name="tipo" id="tipo">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+        </div>
+        <p class="formulario-input-error">
+            El tipo debe tener entre 4 y 40 caracteres.
+        </p>
+        </div>
 
-        <label>Descripción del reporte:</label>
-        <textarea rows="4" required></textarea>
+        <!-- GRUPO DESCRIPCION -->
+        <div class="formulario-grupo" id="grupo-descripcion">
+        <label class="formulario-label">Descripción del reporte:</label>
+        <div class="formulario-grupo-input">
+            <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"></textarea>
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+        </div>
+        <p class="formulario-input-error">
+            La descripción debe tener entre 10 y 300 caracteres.
+        </p>
+        </div>
 
-        <label>¿Has notificado esto antes a alguien? ¿A quién?</label>
-        <input type="text" required />
+        <!-- GRUPO NOTIFICADO -->
+        <div class="formulario-grupo" id="grupo-notificado">
+        <label class="formulario-label">¿Has notificado esto antes a alguien? ¿A quién?</label>
+        <div class="formulario-grupo-input">
+            <input type="text" required class="formulario-input" name="notificado" id="notificado">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+        </div>
+        <p class="formulario-input-error">
+            Debe contener entre 3 y 100 caracteres.
+        </p>
+        </div>
+    </div>
 
-      </div>
+    <div class="columna2">
+        <!-- GRUPO ANONIMO -->
+        <div class="formulario-grupo" id="grupo-anonimo">
+        <label class="formulario-label">Deseas que tu queja sea anónima</label>
+        <div class="formulario-grupo-input">
+            <label><input type="radio" name="anonimo" value="Si" required> Sí</label>
+            <label><input type="radio" name="anonimo" value="No"> No</label>
+        </div>
+        </div>
 
-      <div class="columna2">
-         <label>Deseas que tu queja sea anonima</label>
-        <label><input type="radio" name="anonimo" value="Sí" required /> Sí</label>
-        <label><input type="radio" name="anonimo" value="No" /> No</label>
+        <!-- GRUPO NOMBRE (OPCIONAL) -->
+        <div class="formulario-grupo" id="grupo-nombre">
+        <label class="formulario-label">Tu nombre (opcional si elegiste anónimo):</label>
+        <div class="formulario-grupo-input">
+            <input type="text" class="formulario-input" name="nombre" id="nombre">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+        </div>
+        <p class="formulario-input-error">
+            El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
+        </p>
+        </div>
 
-        <label>Tu nombre (opcional si elegiste anónimo):</label>
-        <input type="text" required />
+        <!-- GRUPO CORREO (OPCIONAL) -->
+        <div class="formulario-grupo" id="grupo-correo">
+        <label class="formulario-label">Correo electrónico (opcional, para dar seguimiento):</label>
+        <div class="formulario-grupo-input">
+            <input type="email" class="formulario-input" name="correo" id="correo">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+        </div>
+        <p class="formulario-input-error">
+            Debe tener un formato válido: ejemplo@correo.com
+        </p>
+        </div>
 
-        <label>Correo electrónico (opcional, para dar seguimiento):</label>
-        <input type="email" required />
-
-        <label>Foto o evidencia del problema (opcional):</label>
-        <input type="file" accept="image/*" />
+        <!-- GRUPO EVIDENCIA -->
+        <div class="formulario-grupo">
+        <label class="formulario-label">Foto o evidencia del problema (opcional):</label>
+        <input type="file" class="formulario-input" accept="image/*">
+        </div>
 
         <p class="notaFinal">
-          Tu reporte será revisada y canalizada al área correspondiente. 
-          Agradecemos tu participación para mejorar juntos la comunidad.
+        Tu reporte será revisado y canalizado al área correspondiente. Agradecemos tu participación para mejorar juntos la comunidad.
         </p>
 
-        <button type="submit">Enviar</button>
-      </div>
+        <!-- GRUPO TERMINOS Y CONDICIONES -->
+        <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
+        <label class="formulario-label">
+            <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos">
+            <b class="formulario-span">Acepto los términos y condiciones</b>
+        </label>
+        </div>
+
+        <!-- GRUPO MENSAJE ERROR -->
+        <div class="formulario-mensaje" id="formulario-mensaje">
+        <p><i class="bx bxs-ghost"></i> Por favor, completá correctamente todos los campos obligatorios antes de enviar.</p>
+        </div>
+        <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió correctamente</p>
+
+        <!-- GRUPO BOTON ENVIAR -->
+        <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
+        <input type="submit" class="formulario-btn" value="Enviar">
+        </div>
+    </div>
     </form>
   </div>
 
