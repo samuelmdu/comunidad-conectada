@@ -63,20 +63,20 @@
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    margin-top: 4%;
+    padding: 80px 0px;
 }
 
 .title-container h1 {
     color: var(--azul-oscuro);
-
+    font-size: 2rem;
 }
 
 .title-container p {
-    margin-top: 1%;
+    padding-top: 80px;
     color: var(--azul-oscuro);
-    max-width: 40%;
+    max-width: 80%;
     min-width: 40%;
-
+    font-size: 1.5rem;
 }
 
 .title-text-container {
@@ -91,14 +91,15 @@
 .exterior-cards-container {
     display: flex;
     justify-content: center;
-    margin-top: 2%;
+    margin-bottom: 80px;
 }
 
 .cards-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1rem;
     width: 60%;
+    row-gap: 4rem;
 }
 
 .cards-container a {
@@ -177,23 +178,21 @@
     width: 100%;
     height: 30%;
     text-align: center;
-
+    padding: 0 20px;
     gap: 10%;
 }
 
 .card-title {
     color: var(--azul-oscuro);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     max-width: 100%;
     text-align: start;
-    margin-left: 5%;
 }
 
 .card-subtitle {
     color: var(--azul-oscuro);
-    font-size: 1.2rem;
-    margin-left: 5%;
+    font-size: 1.1rem;
     text-align: start;
 }
 
@@ -225,15 +224,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2%;
     color: var(--blanco);
-    height: 40vh;
+    height: 60vh;
     background-color: var(--azul-oscuro);
 }
 
 .publish-event-text-container {
-    margin-left: 4%;
     font-style: italic;
+    text-align: center;
+}
+
+.create-entrepreneurship-container-limit{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    align-items: center;
 }
 
 .publish-event-text-container h2 {
@@ -242,7 +248,7 @@
 }
 
 .publish-event-text-container h1 {
-    font-size: 5rem;
+    font-size: 6rem;
 }
 
 .publish-event-container a {
@@ -257,8 +263,10 @@
 }
 
 .publish-event-text-container p {
-    max-width: 550px;
+    font-size: 1.4rem;
+    text-align: justify;
 }
+
 
 .publish-event-text-container button {
     width: 40%;
@@ -266,16 +274,103 @@
     color: var(--azul-oscuro);
     border-radius: 20px;
     border-style: none;
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 500;
     margin-top: 5%;
+    justify-content: center;
+    text-align: center;
+    transition: .8s;
 }
 
+
 .publish-event-text-container button:hover {
+    width: 85%;
+    font-weight: 700;
     transform: translateY(-5px);
-    transition: 0.10s;
     cursor: pointer;
-    background-color: var(--gris);
+    transition: .8s;
+}
+
+
+
+
+
+
+
+/* INICIAN CLASES DEL CALL TO ACTION */
+
+/* ==================================== */
+/* #COMPONENTE: CREATE ENTREPRENEURSHIP */
+/* ==================================== */
+
+.create-entrepreneurship-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco);
+    height: 60vh;
+    background-color: var(--azul-oscuro);
+}
+
+.create-entrepreneurship-container-limit{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    align-items: center;
+}
+
+.create-entrepreneurship-text-container {
+    font-style: italic;
+    text-align: center;
+}
+
+.create-entrepreneurship-text-container h2 {
+    font-size: 2.9rem;
+    font-weight: normal;
+}
+
+.create-entrepreneurship-text-container h1 {
+    font-size: 4rem;
+}
+
+.create-entrepreneurship-container a {
+    text-decoration: none;
+    color: var(--blanco);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-entrepreneurship-text-container p {
+    font-size: 1.4rem;
+    text-align: justify;
+}
+
+.create-entrepreneurship-text-container button {
+    width: 40%;
+    height: 40px;
+    color: var(--azul-oscuro);
+    border-radius: 20px;
+    border-style: none;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 5%;
+    justify-content: center;
+    text-align: center;
+    transition: .8s;
+}
+
+
+.create-entrepreneurship-text-container button:hover {
+    width: 100%;
+    font-weight: 700;
+    transform: translateY(-5px);
+    cursor: pointer;
+    transition: .8s;
 }
 
 
