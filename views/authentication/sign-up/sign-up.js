@@ -23,11 +23,6 @@ const campos={
 
 const validarFormulario = (e)=>{
     switch(e.target.name){ // --- "nombre" e.target.class --- formulario__input
-        case "usuario":
-            //validar funcion
-
-            validarCampo(expresiones.usuario,e.target,"usuario")
-        break;
         case "nombre":
             //funcion
             validarCampo(expresiones.nombre,e.target,"nombre");
@@ -110,12 +105,12 @@ formulario.addEventListener("submit",(e) =>{
     e.preventDefault();//No deja que se recarge la pagina
 
     const terminos = document.getElementById("terminos");
-    if(campos.usuario && campos.nombre && campos.password && campos.correo && campos.telefono && terminos.checked){
+    if(campos.cedula && campos.nombre && campos.password && campos.correo && campos.telefono && terminos.checked){
         document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
         document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
 
         setTimeout(()=>{
-           location.reload(); 
+            location.reload(); 
         },4000)
 
     }else{
