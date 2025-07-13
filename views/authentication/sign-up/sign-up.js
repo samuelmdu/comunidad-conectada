@@ -22,7 +22,7 @@ const campos={
 
 
 const validarFormulario = (e)=>{
-    switch(e.target.name){ // --- "nombre" e.target.class --- formulario__input
+    switch(e.target.name){
         case "nombre":
             //funcion
             validarCampo(expresiones.nombre,e.target,"nombre");
@@ -52,8 +52,7 @@ const validarFormulario = (e)=>{
 }
 
 const validarCampo= (expresion,input,campo)=>{
-    //test() ---  /^[a-zA-Z0-9\_\-]{4,16}$/.test("step4_-#")--- true o false
-    ///^[a-zA-ZÀ-ÿ\s]{3,45}$/.test("s")-- false
+    
     if(expresion.test(input.value)){
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-correcto");
@@ -62,7 +61,6 @@ const validarCampo= (expresion,input,campo)=>{
         document.querySelector(`#grupo__${campo} i`).classList.add("bxs-check-circle");
         campos[campo]=true;
     }else{
-        //                       grupo__nombre
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-correcto");
         document.querySelector(`#grupo__${campo} .formulario__input-error`).classList.add("formulario__input-error-activo");

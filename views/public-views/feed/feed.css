@@ -370,10 +370,15 @@
 
 /* ESTILOS PARA RUTAS */
 
+.vertical-content-section-transporte{
+    height: auto;
+    padding-top: 80px;
+}
+
 .transport-section {
         width: 80%;
-        margin: 2rem auto;
-        padding: 2rem 0;
+        margin: 1.2rem auto;
+        padding: 0px;
     }
 
     .transport-header {
@@ -385,14 +390,14 @@
         color: var(--azul-oscuro);
         font-size: 2rem;
         text-transform: uppercase;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0rem;
     }
 
     .route-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 5rem;
-
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        row-gap: 3.5rem;
     }
 
     .route-card {
@@ -426,7 +431,7 @@
     .route-card h3 {
         color: var(--azul-oscuro);
         margin-bottom: 1rem;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .route-details p {
