@@ -391,6 +391,7 @@
     font-size: 24px;
     font-weight: 900;
     cursor: default;
+    text-align: justify;
 }
 
 .enterprise-info p {
@@ -667,6 +668,7 @@
 
     .enterprise-description h1 {
         font-size: 1.4rem;
+
     }
 
     .enterprise-location h1 {
