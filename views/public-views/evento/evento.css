@@ -112,6 +112,7 @@
     box-shadow: 0 6px 12px #29598f91;
     transition: all 0.3s ease-out;
     min-width: 200px;
+    transition: .5s;
 }
 
 .card:hover {
@@ -380,7 +381,25 @@
     margin-bottom: 4%;
 }
 
-@media (max-width: 1200px) {
+
+@media (max-width: 1900px) {
+    .cards-container {
+        width: 90%;
+        margin-left: 0%;
+    }
+
+}
+
+
+
+
+
+@media (max-width: 1400px) {
+    .cards-container {
+        width: 90%;
+        margin-left: 10%;
+    }
+
     .enterprise-info {
         display: flex;
         flex-wrap: wrap;
@@ -444,6 +463,34 @@
     }
 
 }
+
+@media (max-width: 1200px) {
+    .cards-container {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+}
+
+
+@media (max-width: 1034px) {
+    .cards-container {
+        width: 100%;
+        margin-left: 10%;
+    }
+
+}
+
+
+@media (max-width: 664px) {
+    .cards-container {
+        width: 100%;
+        margin-left: 27%;
+    }
+
+}
+
+
 
 @media (max-width: 430px) {
 
@@ -557,6 +604,7 @@
 @media (max-width: 435px) {
     .cards-container {
         width: 65%;
+        margin-left: 0%;
     }
 
     .title-text-container p {

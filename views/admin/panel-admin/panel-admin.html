@@ -11,30 +11,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <!--Header/Footer CSS-->
+    <link rel="stylesheet" href="../../../assets/styles/global.css">
     <link rel="stylesheet" href="panel-admin.css">
 </head>
 
 <body>
     <header>
         <nav class="menu">
-
             <h1 class="title-header">
                 Comunidad <span>Conectada</span>
             </h1>
             <ul class="options">
-                <a href="../feed/feed.html">
+                <a href="../../public-views/feed/feed.html">
                     <li>INICIO</li>
                 </a>
-                <a href="../evento/evento.html">
-                    <li>EVENTO</li>
+                <a href="../../public-views/anuncio/anuncio.html">
+                    <li>ANUNCIOS</li>
                 </a>
-                <a href="../anuncio/anuncio.html">
-                    <li>ANUNCIO</li>
+                <a href="../../public-views/transporte/transporte.html">
+                    <li>EMPRENDIMIENTOS</li>
                 </a>
-                <a href="../emprendimiento/emprendimiento.html">
-                    <li>EMPRENDIMIENTO</li>
-                </a>
-                <a href="../transporte/transporte.html">
+                <a href="../../public-views/transporte/transporte.html">
                     <li>TRANSPORTE</li>
                 </a>
                 <a href="../../forms/form-reporte/form-reporte.html">
@@ -45,6 +43,7 @@
                 </a>
             </ul>
             <div class="burger"><i class="ri-menu-line"></i></div>
+
         </nav>
     </header>
 
@@ -56,55 +55,36 @@
             <button>Nuevos</button>
             <button>Aprobados</button>
             <button>Rechazados</button>
+            <div class="divider-line"></div>
+            <a href="../../public-views/transporte/transporte-admin.html">Editar Transporte</a>
         </section>
 
 
+
+
+        </section>
+
         <section class="tickets-list">
-            <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
-                <p>
-                    <span class="ticket-info">Anuncio</span> Para toda la comunidad, no habrá agua disponible durante
-                    las
-                    próximas horas
-                </p>
-                <span class="ticket-status">Aprobado</span>
-            </div>
-            <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
-                <p>
-                    <span class="ticket-info">Anuncio</span> Para toda la comunidad, no habrá agua disponible durante
-                    las
-                    próximas horas
-                </p>
-                <span class="ticket-status">Aprobado</span>
-            </div>
 
             <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
+                <img src="../../../assets/images/emprendimiento/logos/La Chismosa.png" class="logo-form">
                 <p>
                     <span class="ticket-info">Emprendimiento</span> La Chismosa
                 </p>
                 <span class="ticket-status">Rechazado</span>
             </div>
+
             <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
+                <i class='bxr bxs-calendar-check logo-form'></i>
                 <p>
-                    <span class="ticket-info">Reporte</span> Por favor arreglar la señal de transito, ya que alguien se
-                    la robó
-                </p>
-                <span class="ticket-status">Nuevo</span>
-            </div>
-            <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
-                <p>
-                    <span class="ticket-info">Reporte</span> Por favor arreglar la señal de transito, ya que alguien se
-                    la robó
+                    <span class="ticket-info">Evento</span> El proximo 13 de julio habrá una feria en el centro.
                 </p>
                 <span class="ticket-status">Nuevo</span>
             </div>
 
+
             <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
+                <i class="bxr bxs-megaphone logo-form"></i>
                 <p>
                     <span class="ticket-info">Reporte</span> Por favor arreglar la señal de transito, ya que alguien se
                     la robó
@@ -113,43 +93,44 @@
             </div>
 
             <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
+                <img src="../../../assets/images/emprendimiento/logos/La Central.png" class="logo-form">
                 <p>
-                    <span class="ticket-info">Reportes</span> Por favor arreglar la señal de transito, ya que alguien se
-                    la robó
+                    <span class="ticket-info">Emprendimiento</span> La Central
+                </p>
+                <span class="ticket-status">Aprobado</span>
+            </div>
+
+            <div class="ticket">
+                <i class='bxr bxs-calendar-check logo-form'></i>
+                <p>
+                    <span class="ticket-info">Evento</span> La Iglesia realizará un turno durante la proxima semana
                 </p>
                 <span class="ticket-status">Nuevo</span>
             </div>
 
             <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
+                <i class="bxr bxs-megaphone logo-form"></i>
                 <p>
-                    <span class="ticket-info">Reportes</span> Por favor arreglar la señal de transito, ya que alguien se
-                    la robó
+                    <span class="ticket-info">Reporte</span> El alumbrado público de la calle principal dejó de
+                    funcionar
                 </p>
                 <span class="ticket-status">Nuevo</span>
             </div>
 
             <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
+                <img src="../../../assets/images/emprendimiento/logos/Calle 33.png" class="logo-form">
                 <p>
-                    <span class="ticket-info">Reportes</span> Por favor arreglar la señal de transito, ya que alguien se
-                    la robó
+                    <span class="ticket-info">Emprendimiento</span> Calle 33
                 </p>
-                <span class="ticket-status">Nuevo</span>
+                <span class="ticket-status">Aprobado</span>
             </div>
-
             <div class="ticket">
-                <img src="../../../assets/images/emprendimientos/logos/La Chismosa.png" class="logo-form">
+                <i class='bxr  bxs-user-voice logo-form'></i>
                 <p>
-                    <span class="ticket-info">Reportes</span> prueba, 123 probando si la cantidad de caracteres es
-                    suficiente
+                    <span class="ticket-info">Anuncio</span> El proximo martes habrá un corte de agua durante la mañana
                 </p>
                 <span class="ticket-status">Nuevo</span>
             </div>
-
-
-
         </section>
     </main>
 
@@ -161,6 +142,5 @@
         </section>
     </footer>
 </body>
+<script src="panel-admin.js"></script>
 </body>
-
-</html>

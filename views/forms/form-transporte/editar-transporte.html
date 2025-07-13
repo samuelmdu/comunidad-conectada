@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Evento - Comunidad Conectada</title>
 
-    <title>Comunidad Conectada</title>
+    <!-- Remix Icon + Montserrat -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+    <!--Header/Footer CSS-->
     <link rel="stylesheet" href="../../../assets/styles/global.css">
-    <link rel="stylesheet" href="form-reporte.css">
+    <link rel="stylesheet" href="form-transporte.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
@@ -49,102 +50,73 @@
             <div class="burger"><i class="ri-menu-line"></i></div>
         </nav>
     </header>
-
+    <!-- FORMULARIO DE EVENTO -->
     <div class="form">
         <section class="intro">
-            <h2>¿Tienes algo que reportar? <span class="resaltado">¡Hazlo saber!</span></h2>
+            <h2>Editar Transporte</h2>
             <p>
-                Este formulario es para que puedas comunicar un reporte, queja o problema que esté
-                afectando a tu comunidad. Puedes hacerlo de forma anónima.
+                Este formulario es para registrar las rutas de transporte público en tu comunidad.
             </p>
         </section>
 
-        <form action="#" class="formReporte" id="formulario">
+        <form action="#" class="formEvento" id="formulario">
             <div class="columna1">
-                <!-- GRUPO REPORTE -->
-                <div class="formulario-grupo" id="grupo-reporte">
-                    <label class="formulario-label">Nombre del reporte:</label>
+                <!-- GRUPO RUTA -->
+                <div class="formulario-grupo" id="grupo-ruta">
+                    <label class="formulario-label">Nombre de la ruta:</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" required class="formulario-input" name="reporte" id="reporte">
+                        <input type="text" class="formulario-input" name="ruta" id="ruta" required
+                            value="Barrio Escalante - UCR">
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
-                        El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+                        La ruta debe tener el formato "Barrio Escalante - UCR"
                     </p>
                 </div>
 
-                <!-- GRUPO TIPO -->
-                <div class="formulario-grupo" id="grupo-tipo">
-                    <label class="formulario-label">Tipo de reporte:</label>
+                <!-- GRUPO HORARIO -->
+                <div class="formulario-grupo" id="grupo-horario">
+                    <label class="formulario-label">Horario:</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" required class="formulario-input" name="tipo" id="tipo">
+                        <input type="text" class="formulario-input" name="horario" id="horario"
+                            value="5:30 AM - 8:00 PM" required placeholder="Ej: 5:00 AM - 10:00 PM" required>
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
-                        El tipo debe tener entre 4 y 40 caracteres.
+                        El horario debe tener el formato “5:00 AM - 10:00 PM”
                     </p>
                 </div>
 
-                <!-- GRUPO DESCRIPCION -->
-                <div class="formulario-grupo" id="grupo-descripcion">
-                    <label class="formulario-label">Descripción del reporte:</label>
-                    <div class="formulario-grupo-input">
-                        <textarea rows="4" required class="formulario-input" name="descripcion"
-                            id="descripcion"></textarea>
-                        <i class="formulario-validacion-estado bx bxs-x-circle"></i>
-                    </div>
-                    <p class="formulario-input-error">
-                        La descripción debe tener entre 10 y 300 caracteres.
-                    </p>
-                </div>
-
-                <!-- GRUPO NOTIFICADO -->
-                <div class="formulario-grupo" id="grupo-notificado">
-                    <label class="formulario-label">¿Has notificado esto antes a alguien? ¿A quién?</label>
-                    <div class="formulario-grupo-input">
-                        <input type="text" required class="formulario-input" name="notificado" id="notificado">
-                        <i class="formulario-validacion-estado bx bxs-x-circle"></i>
-                    </div>
-                    <p class="formulario-input-error">
-                        Debe contener entre 3 y 100 caracteres.
-                    </p>
-                </div>
             </div>
 
             <div class="columna2">
-                <!-- GRUPO NOMBRE (OPCIONAL) -->
-                <div class="formulario-grupo" id="grupo-nombre">
-                    <label class="formulario-label">Tu nombre (opcional si elegiste anónimo):</label>
+                <div class="formulario-grupo" id="grupo-frecuencia">
+                    <label class="formulario-label">Frecuencia (minutos):</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" class="formulario-input" name="nombre" id="nombre">
+                        <input type="text" class="formulario-input" name="frecuencia" id="frecuencia" required
+                            value="15">
+
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
-                        El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
+                        La frecuencia debe ser un número en minutos
                     </p>
                 </div>
 
-                <!-- GRUPO CORREO (OPCIONAL) -->
-                <div class="formulario-grupo" id="grupo-correo">
-                    <label class="formulario-label">Correo electrónico (para dar seguimiento):</label>
+                <!-- GRUPO PRECIO -->
+                <div class="formulario-grupo" id="grupo-precio">
+                    <label class="formulario-label">Precio (₡):</label>
                     <div class="formulario-grupo-input">
-                        <input type="email" class="formulario-input" name="correo" id="correo">
+                        <input type="text" class="formulario-input" name="precio" id="precio" required value="475">
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
-                        Debe tener un formato válido: ejemplo@correo.com
+                        El precio debe ser un número válido
                     </p>
-                </div>
-
-                <!-- GRUPO EVIDENCIA -->
-                <div class="formulario-grupo">
-                    <label class="formulario-label">Foto o evidencia del problema (opcional):</label>
-                    <input type="file" class="formulario-input" accept="image/*">
                 </div>
 
                 <p class="notaFinal">
-                    Tu reporte será revisado y canalizado al área correspondiente. Agradecemos tu participación para
-                    mejorar juntos la comunidad.
+                    Esta ruta será visible para todos los usuarios que naveguen por la página
                 </p>
 
                 <!-- GRUPO TERMINOS Y CONDICIONES -->
@@ -155,7 +127,7 @@
                     </label>
                 </div>
 
-                <!-- GRUPO MENSAJE ERROR -->
+                <!-- GRUPO DE CAMPOS REQUERIDOS -->
                 <div class="formulario-mensaje" id="formulario-mensaje">
                     <p><i class="bx bxs-ghost"></i> Por favor, completá correctamente todos los campos obligatorios
                         antes de enviar.</p>
@@ -165,26 +137,13 @@
 
                 <!-- GRUPO BOTON ENVIAR -->
                 <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
-                    <input type="submit" class="formulario-btn" value="Enviar">
+                    <input type="submit" class="formulario-btn" value="Editar Transporte">
                 </div>
             </div>
         </form>
     </div>
 
-    <!--BORRAR 💀-->
-    <!-- <section>
-        <img src="../assets/beni.png" alt="" srcset="">
-        <img src="../assets/beni.png" alt="" srcset="">
-        <img src="../assets/beni.png" alt="" srcset="">
-        <img src="../assets/beni.png" alt="" srcset="">
-        <img src="../assets/messi.jpg" alt="" srcset="">
-        <img src="../assets/beni.png" alt="" srcset="">
-        <img src="../assets/beni.png" alt="" srcset="">
-        <img src="../assets/beni.png" alt="" srcset="">
-        <img src="../assets/beni.png" alt="" srcset="">
-    </section> -->
-
-
+    <!-- FOOTER -->
     <footer>
         <div class="exterior-site-footer">
             <div class="site-footer">
@@ -258,7 +217,7 @@
             <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
         </section>
     </footer>
-    <script src="form-reporte.js"></script>
+    <script src="form-transporte.js"></script>
 </body>
 
 </html>

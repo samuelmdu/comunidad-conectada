@@ -1,10 +1,8 @@
- /* ============================= */
- /*     # COMPONENTE: HERO       */
- /* ============================= */
+/* HERO SECTION */
 
-    .hero {
+.hero {
         width: 100%;
-        height: 60vh;
+        height: 92vh;
         min-height: 250px;
         position: relative;
         display: flex;
@@ -14,7 +12,7 @@
         overflow: hidden;
         background-color: var(--azul-oscuro);
     }
-
+    
     .hero-background {
         width: 100%;
         height: 100%;
@@ -26,144 +24,85 @@
         z-index: 1;
     }
 
-    .hero-background.luces {
-
-        background-image: url('../../../assets/images/evento/luces.jpg');
-    }
-
     .hero h2 {
         color: var(--blanco);
         z-index: 2;
-
+        font-size: 2rem;
+        text-transform: uppercase;
     }
 
     .hero-title {
         color: var(--blanco);
         font-size: 5rem;
+        font-weight: 900;
         text-align: center;
         position: relative;
         z-index: 2;
-        margin-bottom: 1vw;
         text-transform: uppercase;
-        padding: 0 5%;
-        line-height: 1.2;
-        padding: auto;
     }
 
 
-    @media (max-width: 830px) {
-        .hero {
-            height: 30vw;
-            min-height: 220px;
-        }
-    }
+/* WELCOME MESSAGE */
 
-
-    /* ============================= */
-    /*     # COMPONENTE: anuncio      */
-    /* ============================= */
-
-    .exterior-advertisement-container {
+.welcome-info{
+        height: 100vh;
         display: flex;
         justify-content: center;
-        margin-top: 2%;
+        text-align: center;
+        flex-direction: column;
     }
 
-    .advertisement-container {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-        width: 60%;
+    .welcome-info h1 {
+        color: var(--azul-oscuro);
+        font-size: 2rem;
+        text-transform: uppercase;
     }
 
-    .route-card {
+    .welcome-info-container {
         display: flex;
-        background-color: var(--blanco);
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-        min-height: 203px;
-        transition: transform 0.3s;
+        justify-content: center;
+        color: var(--azul-oscuro);
     }
 
-    .left-bar {
-        width: 8px;
-        background-color: var(--azul-claro);
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
+    .welcome-info p{
+        max-width: 80%;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 50px 0px;
     }
 
-    .card-content {
-        padding: 1.5rem;
-        flex: 1;
+
+    /* CONTENEDOR POR SECCION */
+    .vertical-content-section{
+        height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .route-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .route-card h3 {
-        color: var(--azul-oscuro);
-        margin-bottom: 1rem;
-        font-size: 1.4rem;
-    }
-
-    .route-details p {
-        margin-bottom: 0.5rem;
-        color: var(--azul-oscuro);
-        line-height: 1.5;
-        font-size: 1.1rem;
-
-    }
-
-    /* ===== # CARDS: MEDIA QUERIES ===== */
-
-    @media (max-width: 1400px) {
-        .advertisement-container {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media (max-width: 1035px) {
-        .advertisement-container {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 679px) {
-        .advertisement-container {
-            grid-template-columns: repeat(1, 1fr);
-        }
+        justify-content: center;
+        gap: 50px;
     }
 
 
-
-    /* ============================= */
-    /*     # COMPONENTE: TITLES      */
-    /* ============================= */
-
-
+    /* TITULO POR SECCION */
     .title-container {
         display: flex;
         justify-content: center;
         text-align: center;
         flex-direction: column;
-        margin-top: 4%;
     }
 
     .title-container h1 {
         color: var(--azul-oscuro);
-
+        font-size: 2rem;
+        text-transform: uppercase;
     }
 
     .title-container p {
         margin-top: 1%;
         color: var(--azul-oscuro);
-        max-width: 40%;
+        font-size: 1.5rem;
+        max-width: 80%;
         min-width: 40%;
-
+        font-style: italic;
     }
 
     .title-text-container {
@@ -171,15 +110,13 @@
         justify-content: center;
     }
 
-    /* ============================= */
-    /*     # COMPONENTE: CARDS      */
-    /* ============================= */
 
+
+    /* CONTENIDO INTERNO para emprendimiento y eventos por igual (CARDS) */
     .exterior-cards-container {
         display: flex;
         justify-content: center;
-        margin-top: 2%;
-
+        align-items: center;
     }
 
     .cards-container {
@@ -187,6 +124,7 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 2rem;
         width: 60%;
+        justify-content: center;
     }
 
     .cards-container a {
@@ -197,14 +135,18 @@
         height: 450px;
         width: 280px;
         border-radius: 20px;
-        box-shadow: 0 6px 12px #29598f91;
-        transition: all 0.3s ease-out;
+        box-shadow: 0 0px 12px #29598f91;
         min-width: 200px;
+        background-color: white;
+        color: var(--azul-oscuro);
+        transition: all 0.3s ease-out;
     }
 
+    /* EN LA TRANSICION AHORA TAMBIEN SE DESPLAZA PARA ARRIBA */
     .card:hover {
         transform: translateY(-5px);
         cursor: pointer;
+        box-shadow: 0 6px 12px #29598f91;
     }
 
     .card-image {
@@ -249,13 +191,15 @@
         background-image: url('../../../assets/images/evento/feria.jpg');
     }
 
-    .card-text-container {
+    /* TAMBIEN PERTENECE A EMPRENDIMIENTOS, PERO A SU VEZ A EVENTOS */
+
+    .card-text-container{
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 100%;
         height: 30%;
-        margin-left: 10%;
+        padding-left: 10%;
         gap: 10%;
     }
 
@@ -271,95 +215,162 @@
         font-size: 0.9rem;
     }
 
-    /* ===== # CARDS: MEDIA QUERIES ===== */
-
-    @media (max-width: 1400px) {
-        .cards-container {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media (max-width: 1035px) {
-        .cards-container {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 679px) {
-        .cards-container {
-            grid-template-columns: repeat(1, 1fr);
-        }
-    }
 
 
+    /* ANUNCIOS */
 
-    /* ============================= */
-    /*     # COMPONENTE: PUBLISH EVENT*/
-    /* ============================= */
-
-    .publish-event-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 2%;
-        color: var(--blanco);
-        height: 40vh;
+    /* SECCION EN AZUL */
+    .vertical-content-section-color{
         background-color: var(--azul-oscuro);
+        color: white;
     }
 
-    .publish-event-text-container {
-        margin-left: 4%;
-        font-style: italic;
+    .vertical-content-section-color h1{
+        color: white;
     }
 
-    .publish-event-text-container h2 {
-        font-size: 2rem;
-        font-weight: normal;
+    .vertical-content-section-color p{
+        color: white;
     }
 
-    .publish-event-text-container h1 {
-        font-size: 5rem;
+    .exterior-advertisement-container-anuncios {
+        display: flex;
+        justify-content: center;
     }
 
-    .publish-event-container a {
-        text-decoration: none;
-        color: var(--blanco);
+    .advertisement-container-anuncios {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        width: 80%;
     }
 
-    .publish-event-container a:hover {
-
-        transition: 0.10s;
-        color: var(--gris);
+    .route-card-anuncios {
+        display: flex;
+        background-color: var(--blanco);
+        border-radius: 10px;
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+        min-height: 203px;
+        transition: .5s;
     }
 
-    .publish-event-text-container p {
-        max-width: 550px;
+    .left-bar {
+        width: 8px;
+        background-color: var(--azul-oscuro);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
     }
 
-    .publish-event-text-container button {
-        width: 40%;
-        height: 40px;
-        color: var(--azul-oscuro);
-        border-radius: 20px;
-        border-style: none;
-        font-size: 1.1rem;
-        font-weight: bold;
-        margin-top: 5%;
+    .card-content-anuncios {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-    .publish-event-text-container button:hover {
+    .route-card-anuncios:hover {
         transform: translateY(-5px);
-        transition: 0.10s;
-        cursor: pointer;
-        background-color: var(--gris);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+        transition: .5s;
+    }
+
+    .route-card-anuncios h3 {
+        color: var(--azul-oscuro);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .route-details-anuncios p {
+        margin-bottom: 0.5rem;
+        color: var(--azul-oscuro);
+        line-height: 1.5;
+        font-size: 1.1rem;
     }
 
 
-    /* ============================= */
-    /*     # COMPONENTE: TRANSPORTE  */
-    /* ============================= */
+/* ACABAN LAS CLASES DE LA SECCION DE ANUNCIOS */
 
-    .transport-section {
+/* INICIAN CLASES DEL CALL TO ACTION */
+
+/* ==================================== */
+/* #COMPONENTE: CREATE ENTREPRENEURSHIP */
+/* ==================================== */
+
+.create-entrepreneurship-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blanco);
+    height: 60vh;
+    background-color: var(--azul-oscuro);
+}
+
+.create-entrepreneurship-container-limit{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    align-items: center;
+}
+
+.create-entrepreneurship-text-container {
+    font-style: italic;
+    text-align: center;
+}
+
+.create-entrepreneurship-text-container h2 {
+    font-size: 2.9rem;
+    font-weight: normal;
+}
+
+.create-entrepreneurship-text-container h1 {
+    font-size: 4rem;
+}
+
+.create-entrepreneurship-container a {
+    text-decoration: none;
+    color: var(--blanco);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-entrepreneurship-text-container p {
+    font-size: 1.4rem;
+    text-align: justify;
+}
+
+.create-entrepreneurship-text-container button {
+    width: 40%;
+    height: 40px;
+    color: var(--azul-oscuro);
+    border-radius: 20px;
+    border-style: none;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 5%;
+    justify-content: center;
+    text-align: center;
+    transition: .8s;
+}
+
+
+.create-entrepreneurship-text-container button:hover {
+    width: 100%;
+    font-weight: 700;
+    transform: translateY(-5px);
+    cursor: pointer;
+    transition: .8s;
+}
+
+
+
+/* ESTILOS PARA RUTAS */
+
+.transport-section {
         width: 80%;
         margin: 2rem auto;
         padding: 2rem 0;
@@ -379,7 +390,7 @@
 
     .route-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(366px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 5rem;
 
     }
@@ -424,48 +435,4 @@
         line-height: 1.5;
         font-size: 1.1rem;
 
-    }
-
-    /* Ajusted para celular */
-    @media (max-width: 435px) {
-        .cards-container {
-            width: 65%;
-        }
-
-        .title-text-container p {
-            margin-top: 5%;
-            min-width: 90%;
-            font-size: 1rem;
-        }
-
-        .back-container {
-            margin-top: 12%;
-        }
-
-        .title-container h1 {
-            margin-top: 12%;
-            width: 95%;
-            text-align: center;
-
-        }
-
-        .exterior-cards-container {
-            margin-top: 10%;
-            margin-bottom: 2%;
-
-        }
-
-    }
-
-    @media (max-width: 380px) {
-        .cards-container {
-            width: 75%;
-        }
-
-
-        .publish-event-container {
-
-            height: 70vh;
-
-        }
     }

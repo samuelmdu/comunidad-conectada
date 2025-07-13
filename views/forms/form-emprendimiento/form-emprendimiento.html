@@ -14,6 +14,8 @@
     <!--Header/Footer CSS-->
     <link rel="stylesheet" href="../../../assets/styles/global.css">
     <link rel="stylesheet" href="form-emprendimiento.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -49,63 +51,180 @@
         </nav>
     </header>
 
-    <main class="contenedor-form">
-        <section class="intro-form">
+    <main class="form">
+        <section class="intro">
             <h2>¿Tienes un emprendimiento? <span class="resaltado">¡Regístralo aquí!</span></h2>
             <p>
-                Este formulario está diseñado para que puedas crear y registrar tu emprendimiento en nuestra plataforma.
-                Al completarlo, estarás compartiendo tu proyecto con la comunidad y podrás acceder a oportunidades de
+                Este formulario está diseñado para que puedas crear y registrar tu emprendimiento en nuestra
+                plataforma.<br>
+                Al completarlo, estarás compartiendo tu proyecto con la comunidad y podrás acceder a oportunidades
+                de<br>
                 promoción, apoyo y visibilidad.
             </p>
         </section>
 
-        <form class="formulario-emprendimiento">
-            <div class="columna izquierda">
-                <label>Nombre del emprendimiento</label>
-                <input type="text" required>
-
-                <label>Descripción breve:</label>
-                <textarea rows="4" required></textarea>
-
-                <label>Categoría:</label>
-                <div class="categorias">
-                    <label><input type="checkbox"> Alimentos y bebidas</label>
-                    <label><input type="checkbox"> Moda y accesorios</label>
-                    <label><input type="checkbox"> Tecnología / Servicios digitales</label>
-                    <label><input type="checkbox"> Arte y diseño</label>
-                    <label><input type="checkbox"> Educación / Cursos</label>
-                    <label><input type="checkbox"> Otro: <input type="text" placeholder="Especificar..."></label>
+        <form action="#" class="formEmprendimiento" id="formulario">
+            <div class="columna1">
+                <!-- GRUPO EMPRENDIMIENTO-->
+                <div class="formulario-grupo" id="grupo-emprendimiento">
+                    <label class="formulario-label">Nombre del emprendimiento</label>
+                    <div class="formulario-grupo-input">
+                        <input type="text" required class="formulario-input" name="emprendimiento" id="emprendimiento"
+                            placeholder="La Chismosa">
+                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario-input-error">
+                        El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+                    </p>
                 </div>
+
+
+                <!-- GRUPO DESCRIPCION-->
+                <div class="formulario-grupo" id="grupo-descripcion">
+                    <label class="formulario-label">Descripción breve:</label>
+                    <div class="formulario-grupo-input">
+                        <textarea rows="4" required class="formulario-input" name="descripcion"
+                            id="descripcion"></textarea>
+                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario-input-error">
+                        La descripción debe tener entre 10 y 300 caracteres.
+                    </p>
+                </div>
+
+                <!-- GRUPO CATEGORIAS -->
+                <div class="formulario-grupo" id="grupo-categoria">
+                    <label class="formulario-label">Categoría:</label>
+                    <div class="categoria-opciones">
+                        <label><input type="radio" name="categoria" value="alimentos" required> Alimentos y
+                            bebidas</label>
+                        <label><input type="radio" name="categoria" value="moda"> Moda y accesorios</label>
+                        <label><input type="radio" name="categoria" value="tecnologia"> Tecnología / Servicios
+                            digitales</label>
+                        <label><input type="radio" name="categoria" value="arte"> Arte y diseño</label>
+                        <label><input type="radio" name="categoria" value="educacion"> Educación / Cursos</label>
+                        <label><input type="radio" name="categoria" value="otro"> Otro:</label>
+                    </div>
+                </div>
+
+                <!-- GRUPO OTRO (SOLO SE MUESTRA SI SE ELIGE 'Otro') -->
+                <div class="formulario-grupo" id="grupo-otro">
+                    <div class="formulario-grupo-input">
+                        <input type="text" class="formulario-input" placeholder="Especificar..." name="otro" id="otro">
+                        <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                    </div>
+                    <p class="formulario-input-error">
+                        Si elegiste "Otro", debes especificar la categoría.
+                    </p>
+                </div>
+
+
+                <!-- GRUPO USUARIO-->
+                <div class="formulario-grupo" id="grupo-nombre">
+                    <label class="formulario-label">Nombre del emprendedor/a:</label>
+                    <input type="text" required class="formulario-input" name="nombre" id="nombre">
+                    <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                    <p class="formulario-input-error">
+                        El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
+                    </p>
+                </div>
+
+
             </div>
 
-            <div class="columna derecha">
-                <label>Nombre del emprendedor/a:</label>
-                <input type="text" required>
+            <div class="columna2">
 
-                <label>Correo electrónico de contacto:</label>
-                <input type="email" required>
 
-                <label>Número de teléfono (opcional):</label>
-                <input type="tel">
 
-                <label>Ubicación:</label>
-                <input type="text" required>
+                <!-- GRUPO CORREO-->
+                <div class="formulario-grupo" id="grupo-correo">
+                    <label class="formulario-label">Correo electrónico de contacto:</label>
+                    <input type="email" required class="formulario-input" name="correo" id="correo">
+                    <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                    <p class="formulario-input-error">
+                        Debes ingresar un correo válido. Ejemplo: usuario@dominio.com
+                    </p>
+                </div>
 
-                <label>Red social o sitio web (opcional):</label>
-                <input type="url">
 
-                <label>Sube una imagen o logo (opcional):</label>
-                <input type="file" accept="image/*">
+                <!-- GRUPO NUMERO-->
+                <div class="formulario-grupo" id="grupo-telefono">
+                    <label class="formulario-label">Número de teléfono:</label>
+                    <input type="tel" required class="formulario-input" name="telefono" id="telefono">
+                    <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                    <p class="formulario-input-error">
+                        El número debe tener 8 dígitos y solo contener números.
+                    </p>
+                </div>
 
-                <p class="nota-final">
+
+                <!-- GRUPO UBICACION-->
+                <div class="formulario-grupo" id="grupo-ubicacion">
+                    <label class="formulario-label">Ubicación:</label>
+                    <div class="formulario-grupo-input">
+                        <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion">
+                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                    </div>
+                    <p class="formulario-input-error">
+                        La ubicación no puede estar vacía y debe tener al menos 4 caracteres.
+                    </p>
+                </div>
+
+                <div class="formulario-grupo">
+                    <label class="formulario-label">Red social o sitio web (opcional):</label>
+                    <input type="url" class="formulario-input">
+                </div>
+
+                <div class="formulario-grupo">
+                    <label class="formulario-label">Sube una imagen o logo (opcional):</label>
+                    <input type="file" class="formulario-input" accept="image/*">
+                </div>
+
+                <p class="notaFinal">
                     Al enviar este formulario, tu emprendimiento será revisado por el equipo y publicado próximamente en
                     nuestra plataforma.
                 </p>
 
-                <button type="submit">Enviar</button>
+                <!-- GRUPO TERMINOS Y CONDICIONES-->
+                <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
+                    <label class="formulario-label">
+                        <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos">
+                        <b class="formulario-span">Acepto los terminos y condiciones</b>
+                    </label>
+                </div>
+
+                <!-- GRUPO DE CAMPOS REQUERIDOS-->
+                <div class="formulario-mensaje " id="formulario-mensaje">
+                    <p><i class='bx bxs-ghost'>Por favor, completá correctamente todos los campos obligatorios antes de
+                            enviar.</i></p>
+                </div>
+                <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió correctamente
+                </p>
+
+                <!-- GRUPO BOTON ENVIAR-->
+                <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
+                    <input type="submit" class="formulario-btn" value="Enviar">
+                </div>
             </div>
         </form>
+
+
     </main>
+
+
+    <!--BORRAR 💀-->
+    <!-- <section>
+        <img src="../assets/beni.png" alt="" srcset="">
+        <img src="../assets/beni.png" alt="" srcset="">
+        <img src="../assets/beni.png" alt="" srcset="">
+        <img src="../assets/beni.png" alt="" srcset="">
+        <img src="../assets/messi.jpg" alt="" srcset="">
+        <img src="../assets/beni.png" alt="" srcset="">
+        <img src="../assets/beni.png" alt="" srcset="">
+        <img src="../assets/beni.png" alt="" srcset="">
+        <img src="../assets/beni.png" alt="" srcset="">
+    </section> -->
+
 
     <footer>
         <div class="exterior-site-footer">
@@ -180,6 +299,7 @@
             <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
         </section>
     </footer>
+    <script src="form-emprendimiento.js"></script>
 </body>
 
 </html>

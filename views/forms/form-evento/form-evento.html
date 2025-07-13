@@ -55,42 +55,118 @@
     <section class="intro">
       <h2>¿Organizas un evento? <span class="resaltado">¡Regístralo aquí!</span></h2>
       <p>
-        Este formulario es para registrar evento comunitarios que se llevarán a cabo en tu barrio. Una vez enviado,<br>
+        Este formulario es para registrar eventos comunitarios que se llevarán a cabo en tu barrio. Una vez enviado,<br>
         será revisado por el equipo antes de su publicación.
       </p>
     </section>
 
-    <form class="form-evento">
+    <form action="#" class="formEvento" id="formulario">
       <div class="columna1">
-        <label>Nombre del evento:</label>
-        <input type="text" required />
+        <!-- GRUPO EVENTO -->
+        <div class="formulario-grupo" id="grupo-evento">
+          <label class="formulario-label">Nombre del evento:</label>
+          <div class="formulario-grupo-input">
+            <input type="text" required class="formulario-input" name="evento" id="evento"
+              placeholder="Fiesta del Barrio">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+          </div>
+          <p class="formulario-input-error">
+            El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+          </p>
+        </div>
 
-        <label>Descripción breve del evento:</label>
-        <textarea rows="4" required></textarea>
+        <!-- GRUPO DESCRIPCION -->
+        <div class="formulario-grupo" id="grupo-descripcion">
+          <label class="formulario-label">Descripción breve del evento:</label>
+          <div class="formulario-grupo-input">
+            <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"></textarea>
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+          </div>
+          <p class="formulario-input-error">
+            La descripción debe tener entre 10 y 300 caracteres.
+          </p>
+        </div>
 
-        <label>Fecha del evento:</label>
-        <input type="date" required />
+        <!-- GRUPO FECHA -->
+        <div class="formulario-grupo" id="grupo-fecha">
+          <label class="formulario-label">Fecha del evento:</label>
+          <div class="formulario-grupo-input">
+            <input type="text" name="fecha" id="fecha" placeholder="Ej: 08/12/2025" required class="formulario-input">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+          </div>
+          <p class="formulario-input-error">
+            Debes seleccionar una fecha válida.
+          </p>
+        </div>
 
-        <label>Lugar o dirección del evento:</label>
-        <input type="text" required />
+        <!-- GRUPO LUGAR -->
+        <div class="formulario-grupo" id="grupo-ubicacion">
+          <label class="formulario-label">Lugar o dirección del evento:</label>
+          <div class="formulario-grupo-input">
+            <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+          </div>
+          <p class="formulario-input-error">
+            La ubicación debe tener entre 4 y 60 caracteres.
+          </p>
+        </div>
       </div>
 
       <div class="columna2">
-        <label>Persona de contacto (nombre):</label>
-        <input type="text" required />
+        <!-- GRUPO NOMBRE CONTACTO -->
+        <div class="formulario-grupo" id="grupo-nombre">
+          <label class="formulario-label">Persona de contacto (nombre):</label>
+          <div class="formulario-grupo-input">
+            <input type="text" required class="formulario-input" name="nombre" id="nombre">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+          </div>
+          <p class="formulario-input-error">
+            El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
+          </p>
+        </div>
 
-        <label>Teléfono de contacto (opcional):</label>
-        <input type="tel" />
+        <!-- GRUPO TELEFONO -->
+        <div class="formulario-grupo" id="grupo-telefono">
+          <label class="formulario-label">Teléfono de contacto:</label>
+          <div class="formulario-grupo-input">
+            <input type="tel" class="formulario-input" name="telefono" id="telefono">
+            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+          </div>
+          <p class="formulario-input-error">
+            El número debe tener entre 8 y 11 dígitos.
+          </p>
+        </div>
 
-        <label>Sube una imagen, afiche o archivo relacionado (opcional):</label>
-        <input type="file" accept="image/*" />
+        <!-- GRUPO ARCHIVO -->
+        <div class="formulario-grupo">
+          <label class="formulario-label">Sube una imagen, afiche o archivo relacionado (opcional):</label>
+          <input type="file" class="formulario-input" accept="image/*">
+        </div>
 
         <p class="notaFinal">
           Este evento será revisado por el equipo antes de ser publicado en la plataforma. Asegúrate de que los datos
           sean correctos.
         </p>
 
-        <button type="submit">Registrar evento</button>
+        <!-- GRUPO TERMINOS Y CONDICIONES -->
+        <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
+          <label class="formulario-label">
+            <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos">
+            <b class="formulario-span">Acepto los términos y condiciones</b>
+          </label>
+        </div>
+
+        <!-- GRUPO DE CAMPOS REQUERIDOS -->
+        <div class="formulario-mensaje" id="formulario-mensaje">
+          <p><i class="bx bxs-ghost"></i> Por favor, completá correctamente todos los campos obligatorios antes de
+            enviar.</p>
+        </div>
+        <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió correctamente</p>
+
+        <!-- GRUPO BOTON ENVIAR -->
+        <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
+          <input type="submit" class="formulario-btn" value="Registrar evento">
+        </div>
       </div>
     </form>
   </div>
@@ -166,6 +242,7 @@
       <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
     </section>
   </footer>
+  <script src="form-evento.js"></script>
 </body>
 
 </html>

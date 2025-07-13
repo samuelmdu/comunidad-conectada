@@ -23,76 +23,179 @@
     color: var(--azul-claro);
 }
 
-.form-evento {
+/*.formEvento {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
     justify-content: space-between;
 }
 
+.columna1, .columna2 {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}*/
+
+.formAnuncio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin: 48px auto;
+    padding: 16px 32px;
+}
+
 .columna1,
 .columna2 {
-    flex: 1 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/*esto para darle formato y estilo a las casillas*/
 input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="url"],
-input[type="date"],
-input[type="time"],
-input[type="file"],
-textarea,
-select {
-    padding: 13px;
+textarea {
+    padding: 12.8px;
     border-radius: 8px;
     border: 1px solid var(--gris);
-    font-size: 16px;
+    font-size: 1rem;
     background-color: #f4f6fa;
     color: var(--azul-oscuro);
+    width: 100%;
 }
 
-/*Para poder mover la cajita de texto grande*/
 textarea {
     resize: vertical;
     min-height: 80px;
 }
 
-button[type="submit"] {
+.formulario-btn[type="submit"] {
     background-color: var(--azul-oscuro);
     color: var(--blanco);
     border: none;
-    padding: 13px 18px;
+    padding: 13px 24px;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
     width: fit-content;
-    align-self: start;
     transition: 0.2s;
 }
 
-button[type="submit"]:hover {
+.formulario-btn[type="submit"]:hover {
     background-color: var(--azul-medio);
 }
 
 .notaFinal {
-    font-size: 14px;
+    font-size: 0.9rem;
     color: var(--azul-oscuro);
-    margin-top: 16px;
+    margin-top: 1rem;
 }
+
+
+.formulario-label {
+    display: block;
+    padding: 10px 0;
+}
+
+.formulario-grupo {
+    position: relative;
+    width: 100%;
+}
+
+
+.formulario-validacion-estado {
+    position: absolute;
+    right: 10px;
+    padding: 7px;
+    font-size: 20px;
+    opacity: 0;
+}
+
+.formulario-input-error {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+/*CSS LLAMADO POR EL JS*/
+.formulario-input-error-activo {
+    display: block;
+}
+
+.formulario-checkbox {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    margin: 0 10px
+}
+
+.formulario-grupo-terminos,
+.formulario-mensaje,
+.formulario-grupo-btn-enviar {
+    grid-column: span 2;
+}
+
+.formulario-grupo-terminos {
+    text-align: center;
+}
+
+.formulario-mensaje {
+    color: rgb(184, 55, 55);
+    text-align: center;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1.2em;
+    display: none;
+}
+
+#formulario-grupo-btn-enviar {
+    display: flex;
+    justify-content: center;
+    /* Centra horizontalmente */
+}
+
+/*llamada por el js*/
+.formulario-mensaje-activo {
+    display: block;
+}
+
+.formulario-mensaje-exito {
+    font-size: 1.5em;
+    color: #15b54a;
+    padding: 40px;
+    text-align: center;
+    display: none;
+}
+
+/*css llamado po js*/
+.formulario-mensaje-exito-activo {
+    display: block;
+}
+
+/*---------VALIDACIONES--------------*/
+
+.formulario-grupo-correcto .formulario-validacion-estado {
+    color: #15b54a;
+    opacity: 1;
+}
+
+.formulario-grupo-incorrecto .formulario-label {
+    color: #9c0505;
+}
+
+.formulario-grupo-incorrecto .formulario-validacion-estado {
+    color: #9c0505;
+    opacity: 1;
+}
+
+.formulario-grupo-incorrecto .formulario-input {
+    border: 2px solid #9c0505;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
-    .form-evento {
+    .formEvento {
         flex-direction: column;
-    }
-
-    .columna1,
-    .columna2 {
-        flex: 1 1 100%;
+        grid-template-columns: 1fr;
     }
 }
