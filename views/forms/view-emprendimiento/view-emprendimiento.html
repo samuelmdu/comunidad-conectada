@@ -38,10 +38,10 @@
                 <a href="../../public-views/transporte/transporte.html">
                     <li>TRANSPORTE</li>
                 </a>
-                <a href="form-reporte.html">
+                <a href="../form-reporte/form-reporte.html">
                     <li>REPORTES</li>
                 </a>
-                <a>
+                <a href="../../admin/panel-admin/panel-admin.html">
                     <i class="ri-account-circle-fill icon-profile"></i>
                 </a>
             </ul>
@@ -75,11 +75,19 @@
                     especialidad.
                 </p>
 
-                <label>Categorías:</label>
-                <ul class="dato">
-                    <li>Alimentos y bebidas</li>
-                    <li>Arte y diseño</li>
-                </ul>
+                <div class="formulario-grupo" id="grupo-categoria">
+                    <label class="formulario-label">Categoría:</label>
+                    <div class="categoria-opciones">
+                        <label><input type="radio" name="categoria" value="alimentos" required> Alimentos y
+                            bebidas</label>
+                        <label><input type="radio" name="categoria" value="moda"> Moda y accesorios</label>
+                        <label><input type="radio" name="categoria" value="tecnologia"> Tecnología / Servicios
+                            digitales</label>
+                        <label><input type="radio" name="categoria" value="arte"> Arte y diseño</label>
+                        <label><input type="radio" name="categoria" value="educacion"> Educación / Cursos</label>
+                        <label><input type="radio" name="categoria" value="otro"> Otro:</label>
+                    </div>
+                </div>
 
                 <label>Ubicación:</label>
                 <p class="dato">Barrio Escalante, San José</p>
@@ -98,8 +106,8 @@
                 <label>Logo o imagen del emprendimiento:</label>
                 <p class="dato"><a href="https://instagram.com/cafeescalante" target="_blank">@cafeescalante</a></p>
 
-                <label>Foto o evidencia del problema:</label>
-                <img src="../../assets/images/rapha.png" alt="Evidencia del reporte" class="archivo" />
+                <label>Logo o imagen del producto:</label>
+                <img src="../../../assets/images/hero/barrio.jpg" alt="Evidencia del reporte" class="archivo" />
 
                 <p class="notaFinal">
                     Este reporte fue recibido. El área correspondiente será notificada.

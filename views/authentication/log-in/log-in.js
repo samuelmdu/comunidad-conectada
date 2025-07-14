@@ -1,12 +1,14 @@
 const inputs = document.querySelectorAll('#formulario input');
-
 const formulario = document.getElementById("formulario");
 
+//Samuel :)
+const inputCorreo = document.getElementById("correo");
+const inputPass = document.getElementById("password");
 const btnEntrar = document.querySelector('.formulario__btn');
 
-const user = 'admin@gmail.com';
+const mail = 'admin@gmail.com';
 const pass = 1234
-
+//Samuel :)
 
 const expresiones = {
     password: /^.{4,12}$/, //Acepta todo Rango de 4 a 12
@@ -19,11 +21,11 @@ const campos = {
 
 
 const validarFormulario = (e) => {
-    switch (e.target.name) { 
+    switch (e.target.name) {
         case "password":
             //funcion
             validarCampo(expresiones.password, e.target, "password");
-            validarPassword2();
+
             break;
         case "correo":
             //funcion
@@ -40,6 +42,7 @@ const validarCampo = (expresion, input, campo) => {
         document.querySelector(`#grupo__${campo} i`).classList.remove("bxs-x-circle");
         document.querySelector(`#grupo__${campo} i`).classList.add("bxs-check-circle");
         campos[campo] = true;
+
     } else {
         document.getElementById(`grupo__${campo}`).classList.add("formulario__grupo-incorrecto");
         document.getElementById(`grupo__${campo}`).classList.remove("formulario__grupo-correcto");
@@ -65,9 +68,7 @@ formulario.addEventListener("submit", (e) => {
         document.getElementById("formulario__mensaje").classList.remove("formulario__mensaje-activo");
         document.getElementById("formulario__mensaje-exito").classList.add("formulario__mensaje-exito-activo");
 
-        setTimeout(() => {
-            location.reload();
-        }, 4000)
+
 
     } else {
         document.getElementById("formulario__mensaje").classList.add("formulario__mensaje-activo");
@@ -75,7 +76,12 @@ formulario.addEventListener("submit", (e) => {
 
 })
 
-
+//Samuel :)
 btnEntrar.addEventListener("click", () => {
 
+    if (inputCorreo.value == mail && inputPass.value == pass) {
+        window.location.href = "/views/public-views/feed/feed.html";
+    }
+
 });
+//Samuel :)
