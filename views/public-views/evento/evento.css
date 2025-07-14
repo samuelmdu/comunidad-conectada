@@ -234,7 +234,7 @@
     text-align: center;
 }
 
-.create-entrepreneurship-container-limit{
+.create-entrepreneurship-container-limit {
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -313,7 +313,7 @@
     background-color: var(--azul-oscuro);
 }
 
-.create-entrepreneurship-container-limit{
+.create-entrepreneurship-container-limit {
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -746,10 +746,7 @@
     }
 
     .publish-event-text-container p {
-        margin-top: 10%;
-        font-size: 1rem;
-        max-width: 95%;
-        text-align: center;
+        display: none;
     }
 
     .publish-event-text-container button {

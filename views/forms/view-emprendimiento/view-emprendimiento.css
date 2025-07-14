@@ -45,6 +45,7 @@
      font-size: 16px;
      background-color: #f4f6fa;
      color: var(--azul-oscuro);
+     margin-left: 2;
  }
 
  .archivo {
@@ -53,6 +54,16 @@
      border-radius: 8px;
      margin: 10px 0;
  }
+
+ .categoria-opciones label {
+     display: block;
+     margin-top: 10px;
+     margin-bottom: 8px;
+     color: var(--azul-oscuro);
+     font-weight: 500;
+ }
+
+
 
  button {
      background-color: var(--azul-oscuro);
