@@ -40,7 +40,9 @@
 }
 
 .hero-background.cheese {
-    background-image: url('../../../assets/images/emprendimiento/logos/Santo\ Pecado.png');
+    background-image: url('../../../assets/images/emprendimiento/coverPhotos/SANTO\ PECADO.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-title {
@@ -297,7 +299,7 @@
     font-size: 2.2rem;
     text-align: center;
     font-weight: 400;
-    width: 80%; 
+    width: 80%;
     padding-top: 80px;
 }
 
@@ -553,7 +555,7 @@
     background-color: var(--azul-oscuro);
 }
 
-.create-entrepreneurship-container-limit{
+.create-entrepreneurship-container-limit {
     width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr;
