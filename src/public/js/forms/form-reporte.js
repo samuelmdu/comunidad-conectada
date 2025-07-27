@@ -75,7 +75,7 @@ inputs.forEach((input) => {
 })
 
 formulario.addEventListener("submit", (e) => {
-    e.preventDefault();//No deja que se recarge la pagina
+    //No deja que se recarge la pagina
 
     const terminos = document.getElementById("terminos");
     if (campos.reporte && campos.notificado && campos.descripcion && campos.correo && campos.tipo && terminos.checked) {

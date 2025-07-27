@@ -116,17 +116,18 @@ app.get('/editar-transporte', (req, res) => {
 // ║              Data base                   ║
 // ╚══════════════════════════════════════════╝
 
-
+const connectDB = require('./db');
 const User = require('../models/users');
-
+const Evento = require('../models/eventos');
+const Anuncio = require('../models/anuncios')
+connectDB();
 
 // ==========================
-// POST
+// AUTHENTICATION
 // ==========================
 
 
-
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
 
     let data = new User({
 
@@ -139,7 +140,7 @@ app.post('/register', (req, res) => {
 
     });
 
-    data.save()
+    await data.save()
         .then(() => {
             console.log('Usuario registrado');
         })
@@ -156,7 +157,7 @@ app.post('/authenticate', (req, res) => {
         email: req.body.correo,
         password: req.body.password
     }
-    console.log(data.email);
+
     const existeUser = async () => {
 
         const usuario = await User.findOne({ email: data.email });
@@ -178,4 +179,47 @@ app.post('/authenticate', (req, res) => {
     };
 
     existeUser();
+});
+
+
+// ==========================
+// FORMS
+// ==========================
+
+
+app.post('/addEvent', async (req, res) => {
+    let data = new Evento({
+        eventName: req.body.evento,
+        creatorName: req.body.creatorName,
+        desciption: req.body.descripcion,
+        phone: req.body.telefono,
+        date: req.body.fecha,
+        direction: req.body.ubicacion,
+    });
+    await data.save()
+        .then(() => {
+            console.log('Evento registrado');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/form-evento')
+});
+
+app.post('/addAnuncio', async (req, res) => {
+    let data = new Anuncio({
+        anuncioName: req.body.anuncio,
+        creatorName: req.body.nombre,
+        desciption: req.body.descripcion,
+        date: req.body.fecha,
+
+    })
+    await data.save()
+        .then(() => {
+            console.log('Anuncio registrado');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/form-anuncio')
 });
