@@ -16,7 +16,7 @@
 <body>
     <main>
         <div class="form-container">
-            <form action="#" class="formulario" id="formulario">
+            <form class="formulario" id="formulario" method="POST" action="/register">
 
                 <div class="formulario__grupo-titulo">
                     <h2>Crea un Usuario Nuevo</h2>
@@ -102,7 +102,8 @@
                 <div class="formulario__grupo" id="grupo__password2">
                     <label class="formulario__label">Repetir contraseña</label>
                     <div class="formulario__grupo-input">
-                        <input type="password" class="formulario__input" name="password2" id="password2">
+                        <input type="password" class="formulario__input" name="passwordConfirmation"
+                            id="passwordConfirmation">
                         <i class='formulario__validacion-estado bx bxs-x-circle'></i>
                     </div>
                     <p class="formulario__input-error">
