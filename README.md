@@ -19,6 +19,7 @@ x Cambios x
 
 -Se añadió en global.css una nueva clase llamada "no-created" + 
 esta clase sirve para los mensajes de "Actualmente no hay eventos registrados en tu comunidad."
+-Se añadió la funcionalidad del Login.
 
 INSTALACIÓN
 
