@@ -55,7 +55,7 @@ inputs.forEach((input) => {
 
 
 formulario.addEventListener("submit", (e) => {
-    e.preventDefault();//No deja que se recarge la pagina
+
 
     const terminos = document.getElementById("terminos");
     if (campos.password && campos.correo) {
@@ -70,9 +70,3 @@ formulario.addEventListener("submit", (e) => {
 
 })
 
-
-btnEntrar.addEventListener("click", () => {
-
-    window.location.href = ('/feed');
-
-});

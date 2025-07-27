@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.listen(port, () => console.log(`Puerto: ${port}`));
 
 // ╔══════════════════════════════════════════╗
-// ║              Views routes                ║
+// ║              Routes                      ║
 // ╚══════════════════════════════════════════╝
 
 
@@ -110,4 +110,72 @@ app.get('/form-transporte', (req, res) => {
 
 app.get('/editar-transporte', (req, res) => {
     res.render('forms/editar-transporte.html');
+});
+
+// ╔══════════════════════════════════════════╗
+// ║              Data base                   ║
+// ╚══════════════════════════════════════════╝
+
+
+const User = require('../models/users');
+
+
+// ==========================
+// POST
+// ==========================
+
+
+
+app.post('/register', (req, res) => {
+
+    let data = new User({
+
+        cedula: req.body.cedula,
+        name: req.body.nombre,
+        email: req.body.correo,
+        phone: req.body.telefono,
+        password: req.body.password,
+        passwordConfirmation: req.body.passwordConfirmation
+
+    });
+
+    data.save()
+        .then(() => {
+            console.log('Usuario registrado');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/log-in')
+
+});
+
+app.post('/authenticate', (req, res) => {
+
+    let data = {
+        email: req.body.correo,
+        password: req.body.password
+    }
+    console.log(data.email);
+    const existeUser = async () => {
+
+        const usuario = await User.findOne({ email: data.email });
+        console.log(usuario);
+
+        if (usuario != null) {
+            if (data.password == usuario.password) {
+                console.log("La información es correcta");
+                res.redirect('/');
+            } else {
+                console.log("La contrasena es incorrecta");
+                res.redirect('/log-in')
+            }
+
+        } else {
+            console.log("El usuario no se encontro")
+            res.redirect('/log-in')
+        }
+    };
+
+    existeUser();
 });
