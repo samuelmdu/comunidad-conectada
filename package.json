@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "morgan": "^1.10.1"
+  },
+  "scripts": {
+    "dev": "nodemon src"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
