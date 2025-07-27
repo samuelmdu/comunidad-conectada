@@ -18,11 +18,16 @@ app.listen(port, () => console.log(`Puerto: ${port}`));
 // ║              Views routes                ║
 // ╚══════════════════════════════════════════╝
 
+
+app.get('/', (req, res) => {
+    res.render('public-views/feed.html');
+});
+
 // ==========================
 // AUTHENTICATION
 // ==========================
 
-app.get('/', (req, res) => {
+app.get('/log-in', (req, res) => {
     res.render('authentication/log-in.html');
 });
 

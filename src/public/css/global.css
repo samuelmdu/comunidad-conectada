@@ -95,6 +95,7 @@ html {
 }
 
 .icon-profile {
+    display: none;
     font-size: 2rem;
 }
 
