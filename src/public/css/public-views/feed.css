@@ -441,3 +441,7 @@
     font-size: 1.1rem;
 
 }
+
+.no-content-to-show{
+    display: none;
+}

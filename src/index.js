@@ -223,3 +223,24 @@ app.post('/addAnuncio', async (req, res) => {
         })
     res.redirect('/form-anuncio')
 });
+
+
+
+//AQUI MUESTRO EN CONSOLA LOS EVENTOS REGISTRADOS SOLO PARA PRUEBAS > MANTENER CODIGO DORMIDO
+// const mostrar = async() => {
+//     const eventos = await Evento.find();
+//     console.log(eventos);
+//     console.log("FIN DE LOS EVENTOS EN LA BD");
+// }
+//mostrar()
+
+
+//OBTENER EVENTOS PARA PODER ENVIARLOS DESDE EL BACK, ESTO YA QUE AL PARECER NO SE PUEDE USAR DOM DESDE NODE JS, ENTONCES LO ENVIAMOS COMO UN PAQUETE HASTA EL FRONT END
+app.get('/api/eventos', async (req, res) => {
+    try {
+        const eventos = await Evento.find();
+        res.json(eventos);
+    } catch (err) {
+        console.error("Error obteniendo eventos:", err);
+    }
+});

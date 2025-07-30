@@ -28,6 +28,8 @@
 body,
 html {
     overflow-x: hidden;
+    /* AJUSTE EL MARGIN, PORQUE EL MENU SE VOLVIO FIJO, ENTONCES TAPABA UNA PARTE DEL CONTENIDO */
+    margin-top: 2rem;
 }
 
 
