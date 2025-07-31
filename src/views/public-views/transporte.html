@@ -67,27 +67,26 @@
 
         </div>
 
-        <div class="no-created">
+        <div class="no-created" id="noCardsAtRutas">
             <a><b>Actualmente no hay rutas de buses registradas en tu comunidad.</b><br>
                 Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
         </div>
         <section class="transport-section">
             <div class="route-container">
-
-                <!-- <div class="route-card">
+                <div class="route-card">
                     <div class="left-bar"></div>
                     <div class="card-content">
-                        <h3>Ruta 01 – Centro – Universidad</h3>
+                        <h3>Ruta <span id="nombreRuta">San José</span></h3>
                         <div class="route-details">
-                            <p><strong>Horarios:</strong><br> 6:00 AM - 10:00 PM (cada 20 min)</p>
-                            <p><strong>Precio:</strong><br> 450 colones</p>
+                            <p><strong>Horarios</strong></p>
+                            <p id="horarioRuta">6:00 AM - 10:00 PM</p>
+                            <p>Cada <span id="frecuenciaRuta">20</span> Minutos</p>
+                            <p><strong>Precio</strong></p>
+                            <p><span id="precioRuta">450</span> Colones</p>
                         </div>
                     </div>
-                </div> -->
-
-
+                </div>
             </div>
-
         </section>
     </main>
 
@@ -164,6 +163,7 @@
             <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
         </section>
     </footer>
+    <script src="js/data/showRutasPublic.js"></script>
 </body>
 
 </html>

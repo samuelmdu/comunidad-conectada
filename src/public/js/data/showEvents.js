@@ -12,12 +12,9 @@
 
             //MENSAJES OCULTOS EN EVENTOS, solo se muestran si no contenido
             if (eventos && eventos.length > 0) {
-                const mensajes = document.querySelectorAll(".no-created");
-                mensajes.forEach(mensaje => {
-                    mensaje.classList.add("no-content-to-show");
-                });
+                const mensajeEventos = document.getElementById("noCardsAtEventos");
+                mensajeEventos.classList.add("no-content-to-show");
             }
-
 
             const eventosAleatorios = eventos
                 //MEZCLA EL ARRAY

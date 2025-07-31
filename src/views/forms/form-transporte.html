@@ -61,7 +61,7 @@
             </p>
         </section>
 
-        <form action="#" class="formEvento" id="formulario">
+        <form action="/addRuta" method="POST" class="formEvento" id="formulario">
             <div class="columna1">
                 <!-- GRUPO RUTA -->
                 <div class="formulario-grupo" id="grupo-ruta">
@@ -94,7 +94,7 @@
                 <div class="formulario-grupo" id="grupo-frecuencia">
                     <label class="formulario-label">Frecuencia (minutos):</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" class="formulario-input" name="frecuencia" id="frecuencia" required>
+                        <input type="number" class="formulario-input" name="frecuencia" id="frecuencia" required>
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
@@ -106,7 +106,7 @@
                 <div class="formulario-grupo" id="grupo-precio">
                     <label class="formulario-label">Precio (₡):</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" class="formulario-input" name="precio" id="precio" required>
+                        <input type="number" class="formulario-input" name="precio" id="precio" required>
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">

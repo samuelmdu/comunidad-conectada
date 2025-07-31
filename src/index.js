@@ -120,6 +120,7 @@ const connectDB = require('./db');
 const User = require('../models/users');
 const Evento = require('../models/eventos');
 const Anuncio = require('../models/anuncios')
+const Rutas = require('../models/rutas')
 connectDB();
 
 // ==========================
@@ -225,6 +226,25 @@ app.post('/addAnuncio', async (req, res) => {
 });
 
 
+app.post('/addRuta', async (req, res) => {
+    let data = new Rutas({
+        rutaNombre: req.body.ruta,
+        rutaHorario: req.body.horario,
+        rutaFrecuencia: req.body.frecuencia,
+        rutaPrecio: req.body.precio
+
+    })
+    await data.save()
+        .then(() => {
+            console.log('Ruta registrada');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/form-transporte')
+});
+
+
 
 //AQUI MUESTRO EN CONSOLA LOS EVENTOS REGISTRADOS SOLO PARA PRUEBAS > MANTENER CODIGO DORMIDO
 // const mostrar = async() => {
@@ -242,5 +262,15 @@ app.get('/api/eventos', async (req, res) => {
         res.json(eventos);
     } catch (err) {
         console.error("Error obteniendo eventos:", err);
+    }
+});
+
+app.get('/api/rutas', async (req, res) => {
+    try {
+        const rutas = await Rutas.find();
+        res.json(rutas);
+        console.log(rutas)
+    } catch (err) {
+        console.error("Error obteniendo rutas:", err);
     }
 });
