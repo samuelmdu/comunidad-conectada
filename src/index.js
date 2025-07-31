@@ -119,7 +119,9 @@ app.get('/editar-transporte', (req, res) => {
 const connectDB = require('./db');
 const User = require('../models/users');
 const Evento = require('../models/eventos');
-const Anuncio = require('../models/anuncios')
+const Anuncio = require('../models/anuncios');
+const Emprendimiento = require('../models/form-emprendimiento');
+const Reporte = require('../models/form-reporte');
 connectDB();
 
 // ==========================
@@ -222,4 +224,44 @@ app.post('/addAnuncio', async (req, res) => {
             console.log("ERROR", err);
         })
     res.redirect('/form-anuncio')
+});
+
+app.post('/addReport', async (req, res) => {
+    let data = new Reporte({
+        reportName: req.body.reporte,
+        creatorName: req.body.nombre,
+        desciption: req.body.descripcion,
+        reportType: req.body.tipo,
+        notifiers: req.body.notificado,
+        email: req.body.correo,
+    })
+    await data.save()
+        .then(() => {
+            console.log('Reporte registrado');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/form-reporte')
+});
+
+app.post('/addEmprendimiento', async (req, res) => {
+    let data = new Emprendimiento({
+        emprendimientoName: req.body.emprendimiento,
+        creatorName: req.body.nombre,
+        desciption: req.body.descripcion,
+        phone: req.body.telefono,
+        email: req.body.correo,
+        direction: req.body.ubicacion,
+        category: req.body.categoria,
+        other: req.body.otro,
+    })
+    await data.save()
+        .then(() => {
+            console.log('Emprendimiento registrado');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/form-emprendimiento')
 });
