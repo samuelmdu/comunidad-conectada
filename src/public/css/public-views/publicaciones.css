@@ -1,0 +1,191 @@
+/* PUBLICACIONES */
+
+
+.vertical-content-section {
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* CONTENEDORES DE TITULOS */
+
+.title-container h1 {
+    margin-top: 200px;
+    color: var(--azul-oscuro);
+    font-size: 4rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.title-container h2 {
+    color: var(--azul-oscuro);
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    margin-left: 6%;
+
+}
+
+
+/* LINEA DIVISORIA */
+
+.section-divider {
+    height: 2px;
+    background-color: var(--gris);
+    margin: 40px 100px;
+    opacity: 0.4;
+}
+
+
+/* CONTENEDORES DE CARDS POR SECCION */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 3rem;
+    column-gap: 4.5rem;
+    width: 60%;
+    justify-content: left;
+    margin-left: 6%;
+}
+
+
+/* CARD GENERAL */
+.card {
+    min-height: 450px;
+    min-width: 200px;
+    width: 280px;
+    border-radius: 20px;
+    box-shadow: 0 0px 12px #29598f91;
+    background-color: var(--blanco);
+    color: var(--azul-oscuro);
+    transition: all 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+    box-shadow: 0 6px 12px #29598f91;
+}
+
+.card-image {
+    height: 280px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+/* Imagenes específicas */
+.card-image.chismosa {
+    background-image: url('../../img/emprendimiento/logos/La\ Chismosa.png');
+}
+
+.card-image.perros {
+    background-image: url('../../img/evento/parque-perros.jpg');
+}
+
+/* TEXTO DENTRO DEL CARD */
+.card-text-container {
+    padding: 1rem;
+}
+
+.card-title {
+    color: var(--azul-oscuro);
+    font-size: 1.5rem;
+    font-weight: bold;
+    max-width: 90%;
+}
+
+.card-subtitle {
+    color: var(--azul-oscuro);
+    font-size: 0.9rem;
+}
+
+/* CARD PARA ANUNCIOS */
+.route-card-anuncios {
+    display: flex;
+    width: 275px;
+    background-color: var(--blanco);
+    border-radius: 10px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+    min-height: 203px;
+    transition: .5s;
+}
+
+.left-bar {
+    width: 8px;
+    background-color: var(--azul-oscuro);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.card-content-anuncios {
+    padding: 1.5rem;
+}
+
+.route-card-anuncios:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    transition: .5s;
+}
+
+.route-card-anuncios h3 {
+    color: var(--azul-oscuro);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.route-details-anuncios p {
+    margin-bottom: 0.5rem;
+    color: var(--azul-oscuro);
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+/* BOTÓN EDITAR EN CARDS */
+.card-text-container a,
+.route-card-anuncios a {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+
+.edit-button {
+    width: 70%;
+    max-width: 200px;
+    height: 35px;
+    color: var(--blanco);
+    border-radius: 20px;
+    border: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: var(--azul-oscuro);
+    transition: 0.4s;
+}
+
+.edit-button:hover {
+    background-color: var(--azul-medio);
+    color: var(--blanco);
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+
+.no-created {
+    text-align: center;
+    background-color: var(--blanco);
+    color: var(--texto-principal);
+    padding: 40px 20px;
+    margin: 2rem auto;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
