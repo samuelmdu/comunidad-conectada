@@ -117,7 +117,45 @@ html {
 
 @media (max-width: 1090px) {
     .options {
-        display: none;
+        width: 100%;
+        height: calc(100vh - 4rem); /* Manera de que el View-height sea perfecto */
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        background-color: var(--gris);
+        flex-direction: column; /* Aplila las opciones de arriba hacia abajo */
+        justify-content: flex-start; /* Alinea unicamente los elementos flexibles al inicio */
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        transform: translateX(-100%);
+        transition: 0.3s;
+        z-index: 2;
+    }
+
+    .options.active {
+        transform: translateX(0);
+    }
+
+    .optins a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .options li {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+    }
+    
+    .options li:hover {
+        background-color: var(--azul-claro);
+        color: var(--blanco);
+        border-radius: 0;
+    }
+    
+    .icon-profile {
+        display: none !important;
     }
 
     .burger {
