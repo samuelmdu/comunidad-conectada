@@ -60,7 +60,7 @@
      justify-content: center;
      text-align: center;
      flex-direction: column;
-     padding: 80px 0px;
+     padding: 80px 0px 0px;
  }
 
  .title-container h1 {
@@ -170,7 +170,7 @@
      width: 30%;
      background-color: var(--azul-oscuro);
      border-radius: 50px;
-     margin: 80px auto 0;
+     margin: 0px auto 100px;
      padding: 10px;
      text-align: center;
      transition: .8s;
@@ -191,3 +191,7 @@
      background-color: var(--azul-claro);
      transition: .8s;
  }
+
+.no-created{
+    margin-top: 40px;
+}

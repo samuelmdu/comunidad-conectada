@@ -120,6 +120,7 @@ const connectDB = require('./db');
 const User = require('../models/users');
 const Evento = require('../models/eventos');
 const Anuncio = require('../models/anuncios')
+const Rutas = require('../models/rutas')
 connectDB();
 
 // ==========================
@@ -222,4 +223,54 @@ app.post('/addAnuncio', async (req, res) => {
             console.log("ERROR", err);
         })
     res.redirect('/form-anuncio')
+});
+
+
+app.post('/addRuta', async (req, res) => {
+    let data = new Rutas({
+        rutaNombre: req.body.ruta,
+        rutaHorario: req.body.horario,
+        rutaFrecuencia: req.body.frecuencia,
+        rutaPrecio: req.body.precio
+
+    })
+    await data.save()
+        .then(() => {
+            console.log('Ruta registrada');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/form-transporte')
+});
+
+
+
+//AQUI MUESTRO EN CONSOLA LOS EVENTOS REGISTRADOS SOLO PARA PRUEBAS > MANTENER CODIGO DORMIDO
+// const mostrar = async() => {
+//     const eventos = await Evento.find();
+//     console.log(eventos);
+//     console.log("FIN DE LOS EVENTOS EN LA BD");
+// }
+//mostrar()
+
+
+//OBTENER EVENTOS PARA PODER ENVIARLOS DESDE EL BACK, ESTO YA QUE AL PARECER NO SE PUEDE USAR DOM DESDE NODE JS, ENTONCES LO ENVIAMOS COMO UN PAQUETE HASTA EL FRONT END
+app.get('/api/eventos', async (req, res) => {
+    try {
+        const eventos = await Evento.find();
+        res.json(eventos);
+    } catch (err) {
+        console.error("Error obteniendo eventos:", err);
+    }
+});
+
+app.get('/api/rutas', async (req, res) => {
+    try {
+        const rutas = await Rutas.find();
+        res.json(rutas);
+        console.log(rutas)
+    } catch (err) {
+        console.error("Error obteniendo rutas:", err);
+    }
 });
