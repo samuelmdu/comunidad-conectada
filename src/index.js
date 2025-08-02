@@ -58,6 +58,10 @@ app.get('/emprendimiento', (req, res) => {
     res.render('public-views/emprendimiento.html');
 });
 
+//ESTO ES UN TEST PARA AGREGAR ARCHIVOS
+//const multer = require('multer');
+//const path = require('path');
+
 app.get('/emprendimiento-user', (req, res) => {
     res.render('public-views/emprendimiento-user.html');
 });
@@ -228,10 +232,10 @@ app.post('/addAnuncio', async (req, res) => {
 
 app.post('/addReport', async (req, res) => {
     let data = new Reporte({
-        reportName: req.body.reporte,
+        reporteName: req.body.reporte,
         creatorName: req.body.nombre,
         desciption: req.body.descripcion,
-        reportType: req.body.tipo,
+        reporteType: req.body.tipo,
         notifiers: req.body.notificado,
         email: req.body.correo,
     })
@@ -245,6 +249,7 @@ app.post('/addReport', async (req, res) => {
     res.redirect('/form-reporte')
 });
 
+//app.post('/addEmprendimiento', upload.single('imagen'), async (req, res) => {
 app.post('/addEmprendimiento', async (req, res) => {
     let data = new Emprendimiento({
         emprendimientoName: req.body.emprendimiento,
@@ -254,7 +259,7 @@ app.post('/addEmprendimiento', async (req, res) => {
         email: req.body.correo,
         direction: req.body.ubicacion,
         category: req.body.categoria,
-        other: req.body.otro,
+        //other: req.body.otro,
     })
     await data.save()
         .then(() => {

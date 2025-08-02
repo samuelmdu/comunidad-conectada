@@ -8,8 +8,8 @@ let emprendimientoSchema = new mongoose.Schema({
     phone: { type: Number, required: true },
     email: { type: String, required: true },
     direction: { type: String, required: true },
-    category: { type: String, required: true },
-    other: { type: String}
+    category: { type: String},
+    imageUrl: { type: String } // aquí se guarda la ruta al archivo
 
 }, { versionKey: false })
 // Schema

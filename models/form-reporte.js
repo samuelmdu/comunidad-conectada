@@ -5,7 +5,7 @@ let reporteSchema = new mongoose.Schema({
     reporteName: { type: String, required: true },
     creatorName: { type: String},
     desciption: { type: String, required: true },
-    reportType: { type: Number, required: true },
+    reporteType: { type: String, required: true },
     notifiers: { type: String, required: true },
     email: { type: String},
 
