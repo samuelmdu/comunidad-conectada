@@ -86,6 +86,27 @@ app.get('/panel-admin', (req, res) => {
 });
 
 // ==========================
+// admin FORMS-VIEWS
+// ==========================
+
+app.get('/viewAnuncio', (req, res) => {
+    res.render('admin/form-views/vistaAnuncio.html');
+});
+
+app.get('/viewEmprendimiento', (req, res) => {
+    res.render('admin/form-views/vistaEmprendimiento.html');
+});
+
+app.get('/viewEvento', (req, res) => {
+    res.render('admin/form-views/vistaEvento.html');
+});
+
+app.get('/viewReporte', (req, res) => {
+    res.render('admin/form-views/vistaEvento.html');
+});
+
+
+// ==========================
 // FORMS
 // ==========================
 app.get('/form-anuncio', (req, res) => {
