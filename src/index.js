@@ -78,6 +78,10 @@ app.get('/transporte-admin', (req, res) => {
     res.render('public-views/transporte-admin.html');
 });
 
+app.get('/publicaciones', (req, res) => {
+    res.render('public-views/publicaciones.html');
+});
+
 // ==========================
 // ADMIN
 // ==========================

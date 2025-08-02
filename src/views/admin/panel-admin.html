@@ -62,7 +62,9 @@
             <button>Aprobados</button>
             <button>Rechazados</button>
             <div class="divider-line"></div>
-            <a href="../../public-views/transporte/transporte-admin.html">Editar Transporte</a>
+            <a href="/transporte-admin">Editar Transporte</a>
+            <a href="/register">Registrar Administrador</a>
+
         </section>
 
 
@@ -71,83 +73,81 @@
         </section>
 
         <section class="tickets-list">
-            <a href="../../forms/view-emprendimiento/view-emprendimiento.html">
-                <div class="ticket">
-                    <img src="../../../assets/images/emprendimiento/logos/La Chismosa.png" class="logo-form">
-                    <p>
-                        <span class="ticket-info">Emprendimiento</span> Café Escalante
-                    </p>
-                    <span class="ticket-status">Rechazado</span>
-                </div>
-            </a>
-
-
-            <div class="ticket">
-                <i class='bxr bxs-calendar-check logo-form'></i>
+            <div class="ticket" data-tipo="emprendimiento">
+                <i class='bxr  bxs-store logo-form'></i>
                 <p>
-                    <span class="ticket-info">Evento</span> El proximo 13 de julio habrá una feria en el centro.
+                    <span class="ticket-info">Emprendimiento</span> Café Escalante
                 </p>
-                <span class="ticket-status">Nuevo</span>
+                <span class="ticket-status">Rechazado</span>
+                <div class="left-bar"></div>
             </div>
 
-            <a href="../../forms/view-reporte/view-reporte.html">
-                <div class="ticket">
-                    <i class="bxr bxs-megaphone logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Reporte</span> Ruidos molestos en la madrugada
+            <div class="ticket" data-tipo="evento">
+                <i class="bx bxs-calendar-check logo-form"></i>
+                <p>
+                    <span class="ticket-info">Evento</span> El proximo 13 de julio habrá una feria en el centro
+                    adfasdfadfasfasfdsafadfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasf
+                </p>
+                <span class="ticket-status">Nuevo</span>
+                <div class="left-bar"></div>
 
+            </div>
 
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                </div>
-            </a>
+            <div class="ticket" data-tipo="reporte">
+                <i class='bxr  bxs-message-captions logo-form'></i>
+                <p>
+                    <span class="ticket-info">Reporte</span> Ruidos molestos en la madrugada
+                </p>
+                <span class="ticket-status">Nuevo</span>
+                <div class="left-bar"></div>
+            </div>
 
-            <a href="../../forms/view-anuncio/view-anuncio.html">
-                <div class="ticket">
-                    <img src="../../../assets/images/emprendimiento/logos/La Central.png" class="logo-form">
-                    <p>
-                        <span class="ticket-info">Anuncio</span> Nuevo punto de reciclaje
+            <div class="ticket" data-tipo="anuncio">
+                <i class="bx bxs-megaphone logo-form"></i>
+                <p>
+                    <span class="ticket-info">Anuncio</span> Nuevo punto de reciclaje
+                </p>
+                <span class="ticket-status">Aprobado</span>
+                <div class="left-bar"></div>
+            </div>
 
-
-                    </p>
-                    <span class="ticket-status">Aprobado</span>
-                </div>
-            </a>
-
-            <div class="ticket">
-                <i class='bxr bxs-calendar-check logo-form'></i>
+            <div class="ticket" data-tipo="evento">
+                <i class="bx bxs-calendar-check logo-form"></i>
                 <p>
                     <span class="ticket-info">Evento</span> La Iglesia realizará un turno durante la proxima semana
                 </p>
                 <span class="ticket-status">Nuevo</span>
+                <div class="left-bar"></div>
             </div>
 
-            <div class="ticket">
-                <i class="bxr bxs-megaphone logo-form"></i>
+            <div class="ticket" data-tipo="reporte">
+                <i class='bxr  bxs-message-captions logo-form'></i>
                 <p>
                     <span class="ticket-info">Reporte</span> El alumbrado público de la calle principal dejó de
                     funcionar
                 </p>
                 <span class="ticket-status">Nuevo</span>
+                <div class="left-bar"></div>
             </div>
 
-            <a href="../../forms/view-evento/view-evento.html">
-                <div class="ticket">
-                    <img src="../../../assets/images/admin/fiesta.jpg" class="logo-form">
-                    <p>
-                        <span class="ticket-info">Evento</span> Fiesta del barrio
-                    </p>
-                    <span class="ticket-status">Aprobado</span>
-                </div>
-            </a>
+            <div class="ticket" data-tipo="evento">
+                <i class="bx bxs-calendar-check logo-form"></i>
+                <p>
+                    <span class="ticket-info">Evento</span> Fiesta del barrio
+                </p>
+                <span class="ticket-status">Aprobado</span>
+                <div class="left-bar"></div>
+            </div>
 
-            <div class="ticket">
-                <i class='bxr  bxs-user-voice logo-form'></i>
+            <div class="ticket" data-tipo="anuncio">
+                <i class="bx bxs-megaphone logo-form"></i>
                 <p>
                     <span class="ticket-info">Anuncio</span> El proximo martes habrá un corte de agua durante la mañana
                 </p>
                 <span class="ticket-status">Nuevo</span>
+                <div class="left-bar"></div>
             </div>
+
         </section>
     </main>
 
@@ -159,5 +159,5 @@
         </section>
     </footer>
 </body>
-<script src="panel-admin.js"></script>
+<script src="js/admin/panel-admin.js"></script>
 </body>

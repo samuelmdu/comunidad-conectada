@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comunidad Conectada</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!--Header/Footer CSS-->
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/public-views/publicaciones.css">
+</head>
+
+<body>
+    <header>
+        <nav class="menu">
+            <h1 class="title-header">
+                Comunidad <span>Conectada</span>
+            </h1>
+            <ul class="options">
+                <a href="/feed">
+                    <li>INICIO</li>
+                </a>
+                <a href="/evento">
+                    <li>EVENTO</li>
+                </a>
+                <a href="/anuncio">
+                    <li>ANUNCIO</li>
+                </a>
+                <a href="/emprendimiento">
+                    <li>EMPRENDIMIENTO</li>
+                </a>
+                <a href="/transporte">
+                    <li>TRANSPORTE</li>
+                </a>
+                <a href="/form-reporte">
+                    <li>REPORTES</li>
+                </a>
+                <a href="/panel-admin">
+                    <i class="ri-account-circle-fill icon-profile"></i>
+                </a>
+            </ul>
+
+            <div class="burger"><i class="ri-menu-line"></i></div>
+
+        </nav>
+    </header>
+
+    <main class="main-content">
+
+        <!-- TÍTULO PRINCIPAL -->
+        <section class="vertical-content-section">
+            <div class="title-container">
+                <h1>Mis publicaciones</h1>
+            </div>
+        </section>
+
+        <div class="section-divider"></div> <!-- DIVISOR -->
+
+
+        <!-- EMPRENDIMIENTOS -->
+        <section class="vertical-content-section">
+            <div class="title-container">
+                <h2>Emprendimientos</h2>
+                <div class="no-created">
+                    <p><b>Actualmente no hay publicaciones registradas.</b><br>
+                        Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
+                </div>
+
+
+            </div>
+            <div class="cards-container">
+
+                <div class="card">
+                    <div class="card-image chismosa"></div>
+                    <div class="card-text-container">
+                        <p class="card-title">La Chismosa
+                        </p>
+                        <p class="card-subtitle">Restaurante</p>
+                        <a href="/form-emprendimiento">
+                            <button class="edit-button">Editar</button>
+                        </a>
+
+                    </div>
+                </div>
+
+
+            </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div> <!-- DIVISOR -->
+
+
+        <!-- EVENTOS -->
+        <section class="vertical-content-section">
+            <div class="title-container">
+                <h2>Eventos</h2>
+                <div class="no-created">
+                    <p><b>Actualmente no hay publicaciones registradas.</b><br>
+                        Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
+                </div>
+
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-image perros"></div>
+                    <div class="card-text-container">
+                        <p class="card-title">Inauguración Parque de Perros</p>
+                        <p class="card-subtitle">San Rafael, Heredia</p>
+                        <a href="/form-evento">
+                            <button class="edit-button">Editar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <div class="section-divider"></div> <!-- DIVISOR -->
+
+
+        <!-- ANUNCIOS -->
+        <section class="vertical-content-section">
+            <div class="title-container">
+                <h2>Anuncios</h2>
+            </div>
+            <div class="no-created">
+                <p><b>Actualmente no hay publicaciones registradas.</b><br>
+                    Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
+            </div>
+
+            <div class="cards-container">
+                <div class="route-card-anuncios">
+                    <div class="left-bar"></div>
+                    <div class="card-content-anuncios">
+                        <h3>Reunión de la comunidad</h3>
+                        <div class="route-details-anuncios">
+                            <p><strong>Horarios:</strong><br> 4:00 PM - 8:00 PM</p>
+                            <p><strong>Ubicación:</strong><br> Salón parroquial</p>
+                        </div>
+                        <a href="/form-anuncio">
+                            <button class="edit-button">Editar</button>
+                        </a>
+                    </div>
+                </div>
+            </div>-
+        </section>
+
+    </main>
+
+    <footer>
+        <!--Copyright-->
+        <section class="copyright-container">
+            <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
+        </section>
+    </footer>
+    <script src="js/publicaciones/publicaciones.js"></script>
+</body>
+
+</html>
