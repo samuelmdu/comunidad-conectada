@@ -97,7 +97,7 @@ html {
 }
 
 .icon-profile {
-    display: none;
+    display: flex;
     font-size: 2rem;
 }
 
@@ -118,23 +118,67 @@ html {
 }
 
 @media (max-width: 1090px) {
+    .menu {
+        overflow: visible; /* Permite que el menú se expanda */
+    }
+
     .options {
+        width: 100vw;
+        height: 0;
+        position: fixed;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden; /* Oculta el contenido cuando height ==0 */
+        flex-direction: column;
+        background-color: var(--gris);
+        transition: height 0.3s ease;  /* Transición suave vertical para abrir(arriba hacia abajo) y cerrar(abajo hacia arriba) el menú */
+        z-index: 2;
+    }
+
+    /* Clase activada por JS */
+    .options.active {
+        height: 100vh;
+        padding: 1rem 0;
+        border-top: 1px solid var(--azul-oscuro);
+    }
+
+    .options a {
+        display: block;
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .options li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    .options li:hover {
+        background-color: var(--azul-oscuro);
+        color: var(--blanco);
+        border-radius: 0;
+        padding: 0.5rem 0;
+    }
+
+    .icon-profile {
         display: none;
     }
 
     .burger {
         display: block;
         margin-right: 2rem;
-        font-size: 40px;
+        font-size: 2rem;
         color: var(--azul-oscuro);
         transition: 0.10s;
+        cursor: pointer;
     }
 
-    .burger:hover {
-        cursor: pointer;
-        color: var(--azul-claro);
-        transition: 0.10s;
-    }
 }
 
 
