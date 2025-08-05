@@ -133,8 +133,22 @@ app.get('/form-transporte', (req, res) => {
     res.render('forms/form-transporte.html');
 });
 
-app.get('/editar-transporte', (req, res) => {
-    res.render('forms/editar-transporte.html');
+app.get('/editar-transporte', async (req, res) => {
+    try {
+        const rutaId = req.query.id;
+        const ruta = await Rutas.findById(rutaId);
+
+        if (!ruta) {
+            return res.status(404).send('Ruta no encontrada');
+        }
+
+        res.render('forms/editar-transporte.ejs', {
+            ruta: ruta,
+            rutaId: rutaId
+        });
+    } catch (error) {
+        console.error("Error al obtener la ruta:", error);
+    }
 });
 
 // ╔══════════════════════════════════════════╗
@@ -267,6 +281,24 @@ app.post('/addRuta', async (req, res) => {
             console.log("ERROR", err);
         })
     res.redirect('/form-transporte')
+});
+
+app.post('/actualizar-ruta', async (req, res) => {
+    try {
+        const rutaId = req.body.id;
+
+        const updatedData = {
+            rutaNombre: req.body.ruta,
+            rutaHorario: req.body.horario,
+            rutaFrecuencia: req.body.frecuencia,
+            rutaPrecio: req.body.precio
+        };
+
+        await Rutas.findByIdAndUpdate(rutaId, updatedData);
+        res.redirect('/transporte-admin');
+    } catch (error) {
+        console.error("Error al actualizar la ruta:", error);
+    }
 });
 
 
