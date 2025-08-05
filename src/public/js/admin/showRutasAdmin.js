@@ -47,7 +47,7 @@ fetch("/api/rutas")
             pPrecio.innerHTML = `<span id="precioRuta">${ruta.rutaPrecio}</span> Colones`;
 
             const editarLink = document.createElement("a");
-            editarLink.href = "/editar-transporte";
+            editarLink.href = `/editar-transporte?id=${ruta._id}`;
             editarLink.textContent = "Editar Ruta";
 
             details.appendChild(pHorarioLabel);

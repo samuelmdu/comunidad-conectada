@@ -60,14 +60,17 @@
             </p>
         </section>
 
-        <form action="#" class="formEvento" id="formulario">
+        <form action="/actualizar-ruta" method="POST" class="formEvento" id="formulario">
+            <!-- Campo oculto para el ID -->
+            <input type="hidden" name="id" value="<%= rutaId %>">
+
             <div class="columna1">
                 <!-- GRUPO RUTA -->
                 <div class="formulario-grupo" id="grupo-ruta">
                     <label class="formulario-label">Nombre de la ruta:</label>
                     <div class="formulario-grupo-input">
                         <input type="text" class="formulario-input" name="ruta" id="ruta" required
-                            value="Barrio Escalante - UCR">
+                            value="<%= ruta.rutaNombre %>">
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
@@ -79,15 +82,14 @@
                 <div class="formulario-grupo" id="grupo-horario">
                     <label class="formulario-label">Horario:</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" class="formulario-input" name="horario" id="horario"
-                            value="5:30 AM - 8:00 PM" required placeholder="Ej: 5:00 AM - 10:00 PM" required>
+                        <input type="text" class="formulario-input" name="horario" id="horario" required
+                            value="<%= ruta.rutaHorario %>" placeholder="Ej: 5:00 AM - 10:00 PM">
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
                         El horario debe tener el formato “5:00 AM - 10:00 PM”
                     </p>
                 </div>
-
             </div>
 
             <div class="columna2">
@@ -95,8 +97,7 @@
                     <label class="formulario-label">Frecuencia (minutos):</label>
                     <div class="formulario-grupo-input">
                         <input type="text" class="formulario-input" name="frecuencia" id="frecuencia" required
-                            value="15">
-
+                            value="<%= ruta.rutaFrecuencia %>">
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
@@ -108,7 +109,8 @@
                 <div class="formulario-grupo" id="grupo-precio">
                     <label class="formulario-label">Precio (₡):</label>
                     <div class="formulario-grupo-input">
-                        <input type="text" class="formulario-input" name="precio" id="precio" required value="475">
+                        <input type="text" class="formulario-input" name="precio" id="precio" required
+                            value="<%= ruta.rutaPrecio %>">
                         <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                     </div>
                     <p class="formulario-input-error">
