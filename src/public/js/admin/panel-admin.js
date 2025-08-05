@@ -80,7 +80,7 @@ function redireccionarFormulario() {
             const tipo = ticket.dataset.tipo;
             switch (tipo) {
                 case 'evento':
-                    window.location.href = '/form-evento';
+                    window.location.href = `/ver-evento/${id}`;
                     break;
                 case 'anuncio':
                     window.location.href = '/form-anuncio';

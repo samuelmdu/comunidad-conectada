@@ -8,7 +8,7 @@ let eventoSchema = new mongoose.Schema({
     phone: { type: Number, required: true },
     date: { type: Date, required: true },
     direction: { type: String, required: true },
-
+    aprobado: { type: Boolean, default: false } // NUEVO CAMPO
 }, { versionKey: false })
 // Schema
 let Evento = new mongoose.model('Eventos', eventoSchema);

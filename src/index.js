@@ -101,9 +101,9 @@ app.get('/viewEmprendimiento', (req, res) => {
     res.render('admin/form-views/vistaEmprendimiento.html');
 });
 
-app.get('/viewEvento', (req, res) => {
-    res.render('admin/form-views/vistaEvento.html');
-});
+/*app.get('/viewEvento', (req, res) => {
+    res.render('admin/form-views/vistaEvento.ejs');
+});*/
 
 app.get('/viewReporte', (req, res) => {
     res.render('admin/form-views/vistaEvento.html');
@@ -235,6 +235,7 @@ app.post('/addEvent', async (req, res) => {
         phone: req.body.telefono,
         date: req.body.fecha,
         direction: req.body.ubicacion,
+         aprobado: false // esto es CLAVE [para que el evento no se muestre hasta que sea aprobado por un admin
     });
     await data.save()
         .then(() => {
@@ -315,7 +316,7 @@ app.post('/actualizar-ruta', async (req, res) => {
 //OBTENER EVENTOS PARA PODER ENVIARLOS DESDE EL BACK, ESTO YA QUE AL PARECER NO SE PUEDE USAR DOM DESDE NODE JS, ENTONCES LO ENVIAMOS COMO UN PAQUETE HASTA EL FRONT END
 app.get('/api/eventos', async (req, res) => {
     try {
-        const eventos = await Evento.find();
+        const eventos = await Evento.find({ aprobado: true });
         res.json(eventos);
     } catch (err) {
         console.error("Error obteniendo eventos:", err);
@@ -331,3 +332,38 @@ app.get('/api/rutas', async (req, res) => {
         console.error("Error obteniendo rutas:", err);
     }
 });
+
+///// QUE SE APRUEBEN O ELIMINEN LOS EVENTOS recien agregado aza
+// Aprobar evento
+app.post('/aprobar-evento', async (req, res) => {
+  const id = req.body.id;
+  await Evento.findByIdAndUpdate(id, { aprobado: true });
+  console.log("Evento aprobado:", id);
+  res.redirect('/panel-admin');
+});
+
+// Eliminar evento
+app.post('/eliminar-evento', async (req, res) => {
+  const id = req.body.id;
+  await Evento.findByIdAndDelete(id);
+  console.log("Evento eliminado:", id);
+  res.redirect('/panel-admin');
+});
+
+app.get('/ver-evento/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const evento = await Evento.findById(id);
+
+    if (!evento) return res.status(404).send("Evento no encontrado");
+
+    // Renderiza el HTML de la vista y le pasa los datos del evento
+    res.render('admin/form-views/vistaEvento.ejs', { evento }); // si usás EJS usá .ejs
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error interno del servidor");
+  }
+});
+
+

@@ -62,35 +62,44 @@
   <form class="vistaEvento" action="/viewEvento" method="POST">
     <div class="columna1">
       <label>Nombre del evento:</label>
-      <p class="dato">Fiesta del Barrio</p>
+      <p class="dato"><%= evento.eventName %></p>
 
       <label>Descripción breve del evento:</label>
-      <p class="dato">Una actividad con música, comida y juegos organizada para unir a los vecinos.</p>
+      <p class="dato"><%= evento.descripcion %></p>
 
       <label>Fecha del evento:</label>
-      <p class="dato">08/12/2025</p>
+      <p class="dato"><%= evento.fecha %></p>
 
       <label>Lugar o dirección del evento:</label>
-      <p class="dato">Parque de Barrio Escalante</p>
+      <p class="dato"><%= evento.direction %></p>
     </div>
 
     <div class="columna2">
       <label>Persona de contacto (nombre):</label>
-      <p class="dato">Carlos Ramírez</p>
+      <p class="dato"><%= evento.contactName %></p>
 
       <label>Teléfono de contacto:</label>
-      <p class="dato">8888-9999</p>
+      <p class="dato"><%= evento.telefono %></p>
 
       <label>Imagen o afiche del evento:</label>
-      <img src="../../assets/images/fiestab.jpg" alt="Imagen del evento" class="archivo" />
+      <img src="<%= evento.imageUrl %>" alt="Imagen del evento" class="archivo" />
 
       <p class="notaFinal">
         Este evento será evaluado y aprobado si cumple con las políticas de Comunidad Conectada.
       </p>
 
       <div class="acciones-admin">
-        <button class="aprobar">Aprobar</button>
-        <button class="declinar">Declinar</button>
+            <!-- BOTÓN APROBAR -->
+            <form action="/aprobar-evento" method="POST">
+                <input type="hidden" name="id" value="<%= evento._id %>">
+                <button type="submit" class="aprobar">Aprobar</button>
+            </form>
+
+            <!-- FORMULARIO PARA DECLINAR -->
+            <form action="/eliminar-evento" method="POST">
+                <input type="hidden" name="id" value="<%= evento._id %>">
+                <button type="submit" class="declinar">Declinar</button>
+            </form>
       </div>
     </div>
   </form>
@@ -179,6 +188,15 @@
             <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
         </section>
     </footer>
+
+    <script>
+  // ID del evento a aprobar o eliminar 
+  const eventoID = "PASTEA_EL_ID_DEL_EVENTO_AQUÍ"; // por ahora lo ponés manualmente
+
+  document.getElementById("input-id-aprobar").value = eventoID;
+  document.getElementById("input-id-declinar").value = eventoID;
+</script>
+
 </body>
 
 </html>
