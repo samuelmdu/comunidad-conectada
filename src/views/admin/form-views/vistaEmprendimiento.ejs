@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comunidad Conectada</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/forms/view-emprendimiento.css" />
+</head>
+
+<body>
+    <!-- Header  -->
+    <%- include('../components/header.ejs') %>
+
+        <div class="form">
+            <section class="intro">
+                <h2>Vista de Emprendimiento <span class="resaltado">- Panel de Administración</span></h2>
+                <p>
+                    Estás revisando un emprendimiento registrado por un miembro de la comunidad. Aquí podrás visualizar
+                    la
+                    información completa del negocio,
+                    incluyendo descripción, categoría, contacto y material visual adjunto.
+                </p>
+                <p>
+                    Usá los botones <strong>Aprobar</strong> o <strong>Declinar</strong> al final del reporte para
+                    registrar
+                    una respuesta.
+                </p>
+            </section>
+
+
+            <form class="vistaEmprendimiento">
+                <div class="columna1">
+                    <label>Nombre del emprendimiento:</label>
+                    <p class="dato">Café Escalante</p>
+
+                    <label>Descripción breve:</label>
+                    <p class="dato">
+                        Un acogedor café local especializado en productos artesanales, repostería casera y cafés de
+                        especialidad.
+                    </p>
+
+                    <label>Categorías:</label>
+                    <p class="dato">
+                        Alimentos y bebidas
+                    </p>
+
+                    <label>Ubicación:</label>
+                    <p class="dato">Barrio Escalante, San José</p>
+
+                    <label>Nombre del emprendedor/a:</label>
+                    <p class="dato">Lucía Ramírez</p>
+                </div>
+
+                <div class="columna2">
+                    <label>Correo electrónico: </label>
+                    <p class="dato">lucia.cafe@email.com</p>
+
+                    <label>Número de teléfono:</label>
+                    <p class="dato">8888 8888</p>
+
+                    <label>Red Social:</label>
+                    <p class="dato"><a href="https://instagram.com/cafeescalante" target="_blank">@cafeescalante</a></p>
+
+                    <label>Foto o evidencia del problema:</label>
+                    <img src="../../assets/images/cafe.jpg" alt="Evidencia del reporte" class="archivo" />
+
+                    <p class="notaFinal">
+                        Este reporte fue recibido. El área correspondiente será notificada.
+                    </p>
+
+                    <!-- BOTONES DE ACCIÓN -->
+                    <div class="buttom">
+                        <button class="aprobar"> Aprobar</button>
+                        <button class="declinar"> Declinar</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <footer>
+            <div class="exterior-site-footer">
+                <div class="site-footer">
+                    <!--Slogan -->
+
+                    <section class="slogan-container">
+                        <div class="text-logos">
+                            <h1>Comunidad <span>Conectada</span></h1>
+                            <h3>Fortaleciendo Comunidades, Forjando Conexiones</h3>
+                            <p>Somos el sitio web que te permite estar al tanto de los eventos, conocer emprendimientos
+                                y al
+                                mismo tiempo, ser escuchado(a)...</p>
+                        </div>
+                    </section>
+                    <section class="links-container">
+                        <!--Ayuda-->
+                        <div class="ayuda-container">
+                            <div class="arrow-container">
+                                <i class="ri-arrow-drop-down-line"></i>
+                                <h4>AYUDA</h4>
+
+                            </div>
+
+                            <a href="">Contáctenos</a>
+                            <a href="">Reportes</a>
+                            <a href="">Preguntas Frecuentes</a>
+                            <a href="">Calendario</a>
+                        </div>
+                        <!--Comunidad-->
+                        <div class="comunidad-container">
+
+                            <div class="arrow-container">
+                                <i class="ri-arrow-drop-down-line"></i>
+                                <h4>COMUNIDAD</h4>
+                            </div>
+
+                            <a href="">Inicio</a>
+                            <a href="">Anuncios Comunales</a>
+                            <a href="">Emprendimientos</a>
+                            <a href="">Transporte</a>
+                        </div>
+                        <!--Contáctenos-->
+                        <div class="contactenos-container">
+                            <div class="arrow-container">
+                                <i class="ri-arrow-drop-down-line"></i>
+                                <h4>CONTÁCTENOS</h4>
+                            </div>
+                            <a href="">Teléfono </a>
+                            <a href="">(+506) 2222 2222</a>
+                            <a href="">Correo Electrónico</a>
+                            <a href="">comu@conectada.com</a>
+                        </div>
+                    </section>
+
+                    <!--Redes sociales-->
+                    <section class="icon-container">
+                        <span class="circle"><a href=""><i class="ri-at-line"></i></a></span>
+                        <span class="circle"><a href=""><i class="ri-phone-line"></i></a></span>
+                        <span class="circle"><a href=""><i class="ri-facebook-circle-fill"></i></a></span>
+                        <span class="circle"><a href=""><i class="ri-instagram-line"></i></a></span>
+                        <span class="circle"><a href=""><i class="ri-twitter-x-line"></i></a></span>
+                    </section>
+                </div>
+            </div>
+            <!--Copyright-->
+            <section class="copyright-container">
+                <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
+            </section>
+        </footer>
+</body>
+
+</html>

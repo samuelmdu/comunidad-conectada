@@ -51,6 +51,33 @@ html {
     z-index: 3;
 }
 
+.menu a {
+    text-decoration: none;
+}
+
+.menu-flotante {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 100%;
+    right: 1%;
+    font-size: 0.9rem;
+    color: var(--azul-oscuro);
+    background-color: var(--gris);
+    height: 230px;
+    transition: .3s;
+    width: 230px;
+    text-align: center;
+
+}
+
+.menu-flotante a,
+p {
+    text-decoration: none;
+    z-index: 1;
+}
+
 .title-header {
     color: var(--azul-oscuro);
     font-size: 1.5rem;
@@ -119,7 +146,8 @@ html {
 
 @media (max-width: 1090px) {
     .menu {
-        overflow: visible; /* Permite que el menú se expanda */
+        overflow: visible;
+        /* Permite que el menú se expanda */
     }
 
     .options {
@@ -132,10 +160,12 @@ html {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        overflow: hidden; /* Oculta el contenido cuando height ==0 */
+        overflow: hidden;
+        /* Oculta el contenido cuando height ==0 */
         flex-direction: column;
         background-color: var(--gris);
-        transition: height 0.3s ease;  /* Transición suave vertical para abrir(arriba hacia abajo) y cerrar(abajo hacia arriba) el menú */
+        transition: height 0.3s ease;
+        /* Transición suave vertical para abrir(arriba hacia abajo) y cerrar(abajo hacia arriba) el menú */
         z-index: 2;
     }
 

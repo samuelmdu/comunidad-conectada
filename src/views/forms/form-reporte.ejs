@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comunidad Conectada</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/forms/form-reporte.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <!-- Header  -->
+    <%- include('../components/header.ejs') %>
+
+        <div class="form">
+            <section class="intro">
+                <h2>¿Tienes algo que reportar? <span class="resaltado">¡Hazlo saber!</span></h2>
+                <p>
+                    Este formulario es para que puedas comunicar un reporte, queja o problema que esté
+                    afectando a tu comunidad. Puedes hacerlo de forma anónima.
+                </p>
+            </section>
+
+            <form action="#" class="formReporte" id="formulario">
+                <div class="columna1">
+                    <!-- GRUPO REPORTE -->
+                    <div class="formulario-grupo" id="grupo-reporte">
+                        <label class="formulario-label">Nombre del reporte:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="reporte" id="reporte">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO TIPO -->
+                    <div class="formulario-grupo" id="grupo-tipo">
+                        <label class="formulario-label">Tipo de reporte:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="tipo" id="tipo">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            El tipo debe tener entre 4 y 40 caracteres.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO DESCRIPCION -->
+                    <div class="formulario-grupo" id="grupo-descripcion">
+                        <label class="formulario-label">Descripción del reporte:</label>
+                        <div class="formulario-grupo-input">
+                            <textarea rows="4" required class="formulario-input" name="descripcion"
+                                id="descripcion"></textarea>
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            La descripción debe tener entre 10 y 300 caracteres.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO NOTIFICADO -->
+                    <div class="formulario-grupo" id="grupo-notificado">
+                        <label class="formulario-label">¿Has notificado esto antes a alguien? ¿A quién?</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="notificado" id="notificado">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            Debe contener entre 3 y 100 caracteres.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="columna2">
+                    <!-- GRUPO NOMBRE (OPCIONAL) -->
+                    <div class="formulario-grupo" id="grupo-nombre">
+                        <label class="formulario-label">Tu nombre (opcional si elegiste anónimo):</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" class="formulario-input" name="nombre" id="nombre">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO CORREO (OPCIONAL) -->
+                    <div class="formulario-grupo" id="grupo-correo">
+                        <label class="formulario-label">Correo electrónico (para dar seguimiento):</label>
+                        <div class="formulario-grupo-input">
+                            <input type="email" class="formulario-input" name="correo" id="correo">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            Debe tener un formato válido: ejemplo@correo.com
+                        </p>
+                    </div>
+
+                    <!-- GRUPO EVIDENCIA -->
+                    <div class="formulario-grupo">
+                        <label class="formulario-label">Foto o evidencia del problema (opcional):</label>
+                        <input type="file" class="formulario-input" accept="image/*">
+                    </div>
+
+                    <p class="notaFinal">
+                        Tu reporte será revisado y canalizado al área correspondiente. Agradecemos tu participación para
+                        mejorar juntos la comunidad.
+                    </p>
+
+                    <!-- GRUPO TERMINOS Y CONDICIONES -->
+                    <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
+                        <label class="formulario-label">
+                            <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos">
+                            <b class="formulario-span">Acepto los términos y condiciones</b>
+                        </label>
+                    </div>
+
+                    <!-- GRUPO MENSAJE ERROR -->
+                    <div class="formulario-mensaje" id="formulario-mensaje">
+                        <p><i class="bx bxs-ghost"></i> Por favor, completá correctamente todos los campos obligatorios
+                            antes de enviar.</p>
+                    </div>
+                    <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió
+                        correctamente
+                    </p>
+
+                    <!-- GRUPO BOTON ENVIAR -->
+                    <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
+                        <input type="submit" class="formulario-btn" value="Enviar">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer  -->
+        <%- include('../components/footer.ejs') %>
+            <script src="form-reporte.js"></script>
+            <script src="js/global/menu-responsive.js"></script>
+</body>
+
+</html>

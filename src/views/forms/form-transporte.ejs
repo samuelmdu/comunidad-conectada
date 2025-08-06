@@ -21,30 +21,27 @@
 <body>
     <!-- Header  -->
     <%- include('../components/header.ejs') %>
+
         <!-- FORMULARIO DE EVENTO -->
         <div class="form">
             <section class="intro">
-                <h2>Editar Transporte</h2>
+                <h2>Añadir Transporte</h2>
                 <p>
                     Este formulario es para registrar las rutas de transporte público en tu comunidad.
                 </p>
             </section>
 
-            <form action="/actualizar-ruta" method="POST" class="formEvento" id="formulario">
-                <!-- Campo oculto para el ID -->
-                <input type="hidden" name="id" value="<%= rutaId %>">
-
+            <form action="/addRuta" method="POST" class="formEvento" id="formulario">
                 <div class="columna1">
                     <!-- GRUPO RUTA -->
                     <div class="formulario-grupo" id="grupo-ruta">
                         <label class="formulario-label">Nombre de la ruta:</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="ruta" id="ruta" required
-                                value="<%= ruta.rutaNombre %>">
+                            <input type="text" class="formulario-input" name="ruta" id="ruta" required>
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
-                            La ruta debe tener el formato "Barrio Escalante - UCR"
+                            La ruta debe tener entre 3 y 45 caracteres. Solo letras y espacios.
                         </p>
                     </div>
 
@@ -52,26 +49,26 @@
                     <div class="formulario-grupo" id="grupo-horario">
                         <label class="formulario-label">Horario:</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="horario" id="horario" required
-                                value="<%= ruta.rutaHorario %>" placeholder="Ej: 5:00 AM - 10:00 PM">
+                            <input type="text" class="formulario-input" name="horario" id="horario"
+                                placeholder="Ej: 5:00 AM - 10:00 PM" required>
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
-                            El horario debe tener el formato “5:00 AM - 10:00 PM”
+                            El horario debe tener el formato “5:00 AM - 10:00 PM”.
                         </p>
                     </div>
+
                 </div>
 
                 <div class="columna2">
                     <div class="formulario-grupo" id="grupo-frecuencia">
                         <label class="formulario-label">Frecuencia (minutos):</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="frecuencia" id="frecuencia" required
-                                value="<%= ruta.rutaFrecuencia %>">
+                            <input type="number" class="formulario-input" name="frecuencia" id="frecuencia" required>
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
-                            La frecuencia debe ser un número en minutos
+                            La frecuencia debe ser un número en minutos.
                         </p>
                     </div>
 
@@ -79,12 +76,11 @@
                     <div class="formulario-grupo" id="grupo-precio">
                         <label class="formulario-label">Precio (₡):</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="precio" id="precio" required
-                                value="<%= ruta.rutaPrecio %>">
+                            <input type="number" class="formulario-input" name="precio" id="precio" required>
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
-                            El precio debe ser un número válido
+                            El precio debe ser un número válido.
                         </p>
                     </div>
 
@@ -111,7 +107,7 @@
 
                     <!-- GRUPO BOTON ENVIAR -->
                     <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
-                        <input type="submit" class="formulario-btn" value="Editar Transporte">
+                        <input type="submit" class="formulario-btn" value="Añadir Transporte">
                     </div>
                 </div>
             </form>
@@ -120,6 +116,7 @@
         <!-- Footer  -->
         <%- include('../components/footer.ejs') %>
             <script src="form-transporte.js"></script>
+            <script src="js/global/menu-responsive.js"></script>
 </body>
 
 </html>

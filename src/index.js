@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
-const port = 3000;
+const port = 4000;
 
-// Configuration
+// ╔══════════════════════════════════════════╗
+// ║              Configuration               ║
+// ╚══════════════════════════════════════════╝
 app.set('views', path.join(__dirname, 'views'))
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
@@ -14,13 +16,39 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.listen(port, () => console.log(`Puerto: ${port}`));
 
+// ==========================
+// COOKIES
+// ==========================
+
+const session = require('express-session');
+app.use(session({
+    secret: '@2-T2bS:0ZT0s',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        // 5 minutes
+        maxAge: 5 * 60 * 1000,
+    },
+}));
+
+app.use((req, res, next) => {
+    res.locals.admin = req.session.admin || false;
+    res.locals.loggedIn = req.session.loggedIn || false;
+    res.locals.cedula = req.session.cedula || null;
+    res.locals.name = req.session.name || null;
+    res.locals.email = req.session.email || null;
+    res.locals.phone = req.session.phone || null;
+
+    next();
+});
+
 // ╔══════════════════════════════════════════╗
 // ║              Routes                      ║
 // ╚══════════════════════════════════════════╝
 
 
 app.get('/', (req, res) => {
-    res.render('public-views/feed.html');
+    res.render('public-views/feed.ejs');
 });
 
 // ==========================
@@ -28,65 +56,65 @@ app.get('/', (req, res) => {
 // ==========================
 
 app.get('/log-in', (req, res) => {
-    res.render('authentication/log-in.html');
+    res.render('authentication/log-in.ejs');
 });
 
 app.get('/sign-up', (req, res) => {
-    res.render('authentication/sign-up.html')
+    res.render('authentication/sign-up.ejs')
 });
 
 // ==========================
 // PUBLIC-VIEWS
 // ==========================
 app.get('/feed', (req, res) => {
-    res.render('public-views/feed.html');
+    res.render('public-views/feed.ejs');
 });
 
 app.get('/anuncio', (req, res) => {
-    res.render('public-views/anuncio.html');
+    res.render('public-views/anuncio.ejs');
 });
 
 app.get('/anuncio-user', (req, res) => {
-    res.render('public-views/anuncio-user.html');
+    res.render('public-views/anuncio-user.ejs');
 });
 
 app.get('/calendario', (req, res) => {
-    res.render('public-views/calendario.html');
+    res.render('public-views/calendario.ejs');
 });
 
 app.get('/emprendimiento', (req, res) => {
-    res.render('public-views/emprendimiento.html');
+    res.render('public-views/emprendimiento.ejs');
 });
 
 app.get('/emprendimiento-user', (req, res) => {
-    res.render('public-views/emprendimiento-user.html');
+    res.render('public-views/emprendimiento-user.ejs');
 });
 
 app.get('/evento', (req, res) => {
-    res.render('public-views/evento.html');
+    res.render('public-views/evento.ejs');
 });
 
 app.get('/evento-user', (req, res) => {
-    res.render('public-views/evento-user.html');
+    res.render('public-views/evento-user.ejs');
 });
 
 app.get('/transporte', (req, res) => {
-    res.render('public-views/transporte.html');
+    res.render('public-views/transporte.ejs');
 });
 
 app.get('/transporte-admin', (req, res) => {
-    res.render('public-views/transporte-admin.html');
+    res.render('public-views/transporte-admin.ejs');
 });
 
 app.get('/publicaciones', (req, res) => {
-    res.render('public-views/publicaciones.html');
+    res.render('public-views/publicaciones.ejs');
 });
 
 // ==========================
 // ADMIN
 // ==========================
 app.get('/panel-admin', (req, res) => {
-    res.render('admin/panel-admin.html');
+    res.render('admin/panel-admin.ejs');
 });
 
 // ==========================
@@ -94,19 +122,19 @@ app.get('/panel-admin', (req, res) => {
 // ==========================
 
 app.get('/viewAnuncio', (req, res) => {
-    res.render('admin/form-views/vistaAnuncio.html');
+    res.render('admin/form-views/vistaAnuncio.ejs');
 });
 
 app.get('/viewEmprendimiento', (req, res) => {
-    res.render('admin/form-views/vistaEmprendimiento.html');
+    res.render('admin/form-views/vistaEmprendimiento.ejs');
 });
 
 app.get('/viewEvento', (req, res) => {
-    res.render('admin/form-views/vistaEvento.html');
+    res.render('admin/form-views/vistaEvento.ejs');
 });
 
 app.get('/viewReporte', (req, res) => {
-    res.render('admin/form-views/vistaEvento.html');
+    res.render('admin/form-views/vistaEvento.ejs');
 });
 
 
@@ -114,23 +142,23 @@ app.get('/viewReporte', (req, res) => {
 // FORMS
 // ==========================
 app.get('/form-anuncio', (req, res) => {
-    res.render('forms/form-anuncio.html');
+    res.render('forms/form-anuncio.ejs');
 });
 
 app.get('/form-emprendimiento', (req, res) => {
-    res.render('forms/form-emprendimiento.html');
+    res.render('forms/form-emprendimiento.ejs');
 });
 
 app.get('/form-evento', (req, res) => {
-    res.render('forms/form-evento.html');
+    res.render('forms/form-evento.ejs');
 });
 
 app.get('/form-reporte', (req, res) => {
-    res.render('forms/form-reporte.html');
+    res.render('forms/form-reporte.ejs');
 });
 
 app.get('/form-transporte', (req, res) => {
-    res.render('forms/form-transporte.html');
+    res.render('forms/form-transporte.ejs');
 });
 
 app.get('/editar-transporte', async (req, res) => {
@@ -160,12 +188,38 @@ const User = require('../models/users');
 const Evento = require('../models/eventos');
 const Anuncio = require('../models/anuncios')
 const Rutas = require('../models/rutas')
+const Admin = require('../models/admins');
 connectDB();
 
 // ==========================
 // AUTHENTICATION
 // ==========================
 
+// Revisa si ya hay un administrador creado, si no lo hay, lo crea. 
+
+const existeAdmin = async () => {
+    const admin = await Admin.findOne({ email: 'admin@gmail.com' });
+
+    if (admin != null) {
+        console.log('Administrador ya existe');
+    } else {
+        let adminData = new Admin({
+            name: 'Administrador',
+            email: 'admin@gmail.com',
+            password: '1234'
+        });
+
+        await adminData.save()
+            .then(() => {
+                console.log('Administrador creado');
+            })
+            .catch((err) => {
+                console.log("ERROR", err);
+            });
+
+    }
+}
+existeAdmin();
 
 app.post('/register', async (req, res) => {
 
@@ -193,20 +247,45 @@ app.post('/register', async (req, res) => {
 
 app.post('/authenticate', (req, res) => {
 
+
     let data = {
         email: req.body.correo,
         password: req.body.password
     }
 
+    const identificarAdmin = async () => {
+        const admin = await Admin.findOne({ email: 'admin@gmail.com' });
+
+
+        if (admin != null) {
+            if (data.password == admin.password) {
+                req.session.admin = true;
+                req.session.loggedIn = true;
+                req.session.name = admin.name;
+                res.redirect('/panel-admin');
+            } else {
+                res.redirect('/log-in');
+            }
+        }
+    };
+
     const existeUser = async () => {
 
         const usuario = await User.findOne({ email: data.email });
-        console.log(usuario);
 
         if (usuario != null) {
             if (data.password == usuario.password) {
-                console.log("La información es correcta");
-                res.redirect('/');
+
+                req.session.loggedIn = true;
+                req.session.cedula = usuario.cedula;
+                req.session.name = usuario.name;
+                req.session.email = usuario.email;
+                req.session.phone = usuario.phone;
+
+                if (req.session.loggedIn) {
+                    res.redirect('/');
+                }
+
             } else {
                 console.log("La contrasena es incorrecta");
                 res.redirect('/log-in')
@@ -218,7 +297,21 @@ app.post('/authenticate', (req, res) => {
         }
     };
 
-    existeUser();
+    if (data.email == 'admin@gmail.com') {
+        identificarAdmin();
+    } else {
+        existeUser();
+    }
+});
+
+app.get('/log-out', (req, res) => {
+
+    req.session.destroy((error) => {
+        if (error) {
+            console.log('Error');
+        }
+        res.redirect('/')
+    });
 });
 
 

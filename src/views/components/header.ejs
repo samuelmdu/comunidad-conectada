@@ -1,0 +1,55 @@
+<!-- SITE MENU -->
+<header>
+    <nav class="menu">
+
+        <a href="/">
+            <h1 class="title-header">
+                Comunidad <span>Conectada</span>
+            </h1>
+        </a>
+
+        <ul class="options">
+            <a href="/feed">
+                <li>INICIO</li>
+            </a>
+            <a href="/evento">
+                <li>EVENTO</li>
+            </a>
+            <a href="/anuncio">
+                <li>ANUNCIO</li>
+            </a>
+            <a href="/emprendimiento">
+                <li>EMPRENDIMIENTO</li>
+            </a>
+            <a href="/transporte">
+                <li>TRANSPORTE</li>
+            </a>
+            <a href="/form-reporte">
+                <li>REPORTES</li>
+            </a>
+
+            <% if(loggedIn) { %>
+
+                <a href="/panel-admin" id="icon-profile-button">
+                    <i class="ri-account-circle-fill icon-profile"></i>
+                </a>
+
+                <div class="menu-flotante">
+                    <p>Hola <%- name %>!</p>
+                    <a href="/log-out">
+                        <li>CERRAR SESIÓN</li>
+                    </a>
+                </div>
+
+                <% } else { %>
+                    <a href="/log-in">
+                        <li>INICIAR SESIÓN</li>
+                    </a>
+                    <% } %>
+
+
+        </ul>
+
+        <div class="burger"><i class="ri-menu-line"></i></div>
+    </nav>
+</header>
