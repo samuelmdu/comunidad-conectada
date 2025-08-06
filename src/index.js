@@ -231,7 +231,7 @@ app.post('/addEvent', async (req, res) => {
     let data = new Evento({
         eventName: req.body.evento,
         creatorName: req.body.creatorName,
-        desciption: req.body.descripcion,
+        descripcion: req.body.descripcion, // corregido de "desciption" a "descripcion"
         phone: req.body.telefono,
         date: req.body.fecha,
         direction: req.body.ubicacion,
@@ -350,10 +350,13 @@ app.post('/eliminar-evento', async (req, res) => {
   res.redirect('/panel-admin');
 });
 
-app.get('/ver-evento/:id', async (req, res) => {
+app.get('/viewEvento/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
+    //Agregá estos logs... para verificar que el ID se está recibiendo correctamente
+    console.log("ID recibido:", id);
+    
     const evento = await Evento.findById(id);
 
     if (!evento) return res.status(404).send("Evento no encontrado");

@@ -78,9 +78,11 @@ function redireccionarFormulario() {
     tickets.forEach(ticket => {
         ticket.addEventListener('click', () => {
             const tipo = ticket.dataset.tipo;
+            //TUVE QUE PONER UN ID FIJO PARA PROBAR, PERO HAY QUE HACER QUE TOME EL ID DINAMICAMENTE
+            const id = '6892eb3ddfedae10265e336f'; //segun esto, lo que faltaba era este
             switch (tipo) {
                 case 'evento':
-                    window.location.href = `/ver-evento/${id}`;
+                    window.location.href = `/viewEvento/${id}`;
                     break;
                 case 'anuncio':
                     window.location.href = '/form-anuncio';

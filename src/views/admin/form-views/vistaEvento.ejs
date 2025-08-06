@@ -13,7 +13,7 @@
         rel="stylesheet">
         <!--Header/Footer CSS-->
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/forms/view-evento.css"/>
+    <link rel="stylesheet" href="/css/forms/form-view/vistaEvento.css">
 </head>
 
 <body>
@@ -60,6 +60,7 @@
   </section>
 
   <form class="vistaEvento" action="/viewEvento" method="POST">
+    <input type="hidden" name="id" value="<%= evento._id %>">
     <div class="columna1">
       <label>Nombre del evento:</label>
       <p class="dato"><%= evento.eventName %></p>
