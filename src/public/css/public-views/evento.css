@@ -766,3 +766,20 @@
 
     }
 }
+
+
+.ver-detalles-btn{
+    background-color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    text-align: end;
+    color: var(--azul-oscuro);
+    transition: .8s;
+}
+
+.ver-detalles-btn:hover{
+    font-weight: 700;
+    transition: .8s;
+}
+

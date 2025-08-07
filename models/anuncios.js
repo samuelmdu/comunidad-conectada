@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 let anuncioSchema = new mongoose.Schema({
 
-    anuncioName: { type: String, required: true },
+    anuncioName: { type: String, required: true, unique: true },
     desciption: { type: String, required: true },
     creatorName: { type: String, required: true },
     date: { type: Date, required: true },

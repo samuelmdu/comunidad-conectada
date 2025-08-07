@@ -201,24 +201,14 @@
                         <p>Consulte las rutas de buses disponibles en Barrio Escalante. </p>
                     </div>
                 </div>
-                <div class="no-created">
+                <div class="no-created" id="noCardsAtRutasFeed">
                     <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
                         Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
                 </div>
                 <!-- CONTENIDO DE LA SECCION -->
                 <section class="transport-section">
-                    <div class="route-container">
-                        <!-- RUTA -->
-                        <!-- <div class="route-card">
-                        <div class="left-bar"></div>
-                        <div class="card-content">
-                            <h3>Ruta 01 – Centro – Universidad</h3>
-                            <div class="route-details">
-                                <p><strong>Horarios:</strong><br> 6:00 AM - 10:00 PM (cada 20 min)</p>
-                                <p><strong>Precio:</strong><br> 450 colones</p>
-                            </div>
-                        </div>
-                    </div> -->
+                    <div class="route-container routes-painted-feed">
+                        
                     </div>
                 </section>
             </section>
@@ -229,6 +219,7 @@
         <!-- Footer  -->
         <%- include('../components/footer.ejs') %>
             <script src="js/data/showEvents.js"></script>
+            <script src="js/data/showRoutesFeed.js"></script>
             <script src="js/global/menu-responsive.js"></script>
 </body>
 

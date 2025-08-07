@@ -61,6 +61,7 @@ fetch("/api/rutas")
                     contenedor.appendChild(card);
                 }
             );
+
         }
     )
     .catch(err => console.error("Error al cargar rutas:", err));

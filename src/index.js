@@ -94,7 +94,7 @@ app.get('/evento', (req, res) => {
     res.render('public-views/evento.ejs');
 });
 
-app.get('/evento-user', (req, res) => {
+app.get('/evento-informacion', (req, res) => {
     res.render('public-views/evento-user.ejs');
 });
 
@@ -419,8 +419,47 @@ app.get('/api/rutas', async (req, res) => {
     try {
         const rutas = await Rutas.find();
         res.json(rutas);
-        console.log(rutas)
     } catch (err) {
         console.error("Error obteniendo rutas:", err);
     }
+});
+
+
+
+
+
+app.post("/api/seleccionar-evento", (req, res) => {
+    const { nombreEvento } = req.body;
+
+    if (!nombreEvento) {
+        return res.status(400).json({ error: "Nombre del evento requerido" });
+    }
+
+    req.session.nombreEventoSeleccionado = nombreEvento;
+    res.status(200).json({ message: "Evento seleccionado con éxito" });
+});
+
+
+app.get("/evento-informacion", async (req, res) => {
+    const nombreEvento = req.session.nombreEventoSeleccionado;
+
+    // 1. Verifica si hay un evento seleccionado en la sesión.
+    if (!nombreEvento) {
+        // Si no hay, redirige al usuario a la página principal de eventos.
+        return res.redirect('/evento');
+    }
+
+    // 2. Busca el evento en la base de datos por su nombre.
+    const evento = await Evento.findOne({ eventName: nombreEvento });
+
+    // 3. Verifica si el evento fue encontrado.
+    if (!evento) {
+        // Si no se encuentra (por si lo borraron), redirige a la página de eventos.
+        console.error(`Evento con nombre "${nombreEvento}" no encontrado.`);
+        return res.redirect('/evento');
+    }
+
+    // 4. Si todo está bien, renderiza la vista y pasa el objeto evento.
+    // Aquí es donde te aseguras de que la variable 'evento' siempre esté definida.
+    res.render("public-views/evento-user.ejs", { evento });
 });
