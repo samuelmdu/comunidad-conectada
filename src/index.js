@@ -27,7 +27,7 @@ app.use(session({
     resave: false,
     cookie: {
         // 5 minutes
-        maxAge: 5 * 60 * 1000,
+        maxAge: 10 * 60 * 1000,
     },
 }));
 
@@ -91,7 +91,13 @@ app.get('/emprendimiento-user', (req, res) => {
 });
 
 app.get('/evento', (req, res) => {
-    res.render('public-views/evento.ejs');
+    const eventList = async () => {
+        const eventos = await Evento.find();
+        res.render('public-views/evento.ejs', {
+            eventos: eventos
+        });
+    }
+    eventList();
 });
 
 app.get('/evento-user', (req, res) => {
@@ -114,11 +120,29 @@ app.get('/publicaciones', (req, res) => {
 // ADMIN
 // ==========================
 app.get('/panel-admin', (req, res) => {
-    res.render('admin/panel-admin.ejs');
+    // Verifica si el usuario es administrador antes de permitir el acceso al panel de administración.
+    if (!req.session.admin) {
+        res.redirect('/log-in');
+    } else {
+        res.render('admin/panel-admin.ejs');
+    };
 });
 
 // ==========================
-// admin FORMS-VIEWS
+// USERS
+// ==========================
+app.get('/profile', (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/log-in');
+    } else {
+        res.render('users/profile.ejs');
+    }
+
+});
+
+
+// ==========================
+// ADMIN FORMS-VIEWS
 // ==========================
 
 app.get('/viewAnuncio', (req, res) => {
