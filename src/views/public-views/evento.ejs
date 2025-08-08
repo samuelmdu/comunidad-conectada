@@ -42,7 +42,7 @@
 
 
 
-        <% if(!eventos){ %>
+        <% if(!eventos[0]){ %>
 
             <!-- Cards -->
             <div class="no-created">
@@ -56,17 +56,21 @@
                     <div class="cards-container">
                         <!-- Cards -->
                         <% eventos.forEach(evento=> { %>
-                            <div class="card">
-                                <div class="card-image perros"></div>
-                                <div class="card-text-container">
-                                    <p class="card-title">
-                                        <%= evento.eventName %>
-                                    </p>
-                                    <p class="card-subtitle">
-                                        <%= evento.direction %>
-                                    </p>
+                            <a href="/evento/<%= evento.id %>">
+                                <div class="card">
+                                    <div class="card-image perros"></div>
+                                    <div class="card-text-container">
+                                        <p class="card-title">
+                                            <%= evento.eventName %>
+                                        </p>
+                                        <p class="card-subtitle">
+                                            <%= evento.direction %>
+                                        </p>
+
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
+
                             <% }) %>
                     </div>
                 </section>
@@ -85,11 +89,13 @@
                             </div>
 
                             <div class="publish-event-text-container">
-                                <p>Sabemos que te gusta conectar con todas y cada una de las personas en la comunidad,
+                                <p>Sabemos que te gusta conectar con todas y cada una de las personas en la
+                                    comunidad,
                                     por
                                     ello
                                     acá
-                                    tienes la oportunidad de organizar eventos pensados para pasarla bien y que ellos se
+                                    tienes la oportunidad de organizar eventos pensados para pasarla bien y que
+                                    ellos se
                                     puedan
                                     enterar
                                     de ello.</p>
@@ -101,7 +107,7 @@
                     <div class="title-container">
                         <h1>EVENTOS POPULARES</h1>
                     </div>
-                    <% if(!eventos){ %>
+                    <% if(!eventos[0]){ %>
 
                         <!-- Cards -->
                         <div class="no-created">
@@ -115,18 +121,21 @@
                                 <div class="cards-container">
                                     <!-- Cards -->
                                     <% eventos.forEach(evento=> { %>
-                                        <div class="card">
-                                            <div class="card-image perros"></div>
-                                            <div class="card-text-container">
-                                                <p class="card-title">
-                                                    <%= evento.eventName %>
-                                                </p>
-                                                <p class="card-subtitle">
-                                                    <%= evento.direction %>
-                                                </p>
+                                        <a href="/evento/<%= evento.id %>">
+                                            <div class="card">
+                                                <div class="card-image perros"></div>
+                                                <div class="card-text-container">
+                                                    <p class="card-title">
+                                                        <%= evento.eventName %>
+                                                    </p>
+                                                    <p class="card-subtitle">
+                                                        <%= evento.direction %>
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <% }) %>
+                                            <% }) %>
+                                        </a>
+
                                 </div>
                             </section>
 
