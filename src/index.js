@@ -140,7 +140,6 @@ app.get('/profile', (req, res) => {
 
 });
 
-
 // ==========================
 // ADMIN FORMS-VIEWS
 // ==========================
@@ -202,6 +201,23 @@ app.get('/editar-transporte', async (req, res) => {
         console.error("Error al obtener la ruta:", error);
     }
 });
+
+
+app.get('/evento/:id', async (req, res) => {
+    try {
+
+        const evento = await Evento.findById(req.params.id);
+        if (!evento) {
+            return res.status(404).send('Evento no encontrado');
+        }
+
+        res.render('public-views/evento-user', { evento });
+    } catch (error) {
+        console.error("Error al obtener el evento:", error);
+        res.status(500).send('Error del servidor');
+    }
+});
+
 
 // ╔══════════════════════════════════════════╗
 // ║              Data base                   ║
@@ -348,7 +364,7 @@ app.post('/addEvent', async (req, res) => {
     let data = new Evento({
         eventName: req.body.evento,
         creatorName: req.body.creatorName,
-        desciption: req.body.descripcion,
+        description: req.body.descripcion,
         phone: req.body.telefono,
         date: req.body.fecha,
         direction: req.body.ubicacion,
@@ -367,7 +383,7 @@ app.post('/addAnuncio', async (req, res) => {
     let data = new Anuncio({
         anuncioName: req.body.anuncio,
         creatorName: req.body.nombre,
-        desciption: req.body.descripcion,
+        description: req.body.descripcion,
         date: req.body.fecha,
 
     })
