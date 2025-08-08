@@ -71,7 +71,13 @@ app.get('/feed', (req, res) => {
 });
 
 app.get('/anuncio', (req, res) => {
-    res.render('public-views/anuncio.ejs');
+    const anuncioList = async () => {
+        const anuncios = await Anuncio.find();
+        res.render('public-views/anuncio.ejs', {
+            anuncios: anuncios
+        });
+    }
+    anuncioList();
 });
 
 app.get('/anuncio-user', (req, res) => {
@@ -135,9 +141,21 @@ app.get('/profile', (req, res) => {
     if (!req.session.loggedIn) {
         res.redirect('/log-in');
     } else {
-        res.render('users/profile.ejs');
-    }
 
+        const myPublications = async () => {
+            // Obtiene los anuncios y eventos creados por el usuario actual. 
+            const anuncios = await Anuncio.find({ creatorName: req.session.name });
+            const eventos = await Evento.find({ creatorName: req.session.name });
+
+            res.render('users/profile.ejs', {
+                anuncios: anuncios,
+                eventos: eventos,
+            })
+
+        }
+
+        myPublications();
+    }
 });
 
 // ==========================
