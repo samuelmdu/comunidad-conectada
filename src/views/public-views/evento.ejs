@@ -39,9 +39,7 @@
             </div>
         </div>
 
-
-
-
+        <!-- Si eventos[0] es null -->
         <% if(!eventos[0]){ %>
 
             <!-- Cards -->
@@ -49,13 +47,15 @@
                 <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
                     Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
             </div>
-
+            <!-- Sino recorre los cards y va enseñandolos en pantalla. -->
             <% } else { %>
 
                 <section class="exterior-cards-container">
                     <div class="cards-container">
                         <!-- Cards -->
                         <% eventos.forEach(evento=> { %>
+                            <!-- Al darle click a un cart este irá a la dirección /evento/(id en mongo). -->
+                            <!-- Esto genera un request.get al servidor ver index.js (DETALLES DE ANUNCIO Y EVENTO) -->
                             <a href="/evento/<%= evento.id %>">
                                 <div class="card">
                                     <div class="card-image perros"></div>
