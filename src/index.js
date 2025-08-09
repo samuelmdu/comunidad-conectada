@@ -220,16 +220,34 @@ app.get('/editar-transporte', async (req, res) => {
     }
 });
 
+// ==========================
+// DETALLES DE ANUNCIO Y EVENTO
+// ==========================
 
+// En estas rutas se obtiene el ID del anuncio o evento desde la URL, se busca en la base de datos y se renderiza la vista correspondiente con los datos obtenidos.
 app.get('/evento/:id', async (req, res) => {
     try {
-
         const evento = await Evento.findById(req.params.id);
         if (!evento) {
             return res.status(404).send('Evento no encontrado');
         }
 
         res.render('public-views/evento-user', { evento });
+    } catch (error) {
+        console.error("Error al obtener el evento:", error);
+        res.status(500).send('Error del servidor');
+    }
+});
+
+
+app.get('/anuncio/:id', async (req, res) => {
+    try {
+
+        const anuncio = await Anuncio.findById(req.params.id);
+        if (!anuncio) {
+            return res.status(404).send('Anuncio no encontrado');
+        }
+        res.render('public-views/anuncio-user', { anuncio });
     } catch (error) {
         console.error("Error al obtener el evento:", error);
         res.status(500).send('Error del servidor');
@@ -403,6 +421,7 @@ app.post('/addAnuncio', async (req, res) => {
         creatorName: req.body.nombre,
         description: req.body.descripcion,
         date: req.body.fecha,
+
 
     })
     await data.save()

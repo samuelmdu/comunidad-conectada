@@ -51,21 +51,29 @@
             <% } else { %>
                 <% anuncios.forEach(anuncio=> { %>
 
+
                     <section class="exterior-advertisement-container">
                         <div class="advertisement-container">
                             <!-- anuncio -->
-                            <div class="route-card">
-                                <div class="left-bar"></div>
-                                <div class="card-content">
-                                    <div class="announce-card-title">
-                                        <h3>Suspensión del servicio de basura</h3>
-                                    </div>
-                                    <div class="route-details">
-                                        <p><strong>Horarios:</strong><br> Miércoles 10 de julio</p>
-                                        <p><strong>Ubicación:</strong><br> San Rafael de Escazú</p>
+                            <a href="/anuncio/<%= anuncio.id %>">
+                                <div class="route-card">
+                                    <div class="left-bar"></div>
+                                    <div class="card-content">
+                                        <div class="announce-card-title">
+                                            <h3>
+                                                <%= anuncio.anuncioName %>
+                                            </h3>
+                                        </div>
+                                        <div class="route-details">
+                                            <p><strong>Horarios:</strong><br>
+                                                <%= anuncio.date %>
+                                            </p>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
+
                     </section>
 
                     <% }) %>
@@ -118,11 +126,15 @@
                                                     <div class="left-bar"></div>
                                                     <div class="card-content">
                                                         <div class="announce-card-title">
-                                                            <h3>Suspensión del servicio de basura</h3>
+                                                            <h3>
+                                                                <%= anuncio.anuncioName %>
+                                                            </h3>
                                                         </div>
                                                         <div class="route-details">
-                                                            <p><strong>Horarios:</strong><br> Miércoles 10 de julio</p>
-                                                            <p><strong>Ubicación:</strong><br> San Rafael de Escazú</p>
+                                                            <p><strong>Horarios:</strong><br>
+                                                                <%= anuncio.date %>
+                                                            </p>
+
                                                         </div>
                                                     </div>
                                                 </div>

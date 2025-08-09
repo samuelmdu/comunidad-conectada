@@ -6,7 +6,7 @@ let eventoSchema = new mongoose.Schema({
     creatorName: { type: String, required: true },
     description: { type: String, required: true },
     phone: { type: Number, required: true },
-    date: { type: Date, required: true },
+    date: { type: String, required: true },
     direction: { type: String, required: true },
 
 }, { versionKey: false })
