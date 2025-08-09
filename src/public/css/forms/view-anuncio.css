@@ -467,6 +467,13 @@ button {
     transition: 0.2s;
 }
 
+.acciones-admin{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+
 .aprobar:hover {
     background-color: rgb(49, 133, 81);
 }

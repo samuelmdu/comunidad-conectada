@@ -17,7 +17,7 @@
 
 <body>
     <!-- Header  -->
-    <%- include('../components/header.ejs') %>
+    <%- include('../../components/header.ejs') %>
         <div class="form">
             <section class="intro">
                 <h2>Vista de Reporte <span class="resaltado">- Panel de Administración</span></h2>
@@ -34,32 +34,41 @@
                 </p>
             </section>
 
-
-            <form class="vistaReporte" action="/viewReporte" method="POST">
+            <div class="vistaReporte">
+                <input type="hidden" name="id" value="<%= reporte._id %>">
+                <!--form class="vistaReporte" action="/viewReporte" method="POST">-->
                 <div class="columna1">
                     <label>Nombre del reporte:</label>
-                    <p class="dato">Ruidos molestos en la madrugada</p>
+                    <p class="dato">
+                        <%= reporte.reporte%>
+                    </p>
 
                     <label>Tipo de reporte:</label>
-                    <p class="dato">Ruido / Convivencia</p>
+                    <p class="dato">
+                        <%= reporte.tipo %>
+                    </p>
 
                     <label>Descripción del reporte:</label>
                     <p class="dato" id="textoGrande">
-                        En la esquina de la calle principal hay una vivienda donde todos los fines de semana hay música
-                        a
-                        alto volumen desde las 11pm hasta la madrugada.
+                        <%= reporte.descripcion %>
                     </p>
 
                     <label>¿Has notificado esto antes a alguien? ¿A quién?</label>
-                    <p class="dato">Sí, se notificó a la policía municipal el sábado pasado.</p>
+                    <p class="dato">
+                        <%= reporte.notificado %>
+                    </p>
                 </div>
 
                 <div class="columna2">
                     <label>Nombre del remitente:</label>
-                    <p class="dato">María Fernández</p>
+                    <p class="dato">
+                        <%= reporte.nombre ? reporte.nombre : 'Anónimo' %>
+                    </p>
 
                     <label>Correo electrónico:</label>
-                    <p class="dato">maria.fernandez@email.com</p>
+                    <p class="dato">
+                        <%= reporte.correo %>
+                    </p>
 
                     <label>Foto o evidencia del problema:</label>
                     <img src="../../assets/images/vistasForms/fiesta.jpg" alt="Evidencia del reporte" class="archivo" />
@@ -70,11 +79,24 @@
 
                     <!-- BOTONES DE ACCIÓN -->
                     <div class="acciones-admin">
-                        <button class="aprobar"> Aprobar</button>
-                        <button class="declinar"> Declinar</button>
+                        <form action="/admin/approve-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%= reporte._id%>">
+                            <input type="hidden" name="type" value="reporte">
+                            <button type="submit" class="aprobar">Aprobar</button>
+                        </form>
+
+                        <form action="/admin/reject-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%=reporte._id%>">
+                            <input type="hidden" name="type" value="reporte">
+                            <button type="submit" class="declinar">Rechazar</button>
+                        </form>
                     </div>
+
                 </div>
-            </form>
+                <!--</form>-->
+            </div>
 
         </div>
 

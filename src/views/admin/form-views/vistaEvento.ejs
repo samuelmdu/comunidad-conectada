@@ -18,7 +18,7 @@
 
 <body>
     <!-- Header  -->
-    <%- include('../components/header.ejs') %>
+    <%- include('../../components/header.ejs') %> 
 
         <!-- CONTENIDO PRINCIPAL: Vista Evento -->
         <div class="form">
@@ -32,41 +32,82 @@
                 </p>
             </section>
 
-            <form class="vistaEvento" action="/viewEvento" method="POST">
+            <!--<form class="vistaEvento" action="/viewEvento" method="GET>-->
+            <div class="vistaEvento">
+                <input type="hidden" name="id" value="<%= evento._id %>">
                 <div class="columna1">
                     <label>Nombre del evento:</label>
-                    <p class="dato">Fiesta del Barrio</p>
+                    <p class="dato">
+                        <%= evento.eventName %>
+                    </p>
 
                     <label>Descripción breve del evento:</label>
-                    <p class="dato">Una actividad con música, comida y juegos organizada para unir a los vecinos.</p>
+                    <p class="dato">
+                        <%= evento.description %>
+                    </p>
 
                     <label>Fecha del evento:</label>
-                    <p class="dato">08/12/2025</p>
+                    <p class="dato">
+                        <%= evento.date %>
+                    </p>
 
                     <label>Lugar o dirección del evento:</label>
-                    <p class="dato">Parque de Barrio Escalante</p>
+                    <p class="dato">
+                        <%= evento.direction %>
+                    </p>
                 </div>
 
                 <div class="columna2">
                     <label>Persona de contacto (nombre):</label>
-                    <p class="dato">Carlos Ramírez</p>
+                    <p class="dato">
+                        <%= evento.creatorName %>
+                    </p>
 
                     <label>Teléfono de contacto:</label>
-                    <p class="dato">8888-9999</p>
+                    <p class="dato">
+                        <%= evento.phone %>
+                    </p>
 
                     <label>Imagen o afiche del evento:</label>
-                    <img src="../../assets/images/fiestab.jpg" alt="Imagen del evento" class="archivo" />
+                    <img src="<%= evento.imageUrl %>" alt="Imagen del evento" class="archivo" />
 
                     <p class="notaFinal">
                         Este evento será evaluado y aprobado si cumple con las políticas de Comunidad Conectada.
                     </p>
 
+                    <!-- <div class="acciones-admin">
+                        BOTÓN APROBAR
+                        <form action="/aprobar-evento" method="POST">
+                            <input type="hidden" name="id" value="<%= evento._id %>">
+                            <button type="submit" class="aprobar">Aprobar</button>
+                        </form>
+
+                        FORMULARIO PARA DECLINAR 
+                        <form action="/eliminar-evento" method="POST">
+                            <input type="hidden" name="id" value="<%= evento._id %>">
+                            <button type="submit" class="declinar">Declinar</button>
+                        </form>-->
+
                     <div class="acciones-admin">
-                        <button class="aprobar">Aprobar</button>
-                        <button class="declinar">Declinar</button>
+                        <!-- BOTÓN APROBAR -->
+                        <form action="/admin/approve-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%= evento._id %>">
+                            <input type="hidden" name="type" value="evento">
+                            <button type="submit" class="aprobar">Aprobar</button>
+                        </form>
+
+                        <!-- FORMULARIO PARA DECLINAR -->
+                        <form action="/admin/reject-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%= evento._id %>">
+                            <input type="hidden" name="type" value="evento">
+                            <button type="submit" class="declinar">Rechazar</button>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
+            <!--</form>-->
         </div>
 
 

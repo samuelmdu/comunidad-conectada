@@ -30,13 +30,13 @@
                 </p>
             </section>
 
-            <form action="#" class="formReporte" id="formulario">
+            <form action="/addReporte" method="POST" class="formReporte" id="formulario">
                 <div class="columna1">
                     <!-- GRUPO REPORTE -->
                     <div class="formulario-grupo" id="grupo-reporte">
                         <label class="formulario-label">Nombre del reporte:</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" required class="formulario-input" name="reporte" id="reporte">
+                            <input type="text" required class="formulario-input" name="reporte" id="reporte" placeholder="Robo de señalización vial">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -48,7 +48,7 @@
                     <div class="formulario-grupo" id="grupo-tipo">
                         <label class="formulario-label">Tipo de reporte:</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" required class="formulario-input" name="tipo" id="tipo">
+                            <input type="text" required class="formulario-input" name="tipo" id="tipo" placeholder="Ej: Seguridad, Servicios Públicos, etc.">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -61,7 +61,7 @@
                         <label class="formulario-label">Descripción del reporte:</label>
                         <div class="formulario-grupo-input">
                             <textarea rows="4" required class="formulario-input" name="descripcion"
-                                id="descripcion"></textarea>
+                                id="descripcion" placeholder="Mientras conducia note que no estaba el Alto no estaba donde correspondia y eso genero un colapso vial"></textarea>
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -73,7 +73,7 @@
                     <div class="formulario-grupo" id="grupo-notificado">
                         <label class="formulario-label">¿Has notificado esto antes a alguien? ¿A quién?</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" required class="formulario-input" name="notificado" id="notificado">
+                            <input type="text" required class="formulario-input" name="notificado" id="notificado" placeholder="Ej: Municipalidad, Policía, etc.">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -87,7 +87,7 @@
                     <div class="formulario-grupo" id="grupo-nombre">
                         <label class="formulario-label">Tu nombre (opcional si elegiste anónimo):</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" name="nombre" id="nombre">
+                            <input type="text" class="formulario-input" name="nombre" id="nombre" placeholder="Ej: Juan Pérez">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
