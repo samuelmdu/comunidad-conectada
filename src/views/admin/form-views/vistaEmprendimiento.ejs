@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/forms/view-emprendimiento.css" />
+    <link rel="stylesheet" href="/css/forms/view-emprendimiento.css" />
 </head>
 
 <body>
@@ -36,38 +36,49 @@
             </section>
 
 
-            <form class="vistaEmprendimiento">
+            <!--<form class="vistaEmprendimiento">-->
+            <div class="vistaEmprendimiento">
+                <input type="hidden" name="id" value="<%= emprendimiento._id %>">
                 <div class="columna1">
                     <label>Nombre del emprendimiento:</label>
-                    <p class="dato">Café Escalante</p>
+                    <p class="dato"><%=emprendimiento.nombre %> </p>
 
                     <label>Descripción breve:</label>
                     <p class="dato">
-                        Un acogedor café local especializado en productos artesanales, repostería casera y cafés de
-                        especialidad.
+                        <%= emprendimiento.descripcion %>
                     </p>
 
                     <label>Categorías:</label>
                     <p class="dato">
-                        Alimentos y bebidas
+                        <p class="dato"><%= emprendimiento.categoria %></p>
                     </p>
 
                     <label>Ubicación:</label>
-                    <p class="dato">Barrio Escalante, San José</p>
+                    <p class="dato"> 
+                        <%= emprendimiento.ubicacion %>
+                    </p>
 
                     <label>Nombre del emprendedor/a:</label>
-                    <p class="dato">Lucía Ramírez</p>
+                    <p class="dato">
+                        <%= emprendimiento.emprendedor %>
+                    </p>
                 </div>
 
                 <div class="columna2">
                     <label>Correo electrónico: </label>
-                    <p class="dato">lucia.cafe@email.com</p>
+                    <p class="dato">
+                        <%= emprendimiento.correo %>
+                    </p>
 
                     <label>Número de teléfono:</label>
-                    <p class="dato">8888 8888</p>
+                    <p class="dato">
+                        <%= emprendimiento.telefono %>
+                    </p>
 
                     <label>Red Social:</label>
-                    <p class="dato"><a href="https://instagram.com/cafeescalante" target="_blank">@cafeescalante</a></p>
+                    <p class="dato"><a href="https://instagram.com/cafeescalante" target="_blank">
+                        <%= emprendimiento.redSocial %>
+                    </a></p>
 
                     <label>Foto o evidencia del problema:</label>
                     <img src="../../assets/images/cafe.jpg" alt="Evidencia del reporte" class="archivo" />
@@ -77,12 +88,24 @@
                     </p>
 
                     <!-- BOTONES DE ACCIÓN -->
-                    <div class="buttom">
-                        <button class="aprobar"> Aprobar</button>
-                        <button class="declinar"> Declinar</button>
-                    </div>
+                    <div class="acciones-admin">
+                        <form action="/admin/approve-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%= emprendimiento._id %>">
+                            <input type="hidden" name="type" value="emprendimiento">
+                            <button type="submit" class="aprobar">Aprobar</button>
+                        </form>
+
+                        <form action="/admin/reject-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%= emprendimiento._id %>">
+                            <input type="hidden" name="type" value="emprendimiento">
+                            <button type="submit" class="declinar">Rechazar</button>
+                        </form>
                 </div>
-            </form>
+                </div>
+            </div>
+            <!--</form>-->
 
         </div>
 

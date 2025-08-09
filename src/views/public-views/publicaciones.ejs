@@ -23,7 +23,6 @@
     <%- include('../components/header.ejs') %>
 
         <main class="main-content">
-
             <!-- TÍTULO PRINCIPAL -->
             <section class="vertical-content-section">
                 <div class="title-container">
@@ -31,99 +30,112 @@
                 </div>
             </section>
 
-            <div class="section-divider"></div> <!-- DIVISOR -->
-
+            <div class="section-divider"></div>
 
             <!-- EMPRENDIMIENTOS -->
             <section class="vertical-content-section">
                 <div class="title-container">
                     <h2>Emprendimientos</h2>
-                    <div class="no-created">
-                        <p><b>Actualmente no hay publicaciones registradas.</b><br>
-                            Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
-                    </div>
-
-
-                </div>
-                <div class="cards-container">
-
-                    <div class="card">
-                        <div class="card-image chismosa"></div>
-                        <div class="card-text-container">
-                            <p class="card-title">La Chismosa
-                            </p>
-                            <p class="card-subtitle">Restaurante</p>
-                            <a href="/form-emprendimiento">
-                                <button class="edit-button">Editar</button>
-                            </a>
-
+                    <% if (emprendimientos.length===0) { %>
+                        <div class="no-created">
+                            <p><b>Actualmente no hay publicaciones registradas.</b><br>
+                                Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
                         </div>
-                    </div>
-
-
-                </div>
+                        <% } else { %>
+                            <div class="cards-container">
+                                <% emprendimientos.forEach(emprendimiento=> { %>
+                                    <div class="card">
+                                        <div class="card-image chismosa"></div>
+                                        <div class="card-text-container">
+                                            <p class="card-title">
+                                                <%= emprendimiento.nombre %>
+                                            </p>
+                                            <p class="card-subtitle">
+                                                <%= emprendimiento.categoria %>
+                                            </p>
+                                            <a href="/form-emprendimiento?id=<%= emprendimiento._id %>">
+                                                <button class="edit-button">Editar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                            </div>
+                            <% } %>
                 </div>
             </section>
 
-            <div class="section-divider"></div> <!-- DIVISOR -->
-
+            <div class="section-divider"></div>
 
             <!-- EVENTOS -->
             <section class="vertical-content-section">
                 <div class="title-container">
                     <h2>Eventos</h2>
-                    <div class="no-created">
-                        <p><b>Actualmente no hay publicaciones registradas.</b><br>
-                            Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
-                    </div>
-
-                </div>
-                <div class="cards-container">
-                    <div class="card">
-                        <div class="card-image perros"></div>
-                        <div class="card-text-container">
-                            <p class="card-title">Inauguración Parque de Perros</p>
-                            <p class="card-subtitle">San Rafael, Heredia</p>
-                            <a href="/form-evento">
-                                <button class="edit-button">Editar</button>
-                            </a>
+                    <% if (eventos.length===0) { %>
+                        <div class="no-created">
+                            <p><b>Actualmente no hay publicaciones registradas.</b><br>
+                                Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
                         </div>
-                    </div>
+                        <% } else { %>
+                            <div class="cards-container">
+                                <% eventos.forEach(evento=> { %>
+                                    <div class="card">
+                                        <div class="card-image perros"></div>
+                                        <div class="card-text-container">
+                                            <p class="card-title">
+                                                <%= evento.eventName %>
+                                            </p>
+                                            <p class="card-subtitle">
+                                                <%= evento.direction %>
+                                            </p>
+                                            <a href="/form-evento?id=<%= evento._id %>">
+                                                <button class="edit-button">Editar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                            </div>
+                            <% } %>
                 </div>
             </section>
 
-
-
-            <div class="section-divider"></div> <!-- DIVISOR -->
-
+            <div class="section-divider"></div>
 
             <!-- ANUNCIOS -->
             <section class="vertical-content-section">
                 <div class="title-container">
                     <h2>Anuncios</h2>
-                </div>
-                <div class="no-created">
-                    <p><b>Actualmente no hay publicaciones registradas.</b><br>
-                        Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
-                </div>
-
-                <div class="cards-container">
-                    <div class="route-card-anuncios">
-                        <div class="left-bar"></div>
-                        <div class="card-content-anuncios">
-                            <h3>Reunión de la comunidad</h3>
-                            <div class="route-details-anuncios">
-                                <p><strong>Horarios:</strong><br> 4:00 PM - 8:00 PM</p>
-                                <p><strong>Ubicación:</strong><br> Salón parroquial</p>
-                            </div>
-                            <a href="/form-anuncio">
-                                <button class="edit-button">Editar</button>
-                            </a>
+                    <% if (anuncios.length===0) { %>
+                        <div class="no-created">
+                            <p><b>Actualmente no hay publicaciones registradas.</b><br>
+                                Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
                         </div>
-                    </div>
-                </div>-
+                        <% } else { %>
+                            <div class="cards-container">
+                                <% anuncios.forEach(anuncio=> { %>
+                                    <div class="route-card-anuncios">
+                                        <div class="left-bar"></div>
+                                        <div class="card-content-anuncios">
+                                            <h3>
+                                                <%= anuncio.anuncioName %>
+                                            </h3>
+                                            <div class="route-details-anuncios">
+                                                <p><strong>Descripción:</strong><br>
+                                                    <%= anuncio.desciption %>
+                                                </p>
+                                                <p><strong>Fecha:</strong><br>
+                                                    <%= anuncio.date %>
+                                                </p>
+                                            </div>
+                                            <a href="/form-anuncio?id=<%= anuncio._id %>">
+                                                <button class="edit-button">Editar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                            </div>
+                            <% } %>
+                </div>
             </section>
-
         </main>
 
         <footer>

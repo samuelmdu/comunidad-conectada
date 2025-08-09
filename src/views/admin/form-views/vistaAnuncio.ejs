@@ -34,39 +34,51 @@
                 </p>
             </section>
 
-            <form class="vistaAnuncio">
+            <!--<form class="vistaAnuncio">-->
+            <div class="vistaAnuncio">
+                <input type="hidden" name="id" value="<%= anuncio._id %>">
+                <input type="hidden" name="type" value="anuncio">
                 <div class="columna1">
                     <label>Título del anuncio:</label>
-                    <p class="dato">Nuevo punto de reciclaje</p>
+                    <p class="dato"><%= anuncio.anuncioName %></p>
 
                     <label>Descripción breve del anuncio:</label>
                     <p class="dato">
-                        A partir del próximo lunes, se habilitará un nuevo punto de reciclaje en el parque central.
-                        Podrás
-                        llevar plástico,
-                        cartón y aluminio en horarios de 8am a 3pm.
+                        <%= anuncio.description %>
                     </p>
 
                 </div>
 
                 <div class="columna2">
                     <label>Autor del anuncio:</label>
-                    <p class="dato">Carlos Ureña</p>
+                    <p class="dato"> <%=anuncio.creatorName %> </p>
 
                     <label>Fecha de publicación:</label>
-                    <p class="dato">15/08/2025</p>
+                    <p class="dato"><%= anuncio.date %></p>
 
                     <p class="notaFinal">
                         Este anuncio será evaluado por el equipo de la comunidad para garantizar su relevancia.
                     </p>
 
-                    <!-- BOTONES DE ACCIÓN -->
+                    <!-- BOTONES DE ACCIÓN --->
                     <div class="acciones-admin">
-                        <button class="aprobar"> Aprobar</button>
-                        <button class="declinar"> Declinar</button>
+                        <form action="/admin/approve-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%= anuncio._id %>">
+                            <input type="hidden" name="type" value="anuncio">
+                            <button type="submit" class="aprobar">Aprobar</button>
+                        </form>
+
+                        <form action="/admin/reject-ticket" method="POST">
+                            <input type="hidden" name="ticketId" value="<%= ticket._id %>">
+                            <input type="hidden" name="publicationId" value="<%= anuncio._id %>">
+                            <input type="hidden" name="type" value="anuncio">
+                            <button type="submit" class="declinar">Rechazar</button>
+                        </form>
                     </div>
                 </div>
-            </form>
+            </div>
+            <!--</form>-->
 
         </div>
         <!-- Footer -->

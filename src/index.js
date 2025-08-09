@@ -118,21 +118,48 @@ app.get('/transporte-admin', (req, res) => {
     res.render('public-views/transporte-admin.ejs');
 });
 
-app.get('/publicaciones', (req, res) => {
-    res.render('public-views/publicaciones.ejs');
+app.get('/publicaciones', async (req, res) => {
+    try {
+        // Verificar si el usuario está logueado
+        if (!req.session.loggedIn) {
+            return res.redirect('/log-in');
+        }
+
+        // Mostrar solo las publicaciones aprobadas del usuario actual
+        const anuncios = await Anuncio.find({ creatorId: req.session.userId, status: 'approved' });
+        const eventos = await Evento.find({ creatorId: req.session.userId, status: 'approved' });
+        const emprendimientos = await Emprendimiento.find({ creatorId: req.session.userId, status: 'approved' });
+
+        res.render('public-views/publicaciones.ejs', {
+            anuncios: anuncios,
+            eventos: eventos,
+            emprendimientos: emprendimientos
+        });
+    } catch (error) {
+        console.error("Error al obtener publicaciones:", error);
+        res.redirect('/');
+    }
 });
+
 
 // ==========================
 // ADMIN
 // ==========================
-app.get('/panel-admin', (req, res) => {
-    // Verifica si el usuario es administrador antes de permitir el acceso al panel de administración.
+
+app.get('/panel-admin', async (req, res) => {
     if (!req.session.admin) {
-        res.redirect('/log-in');
-    } else {
-        res.render('admin/panel-admin.ejs');
-    };
-});
+        return res.redirect('/');
+    }
+
+    try {
+        const tickets = await Ticket.find({})
+            .populate('publicationId')
+            .sort({ createdAt: -1 }); // Ordenar por fecha descendente
+
+        res.render('admin/panel-admin.ejs', { tickets });
+    } catch (error) {
+        console.error("Error al cargar panel admin:", error);
+        res.redirect('/');
 
 // ==========================
 // USERS
@@ -158,26 +185,119 @@ app.get('/profile', (req, res) => {
     }
 });
 
-// ==========================
+
+
 // ADMIN FORMS-VIEWS
+
+app.get('/registerAdmin', async (req, res) => {
+    if (!req.session.admin) {
+        return res.redirect('/');
+    }
+
+    try {
+        // Aquí va la lógica que quieras ejecutar
+        res.render('admin/new-admin.ejs'); // por ejemplo, cargar una vista
+    } catch (error) {
+        console.error("Error al cargar registerAdmin:", error);
+        res.redirect('/');
+    }
+});
+
+// ==========================
+// admin FORMS-VIEWS
 // ==========================
 
-app.get('/viewAnuncio', (req, res) => {
-    res.render('admin/form-views/vistaAnuncio.ejs');
+// ANUNCIO
+app.get('/viewAnuncio', async (req, res) => {
+    if (!req.session.admin) return res.redirect('/');
+    const id = req.query.id;
+    try {
+        const anuncio = await Anuncio.findById(id);
+        const ticket = await Ticket.findOne({ publicationId: id, type: 'anuncio' });
+        if (!anuncio || !ticket) return res.status(404).send('Anuncio o ticket no encontrado');
+        res.render('admin/form-views/vistaAnuncio.ejs', { anuncio, ticket });
+    } catch (err) {
+        console.error('Error al obtener anuncio:', err);
+        res.redirect('/panel-admin');
+    }
 });
 
-app.get('/viewEmprendimiento', (req, res) => {
-    res.render('admin/form-views/vistaEmprendimiento.ejs');
+// EMPRENDIMIENTO
+app.get('/viewEmprendimiento', async (req, res) => {
+    if (!req.session.admin) return res.redirect('/');
+    const id = req.query.id;
+    try {
+        const emprendimiento = await Emprendimiento.findById(id);
+        const ticket = await Ticket.findOne({ publicationId: id, type: 'emprendimiento' });
+        if (!emprendimiento || !ticket) return res.status(404).send('Emprendimiento o ticket no encontrado');
+        res.render('admin/form-views/vistaEmprendimiento.ejs', { emprendimiento, ticket });
+    } catch (err) {
+        console.error('Error al obtener emprendimiento:', err);
+        res.redirect('/panel-admin');
+    }
 });
 
-app.get('/viewEvento', (req, res) => {
-    res.render('admin/form-views/vistaEvento.ejs');
+/* el get de evento ASI ANTES
+app.get('/viewEvento', async (req, res) => {
+    const eventoId = req.query.id;
+    try {
+        const evento = await Evento.findById(eventoId);
+        if (!evento) return res.status(404).send("Evento no encontrado");
+        res.render('admin/form-views/vistaEvento.ejs', { evento });
+    } catch (error) {
+        console.error("Error al obtener evento:", error);
+        res.redirect('/panel-admin');
+    }
+});*/
+
+app.get('/viewEvento', async (req, res) => {
+    const eventoId = req.query.id;
+    try {
+        // Aquí buscamos el evento:
+        const evento = await Evento.findById(eventoId);
+
+        // Aquí añadimos: buscar el ticket relacionado
+        const ticket = await Ticket.findOne({ publicationId: eventoId, type: 'evento' });
+
+        if (!evento || !ticket) return res.status(404).send("Evento o ticket no encontrado");
+
+        res.render('admin/form-views/vistaEvento.ejs', {
+            evento,
+            ticket
+        });
+    } catch (error) {
+        console.error("Error al obtener evento:", error);
+        res.redirect('/panel-admin');
+    }
 });
 
-app.get('/viewReporte', (req, res) => {
-    res.render('admin/form-views/vistaEvento.ejs');
-});
+/*app.get('/viewReporte', (req, res) => {
+    res.render('admin/form-views/vistaReporte.ejs');
+});*/
 
+// (OPCIONAL) REPORTE — solo si tienes modelo Reporte
+// const Reporte = require('../models/reportes'); // si existe
+
+app.get('/viewReporte', async (req, res) => {
+    if (!req.session.admin) return res.redirect('/');
+    const id = req.query.id; // <-- viene del link en el panel
+
+    try {
+        const [reporte, ticket] = await Promise.all([
+            Reporte.findById(id),
+            Ticket.findOne({ publicationId: id, type: 'reporte' })
+        ]);
+
+        if (!reporte || !ticket) {
+            return res.status(404).send('Reporte o ticket no encontrado');
+        }
+
+        res.render('admin/form-views/vistaReporte.ejs', { reporte, ticket });
+    } catch (err) {
+        console.error('Error al obtener reporte:', err);
+        res.redirect('/panel-admin');
+    }
+});
 
 // ==========================
 // FORMS
@@ -265,6 +385,11 @@ const Evento = require('../models/eventos');
 const Anuncio = require('../models/anuncios')
 const Rutas = require('../models/rutas')
 const Admin = require('../models/admins');
+const Emprendimiento = require('../models/emprendimientos');
+const Ticket = require('../models/tickets');
+const UserAdmin = require('../models/user-admin');
+const Reporte = require('../models/reportes');
+
 connectDB();
 
 // ==========================
@@ -297,6 +422,26 @@ const existeAdmin = async () => {
 }
 existeAdmin();
 
+app.post('/addReport', async (req, res) => {
+    let data = new Reporte({
+        reporte: req.body.reporte,
+        nombre: req.body.nombre,
+        descripcion: req.body.descripcion,
+        tipo: req.body.tipo,
+        notificado: req.body.notificado,
+        correo: req.body.correo,
+    })
+    await data.save()
+        .then(() => {
+            console.log('Reporte registrado');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/form-reporte')
+});
+
+
 app.post('/register', async (req, res) => {
 
     let data = new User({
@@ -322,13 +467,12 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/authenticate', (req, res) => {
-
-
     let data = {
         email: req.body.correo,
         password: req.body.password
     }
 
+    /* IDENTIFICACION ORIGINAL DEL ADMIN
     const identificarAdmin = async () => {
         const admin = await Admin.findOne({ email: 'admin@gmail.com' });
 
@@ -343,7 +487,35 @@ app.post('/authenticate', (req, res) => {
                 res.redirect('/log-in');
             }
         }
+    };*/
+
+    ///IDITENTIFICACION DEL ADMIN ORIGINAL Y TAMBINE CON UNO QUE SE CREE DESDE EL PANEL DE ADMIN
+    const identificarAdmin = async () => {
+        // Buscar en Admin "principal"
+        const admin = await Admin.findOne({ email: data.email });
+
+        if (admin && data.password === admin.password) {
+            req.session.admin = true;
+            req.session.loggedIn = true;
+            req.session.name = admin.name;
+            return res.redirect('/panel-admin');
+        }
+
+        // Buscar en los administradores creados desde registerAdmin
+        const userAdmin = await UserAdmin.findOne({ email: data.email });
+
+        if (userAdmin && data.password === userAdmin.password) {
+            req.session.admin = true;
+            req.session.loggedIn = true;
+            req.session.name = userAdmin.name;
+            return res.redirect('/panel-admin');
+        }
+
+        console.log("Credenciales incorrectas para administrador");
+        return res.redirect('/log-in');
     };
+
+    ///////////////////////////////////////////////////////////////////////////
 
     const existeUser = async () => {
 
@@ -357,6 +529,7 @@ app.post('/authenticate', (req, res) => {
                 req.session.name = usuario.name;
                 req.session.email = usuario.email;
                 req.session.phone = usuario.phone;
+                req.session.userId = usuario._id;
 
                 if (req.session.loggedIn) {
                     res.redirect('/');
@@ -373,11 +546,40 @@ app.post('/authenticate', (req, res) => {
         }
     };
 
+    /* ESTO ES DEL PASADO PARA LOGEARSE CON LO DE EL SUPEOR ADMIN
     if (data.email == 'admin@gmail.com') {
         identificarAdmin();
     } else {
         existeUser();
-    }
+    }*/
+
+    // ESTE ES EL NUEVO PARA ACCESAR CON EL SUPER ADMIN Y EL ADMIN NORMAL////////////////////////
+
+    // Verificar si es admin (ya sea el principal o uno creado por otro admin)
+    const verificarAcceso = async () => {
+        const adminPrincipal = await Admin.findOne({ email: data.email });
+        const adminSecundario = await UserAdmin.findOne({ email: data.email });
+
+        if (adminPrincipal && data.password === adminPrincipal.password) {
+            req.session.admin = true;
+            req.session.loggedIn = true;
+            req.session.name = adminPrincipal.name;
+            return res.redirect('/panel-admin');
+        }
+
+        if (adminSecundario && data.password === adminSecundario.password) {
+            req.session.admin = true;
+            req.session.loggedIn = true;
+            req.session.name = adminSecundario.name;
+            return res.redirect('/panel-admin');
+        }
+
+        // Si no es admin, buscar como usuario normal
+        existeUser();
+    };
+
+    verificarAcceso();
+
 });
 
 app.get('/log-out', (req, res) => {
@@ -390,6 +592,29 @@ app.get('/log-out', (req, res) => {
     });
 });
 
+///
+app.post('/registerAdmin', async (req, res) => {
+
+    let data = new UserAdmin({
+        cedula: req.body.cedula,
+        name: req.body.nombre,
+        email: req.body.correo,
+        phone: req.body.telefono,
+        password: req.body.password,
+        passwordConfirmation: req.body.passwordConfirmation
+
+    });
+
+    await data.save()
+        .then(() => {
+            console.log('Usuario registrado');
+        })
+        .catch((err) => {
+            console.log("ERROR", err);
+        })
+    res.redirect('/panel-admin');
+
+});
 
 // ==========================
 // FORMS
@@ -397,41 +622,134 @@ app.get('/log-out', (req, res) => {
 
 
 app.post('/addEvent', async (req, res) => {
-    let data = new Evento({
-        eventName: req.body.evento,
-        creatorName: req.body.creatorName,
-        description: req.body.descripcion,
-        phone: req.body.telefono,
-        date: req.body.fecha,
-        direction: req.body.ubicacion,
-    });
-    await data.save()
-        .then(() => {
-            console.log('Evento registrado');
-        })
-        .catch((err) => {
-            console.log("ERROR", err);
-        })
-    res.redirect('/form-evento')
+    try {
+        // Crear el nuevo evento
+        let evento = new Evento({
+            eventName: req.body.evento,
+            creatorName: req.body.creatorName,
+            description: req.body.descripcion,
+            phone: req.body.telefono,
+            date: req.body.fecha,
+            direction: req.body.ubicacion,
+            creatorId: req.session.userId,
+            status: 'pending'
+        });
+
+        // Guardar el evento en la base de datos
+        const savedEvento = await evento.save();
+
+        // Crear el ticket asociado
+        let ticket = new Ticket({
+            type: 'evento',
+            publicationId: savedEvento._id, // Usar el ID del evento guardado
+            title: req.body.evento, // Título del evento
+            creatorName: req.session.name, // Nombre del usuario de la sesión
+            status: 'pending'
+        });
+
+        // Guardar el ticket
+        await ticket.save();
+
+        console.log('Evento y ticket registrados');
+        res.redirect('/form-evento');
+    } catch (err) {
+        console.log("ERROR", err);
+        res.redirect('/form-evento');
+    }
 });
 
 app.post('/addAnuncio', async (req, res) => {
-    let data = new Anuncio({
-        anuncioName: req.body.anuncio,
-        creatorName: req.body.nombre,
-        description: req.body.descripcion,
-        date: req.body.fecha,
+    try {
+        let anuncio = new Anuncio({
+            anuncioName: req.body.anuncio,
+            creatorName: req.body.nombre,
+            description: req.body.descripcion,
+            date: req.body.fecha,
+            creatorId: req.session.userId,
+            status: 'pending'
+        });
 
+        const savedAnuncio = await anuncio.save();
 
-    })
-    await data.save()
-        .then(() => {
-            console.log('Anuncio registrado');
-        })
-        .catch((err) => {
-            console.log("ERROR", err);
-        })
-    res.redirect('/form-anuncio')
+        let ticket = new Ticket({
+            type: 'anuncio',
+            publicationId: savedAnuncio._id,
+            title: req.body.anuncio,
+            creatorName: req.session.name,
+            status: 'pending'
+        });
+
+        await ticket.save();
+
+        console.log('Anuncio y ticket registrados');
+        res.redirect('/form-anuncio');
+    } catch (err) {
+        console.log("ERROR", err);
+        res.redirect('/form-anuncio');
+    }
+});
+
+app.post('/addEmprendimiento', async (req, res) => {
+    try {
+        let emprendimiento = new Emprendimiento({
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            categoria: req.body.categoria,
+            emprendedor: req.body.nombre,
+            correo: req.body.correo,
+            telefono: req.body.telefono,
+            ubicacion: req.body.ubicacion,
+            redSocial: req.body.redSocial,
+            creatorId: req.session.userId,
+            status: 'pending'
+        });
+
+        const savedEmprendimiento = await emprendimiento.save();
+
+        let ticket = new Ticket({
+            type: 'emprendimiento',
+            publicationId: savedEmprendimiento._id,
+            title: req.body.nombre, // Usamos el nombre del emprendimiento como título
+            creatorName: req.session.name,
+            status: 'pending'
+        });
+
+        await ticket.save();
+
+        console.log('Emprendimiento y ticket registrados');
+        res.redirect('/form-emprendimiento');
+    } catch (err) {
+        console.log("ERROR", err);
+        res.redirect('/form-emprendimiento');
+    }
+});
+
+app.post('/addReporte', async (req, res) => {
+    try {
+        const reporte = await new Reporte({
+            reporte: req.body.reporte,
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            tipo: req.body.tipo,
+            notificado: req.body.notificado,
+            correo: req.body.correo,
+            status: 'pending'
+        }).save();
+
+        await new Ticket({
+            type: 'reporte',
+            publicationId: reporte._id,
+            title: req.body.reporte,
+            creatorName: req.session.name,
+            status: 'pending'
+        }).save();
+
+        res.redirect('/form-reporte');
+    } catch (err) {
+        console.error('ERROR', err);
+        res.redirect('/form-reporte');
+    }
+
 });
 
 
@@ -482,13 +800,50 @@ app.post('/actualizar-ruta', async (req, res) => {
 //mostrar()
 
 
-//OBTENER EVENTOS PARA PODER ENVIARLOS DESDE EL BACK, ESTO YA QUE AL PARECER NO SE PUEDE USAR DOM DESDE NODE JS, ENTONCES LO ENVIAMOS COMO UN PAQUETE HASTA EL FRONT END
+// ==========================
+// APIS PÚBLICAS DE CONTENIDO
+// ==========================
+//OBTENER EVENTOS PARA PODER ENVIARLOS DESDE EL BACK, ESTO YA QUE AL PARECER NO SE PUEDE USAR DOM DESDE NODE JS, ENTONCES LO ENVIAMOS COMO UN PAQUETE HASTA EL FRONT END// Eventos aprobados
 app.get('/api/eventos', async (req, res) => {
     try {
-        const eventos = await Evento.find();
+        const eventos = await Evento.find({ status: 'approved' });
         res.json(eventos);
     } catch (err) {
         console.error("Error obteniendo eventos:", err);
+        res.status(500).json({ error: "Error al obtener eventos" });
+    }
+});
+
+// Anuncios aprobados
+app.get('/api/anuncios', async (req, res) => {
+    try {
+        const anuncios = await Anuncio.find({ status: 'approved' });
+        res.json(anuncios);
+    } catch (err) {
+        console.error("Error obteniendo anuncios:", err);
+        res.status(500).json({ error: "Error al obtener anuncios" });
+    }
+});
+
+// Emprendimientos aprobados
+app.get('/api/emprendimientos', async (req, res) => {
+    try {
+        const emprendimientos = await Emprendimiento.find({ status: 'approved' });
+        res.json(emprendimientos);
+    } catch (err) {
+        console.error("Error obteniendo emprendimientos:", err);
+        res.status(500).json({ error: "Error al obtener emprendimientos" });
+    }
+});
+
+// Reportes aprobados
+app.get('/api/reportes', async (req, res) => {
+    try {
+        const reportes = await Reporte.find({ status: 'approved' });
+        res.json(reportes);
+    } catch (err) {
+        console.error("Error obteniendo reportes:", err);
+        res.status(500).json({ error: "Error al obtener reportes" });
     }
 });
 
@@ -501,3 +856,67 @@ app.get('/api/rutas', async (req, res) => {
         console.error("Error obteniendo rutas:", err);
     }
 });
+
+
+
+// ==========================
+// TICKET MANAGEMENT
+// ==========================
+
+app.post('/admin/approve-ticket', async (req, res) => {
+    if (!req.session.admin) {
+        return res.redirect('/');
+    }
+
+    try {
+        const { ticketId, publicationId, type } = req.body;
+
+        // Actualizar estado del ticket
+        await Ticket.findByIdAndUpdate(ticketId, { status: 'approved' });
+        console.log("Aprobado:", publicationId);
+        // Actualizar estado de la publicación
+        let model;
+        switch (type) {
+            case 'anuncio': model = Anuncio; break;
+            case 'evento': model = Evento; break;
+            case 'emprendimiento': model = Emprendimiento; break;
+            case 'reporte': model = Reporte; break;
+        }
+
+        await model.findByIdAndUpdate(publicationId, { status: 'approved' });
+        res.redirect('/panel-admin');
+    } catch (error) {
+        console.error("Error al aprobar ticket:", error);
+        res.redirect('/panel-admin');
+    }
+});
+
+app.post('/admin/reject-ticket', async (req, res) => {
+    if (!req.session.admin) {
+        return res.redirect('/');
+    }
+
+    try {
+        const { ticketId, publicationId, type } = req.body;
+
+        // Actualizar estado del ticket
+        await Ticket.findByIdAndUpdate(ticketId, { status: 'rejected' });
+
+        // Actualizar estado de la publicación
+        let model;
+        switch (type) {
+            case 'anuncio': model = Anuncio; break;
+            case 'evento': model = Evento; break;
+            case 'emprendimiento': model = Emprendimiento; break;
+            case 'reporte': model = Reporte; break;
+        }
+
+        await model.findByIdAndUpdate(publicationId, { status: 'rejected' });
+
+        res.redirect('/panel-admin');
+    } catch (error) {
+        console.error("Error al rechazar ticket:", error);
+        res.redirect('/panel-admin');
+    }
+});
+

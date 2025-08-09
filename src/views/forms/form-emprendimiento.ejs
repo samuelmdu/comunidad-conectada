@@ -34,14 +34,14 @@
                 </p>
             </section>
 
-            <form action="#" class="formEmprendimiento" id="formulario">
+            <form action="/addEmprendimiento" method="POST" class="formEmprendimiento" id="formulario">
                 <div class="columna1">
                     <!-- GRUPO EMPRENDIMIENTO-->
                     <div class="formulario-grupo" id="grupo-emprendimiento">
                         <label class="formulario-label">Nombre del emprendimiento</label>
                         <div class="formulario-grupo-input">
                             <input type="text" required class="formulario-input" name="emprendimiento"
-                                id="emprendimiento" placeholder="La Chismosa">
+                                id="emprendimiento" placeholder="Charles BBQ">
                             <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         </div>
                         <p class="formulario-input-error">
@@ -55,7 +55,7 @@
                         <label class="formulario-label">Descripción breve:</label>
                         <div class="formulario-grupo-input">
                             <textarea rows="4" required class="formulario-input" name="descripcion"
-                                id="descripcion"></textarea>
+                                id="descripcion" placeholder="Somos las mejores hamburguesas del pais y con nuestro sabor Argentino"></textarea>
                             <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         </div>
                         <p class="formulario-input-error">
@@ -74,7 +74,7 @@
                                 digitales</label>
                             <label><input type="radio" name="categoria" value="arte"> Arte y diseño</label>
                             <label><input type="radio" name="categoria" value="educacion"> Educación / Cursos</label>
-                            <label><input type="radio" name="categoria" value="otro"> Otro:</label>
+                             <!--<label><input type="radio" name="categoria" value="otro"> Otro:</label>-->
                         </div>
                     </div>
 
@@ -94,7 +94,7 @@
                     <!-- GRUPO USUARIO-->
                     <div class="formulario-grupo" id="grupo-nombre">
                         <label class="formulario-label">Nombre del emprendedor/a:</label>
-                        <input type="text" required class="formulario-input" name="nombre" id="nombre">
+                        <input type="text" required class="formulario-input" name="nombre" id="nombre" placeholder="Ej: Juan Pérez">
                         <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         <p class="formulario-input-error">
                             El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
@@ -111,7 +111,7 @@
                     <!-- GRUPO CORREO-->
                     <div class="formulario-grupo" id="grupo-correo">
                         <label class="formulario-label">Correo electrónico de contacto:</label>
-                        <input type="email" required class="formulario-input" name="correo" id="correo">
+                        <input type="email" required class="formulario-input" name="correo" id="correo" placeholder="juan@gmail.com">
                         <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         <p class="formulario-input-error">
                             Debes ingresar un correo válido. Ejemplo: usuario@dominio.com
@@ -122,7 +122,7 @@
                     <!-- GRUPO NUMERO-->
                     <div class="formulario-grupo" id="grupo-telefono">
                         <label class="formulario-label">Número de teléfono:</label>
-                        <input type="tel" required class="formulario-input" name="telefono" id="telefono">
+                        <input type="tel" required class="formulario-input" name="telefono" id="telefono" placeholder="Ej: 1234567890">
                         <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         <p class="formulario-input-error">
                             El número debe tener 8 dígitos y solo contener números.
@@ -134,7 +134,7 @@
                     <div class="formulario-grupo" id="grupo-ubicacion">
                         <label class="formulario-label">Ubicación:</label>
                         <div class="formulario-grupo-input">
-                            <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion">
+                            <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion" placeholder="Ej: Calle Falsa 123, Ciudad">
                             <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         </div>
                         <p class="formulario-input-error">
@@ -144,7 +144,7 @@
 
                     <div class="formulario-grupo">
                         <label class="formulario-label">Red social o sitio web (opcional):</label>
-                        <input type="url" class="formulario-input">
+                        <input type="url" class="formulario-input" placeholder="Ej: https://www.instagram.com/tuemprendimiento" name="redSocial" id="redSocial">
                     </div>
 
                     <div class="formulario-grupo">

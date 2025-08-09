@@ -499,6 +499,20 @@
         opacity: 0;
     }
 
+    .formulario-input,
+    textarea {
+        padding: 12.8px;
+        border-radius: 8px;
+        border: 1px solid var(--gris);
+        font-size: 1rem;
+        background-color: #f4f6fa;
+        color: var(--azul-oscuro);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+
+
     .formulario-input-error {
         color: red;
         font-size: 12px;

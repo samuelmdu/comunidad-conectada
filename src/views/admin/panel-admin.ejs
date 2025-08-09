@@ -32,87 +32,46 @@
                 <button>Rechazados</button>
                 <div class="divider-line"></div>
                 <a href="/transporte-admin">Editar Transporte</a>
-                <a href="/register">Registrar Administrador</a>
+                <a href="/registerAdmin">Registrar Administrador</a>
 
             </section>
 
             <section class="tickets-list">
-                <div class="ticket" data-tipo="emprendimiento">
-                    <i class='bxr  bxs-store logo-form'></i>
-                    <p>
-                        <span class="ticket-info">Emprendimiento</span> Café Escalante
-                    </p>
-                    <span class="ticket-status">Rechazado</span>
-                    <div class="left-bar"></div>
-                </div>
+                <% tickets.forEach(ticket=> { %>
+                    <div class="ticket" data-tipo="<%= ticket.type %>" data-id="<%= ticket.publicationId._id %>"
+                        data-status="<%= ticket.status %>">
 
-                <div class="ticket" data-tipo="evento">
-                    <i class="bx bxs-calendar-check logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Evento</span> El proximo 13 de julio habrá una feria en el centro
-                        adfasdfadfasfasfdsafadfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasf
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
+                        <!-- Icono según el tipo -->
+                        <% if (ticket.type==='emprendimiento' ) { %>
+                            <i class='bxr bxs-store logo-form'></i>
+                            <% } else if (ticket.type==='evento' ) { %>
+                                <i class="bx bxs-calendar-check logo-form"></i>
+                                <% } else if (ticket.type==='reporte' ) { %>
+                                    <i class='bxr bxs-message-captions logo-form'></i>
+                                    <% } else if (ticket.type==='anuncio' ) { %>
+                                        <i class="bx bxs-megaphone logo-form"></i>
+                                        <% } %>
 
-                </div>
+                                            <p>
+                                                <span class="ticket-info">
+                                                    <%= ticket.type.charAt(0).toUpperCase() + ticket.type.slice(1) %>
+                                                </span>
+                                                <%= ticket.title %>
+                                            </p>
 
-                <div class="ticket" data-tipo="reporte">
-                    <i class='bxr  bxs-message-captions logo-form'></i>
-                    <p>
-                        <span class="ticket-info">Reporte</span> Ruidos molestos en la madrugada
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
+                                            <span class="ticket-status">
+                                                <% if (ticket.status==='pending' ) { %>
+                                                    Nuevo
+                                                    <% } else if (ticket.status==='approved' ) { %>
+                                                        Aprobado
+                                                        <% } else if (ticket.status==='rejected' ) { %>
+                                                            Rechazado
+                                                            <% } %>
+                                            </span>
 
-                <div class="ticket" data-tipo="anuncio">
-                    <i class="bx bxs-megaphone logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Anuncio</span> Nuevo punto de reciclaje
-                    </p>
-                    <span class="ticket-status">Aprobado</span>
-                    <div class="left-bar"></div>
-                </div>
-
-                <div class="ticket" data-tipo="evento">
-                    <i class="bx bxs-calendar-check logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Evento</span> La Iglesia realizará un turno durante la proxima semana
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
-
-                <div class="ticket" data-tipo="reporte">
-                    <i class='bxr  bxs-message-captions logo-form'></i>
-                    <p>
-                        <span class="ticket-info">Reporte</span> El alumbrado público de la calle principal dejó de
-                        funcionar
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
-
-                <div class="ticket" data-tipo="evento">
-                    <i class="bx bxs-calendar-check logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Evento</span> Fiesta del barrio
-                    </p>
-                    <span class="ticket-status">Aprobado</span>
-                    <div class="left-bar"></div>
-                </div>
-
-                <div class="ticket" data-tipo="anuncio">
-                    <i class="bx bxs-megaphone logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Anuncio</span> El proximo martes habrá un corte de agua durante la
-                        mañana
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
-
+                                            <div class="left-bar"></div>
+                    </div>
+                    <% }); %>
             </section>
         </main>
 

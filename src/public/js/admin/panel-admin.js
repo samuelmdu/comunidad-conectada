@@ -1,105 +1,103 @@
-const tickets = document.querySelectorAll('.ticket');
-const filterButtons = document.querySelectorAll('.status-filter button');
+document.addEventListener('DOMContentLoaded', () => {
 
+    const tickets = document.querySelectorAll('.ticket');
+    const filterButtons = document.querySelectorAll('.status-filter button');
 
-// Asignar iconos a los tickets según su tipo
-const iconosPorTipo = {
-    evento: 'bx bxs-calendar-check',
-    anuncio: 'bx bxs-megaphone',
-    emprendimiento: 'bx bxs-briefcase-alt',
-    reporte: 'bx bxs-error',
-    default: 'bx bxs-info-circle'
-};
+    const buttonToStatus = {
+        'todos': 'all',
+        'nuevos': 'pending',
+        'aprobados': 'approved',
+        'rechazados': 'rejected'
+    };
 
-// Actualizar colores de la barra de estado según el estado del ticket (se llama left-bar porque es la misma que se usa en el formulario de transporte)
-function ActualizarLeftBar() {
-    tickets.forEach(ticket => {
-        const statusText = ticket.querySelector('.ticket-status')?.textContent.trim().toLowerCase();
-        const leftBar = ticket.querySelector('.left-bar');
+    function filtrarTickets() {
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const btnText = button.textContent.trim().toLowerCase();
+                const mappedFilter = buttonToStatus[btnText] || 'all';
 
-        if (leftBar) {
-            switch (statusText) {
-                case 'rechazado':
-                    leftBar.style.backgroundColor = 'red';
-                    break;
-                case 'aprobado':
-                    leftBar.style.backgroundColor = 'green';
-                    break;
-                case 'nuevo':
-                    leftBar.style.backgroundColor = 'var(--azul-claro)';
-                    break;
-                default:
-                    leftBar.style.backgroundColor = 'gray';
+                tickets.forEach(ticket => {
+                    const status = ticket.dataset.status; // 'pending' | 'approved' | 'rejected'
+                    const leftBar = ticket.querySelector('.left-bar');
+
+                    // Actualizar colores según el estado en la DB
+                    if (leftBar) {
+                        switch (status) {
+                            case 'pending':
+                                leftBar.style.backgroundColor = 'var(--azul-claro)';
+                                break;
+                            case 'approved':
+                                leftBar.style.backgroundColor = 'green';
+                                break;
+                            case 'rejected':
+                                leftBar.style.backgroundColor = 'red';
+                                break;
+                            default:
+                                leftBar.style.backgroundColor = 'gray';
+                        }
+                    }
+
+                    // Aplicar filtro (mappedFilter == 'all' muestra todo)
+                    if (mappedFilter === 'all' || mappedFilter === status) {
+                        ticket.style.display = 'grid';
+                    } else {
+                        ticket.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Limitar longitud del texto de la descripción
+    function limiteDescripciones() {
+        tickets.forEach(ticket => {
+            const p = ticket.querySelector('p');
+            if (!p) return;
+
+            const span = p.querySelector('span.ticket-info');
+            const textoCompleto = p.textContent.trim();
+
+            const tipoTexto = span ? span.textContent.trim() : '';
+            const descripcionTexto = textoCompleto.replace(tipoTexto, '').trim();
+
+            if (descripcionTexto.length > 100) {
+                const nuevaDescripcion = descripcionTexto.substring(0, 100) + '...';
+                p.innerHTML = `<span class="ticket-info">${tipoTexto}</span> ${nuevaDescripcion}`;
             }
-        }
-    });
-}
+        });
+    }
 
-//poner límite visual de 100 caracteres a las descripciones de los tickets
-function limiteDescripciones() {
-    tickets.forEach(ticket => {
-        const p = ticket.querySelector('p');
-        if (!p) return;
+    // Redireccionar al formulario
+    function redireccionarFormulario() {
+        tickets.forEach(ticket => {
+            ticket.addEventListener('click', () => {
+                const tipo = ticket.dataset.tipo;
+                const id = ticket.dataset.id;
 
-        const span = p.querySelector('span.ticket-info');
-        const textoCompleto = p.textContent.trim();
-
-        const tipoTexto = span ? span.textContent.trim() : '';
-        const descripcionTexto = textoCompleto.replace(tipoTexto, '').trim();
-
-        if (descripcionTexto.length > 100) {
-            const nuevaDescripcion = descripcionTexto.substring(0, 100) + '...';
-            p.innerHTML = `<span class="ticket-info">${tipoTexto}</span> ${nuevaDescripcion}`;
-        }
-    });
-}
-
-// Filtrar tickets según el estado seleccionado
-function filtrarTickets() {
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.textContent.trim().toLowerCase();
-
-            tickets.forEach(ticket => {
-                const statusText = ticket.querySelector('.ticket-status')?.textContent.trim().toLowerCase();
-
-                if (filter === 'todos' || statusText === filter.slice(0, -1)) {
-                    ticket.style.display = 'grid';
-                } else {
-                    ticket.style.display = 'none';
+                switch (tipo) {
+                    case 'evento':
+                        window.location.href = `/viewEvento?id=${id}`;
+                        break;
+                    case 'anuncio':
+                        window.location.href = `/viewAnuncio?id=${id}`;
+                        break;
+                    case 'emprendimiento':
+                        window.location.href = `/viewEmprendimiento?id=${id}`;
+                        break;
+                    case 'reporte':
+                        window.location.href = `/viewReporte?id=${id}`;
+                        break;
+                    default:
+                        console.warn('Tipo de ticket no reconocido:', tipo);
                 }
             });
         });
-    });
-}
+    }
 
-// Redireccionar al formulario correspondiente al hacer clic en un ticket
-function redireccionarFormulario() {
-    tickets.forEach(ticket => {
-        ticket.addEventListener('click', () => {
-            const tipo = ticket.dataset.tipo;
-            switch (tipo) {
-                case 'evento':
-                    window.location.href = '/form-evento';
-                    break;
-                case 'anuncio':
-                    window.location.href = '/form-anuncio';
-                    break;
-                case 'emprendimiento':
-                    window.location.href = '/form-emprendimiento';
-                    break;
-                case 'reporte':
-                    window.location.href = '/form-reporte';
-                    break;
-                default:
-                    console.warn('Tipo de ticket no reconocido:', tipo);
-            }
-        });
-    });
-}
+    // llamar funciones
+    filtrarTickets();
+    limiteDescripciones();
+    redireccionarFormulario();
+    document.querySelector('.status-filter button')?.click();
 
-// Ejecutar funciones
-ActualizarLeftBar();
-limiteDescripciones();
-filtrarTickets();
-redireccionarFormulario();
+});

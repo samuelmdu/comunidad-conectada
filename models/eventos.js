@@ -8,6 +8,9 @@ let eventoSchema = new mongoose.Schema({
     phone: { type: Number, required: true },
     date: { type: String, required: true },
     direction: { type: String, required: true },
+    creatorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' }
+
 
 }, { versionKey: false })
 // Schema
