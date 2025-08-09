@@ -40,72 +40,111 @@
         </div>
 
 
-        <!-- Cards -->
-        <div class="no-created">
-            <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
-                Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
-        </div>
 
-        <section class="exterior-cards-container">
-            <div class="cards-container">
-                <!-- Card -->
 
-                <!-- <div class="card">
-                <div class="card-image perros"></div>
-                <div class="card-text-container">
-                    <p class="card-title">Inauguración Parque de Perros</p>
-                    <p class="card-subtitle">Parque Central Escazú</p>
-                </div>
-            </div> -->
-            </div>
-        </section>
+        <% if(!eventos[0]){ %>
 
-        <section class="publish-event-container">
-            <div class="create-entrepreneurship-container-limit">
-                <div class="publish-event-text-container">
-                    <h2>¿TE GUSTARÍA PUBLICAR TU</h2>
-
-                    <h1>EVENTO?</h1>
-                    <a href="/form-evento">
-                        <button>Haz Clic Aquí</button>
-                    </a>
-                </div>
-
-                <div class="publish-event-text-container">
-                    <p>Sabemos que te gusta conectar con todas y cada una de las personas en la comunidad, por ello acá
-                        tienes la oportunidad de organizar eventos pensados para pasarla bien y que ellos se puedan
-                        enterar
-                        de ello.</p>
-                </div>
+            <!-- Cards -->
+            <div class="no-created">
+                <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
+                    Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
             </div>
 
-        </section>
+            <% } else { %>
 
-        <div class="title-container">
-            <h1>EVENTOS POPULARES</h1>
-        </div>
+                <section class="exterior-cards-container">
+                    <div class="cards-container">
+                        <!-- Cards -->
+                        <% eventos.forEach(evento=> { %>
+                            <a href="/evento/<%= evento.id %>">
+                                <div class="card">
+                                    <div class="card-image perros"></div>
+                                    <div class="card-text-container">
+                                        <p class="card-title">
+                                            <%= evento.eventName %>
+                                        </p>
+                                        <p class="card-subtitle">
+                                            <%= evento.direction %>
+                                        </p>
 
-        <div class="no-created">
-            <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
-                Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
-        </div>
-        <section class="exterior-cards-container">
-            <div class="cards-container">
-                <!-- Card -->
-                <!-- <div class="card">
-                <div class="card-image luces"></div>
-                <div class="card-text-container">
-                    <p class="card-title">Festival de Luces Navideñas</p>
-                    <p class="card-subtitle">Santa Bárbara, Heredia</p>
-                </div>
-            </div> -->
-            </div>
-        </section>
+                                    </div>
+                                </div>
+                            </a>
 
-        <!-- Footer  -->
-        <%- include('../components/footer.ejs') %>
-            <script src="js/data/showEvents.js"></script>
-            <script src="js/global/menu-responsive.js"></script>
+                            <% }) %>
+                    </div>
+                </section>
+
+                <% } %>
+
+                    <section class="publish-event-container">
+                        <div class="create-entrepreneurship-container-limit">
+                            <div class="publish-event-text-container">
+                                <h2>¿TE GUSTARÍA PUBLICAR TU</h2>
+
+                                <h1>EVENTO?</h1>
+                                <a href="/form-evento">
+                                    <button>Haz Clic Aquí</button>
+                                </a>
+                            </div>
+
+                            <div class="publish-event-text-container">
+                                <p>Sabemos que te gusta conectar con todas y cada una de las personas en la
+                                    comunidad,
+                                    por
+                                    ello
+                                    acá
+                                    tienes la oportunidad de organizar eventos pensados para pasarla bien y que
+                                    ellos se
+                                    puedan
+                                    enterar
+                                    de ello.</p>
+                            </div>
+                        </div>
+
+                    </section>
+
+                    <div class="title-container">
+                        <h1>EVENTOS POPULARES</h1>
+                    </div>
+                    <% if(!eventos[0]){ %>
+
+                        <!-- Cards -->
+                        <div class="no-created">
+                            <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
+                                Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
+                        </div>
+
+                        <% } else { %>
+
+                            <section class="exterior-cards-container">
+                                <div class="cards-container">
+                                    <!-- Cards -->
+                                    <% eventos.forEach(evento=> { %>
+                                        <a href="/evento/<%= evento.id %>">
+                                            <div class="card">
+                                                <div class="card-image perros"></div>
+                                                <div class="card-text-container">
+                                                    <p class="card-title">
+                                                        <%= evento.eventName %>
+                                                    </p>
+                                                    <p class="card-subtitle">
+                                                        <%= evento.direction %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <% }) %>
+                                        </a>
+
+                                </div>
+                            </section>
+
+                            <% } %>
+
+                                <!-- Footer  -->
+                                <%- include('../components/footer.ejs') %>
+                                    <script src="js/data/showEvents.js"></script>
+                                    <script src="js/global/menu-responsive.js"></script>
 </body>
 
 </html>
