@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comunidad Conectada</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!--Header/Footer CSS-->
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/admin/panel-admin.css">
+</head>
+
+<body>
+    <!-- Header  -->
+    <%- include('../components/header.ejs') %>
+
+
+        <main class="status-container">
+            <section class="status-filter">
+                <h2>Categorías</h2>
+                <button>Todos</button>
+                <button>Nuevos</button>
+                <button>Aprobados</button>
+                <button>Rechazados</button>
+                <button>Eventos</button>
+                <button>Anuncios</button>
+                <button>Emprendimientos</button>
+                <button>Reportes</button>
+            </section>
+
+            </section>
+
+            <section class="tickets-list">
+                <div class="ticket" data-tipo="emprendimiento">
+                    <i class='bxr  bxs-store logo-form'></i>
+                    <p>
+                        <span class="ticket-info">Emprendimiento</span> Café Escalante
+                    </p>
+                    <span class="ticket-status">Rechazado</span>
+                    <div class="left-bar"></div>
+                </div>
+
+                <div class="ticket" data-tipo="evento">
+                    <i class="bx bxs-calendar-check logo-form"></i>
+                    <p>
+                        <span class="ticket-info">Evento</span> El proximo 13 de julio habrá una feria en el centro
+                        adfasdfadfasfasfdsafadfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasf
+                    </p>
+                    <span class="ticket-status">Nuevo</span>
+                    <div class="left-bar"></div>
+
+                </div>
+
+                <div class="ticket" data-tipo="reporte">
+                    <i class='bxr  bxs-message-captions logo-form'></i>
+                    <p>
+                        <span class="ticket-info">Reporte</span> Ruidos molestos en la madrugada
+                    </p>
+                    <span class="ticket-status">Nuevo</span>
+                    <div class="left-bar"></div>
+                </div>
+
+                <div class="ticket" data-tipo="anuncio">
+                    <i class="bx bxs-megaphone logo-form"></i>
+                    <p>
+                        <span class="ticket-info">Anuncio</span> Nuevo punto de reciclaje
+                    </p>
+                    <span class="ticket-status">Aprobado</span>
+                    <div class="left-bar"></div>
+                </div>
+
+                <div class="ticket" data-tipo="evento">
+                    <i class="bx bxs-calendar-check logo-form"></i>
+                    <p>
+                        <span class="ticket-info">Evento</span> La Iglesia realizará un turno durante la proxima semana
+                    </p>
+                    <span class="ticket-status">Nuevo</span>
+                    <div class="left-bar"></div>
+                </div>
+
+                <div class="ticket" data-tipo="reporte">
+                    <i class='bxr  bxs-message-captions logo-form'></i>
+                    <p>
+                        <span class="ticket-info">Reporte</span> El alumbrado público de la calle principal dejó de
+                        funcionar
+                    </p>
+                    <span class="ticket-status">Nuevo</span>
+                    <div class="left-bar"></div>
+                </div>
+
+                <div class="ticket" data-tipo="evento">
+                    <i class="bx bxs-calendar-check logo-form"></i>
+                    <p>
+                        <span class="ticket-info">Evento</span> Fiesta del barrio
+                    </p>
+                    <span class="ticket-status">Aprobado</span>
+                    <div class="left-bar"></div>
+                </div>
+
+                <div class="ticket" data-tipo="anuncio">
+                    <i class="bx bxs-megaphone logo-form"></i>
+                    <p>
+                        <span class="ticket-info">Anuncio</span> El proximo martes habrá un corte de agua durante la
+                        mañana
+                    </p>
+                    <span class="ticket-status">Nuevo</span>
+                    <div class="left-bar"></div>
+                </div>
+
+            </section>
+        </main>
+
+
+        <footer>
+            <!--Copyright-->
+            <section class="copyright-container">
+                <p>Copyright © TITÍ CODE 2025. All Rights Reserved.</p>
+            </section>
+        </footer>
+</body>
+<script defer src="js/admin/panel-admin.js"></script>
+<script defer src="js/global/menu-responsive.js"></script>
+</body>

@@ -9,8 +9,6 @@ let anuncioSchema = new mongoose.Schema({
     creatorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' }
 
-
-
 }, { versionKey: false })
 // Schema
 let Anuncio = new mongoose.model('Anuncios', anuncioSchema);

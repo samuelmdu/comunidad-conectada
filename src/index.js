@@ -27,7 +27,7 @@ app.use(session({
     resave: false,
     cookie: {
         // 5 minutes
-        //maxAge: 5 * 60 * 1000,
+        maxAge: 10 * 60 * 1000,
     },
 }));
 
@@ -71,7 +71,13 @@ app.get('/feed', (req, res) => {
 });
 
 app.get('/anuncio', (req, res) => {
-    res.render('public-views/anuncio.ejs');
+    const anuncioList = async () => {
+        const anuncios = await Anuncio.find();
+        res.render('public-views/anuncio.ejs', {
+            anuncios: anuncios
+        });
+    }
+    anuncioList();
 });
 
 app.get('/anuncio-user', (req, res) => {
@@ -91,7 +97,13 @@ app.get('/emprendimiento-user', (req, res) => {
 });
 
 app.get('/evento', (req, res) => {
-    res.render('public-views/evento.ejs');
+    const eventList = async () => {
+        const eventos = await Evento.find();
+        res.render('public-views/evento.ejs', {
+            eventos: eventos
+        });
+    }
+    eventList();
 });
 
 app.get('/evento-user', (req, res) => {
@@ -133,6 +145,7 @@ app.get('/publicaciones', async (req, res) => {
 // ==========================
 // ADMIN
 // ==========================
+
 app.get('/panel-admin', async (req, res) => {
     if (!req.session.admin) {
         return res.redirect('/');
@@ -147,13 +160,35 @@ app.get('/panel-admin', async (req, res) => {
     } catch (error) {
         console.error("Error al cargar panel admin:", error);
         res.redirect('/');
+
+// ==========================
+// USERS
+// ==========================
+app.get('/profile', (req, res) => {
+    if (!req.session.loggedIn) {
+        res.redirect('/log-in');
+    } else {
+
+        const myPublications = async () => {
+            // Obtiene los anuncios y eventos creados por el usuario actual. 
+            const anuncios = await Anuncio.find({ creatorName: req.session.name });
+            const eventos = await Evento.find({ creatorName: req.session.name });
+
+            res.render('users/profile.ejs', {
+                anuncios: anuncios,
+                eventos: eventos,
+            })
+
+        }
+
+        myPublications();
     }
 });
 
 
-// ==========================
-// admin REGISTRAR ADMINISTRADOR NUEVO
-// ==========================
+
+// ADMIN FORMS-VIEWS
+
 app.get('/registerAdmin', async (req, res) => {
     if (!req.session.admin) {
         return res.redirect('/');
@@ -304,6 +339,41 @@ app.get('/editar-transporte', async (req, res) => {
         console.error("Error al obtener la ruta:", error);
     }
 });
+
+// ==========================
+// DETALLES DE ANUNCIO Y EVENTO
+// ==========================
+
+// En estas rutas se obtiene el ID del anuncio o evento desde la URL, se busca en la base de datos y se renderiza la vista correspondiente con los datos obtenidos.
+app.get('/evento/:id', async (req, res) => {
+    try {
+        const evento = await Evento.findById(req.params.id);
+        if (!evento) {
+            return res.status(404).send('Evento no encontrado');
+        }
+
+        res.render('public-views/evento-user', { evento });
+    } catch (error) {
+        console.error("Error al obtener el evento:", error);
+        res.status(500).send('Error del servidor');
+    }
+});
+
+
+app.get('/anuncio/:id', async (req, res) => {
+    try {
+
+        const anuncio = await Anuncio.findById(req.params.id);
+        if (!anuncio) {
+            return res.status(404).send('Anuncio no encontrado');
+        }
+        res.render('public-views/anuncio-user', { anuncio });
+    } catch (error) {
+        console.error("Error al obtener el evento:", error);
+        res.status(500).send('Error del servidor');
+    }
+});
+
 
 // ╔══════════════════════════════════════════╗
 // ║              Data base                   ║
@@ -526,7 +596,6 @@ app.get('/log-out', (req, res) => {
 app.post('/registerAdmin', async (req, res) => {
 
     let data = new UserAdmin({
-
         cedula: req.body.cedula,
         name: req.body.nombre,
         email: req.body.correo,
@@ -680,6 +749,7 @@ app.post('/addReporte', async (req, res) => {
         console.error('ERROR', err);
         res.redirect('/form-reporte');
     }
+
 });
 
 

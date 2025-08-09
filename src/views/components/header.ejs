@@ -27,27 +27,31 @@
             <a href="/form-reporte">
                 <li>REPORTES</li>
             </a>
-
-            <% if(loggedIn) { %>
-
-                <a href="/panel-admin" id="icon-profile-button">
-                    <i class="ri-account-circle-fill icon-profile"></i>
-                </a>
-
-                <div class="menu-flotante">
-                    <p>Hola <%- name %>!</p>
-                    <a href="/log-out">
-                        <li>CERRAR SESIÓN</li>
+            <!--Si el usuario está logueado, mostrar el botón de perfil, sino mostrar "Iniciar Sesión".-->
+            <% if (loggedIn) { %>
+                <!--Si el usuario es administrador, en el botón de perfil dirigir al el panel de admin.-->
+                <% if (admin) { %>
+                    <a href="/panel-admin" id="icon-profile-button">
+                        <i class="ri-account-circle-fill icon-profile"></i>
                     </a>
-                </div>
-
-                <% } else { %>
-                    <a href="/log-in">
-                        <li>INICIAR SESIÓN</li>
-                    </a>
-                    <% } %>
-
-
+                    <!-- // Sino dirigir al perfil del usuario.-->
+                    <% } else { %>
+                        <a href="/profile" id="icon-profile-button">
+                            <i class="ri-account-circle-fill icon-profile"></i>
+                        </a>
+                        <% } %>
+                            <!--Nombre en el menu flotante.-->
+                            <div class="menu-flotante">
+                                <p>Hola <%- name %>!</p>
+                                <a href="/log-out">
+                                    <li>CERRAR SESIÓN</li>
+                                </a>
+                            </div>
+                            <% } else { %>
+                                <a href="/log-in">
+                                    <li>INICIAR SESIÓN</li>
+                                </a>
+                                <% } %>
         </ul>
 
         <div class="burger"><i class="ri-menu-line"></i></div>
