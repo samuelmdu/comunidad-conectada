@@ -187,25 +187,21 @@ app.get('/profile', (req, res) => {
     }
 });
 
-// ==========================
-// ADMIN FORMS-VIEWS
-// ==========================
+app.get('/registerAdmin', async (req, res) => {
+    if (!req.session.admin) {
+        return res.redirect('/');
+    }
 
-app.get('/viewAnuncio', (req, res) => {
-    res.render('admin/form-views/vistaAnuncio.ejs');
+    try {
+        // Aquí va la lógica que quieras ejecutar
+        res.render('admin/new-admin.ejs'); // por ejemplo, cargar una vista
+    } catch (error) {
+        console.error("Error al cargar registerAdmin:", error);
+        res.redirect('/');
+    }
 });
 
-app.get('/viewEmprendimiento', (req, res) => {
-    res.render('admin/form-views/vistaEmprendimiento.ejs');
-});
 
-app.get('/viewEvento', (req, res) => {
-    res.render('admin/form-views/vistaEvento.ejs');
-});
-
-app.get('/viewReporte', (req, res) => {
-    res.render('admin/form-views/vistaEvento.ejs');
-});
 
 // ==========================
 // admin FORMS-VIEWS
