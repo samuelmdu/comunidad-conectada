@@ -61,28 +61,41 @@
                     </div>
                 </div>
 
+
+                <% if(!anuncios[0]){ %>
                 <div class="no-created">
                     <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
                         Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
                 </div>
+                <% } else { %>
                 <!-- CONTENIDO DE LA SECCION -->
                 <section class="exterior-advertisement-container-anuncios">
                     <div class="advertisement-container-anuncios">
+                        
                         <!-- ANUNCIO -->
-
-                        <!-- <div class="route-card-anuncios">
+                        <% 
+                            const ultimosAnuncios = anuncios
+                                .filter(e => e.status === "approved")
+                                .slice(-4);
+                        %>
+                        <% anuncios.forEach(anuncio=> { %>
+                        <% if(anuncio.status === "approved"){%>
+                        <a href="/anuncio/<%= anuncio.id %>" style="text-decoration: none;">
+                        <div class="route-card-anuncios">
                         <div class="left-bar"></div>
                         <div class="card-content-anuncios">
-                            <h3>Reunión de la comunidad</h3>
+                            <h3><%= anuncio.anuncioName %></h3>
                             <div class="route-details-anuncios">
-                                <p><strong>Horarios:</strong><br> 4:00 PM - 8:00 PM</p>
-                                <p><strong>Ubicación:</strong><br> Salón parroquial</p>
+                                <p><strong>Horarios:</strong><br> <%= anuncio.date %></p>
                             </div>
                         </div>
-                    </div> -->
-
+                    </div>
+                    </a>
+                    <% } %>
+                    <% }) %>
                     </div>
                 </section>
+                <% } %>
             </section>
 
 
@@ -96,25 +109,37 @@
                         <p>¡Bienvenidos a Barrio Escalante, San José, Costa Rica!</p>
                     </div>
                 </div>
-
+                <% if(!emprendimientos[0]){ %>
                 <div class="no-created">
                     <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
                         Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
                 </div>
+                <% } else { %>
                 <!-- CONTENIDO DE LA SECCION -->
                 <section class="exterior-cards-container">
                     <div class="cards-container">
                         <!-- CARD -->
-                        <!-- <div class="card">
-                        <div class="card-image chismosa"></div>
-                        <div class="card-text-container">
-                            <p class="card-title">La Chismosa
-                            </p>
-                            <p class="card-subtitle">Restaurante</p>
+                        <%
+                            const emprendimientosAleatorios = emprendimientos
+                                .filter(e => e.status === 'approved')
+                                .sort(() => Math.random() - 0.5)     
+                                .slice(0, 4);                         
+                        %>
+                        <% emprendimientosAleatorios.forEach(emprendimiento => { %>
+                        <a href="/emprendimiento/<%= emprendimiento.id %>" style="text-decoration: none;">
+                        <div class="card">
+                            <div class="card-image chismosa"></div>
+                            <div class="card-text-container">
+                                <p class="card-title"><%=emprendimiento.nombre%>
+                                </p>
+                                <p class="card-subtitle"><%=emprendimiento.categoria%></p>
+                            </div>
                         </div>
-                    </div> -->
+                        </a>
+                        <% }) %>
                     </div>
                 </section>
+                <% } %>
             </section>
 
 
@@ -150,24 +175,36 @@
                         <p>¡Bienvenidos al calendario oficial de evento de Barrio Escalante, San José, Costa Rica!</p>
                     </div>
                 </div>
+
+                <% if(!eventos[0]){ %>
                 <div class="no-created" id="noCardsAtEventos">
                     <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
                         Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
                 </div>
+                <% } else { %>
                 <!-- CONTENIDO DE LA SECCION -->
                 <section class="exterior-cards-container">
                     <div class="cards-container" id="cards-eventos">
+                        <% 
+                            const ultimosEventos = eventos
+                                .filter(e => e.status === "approved") 
+                                .slice(-4);
+                        %>
+                        <% ultimosEventos.forEach(evento=> { %>
                         <!-- CARD -->
-                        <!-- <div class="card">
-                        <div class="card-image perros"></div>
-                        <div class="card-text-container">
-                            <p class="card-title">Inauguración Parque de Perros</p>
-                            <p class="card-subtitle">San Rafael, Heredia</p>
-                        </div>
-                    </div> -->
-
+                            <a href="/evento/<%= evento.id %>">
+                            <div class="card">
+                                <div class="card-image perros"></div>
+                                <div class="card-text-container">
+                                    <p class="card-title"><%= evento.eventName %></p>
+                                    <p class="card-subtitle"><%= evento.direction %></p>
+                                </div>
+                            </div>
+                            </a>
+                        <% }) %>
                     </div>
                 </section>
+                <% } %>
             </section>
 
             <!-- CALL TO ACTION -->
@@ -201,7 +238,7 @@
                         <p>Consulte las rutas de buses disponibles en Barrio Escalante. </p>
                     </div>
                 </div>
-                <div class="no-created">
+                <div class="no-created" id="noCardsAtRutasatFeed">
                     <a><b>Actualmente no hay eventos registrados en tu comunidad.</b><br>
                         Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
                 </div>
@@ -228,8 +265,8 @@
 
         <!-- Footer  -->
         <%- include('../components/footer.ejs') %>
-            <script src="js/data/showEvents.js"></script>
             <script src="js/global/menu-responsive.js"></script>
+            <script src="js/data/showRutasAtFeed.js"></script>
 </body>
 
 </html>
