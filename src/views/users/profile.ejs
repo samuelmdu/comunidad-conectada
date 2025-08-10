@@ -26,94 +26,69 @@
         <main class="status-container">
             <section class="status-filter">
                 <h2>Categorías</h2>
-                <button>Todos</button>
-                <button>Nuevos</button>
-                <button>Aprobados</button>
-                <button>Rechazados</button>
-                <button>Eventos</button>
-                <button>Anuncios</button>
-                <button>Emprendimientos</button>
-                <button>Reportes</button>
+                <button data-filter="all">Todos</button>
+                <button data-filter="evento">Eventos</button>
+                <button data-filter="anuncio">Anuncios</button>
+                <button data-filter="emprendimiento">Emprendimientos</button>
+                <button data-filter="reporte">Reportes</button>
             </section>
 
             </section>
 
             <section class="tickets-list">
-                <div class="ticket" data-tipo="emprendimiento">
-                    <i class='bxr  bxs-store logo-form'></i>
-                    <p>
-                        <span class="ticket-info">Emprendimiento</span> Café Escalante
-                    </p>
-                    <span class="ticket-status">Rechazado</span>
-                    <div class="left-bar"></div>
-                </div>
 
-                <div class="ticket" data-tipo="evento">
-                    <i class="bx bxs-calendar-check logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Evento</span> El proximo 13 de julio habrá una feria en el centro
-                        adfasdfadfasfasfdsafadfasdfasdfasdfasdfasdfasfasdfasdfasdfasdfasf
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
+                <% emprendimientos.forEach(emprendimiento=> { %>
+                    <a href="emprendimiento/<%= emprendimiento._id %>">
+                        <div class="ticket" data-tipo="emprendimiento">
+                            <i class='bxr bxs-store logo-form'></i>
+                            <p>
+                                <span class="ticket-info">Emprendimiento</span>
+                                <%= emprendimiento.nombre %>
+                            </p>
+                        </div>
+                    </a>
+                    <% }) %>
 
-                </div>
+                        <% eventos.forEach(evento=> { %>
+                            <a href="evento/<%= evento._id %>">
+                                <div class="ticket" data-tipo="evento">
+                                    <i class="bx bxs-calendar-check logo-form"></i>
+                                    <p>
+                                        <span class="ticket-info">Evento</span>
+                                        <%= evento.eventName %>
+                                    </p>
 
-                <div class="ticket" data-tipo="reporte">
-                    <i class='bxr  bxs-message-captions logo-form'></i>
-                    <p>
-                        <span class="ticket-info">Reporte</span> Ruidos molestos en la madrugada
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
+                                </div>
+                            </a>
 
-                <div class="ticket" data-tipo="anuncio">
-                    <i class="bx bxs-megaphone logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Anuncio</span> Nuevo punto de reciclaje
-                    </p>
-                    <span class="ticket-status">Aprobado</span>
-                    <div class="left-bar"></div>
-                </div>
 
-                <div class="ticket" data-tipo="evento">
-                    <i class="bx bxs-calendar-check logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Evento</span> La Iglesia realizará un turno durante la proxima semana
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
+                            <% }) %>
 
-                <div class="ticket" data-tipo="reporte">
-                    <i class='bxr  bxs-message-captions logo-form'></i>
-                    <p>
-                        <span class="ticket-info">Reporte</span> El alumbrado público de la calle principal dejó de
-                        funcionar
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
+                                <% reportes.forEach(reporte=> { %>
 
-                <div class="ticket" data-tipo="evento">
-                    <i class="bx bxs-calendar-check logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Evento</span> Fiesta del barrio
-                    </p>
-                    <span class="ticket-status">Aprobado</span>
-                    <div class="left-bar"></div>
-                </div>
+                                    <div class="ticket" data-tipo="reporte">
+                                        <i class='bxr  bxs-message-captions logo-form'></i>
+                                        <p>
+                                            <span class="ticket-info">Reporte</span>
+                                            <%= reporte.nombre %>
+                                        </p>
+                                    </div>
 
-                <div class="ticket" data-tipo="anuncio">
-                    <i class="bx bxs-megaphone logo-form"></i>
-                    <p>
-                        <span class="ticket-info">Anuncio</span> El proximo martes habrá un corte de agua durante la
-                        mañana
-                    </p>
-                    <span class="ticket-status">Nuevo</span>
-                    <div class="left-bar"></div>
-                </div>
+
+                                    <% }) %>
+
+                                        <% anuncios.forEach(anuncio=> { %>
+                                            <a href="anuncio/<%= anuncio._id %>">
+                                                <div class="ticket" data-tipo="anuncio">
+                                                    <i class="bx bxs-megaphone logo-form"></i>
+                                                    <p>
+                                                        <span class="ticket-info">Anuncio</span>
+                                                        <%= anuncio.anuncioName %>
+                                                    </p>
+                                                </div>
+                                            </a>
+
+                                            <% }) %>
 
             </section>
         </main>
