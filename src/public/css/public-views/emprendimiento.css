@@ -32,7 +32,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background-image: url('../../img/hero/Emprendimientos.png');
+    background-image: url('/img/hero/Emprendimientos.png');
     background-size: cover;
     background-position: center;
     opacity: 0.3;
@@ -40,7 +40,7 @@
 }
 
 .hero-background.cheese {
-    background-image: url('../../../assets/images/emprendimiento/coverPhotos/SANTO\ PECADO.jpg');
+    background-image: url('/img/hero/Emprendimientos.png');
     background-size: cover;
     background-position: center;
 }
