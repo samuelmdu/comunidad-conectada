@@ -48,7 +48,17 @@ app.use((req, res, next) => {
 
 
 app.get('/', (req, res) => {
-    res.render('public-views/feed.ejs');
+    const infoList = async () => {
+        const anuncios = await Anuncio.find();
+        const eventos = await Evento.find();
+        const emprendimientos = await Emprendimiento.find();
+        res.render('public-views/feed.ejs', {
+            anuncios: anuncios,
+            eventos: eventos,
+            emprendimientos: emprendimientos
+        });
+    }
+    infoList();
 });
 
 // ==========================
@@ -67,7 +77,18 @@ app.get('/sign-up', (req, res) => {
 // PUBLIC-VIEWS
 // ==========================
 app.get('/feed', (req, res) => {
-    res.render('public-views/feed.ejs');
+
+    const dataList = async () => {
+        const anuncios = await Anuncio.find();
+        const eventos = await Evento.find();
+        const emprendimientos = await Emprendimiento.find();
+        res.render('public-views/feed.ejs', {
+            anuncios: anuncios,
+            eventos: eventos,
+            emprendimientos: emprendimientos
+        });
+    }
+    dataList();
 });
 
 app.get('/anuncio', (req, res) => {
@@ -89,7 +110,13 @@ app.get('/calendario', (req, res) => {
 });
 
 app.get('/emprendimiento', (req, res) => {
-    res.render('public-views/emprendimiento.ejs');
+    const emprendimientoList = async () => {
+        const emprendimientos = await Emprendimiento.find();
+        res.render('public-views/emprendimiento.ejs', {
+            emprendimientos: emprendimientos
+        });
+    }
+    emprendimientoList();
 });
 
 app.get('/emprendimiento-user', (req, res) => {
@@ -369,7 +396,22 @@ app.get('/anuncio/:id', async (req, res) => {
         }
         res.render('public-views/anuncio-user', { anuncio });
     } catch (error) {
-        console.error("Error al obtener el evento:", error);
+        console.error("Error al obtener el Anuncio:", error);
+        res.status(500).send('Error del servidor');
+    }
+});
+
+
+app.get('/emprendimiento/:id', async (req, res) => {
+    try {
+
+        const emprendimiento = await Emprendimiento.findById(req.params.id);
+        if (!emprendimiento) {
+            return res.status(404).send('Emprendimiento no encontrado');
+        }
+        res.render('public-views/emprendimiento-user', { emprendimiento });
+    } catch (error) {
+        console.error("Error al obtener el Emprendimiento:", error);
         res.status(500).send('Error del servidor');
     }
 });

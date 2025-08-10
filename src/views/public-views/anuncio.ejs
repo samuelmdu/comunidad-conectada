@@ -29,7 +29,7 @@
 
 
         <div class="title-container">
-            <h1>ANUNCIOS DE LA COMUNIDAD</h1>
+            <h1>ANUNCIOS MÁS RECIENTES</h1>
             <div class="title-text-container">
                 <p>¡Bienvenidos al tablero oficial de anuncios de Barrio Escalante, San José, Costa Rica! Aquí reunimos
                     los
@@ -41,7 +41,6 @@
 
         </div>
 
-
         <!-- anuncio -->
         <% if(!anuncios[0]){ %>
             <div class="no-created">
@@ -49,35 +48,35 @@
                     Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
             </div>
             <% } else { %>
-                <% anuncios.forEach(anuncio=> { %>
-
-
-                    <section class="exterior-advertisement-container">
-                        <div class="advertisement-container">
-                            <!-- anuncio -->
-                            <a href="/anuncio/<%= anuncio.id %>">
+                <div class="exterior-advertisement-container">
+                <div class="anunciosContainer">
+                    <% 
+                            const ultimosAnuncios = anuncios
+                                .filter(e => e.status === "approved")
+                                .slice(-3);
+                    %>
+                    <% ultimosAnuncios.forEach(anuncio=> { %>
+                        <% if(anuncio.status === "approved"){%>
+                            <a href="/anuncio/<%= anuncio.id %>" style="text-decoration: none;">
                                 <div class="route-card">
                                     <div class="left-bar"></div>
                                     <div class="card-content">
                                         <div class="announce-card-title">
-                                            <h3>
-                                                <%= anuncio.anuncioName %>
-                                            </h3>
+                                            <h3><%= anuncio.anuncioName %></h3>
                                         </div>
                                         <div class="route-details">
                                             <p><strong>Horarios:</strong><br>
                                                 <%= anuncio.date %>
                                             </p>
-
                                         </div>
                                     </div>
                                 </div>
                             </a>
-
-                    </section>
-
-                    <% }) %>
                         <% } %>
+                    <% }) %>
+                </div>
+                </div>
+            <% } %>
                             <!-- Cards -->
 
 
@@ -109,7 +108,7 @@
                             </section>
 
                             <div class="title-container">
-                                <h1>Anuncios más relevantes</h1>
+                                <h1>TODOS LOS ANUNCIOS</h1>
                             </div>
                             <% if(!anuncios[0]){ %>
                                 <div class="no-created">
@@ -117,33 +116,29 @@
                                         Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
                                 </div>
                                 <% } else { %>
-                                    <% anuncios.forEach(anuncio=> { %>
-
-                                        <section class="exterior-advertisement-container">
-                                            <div class="advertisement-container">
-                                                <!-- anuncio -->
-                                                <div class="route-card">
-                                                    <div class="left-bar"></div>
-                                                    <div class="card-content">
-                                                        <div class="announce-card-title">
-                                                            <h3>
-                                                                <%= anuncio.anuncioName %>
-                                                            </h3>
-                                                        </div>
-                                                        <div class="route-details">
-                                                            <p><strong>Horarios:</strong><br>
-                                                                <%= anuncio.date %>
-                                                            </p>
-
+                                    <div class="anunciosContainer">
+                                        <% anuncios.forEach(anuncio=> { %>
+                                            <% if(anuncio.status === "approved"){%>
+                                                <a href="/anuncio/<%= anuncio.id %>" style="text-decoration: none;">
+                                                    <div class="route-card">
+                                                        <div class="left-bar"></div>
+                                                        <div class="card-content">
+                                                            <div class="announce-card-title">
+                                                                <h3><%= anuncio.anuncioName %></h3>
+                                                            </div>
+                                                            <div class="route-details">
+                                                                <p><strong>Horarios:</strong><br>
+                                                                    <%= anuncio.date %>
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                        </section>
-
-                                        <% }) %>
+                                                </a>
                                             <% } %>
-                                                </section>
-                                                </section>
+                                        <% }) %>
+                                    </div>
+                                <% } %>
+
 
                                                 <!-- Footer  -->
                                                 <%- include('../components/footer.ejs') %>

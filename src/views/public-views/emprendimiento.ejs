@@ -55,23 +55,36 @@
                 <p>Los <b>Favoritos</b> de la Comunidad...</p>
             </div>
 
+
+            <% if(!emprendimientos[0]){ %>
             <div class="no-created">
                 <a><b>Actualmente no hay emprendimientos registrados en tu comunidad.</b><br>
                     Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
             </div>
+            <% } else { %>
             <section class="exterior-advertisement-container" id="exterior-advertisement-container-entrepeneurship1">
 
-                <div class="advertisement-container">
-                    <!-- Card -->
-                    <!-- <div class="card" id="la-chismosa">
-                    <div class="card-image"></div>
-                    <div class="card-text-container">
-                        <p class="card-title">La Chismosa</p>
-                        <p class="card-subtitle">Restaurante</p>
+                <%
+                    const emprendimientosAleatorios = emprendimientos
+                        .filter(e => e.status === 'approved')
+                        .sort(() => Math.random() - 0.5)     
+                        .slice(0, 4);                         
+                %>
+                <% emprendimientosAleatorios.forEach(emprendimiento => { %>
+                    <a href="/emprendimiento/<%= emprendimiento.id %>" style="text-decoration: none;">
+                    <div class="advertisement-container">
+                        <div class="card" id="la-chismosa">
+                        <div class="card-image"></div>
+                        <div class="card-text-container">
+                            <p class="card-title"><%=emprendimiento.nombre%></p>
+                            <p class="card-subtitle"><%=emprendimiento.categoria%></p>
+                        </div>
                     </div>
-                </div> -->
-
+                    </div>
+                    </a>
+                <% }) %>
             </section>
+            <% } %>
         </div>
 
         <div class="conoce-nuestros-emprendimientos">
@@ -86,23 +99,34 @@
                 <p><b>Nuevos Emprendimientos</b> en Barrio Escalante...</p>
             </div>
 
+            <% if(!emprendimientos[0]){ %>
             <div class="no-created">
                 <a><b>Actualmente no hay emprendimientos registrados en tu comunidad.</b><br>
                     Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
             </div>
-            <section class="exterior-advertisement-container" id="exterior-advertisement-container-entrepeneurship2">
+            <% } else { %>
+            <section class="exterior-advertisement-container" id="exterior-advertisement-container-entrepeneurship1">
 
-                <div class="advertisement-container">
-                    <!-- Card 1-->
-                    <!-- <div class="card" id="la-central">
-                    <div class="card-image"></div>
-                    <div class="card-text-container">
-                        <p class="card-title">La Central</p>
-                        <p class="card-subtitle">Restaurante</p>
+                <%
+                    const ultimosEmprendimientos = emprendimientos
+                        .filter(e => e.status === "approved") 
+                        .slice(-4);                        
+                %>
+                <% ultimosEmprendimientos.forEach(emprendimiento => { %>
+                    <a href="/emprendimiento/<%= emprendimiento.id %>" style="text-decoration: none;">
+                    <div class="advertisement-container">
+                        <div class="card" id="la-chismosa">
+                        <div class="card-image"></div>
+                        <div class="card-text-container">
+                            <p class="card-title"><%=emprendimiento.nombre%></p>
+                            <p class="card-subtitle"><%=emprendimiento.categoria%></p>
+                        </div>
                     </div>
-                </div> -->
-
+                    </div>
+                    </a>
+                <% }) %>
             </section>
+            <% } %>
         </div>
 
         <!-- ------------------------ -->
@@ -129,6 +153,43 @@
 
         <div class="construyendo-una-comunidad">
             <h1>CADA <b>ACCIÓN</b> CUENTA. CADA <b>VOZ</b> SUMA. <br>ASÍ SE CONSTRUYE UNA <b>COMUNIDAD.</b></h1>
+        </div>
+
+
+
+
+        <div class="exterior-advertisement-container-limit">
+            <div class="introduccion-a-cards" id="nuevas-propuestas">
+                <p><b>Todos Los Emprendimientos</b> en Barrio Escalante...</p>
+            </div>
+
+            <% if(!emprendimientos[0]){ %>
+            <div class="no-created">
+                <a><b>Actualmente no hay emprendimientos registrados en tu comunidad.</b><br>
+                    Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</a>
+            </div>
+            <% } else { %>
+            <section class="exterior-advertisement-container" id="exterior-advertisement-container-entrepeneurship1">
+
+                <%
+                    const emprendimientosAprobados = emprendimientos
+                        .filter(e => e.status === "approved");                       
+                %>
+                <% emprendimientosAprobados.forEach(emprendimiento => { %>
+                    <a href="/emprendimiento/<%= emprendimiento.id %>" style="text-decoration: none;">
+                    <div class="advertisement-container">
+                        <div class="card" id="la-chismosa">
+                        <div class="card-image"></div>
+                        <div class="card-text-container">
+                            <p class="card-title"><%=emprendimiento.nombre%></p>
+                            <p class="card-subtitle"><%=emprendimiento.categoria%></p>
+                        </div>
+                    </div>
+                    </div>
+                    </a>
+                <% }) %>
+            </section>
+            <% } %>
         </div>
         <!-- Footer  -->
         <%- include('../components/footer.ejs') %>
