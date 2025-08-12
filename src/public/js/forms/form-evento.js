@@ -4,7 +4,7 @@ const inputs = document.querySelectorAll('#formulario input, #formulario textare
 const formulario = document.getElementById("formulario");
 
 const expresiones = {
-    nombre: /^[a-zA-ZÀ-ÿ\s]{3,45}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
+    creatorName: /^[a-zA-ZÀ-ÿ\s]{3,45}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
     evento: /^[a-zA-ZÀ-ÿ0-9\s]{3,45}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
     descripcion: /^[a-zA-ZÀ-ÿ0-9\s]{3,200}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
     //password:/^.{4,12}$/, //Acepta todo Rango de 4 a 12
@@ -15,7 +15,7 @@ const expresiones = {
 }
 
 const campos = {
-    nombre: false,
+    creatorName: false,
     correo: false,
     telefono: false,
     evento: false,
@@ -33,9 +33,9 @@ const validarFormulario = (e) => {
             //       parametro1 = condiciones, parametro2 = e.target, parametro = identificador = ""
             validarCampo(expresiones.evento, e.target, "evento")
             break;
-        case "nombre":
+        case "creatorName":
             //funcion
-            validarCampo(expresiones.nombre, e.target, "nombre");
+            validarCampo(expresiones.creatorName, e.target, "creatorName");
             break;
         case "descripcion":
             //funcion
@@ -87,11 +87,14 @@ inputs.forEach((input) => {
 
 formulario.addEventListener("submit", (e) => {
 
+    e.preventDefault(); // frenamos envío
 
     const terminos = document.getElementById("terminos");
-    if (campos.evento && campos.nombre && campos.descripcion && campos.telefono && campos.fecha && campos.ubicacion && terminos.checked) {
+    if (campos.evento && campos.creatorName && campos.descripcion && campos.telefono && campos.fecha && campos.ubicacion && terminos.checked) {
         document.getElementById("formulario-mensaje").classList.remove("formulario-mensaje-activo");
         document.getElementById("formulario-mensaje-exito").classList.add("formulario-mensaje-exito-activo");
+
+        formulario.submit(); // Esto enviará el formulario si está todo correcto
 
         setTimeout(() => {
             location.reload();

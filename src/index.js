@@ -120,20 +120,18 @@ app.get('/transporte-admin', (req, res) => {
 
 app.get('/publicaciones', async (req, res) => {
     try {
-        // Verificar si el usuario está logueado
-        if (!req.session.loggedIn) {
-            return res.redirect('/log-in');
-        }
+        if (!req.session.loggedIn) return res.redirect('/log-in');
 
-        // Mostrar solo las publicaciones aprobadas del usuario actual
         const anuncios = await Anuncio.find({ creatorId: req.session.userId, status: 'approved' });
         const eventos = await Evento.find({ creatorId: req.session.userId, status: 'approved' });
         const emprendimientos = await Emprendimiento.find({ creatorId: req.session.userId, status: 'approved' });
+        const reportes = await Reporte.find({ creatorId: req.session.userId, status: 'approved' });
 
         res.render('public-views/publicaciones.ejs', {
-            anuncios: anuncios,
-            eventos: eventos,
-            emprendimientos: emprendimientos
+            anuncios,
+            eventos,
+            emprendimientos,
+            reportes
         });
     } catch (error) {
         console.error("Error al obtener publicaciones:", error);
@@ -210,11 +208,23 @@ app.get('/registerAdmin', async (req, res) => {
 // ANUNCIO
 app.get('/viewAnuncio', async (req, res) => {
     if (!req.session.admin) return res.redirect('/');
-    const id = req.query.id;
+    const publicationId = req.query.publicationId;
+    const ticketId = req.query.ticketId;
+
     try {
-        const anuncio = await Anuncio.findById(id);
-        const ticket = await Ticket.findOne({ publicationId: id, type: 'anuncio' });
-        if (!anuncio || !ticket) return res.status(404).send('Anuncio o ticket no encontrado');
+        const anuncio = await Anuncio.findById(publicationId);
+        if (!anuncio) return res.status(404).send('Anuncio no encontrado');
+
+        let ticket;
+        if (ticketId) {
+            ticket = await Ticket.findById(ticketId);
+        } else {
+            // fallback: ticket más reciente para esa publicación
+            ticket = await Ticket.findOne({ publicationId: publicationId, type: 'anuncio' }).sort({ createdAt: -1 });
+        }
+
+        if (!ticket) return res.status(404).send('Ticket no encontrado');
+
         res.render('admin/form-views/vistaAnuncio.ejs', { anuncio, ticket });
     } catch (err) {
         console.error('Error al obtener anuncio:', err);
@@ -222,20 +232,33 @@ app.get('/viewAnuncio', async (req, res) => {
     }
 });
 
+
 // EMPRENDIMIENTO
 app.get('/viewEmprendimiento', async (req, res) => {
     if (!req.session.admin) return res.redirect('/');
-    const id = req.query.id;
+    const publicationId = req.query.publicationId;
+    const ticketId = req.query.ticketId;
+
     try {
-        const emprendimiento = await Emprendimiento.findById(id);
-        const ticket = await Ticket.findOne({ publicationId: id, type: 'emprendimiento' });
-        if (!emprendimiento || !ticket) return res.status(404).send('Emprendimiento o ticket no encontrado');
+        const emprendimiento = await Emprendimiento.findById(publicationId);
+        if (!emprendimiento) return res.status(404).send('Emprendimiento no encontrado');
+
+        let ticket;
+        if (ticketId) {
+            ticket = await Ticket.findById(ticketId);
+        } else {
+            ticket = await Ticket.findOne({ publicationId: publicationId, type: 'emprendimiento' }).sort({ createdAt: -1 });
+        }
+
+        if (!ticket) return res.status(404).send('Ticket no encontrado');
+
         res.render('admin/form-views/vistaEmprendimiento.ejs', { emprendimiento, ticket });
     } catch (err) {
         console.error('Error al obtener emprendimiento:', err);
         res.redirect('/panel-admin');
     }
 });
+
 
 /* el get de evento ASI ANTES
 app.get('/viewEvento', async (req, res) => {
@@ -251,22 +274,26 @@ app.get('/viewEvento', async (req, res) => {
 });*/
 
 app.get('/viewEvento', async (req, res) => {
-    const eventoId = req.query.id;
+    if (!req.session.admin) return res.redirect('/');
+    const publicationId = req.query.publicationId;
+    const ticketId = req.query.ticketId;
+
     try {
-        // Aquí buscamos el evento:
-        const evento = await Evento.findById(eventoId);
+        const evento = await Evento.findById(publicationId);
+        if (!evento) return res.status(404).send('Evento no encontrado');
 
-        // Aquí añadimos: buscar el ticket relacionado
-        const ticket = await Ticket.findOne({ publicationId: eventoId, type: 'evento' });
+        let ticket;
+        if (ticketId) {
+            ticket = await Ticket.findById(ticketId);
+        } else {
+            ticket = await Ticket.findOne({ publicationId: publicationId, type: 'evento' }).sort({ createdAt: -1 });
+        }
 
-        if (!evento || !ticket) return res.status(404).send("Evento o ticket no encontrado");
+        if (!ticket) return res.status(404).send('Ticket no encontrado');
 
-        res.render('admin/form-views/vistaEvento.ejs', {
-            evento,
-            ticket
-        });
-    } catch (error) {
-        console.error("Error al obtener evento:", error);
+        res.render('admin/form-views/vistaEvento.ejs', { evento, ticket });
+    } catch (err) {
+        console.error('Error al obtener evento:', err);
         res.redirect('/panel-admin');
     }
 });
@@ -280,17 +307,24 @@ app.get('/viewEvento', async (req, res) => {
 
 app.get('/viewReporte', async (req, res) => {
     if (!req.session.admin) return res.redirect('/');
-    const id = req.query.id; // <-- viene del link en el panel
+    const publicationId = req.query.publicationId;
+    const ticketId = req.query.ticketId;
 
     try {
-        const [reporte, ticket] = await Promise.all([
-            Reporte.findById(id),
-            Ticket.findOne({ publicationId: id, type: 'reporte' })
-        ]);
+        const reporte = await Reporte.findById(publicationId);
+        if (!reporte) return res.status(404).send('Reporte no encontrado');
 
-        if (!reporte || !ticket) {
-            return res.status(404).send('Reporte o ticket no encontrado');
+        let ticket;
+        if (ticketId) {
+            ticket = await Ticket.findById(ticketId);
+        } else {
+            ticket = await Ticket.findOne({
+                publicationId: publicationId,
+                type: 'reporte'
+            }).sort({ createdAt: -1 });
         }
+
+        if (!ticket) return res.status(404).send('Ticket no encontrado');
 
         res.render('admin/form-views/vistaReporte.ejs', { reporte, ticket });
     } catch (err) {
@@ -298,7 +332,6 @@ app.get('/viewReporte', async (req, res) => {
         res.redirect('/panel-admin');
     }
 });
-
 // ==========================
 // FORMS
 // ==========================
@@ -385,7 +418,7 @@ const Evento = require('../models/eventos');
 const Anuncio = require('../models/anuncios')
 const Rutas = require('../models/rutas')
 const Admin = require('../models/admins');
-const Emprendimiento = require('../models/emprendimientos');
+const Emprendimiento = require('../models/Emprendimientos');
 const Ticket = require('../models/tickets');
 const UserAdmin = require('../models/user-admin');
 const Reporte = require('../models/reportes');
@@ -661,7 +694,7 @@ app.post('/addAnuncio', async (req, res) => {
     try {
         let anuncio = new Anuncio({
             anuncioName: req.body.anuncio,
-            creatorName: req.body.nombre,
+            creatorName: req.body.creatorName,
             description: req.body.descripcion,
             date: req.body.fecha,
             creatorId: req.session.userId,
@@ -708,7 +741,7 @@ app.post('/addEmprendimiento', async (req, res) => {
         let ticket = new Ticket({
             type: 'emprendimiento',
             publicationId: savedEmprendimiento._id,
-            title: req.body.nombre, // Usamos el nombre del emprendimiento como título
+            title: req.body.nombre,
             creatorName: req.session.name,
             status: 'pending'
         });
@@ -732,7 +765,8 @@ app.post('/addReporte', async (req, res) => {
             tipo: req.body.tipo,
             notificado: req.body.notificado,
             correo: req.body.correo,
-            status: 'pending'
+            status: 'pending',
+            creatorId: req.session.userId
         }).save();
 
         await new Ticket({
@@ -748,9 +782,7 @@ app.post('/addReporte', async (req, res) => {
         console.error('ERROR', err);
         res.redirect('/form-reporte');
     }
-
 });
-
 
 app.post('/addRuta', async (req, res) => {
     let data = new Rutas({
@@ -770,6 +802,8 @@ app.post('/addRuta', async (req, res) => {
     res.redirect('/form-transporte')
 });
 
+// editar rutas
+
 app.post('/actualizar-ruta', async (req, res) => {
     try {
         const rutaId = req.body.id;
@@ -788,6 +822,322 @@ app.post('/actualizar-ruta', async (req, res) => {
     }
 });
 
+
+// ==========================
+// EDITAR PUBLICACIONES
+// ==========================
+
+// Ruta para mostrar el formulario de edición de emprendimiento
+app.get('/editar-emprendimiento', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) {
+            return res.redirect('/log-in');
+        }
+
+        const emprendimientoId = req.query.id;
+        const emprendimiento = await Emprendimiento.findById(emprendimientoId);
+
+        if (!emprendimiento) {
+            return res.status(404).send('Emprendimiento no encontrado');
+        }
+
+        // Verificar que el usuario es el creador
+        if (emprendimiento.creatorId.toString() !== req.session.userId.toString()) {
+            return res.status(403).send('No tienes permiso para editar este emprendimiento');
+        }
+
+        res.render('forms/editar-emprendimiento.ejs', {
+            emprendimiento: emprendimiento,
+            emprendimientoId: emprendimientoId
+        });
+    } catch (error) {
+        console.error("Error al obtener el emprendimiento:", error);
+        res.redirect('/publicaciones');
+    }
+});
+
+// Ruta para procesar la edición de emprendimiento
+app.post('/actualizar-emprendimiento', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) {
+            return res.redirect('/log-in');
+        }
+
+        const emprendimientoId = req.body.id;
+        const emprendimiento = await Emprendimiento.findById(emprendimientoId);
+
+        // Verificar que el emprendimiento existe
+        if (!emprendimiento) {
+            return res.status(404).send('Emprendimiento no encontrado');
+        }
+
+        // Verificar que el usuario es el creador
+        if (emprendimiento.creatorId.toString() !== req.session.userId.toString()) {
+            return res.status(403).send('No tienes permiso para editar este emprendimiento');
+        }
+
+        // Crear una nueva versión pendiente de aprobación
+        const updatedData = {
+            nombre: req.body.emprendimiento,  // Nombre del negocio
+            descripcion: req.body.descripcion,
+            categoria: req.body.categoria,
+            emprendedor: req.body.nombre,     // Nombre del emprendedor
+            correo: req.body.correo,
+            telefono: req.body.telefono,
+            ubicacion: req.body.ubicacion,
+            redSocial: req.body.redSocial,
+            creatorId: req.session.userId,
+            status: 'pending', // Cambiar a pendiente para aprobación
+            originalId: emprendimientoId // Referencia al original
+        };
+
+        // Crear nuevo emprendimiento (versión editada)
+        const newEmprendimiento = new Emprendimiento(updatedData);
+        const savedEmprendimiento = await newEmprendimiento.save();
+
+        // Crear ticket para aprobación
+        let ticket = new Ticket({
+            type: 'emprendimiento',
+            publicationId: savedEmprendimiento._id,
+            title: req.body.nombre,
+            creatorName: req.session.name,
+            status: 'pending',
+            isEdit: true,
+            originalId: emprendimientoId
+        });
+
+        await ticket.save();
+
+        res.redirect('/publicaciones');
+    } catch (error) {
+        console.error("Error al actualizar el emprendimiento:", error);
+        res.redirect('/publicaciones');
+    }
+});
+
+// GET editar-anuncio -> renderiza el formulario con datos precargados
+app.get('/editar-anuncio', async (req, res) => {
+    try {
+        const anuncioId = req.query.id;
+        const anuncio = await Anuncio.findById(anuncioId);
+
+        if (!anuncio) return res.status(404).send('Anuncio no encontrado');
+
+        res.render('forms/editar-anuncio.ejs', {
+            anuncio: anuncio,
+            anuncioId: anuncioId
+        });
+    } catch (err) {
+        console.error('Error en GET /editar-anuncio:', err);
+        res.redirect('/publicaciones');
+    }
+});
+
+// POST actualizar-anuncio -> crea versión editada y ticket (pendiente)
+app.post('/actualizar-anuncio', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) return res.redirect('/log-in');
+
+        const originalId = req.body.id;
+        if (!originalId) {
+            console.error('ID original no proporcionado');
+            return res.status(400).send('Falta ID original');
+        }
+
+        const original = await Anuncio.findById(originalId);
+        if (!original) {
+            console.error('Anuncio original no encontrado:', originalId);
+            return res.status(404).send('Anuncio original no encontrado');
+        }
+
+        // Crear nueva versión editada
+        const editedAnuncio = new Anuncio({
+            anuncioName: req.body.anuncio,
+            description: req.body.descripcion,
+            creatorName: req.body.nombre || req.session.name,
+            date: req.body.fecha,
+            creatorId: req.session.userId,
+            status: 'pending',
+            originalId: originalId
+        });
+
+        const savedEdited = await editedAnuncio.save();
+        console.log('Nueva versión de anuncio creada:', savedEdited._id);
+
+        // Crear ticket para la edición
+        const ticket = new Ticket({
+            type: 'anuncio',
+            publicationId: savedEdited._id,
+            title: req.body.anuncio,
+            creatorName: req.session.name,
+            status: 'pending',
+            isEdit: true,
+            originalId: originalId
+        });
+
+        await ticket.save();
+        console.log('Ticket de edición creado:', ticket._id);
+
+        res.redirect('/publicaciones');
+    } catch (err) {
+        console.error('Error en POST /actualizar-anuncio:', err);
+        res.redirect('/publicaciones');
+    }
+});
+
+// GET editar-evento (muestra el formulario con los datos precargados)
+app.get('/editar-evento', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) return res.redirect('/log-in');
+
+        const eventoId = req.query.id;            // en tu publicaciones usas ?id=...
+        if (!eventoId) return res.status(400).send('Falta id');
+
+        const evento = await Evento.findById(eventoId);
+        if (!evento) return res.status(404).send('Evento no encontrado');
+
+        // Verificar que el usuario es el creador
+        if (!evento.creatorId || evento.creatorId.toString() !== req.session.userId.toString()) {
+            return res.status(403).send('No tienes permiso para editar este evento');
+        }
+
+        res.render('forms/editar-evento.ejs', {
+            evento,
+            eventoId
+        });
+    } catch (err) {
+        console.error('Error en GET /editar-evento:', err);
+        res.redirect('/publicaciones');
+    }
+});
+
+// Ruta para mostrar el formulario de edición de evento
+app.post('/actualizar-evento', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) return res.redirect('/log-in');
+
+        const originalId = req.body.id;
+        if (!originalId) return res.status(400).send('Falta id original');
+
+        const original = await Evento.findById(originalId);
+        if (!original) return res.status(404).send('Evento original no encontrado');
+
+        if (!original.creatorId || original.creatorId.toString() !== req.session.userId.toString()) {
+            return res.status(403).send('No tienes permiso para editar este evento');
+        }
+
+        const creatorName = req.body.creatorName || req.session.name || original.creatorName;
+
+        const updatedData = {
+            eventName: req.body.evento,
+            description: req.body.descripcion,
+            phone: req.body.telefono,
+            date: req.body.fecha,
+            direction: req.body.ubicacion,
+            creatorId: req.session.userId,
+            creatorName: creatorName,
+            status: 'pending',
+            originalId: originalId
+        };
+
+        const editedEvent = new Evento(updatedData);
+        const savedEdited = await editedEvent.save();
+
+        const ticket = new Ticket({
+            type: 'evento',
+            publicationId: savedEdited._id,
+            title: req.body.evento,
+            creatorName: req.session.name,
+            status: 'pending',
+            isEdit: true,
+            originalId: originalId
+        });
+
+        await ticket.save();
+
+        res.redirect('/publicaciones');
+    } catch (err) {
+        console.error('Error en POST /actualizar-evento:', err);
+        res.redirect('/publicaciones');
+    }
+});
+
+
+// Ruta para mostrar el formulario de edición de reporte
+app.get('/editar-reporte', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) return res.redirect('/log-in');
+
+        const reporteId = req.query.id;
+        const reporte = await Reporte.findById(reporteId);
+
+        if (!reporte) return res.status(404).send('Reporte no encontrado');
+
+        // Verificar que el usuario es el creador
+        if (reporte.creatorId.toString() !== req.session.userId.toString()) {
+            return res.status(403).send('No tienes permiso para editar este reporte');
+        }
+
+        res.render('forms/editar-reporte.ejs', {
+            reporte,
+            reporteId
+        });
+    } catch (err) {
+        console.error('Error en GET /editar-reporte:', err);
+        res.redirect('/publicaciones');
+    }
+});
+
+// Ruta para procesar la actualización del reporte
+app.post('/actualizar-reporte', async (req, res) => {
+    try {
+        if (!req.session.loggedIn) return res.redirect('/log-in');
+
+        const originalId = req.body.id;
+        if (!originalId) return res.status(400).send('Falta id original');
+
+        const original = await Reporte.findById(originalId);
+        if (!original) return res.status(404).send('Reporte original no encontrado');
+
+        if (original.creatorId.toString() !== req.session.userId.toString()) {
+            return res.status(403).send('No tienes permiso para editar este reporte');
+        }
+
+        // Crear nueva versión editada
+        const updatedData = {
+            reporte: req.body.reporte,
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            tipo: req.body.tipo,
+            notificado: req.body.notificado,
+            correo: req.body.correo,
+            status: 'pending',
+            creatorId: req.session.userId,
+            originalId: originalId
+        };
+
+        const editedReport = new Reporte(updatedData);
+        const savedEdited = await editedReport.save();
+
+        // Crear ticket para aprobación
+        const ticket = new Ticket({
+            type: 'reporte',
+            publicationId: savedEdited._id,
+            title: req.body.reporte,
+            creatorName: req.session.name,
+            status: 'pending',
+            isEdit: true,
+            originalId: originalId
+        });
+
+        await ticket.save();
+
+        res.redirect('/publicaciones');
+    } catch (err) {
+        console.error('Error en POST /actualizar-reporte:', err);
+        res.redirect('/publicaciones');
+    }
+});
 
 
 //AQUI MUESTRO EN CONSOLA LOS EVENTOS REGISTRADOS SOLO PARA PRUEBAS > MANTENER CODIGO DORMIDO
@@ -863,59 +1213,123 @@ app.get('/api/rutas', async (req, res) => {
 // ==========================
 
 app.post('/admin/approve-ticket', async (req, res) => {
-    if (!req.session.admin) {
-        return res.redirect('/');
-    }
+    if (!req.session.admin) return res.redirect('/');
 
     try {
-        const { ticketId, publicationId, type } = req.body;
+        const { ticketId } = req.body;
+        const ticket = await Ticket.findById(ticketId);
+        if (!ticket) {
+            console.error('Ticket no encontrado', ticketId);
+            return res.redirect('/panel-admin');
+        }
 
-        // Actualizar estado del ticket
-        await Ticket.findByIdAndUpdate(ticketId, { status: 'approved' });
-        console.log("Aprobado:", publicationId);
-        // Actualizar estado de la publicación
         let model;
-        switch (type) {
+        switch (ticket.type) {
             case 'anuncio': model = Anuncio; break;
             case 'evento': model = Evento; break;
             case 'emprendimiento': model = Emprendimiento; break;
             case 'reporte': model = Reporte; break;
+            default:
+                console.error('Tipo desconocido:', ticket.type);
+                return res.redirect('/panel-admin');
         }
 
-        await model.findByIdAndUpdate(publicationId, { status: 'approved' });
+        if (ticket.isEdit && ticket.originalId) {
+            // obtener editada y original
+            const edited = await model.findById(ticket.publicationId).lean();
+            const original = await model.findById(ticket.originalId);
+
+            if (!edited) {
+                console.error('Documento editado no encontrado:', ticket.publicationId);
+                await Ticket.findByIdAndUpdate(ticketId, { status: 'rejected' });
+                return res.redirect('/panel-admin');
+            }
+
+            if (!original) {
+                // Promover la editada si por alguna razón original no existe
+                await model.findByIdAndUpdate(edited._id, { status: 'approved' });
+                await Ticket.findByIdAndUpdate(ticketId, { publicationId: edited._id, status: 'approved', isEdit: false, originalId: null });
+                return res.redirect('/panel-admin');
+            }
+
+            // Campos a excluir
+            const blacklist = ['_id', '__v', 'status', 'originalId', 'createdAt', 'updatedAt', 'creatorId'];
+
+            // Obtener keys válidas del schema
+            const schemaKeys = Object.keys(model.schema.paths).filter(k => !blacklist.includes(k));
+
+            // Copiar valores desde edited al original (si vienen)
+            for (const key of schemaKeys) {
+                if (edited.hasOwnProperty(key)) original[key] = edited[key];
+            }
+
+            original.status = 'approved';
+            await original.save();
+
+            // **Actualizar ticket para que apunte al original antes de borrar**
+            await Ticket.findByIdAndUpdate(ticketId, {
+                publicationId: original._id,
+                status: 'approved',
+                isEdit: false,
+                originalId: null
+            });
+
+            // eliminar la versión temporal (editada)
+            await model.findByIdAndDelete(edited._id);
+
+        } else {
+            // publicación nueva -> aprobarla directamente
+            await model.findByIdAndUpdate(ticket.publicationId, { status: 'approved' });
+            await Ticket.findByIdAndUpdate(ticketId, { status: 'approved' });
+        }
+
         res.redirect('/panel-admin');
-    } catch (error) {
-        console.error("Error al aprobar ticket:", error);
+    } catch (err) {
+        console.error('Error al aprobar ticket:', err);
         res.redirect('/panel-admin');
     }
 });
+
 
 app.post('/admin/reject-ticket', async (req, res) => {
-    if (!req.session.admin) {
-        return res.redirect('/');
-    }
-
+    if (!req.session.admin) return res.redirect('/');
     try {
         const { ticketId, publicationId, type } = req.body;
+        let ticket = null;
 
-        // Actualizar estado del ticket
-        await Ticket.findByIdAndUpdate(ticketId, { status: 'rejected' });
-
-        // Actualizar estado de la publicación
-        let model;
-        switch (type) {
-            case 'anuncio': model = Anuncio; break;
-            case 'evento': model = Evento; break;
-            case 'emprendimiento': model = Emprendimiento; break;
-            case 'reporte': model = Reporte; break;
+        if (ticketId) {
+            ticket = await Ticket.findById(ticketId);
+        } else if (publicationId) {
+            ticket = await Ticket.findOne({ publicationId, type }).sort({ createdAt: -1 });
         }
 
-        await model.findByIdAndUpdate(publicationId, { status: 'rejected' });
+        if (!ticket) {
+            console.warn('reject-ticket: ticket no encontrado', { ticketId, publicationId, type });
+            return res.redirect('/panel-admin');
+        }
+
+        // Marcar ticket como rejected
+        await Ticket.findByIdAndUpdate(ticket._id, { status: 'rejected' });
+
+        // Actualizar la publicación SOLO si es una nueva publicación (no una edición)
+        if (!ticket.isEdit) {
+            let model;
+            switch (type) {
+                case 'anuncio': model = Anuncio; break;
+                case 'evento': model = Evento; break;
+                case 'emprendimiento': model = Emprendimiento; break;
+                case 'reporte': model = Reporte; break;
+                default: model = null;
+            }
+
+            if (model && ticket.publicationId) {
+                await model.findByIdAndUpdate(ticket.publicationId, { status: 'rejected' });
+            }
+        }
 
         res.redirect('/panel-admin');
     } catch (error) {
-        console.error("Error al rechazar ticket:", error);
+        console.error('Error al rechazar ticket:', error);
         res.redirect('/panel-admin');
     }
 });
-

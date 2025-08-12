@@ -38,8 +38,9 @@
 
             <section class="tickets-list">
                 <% tickets.forEach(ticket=> { %>
-                    <div class="ticket" data-tipo="<%= ticket.type %>" data-id="<%= ticket.publicationId._id %>"
-                        data-status="<%= ticket.status %>">
+                    <div class="ticket" data-tipo="<%= ticket.type %>"
+                        data-publication-id="<%= ticket.publicationId ? ticket.publicationId._id : '' %>"
+                        data-ticket-id="<%= ticket._id %>" data-status="<%= ticket.status %>">
 
                         <!-- Icono según el tipo -->
                         <% if (ticket.type==='emprendimiento' ) { %>

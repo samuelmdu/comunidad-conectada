@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Evento - Comunidad Conectada</title>
+
+    <!-- Remix Icon + Montserrat -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+    <!--Header/Footer CSS-->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/forms/form-evento.css" />
+</head>
+
+<body>
+
+    <!-- Header  -->
+    <%- include('../components/header.ejs') %>
+
+        <!-- FORMULARIO DE EVENTO -->
+        <div class="form">
+            <section class="intro">
+                <h2>Editar evento <span class="resaltado">— Envía los cambios para revisión</span></h2>
+                <p>
+                    Modifica los datos del evento y envía la solicitud. Un administrador revisará los cambios antes de
+                    publicarlos.
+                </p>
+            </section>
+
+            <form action="/actualizar-evento" method="POST" class="formEvento" id="formulario">
+                <!-- ID oculto del evento original -->
+                <input type="hidden" name="id" value="<%= evento._id %>">
+
+                <div class="columna1">
+                    <!-- GRUPO EVENTO -->
+                    <div class="formulario-grupo" id="grupo-evento">
+                        <label class="formulario-label">Nombre del evento:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="evento" id="evento"
+                                placeholder="Fiesta del Barrio" value="<%= evento.eventName %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO DESCRIPCION -->
+                    <div class="formulario-grupo" id="grupo-descripcion">
+                        <label class="formulario-label">Descripción breve del evento:</label>
+                        <div class="formulario-grupo-input">
+                            <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"
+                                placeholder="Gran fiesta del barrio, donde tendremos bingos y demas cosas"><%= evento.description %></textarea>
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            La descripción debe tener entre 10 y 300 caracteres.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO FECHA -->
+                    <div class="formulario-grupo" id="grupo-fecha">
+                        <label class="formulario-label">Fecha del evento:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" name="fecha" id="fecha" placeholder="Ej: 08/12/2025" required
+                                class="formulario-input" value="<%= evento.date %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            Debes seleccionar una fecha válida.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO LUGAR -->
+                    <div class="formulario-grupo" id="grupo-ubicacion">
+                        <label class="formulario-label">Lugar o dirección del evento:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion"
+                                placeholder="Ej: Plaza Central, Calle 123" value="<%= evento.direction %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            La ubicación debe tener entre 4 y 60 caracteres.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="columna2">
+                    <!-- GRUPO NOMBRE CONTACTO -->
+                    <div class="formulario-grupo" id="grupo-creatorName">
+                        <label class="formulario-label">Persona de contacto (nombre):</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="creatorName" id="creatorName"
+                                placeholder="Ej: Juan Pérez" value="<%= evento.creatorName %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO TELEFONO -->
+                    <div class="formulario-grupo" id="grupo-telefono">
+                        <label class="formulario-label">Teléfono de contacto:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="tel" class="formulario-input" name="telefono" id="telefono"
+                                placeholder="Ej: 1234567890" value="<%= evento.phone %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">
+                            El número debe tener entre 8 y 11 dígitos.
+                        </p>
+                    </div>
+
+                    <!-- GRUPO ARCHIVO (opcional) -->
+                    <div class="formulario-grupo">
+                        <label class="formulario-label">Sube una imagen, afiche o archivo relacionado
+                            (opcional):</label>
+                        <input type="file" class="formulario-input" accept="image/*" name="image">
+                        <% if (evento.imageUrl) { %>
+                            <p class="previewLabel">Imagen actual:</p>
+                            <img src="<%= evento.imageUrl %>" alt="Imagen evento" class="preview-file">
+                            <% } %>
+                    </div>
+
+                    <p class="notaFinal">
+                        Al enviar, se creará una solicitud de cambio que un administrador deberá aprobar.
+                    </p>
+
+                    <!-- GRUPO TERMINOS Y CONDICIONES -->
+                    <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
+                        <label class="formulario-label">
+                            <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos" required>
+                            <b class="formulario-span">Acepto los términos y condiciones</b>
+                        </label>
+                    </div>
+
+                    <div class="formulario-mensaje" id="formulario-mensaje">
+                        <p><i class="bx bxs-ghost"></i> Por favor, completá correctamente todos los campos obligatorios
+                            antes de
+                            enviar.</p>
+                    </div>
+                    <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió
+                        correctamente</p>
+
+                    <!-- GRUPO BOTON ENVIAR -->
+                    <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
+                        <input type="submit" class="formulario-btn" value="Enviar">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer  -->
+        <%- include('../components/footer.ejs') %>
+            <script src="/js/forms/form-evento.js"></script>
+            <script src="js/global/menu-responsive.js"></script>
+</body>
+
+</html>
