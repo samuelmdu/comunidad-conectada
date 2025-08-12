@@ -1248,7 +1248,7 @@ app.get('/api/rutas', async (req, res) => {
     try {
         const rutas = await Rutas.find();
         res.json(rutas);
-        console.log(rutas)
+
     } catch (err) {
         console.error("Error obteniendo rutas:", err);
     }
