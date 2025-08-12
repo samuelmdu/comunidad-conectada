@@ -72,23 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
         tickets.forEach(ticket => {
             ticket.addEventListener('click', () => {
                 const tipo = ticket.dataset.tipo;
-                const id = ticket.dataset.id;
-
+                const publicationId = ticket.dataset.publicationId;
+                const ticketId = ticket.dataset.ticketId;
                 switch (tipo) {
                     case 'evento':
-                        window.location.href = `/viewEvento?id=${id}`;
+                        window.location.href = `/viewEvento?publicationId=${publicationId}&ticketId=${ticketId}`;
                         break;
                     case 'anuncio':
-                        window.location.href = `/viewAnuncio?id=${id}`;
+                        window.location.href = `/viewAnuncio?publicationId=${publicationId}&ticketId=${ticketId}`;
                         break;
                     case 'emprendimiento':
-                        window.location.href = `/viewEmprendimiento?id=${id}`;
+                        window.location.href = `/viewEmprendimiento?publicationId=${publicationId}&ticketId=${ticketId}`;
                         break;
                     case 'reporte':
-                        window.location.href = `/viewReporte?id=${id}`;
+                        window.location.href = `/viewReporte?publicationId=${publicationId}&ticketId=${ticketId}`;
                         break;
-                    default:
-                        console.warn('Tipo de ticket no reconocido:', tipo);
                 }
             });
         });

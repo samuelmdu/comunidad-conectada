@@ -39,8 +39,7 @@
           <div class="formulario-grupo" id="grupo-anuncio">
             <label class="formulario-label">Titulo del anuncio:</label>
             <div class="formulario-grupo-input">
-              <input type="text" required class="formulario-input" name="anuncio" id="anuncio"
-                placeholder="Gran Bingo">
+              <input type="text" required class="formulario-input" name="anuncio" id="anuncio" placeholder="Gran Bingo">
               <i class="formulario-validacion-estado bx bxs-x-circle"></i>
             </div>
             <p class="formulario-input-error">
@@ -52,7 +51,8 @@
           <div class="formulario-grupo" id="grupo-descripcion">
             <label class="formulario-label">Descripción breve del anuncio:</label>
             <div class="formulario-grupo-input">
-              <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion" placeholder="Tenemos un gran bingo de barrio y HAGASE MILLONARIO... tenemos comidas y bebidas."></textarea>
+              <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"
+                placeholder="Tenemos un gran bingo de barrio y HAGASE MILLONARIO... tenemos comidas y bebidas."></textarea>
               <i class="formulario-validacion-estado bx bxs-x-circle"></i>
             </div>
             <p class="formulario-input-error">
@@ -63,10 +63,11 @@
 
         <div class="columna2">
           <!-- GRUPO NOMBRE AUTOR -->
-          <div class="formulario-grupo" id="grupo-nombre">
+          <div class="formulario-grupo" id="grupo-creatorName">
             <label class="formulario-label">Autor del anuncio:</label>
             <div class="formulario-grupo-input">
-              <input type="text" required class="formulario-input" name="nombre" id="nombre" placeholder="Ej: Juan Pérez">
+              <input type="text" required class="formulario-input" name="creatorName" id="creatorName"
+                placeholder="Ej: Juan Pérez">
               <i class="formulario-validacion-estado bx bxs-x-circle"></i>
             </div>
             <p class="formulario-input-error">
@@ -93,7 +94,7 @@
           <!-- GRUPO TERMINOS Y CONDICIONES -->
           <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
             <label class="formulario-label">
-              <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos">
+              <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos" required>
               <b class="formulario-span">Acepto los términos y condiciones</b>
             </label>
           </div>
@@ -116,7 +117,7 @@
 
     <!-- Footer  -->
     <%- include('../components/footer.ejs') %>
-      <script src="form-anuncio.js"></script>
+      <script src="js/forms/form-anuncio.js"></script>
       <script src="js/global/menu-responsive.js"></script>
 </body>
 

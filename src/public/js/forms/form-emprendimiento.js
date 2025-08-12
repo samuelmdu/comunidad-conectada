@@ -87,11 +87,13 @@ inputs.forEach((input) => {
 
 formulario.addEventListener("submit", (e) => {
     //No deja que se recarge la pagina
-
+    e.preventDefault(); // frenamos envío
     const terminos = document.getElementById("terminos");
-    if (campos.emprendimiento && campos.nombre && campos.descripcion && campos.correo && campos.telefono && campos.otro && campos.ubicacion && terminos.checked) {
+    if (campos.emprendimiento && campos.nombre && campos.descripcion && campos.correo && campos.telefono && campos.ubicacion && terminos.checked) {
         document.getElementById("formulario-mensaje").classList.remove("formulario-mensaje-activo");
         document.getElementById("formulario-mensaje-exito").classList.add("formulario-mensaje-exito-activo");
+
+        formulario.submit(); // Esto enviará el formulario si está todo correcto
 
         setTimeout(() => {
             location.reload();

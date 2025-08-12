@@ -178,6 +178,11 @@ textarea {
 
 /*---------VALIDACIONES--------------*/
 
+.formulario-grupo-correcto .formulario-label {
+    color: #15b54a;
+    opacity: 1;
+}
+
 .formulario-grupo-correcto .formulario-validacion-estado {
     color: #15b54a;
     opacity: 1;

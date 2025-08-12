@@ -21,23 +21,27 @@
     <!-- Header  -->
     <%- include('../components/header.ejs') %>
 
+        <!-- FORMULARIO DE REPORTE -->
         <div class="form">
             <section class="intro">
-                <h2>¿Tienes algo que reportar? <span class="resaltado">¡Hazlo saber!</span></h2>
+                <h2>Editar reporte <span class="resaltado">— Envía los cambios para revisión</span></h2>
                 <p>
-                    Este formulario es para que puedas comunicar un reporte, queja o problema que esté
-                    afectando a tu comunidad. Puedes hacerlo de forma anónima.
+                    Modifica los datos del reporte y envía la solicitud. Un administrador revisará los cambios antes de
+                    publicarlos.
                 </p>
             </section>
 
-            <form action="/addReporte" method="POST" class="formReporte" id="formulario">
+            <form action="/actualizar-reporte" method="POST" class="formReporte" id="formulario">
+                <!-- ID oculto del reporte original -->
+                <input type="hidden" name="id" value="<%= reporte._id %>">
+
                 <div class="columna1">
                     <!-- GRUPO REPORTE -->
                     <div class="formulario-grupo" id="grupo-reporte">
                         <label class="formulario-label">Nombre del reporte:</label>
                         <div class="formulario-grupo-input">
                             <input type="text" required class="formulario-input" name="reporte" id="reporte"
-                                placeholder="Robo de señalización vial">
+                                placeholder="Robo de señalización vial" value="<%= reporte.reporte %>">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -50,7 +54,7 @@
                         <label class="formulario-label">Tipo de reporte:</label>
                         <div class="formulario-grupo-input">
                             <input type="text" required class="formulario-input" name="tipo" id="tipo"
-                                placeholder="Ej: Seguridad, Servicios Públicos, etc.">
+                                placeholder="Ej: Seguridad, Servicios Públicos, etc." value="<%= reporte.tipo %>">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -63,7 +67,7 @@
                         <label class="formulario-label">Descripción del reporte:</label>
                         <div class="formulario-grupo-input">
                             <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"
-                                placeholder="Mientras conducia note que no estaba el Alto no estaba donde correspondia y eso genero un colapso vial"></textarea>
+                                placeholder="Mientras conducia note que no estaba el Alto no estaba donde correspondia y eso genero un colapso vial"><%= reporte.descripcion %></textarea>
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -76,7 +80,7 @@
                         <label class="formulario-label">¿Has notificado esto antes a alguien? ¿A quién?</label>
                         <div class="formulario-grupo-input">
                             <input type="text" required class="formulario-input" name="notificado" id="notificado"
-                                placeholder="Ej: Municipalidad, Policía, etc.">
+                                placeholder="Ej: Municipalidad, Policía, etc." value="<%= reporte.notificado %>">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -86,12 +90,12 @@
                 </div>
 
                 <div class="columna2">
-                    <!-- GRUPO NOMBRE (OPCIONAL) -->
+                    <!-- GRUPO NOMBRE -->
                     <div class="formulario-grupo" id="grupo-nombre">
-                        <label class="formulario-label">Tu nombre (opcional si elegiste anónimo):</label>
+                        <label class="formulario-label">Tu nombre:</label>
                         <div class="formulario-grupo-input">
                             <input type="text" class="formulario-input" name="nombre" id="nombre"
-                                placeholder="Ej: Juan Pérez">
+                                placeholder="Ej: Juan Pérez" value="<%= reporte.nombre %>">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -103,7 +107,8 @@
                     <div class="formulario-grupo" id="grupo-correo">
                         <label class="formulario-label">Correo electrónico (para dar seguimiento):</label>
                         <div class="formulario-grupo-input">
-                            <input type="email" class="formulario-input" name="correo" id="correo">
+                            <input type="email" class="formulario-input" name="correo" id="correo"
+                                value="<%= reporte.correo %>">
                             <i class="formulario-validacion-estado bx bxs-x-circle"></i>
                         </div>
                         <p class="formulario-input-error">
@@ -113,14 +118,19 @@
 
                     <!-- GRUPO EVIDENCIA -->
                     <div class="formulario-grupo">
-                        <label class="formulario-label">Foto o evidencia del problema (opcional):</label>
-                        <input type="file" class="formulario-input" accept="image/*">
+                        <label class="formulario-label">Foto o evidencia del problema:</label>
+                        <input type="file" class="formulario-input" accept="image/*" name="image">
+                        <% if (reporte.imageUrl) { %>
+                            <p class="previewLabel">Evidencia actual:</p>
+                            <img src="<%= reporte.imageUrl %>" alt="Evidencia actual" class="preview-file">
+                            <% } %>
                     </div>
 
+
                     <p class="notaFinal">
-                        Tu reporte será revisado y canalizado al área correspondiente. Agradecemos tu participación para
-                        mejorar juntos la comunidad.
+                        Al enviar, se creará una solicitud de cambio que un administrador deberá aprobar.
                     </p>
+
 
                     <!-- GRUPO TERMINOS Y CONDICIONES -->
                     <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
@@ -139,9 +149,11 @@
                         correctamente
                     </p>
 
+
+
                     <!-- GRUPO BOTON ENVIAR -->
                     <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
-                        <input type="submit" class="formulario-btn" value="Enviar">
+                        <input type="submit" class="formulario-btn" value="Guardar cambios">
                     </div>
                 </div>
             </form>

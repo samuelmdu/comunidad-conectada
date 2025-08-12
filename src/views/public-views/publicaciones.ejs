@@ -53,7 +53,7 @@
                                             <p class="card-subtitle">
                                                 <%= emprendimiento.categoria %>
                                             </p>
-                                            <a href="/form-emprendimiento?id=<%= emprendimiento._id %>">
+                                            <a href="/editar-emprendimiento?id=<%= emprendimiento._id %>">
                                                 <button class="edit-button">Editar</button>
                                             </a>
                                         </div>
@@ -87,7 +87,7 @@
                                             <p class="card-subtitle">
                                                 <%= evento.direction %>
                                             </p>
-                                            <a href="/form-evento?id=<%= evento._id %>">
+                                            <a href="/editar-evento?id=<%= evento._id %>">
                                                 <button class="edit-button">Editar</button>
                                             </a>
                                         </div>
@@ -126,7 +126,7 @@
                                                     <%= anuncio.date %>
                                                 </p>
                                             </div>
-                                            <a href="/form-anuncio?id=<%= anuncio._id %>">
+                                            <a href="/editar-anuncio?id=<%= anuncio._id %>">
                                                 <button class="edit-button">Editar</button>
                                             </a>
                                         </div>
@@ -136,6 +136,46 @@
                             <% } %>
                 </div>
             </section>
+
+            <div class="section-divider"></div>
+
+            <!-- REPORTES -->
+            <section class="vertical-content-section">
+                <div class="title-container">
+                    <h2>Reportes</h2>
+                    <% if (reportes.length===0) { %>
+                        <div class="no-created">
+                            <p><b>Actualmente no hay publicaciones registradas.</b><br>
+                                Vuelve pronto para descubrir nuevas actividades y oportunidades cerca de ti.</p>
+                        </div>
+                        <% } else { %>
+                            <div class="cards-container">
+                                <% reportes.forEach(reporte=> { %>
+                                    <div class="route-card-anuncios">
+                                        <div class="left-bar"></div>
+                                        <div class="card-content-anuncios">
+                                            <h3>
+                                                <%= reporte.reporte %>
+                                            </h3>
+                                            <div class="route-details-anuncios">
+                                                <p><strong>Descripción:</strong><br>
+                                                    <%= reporte.descripcion %>
+                                                </p>
+                                                <p><strong>Tipo:</strong><br>
+                                                    <%= reporte.tipo %>
+                                                </p>
+                                            </div>
+                                            <a href="/editar-reporte?id=<%= reporte._id %>">
+                                                <button class="edit-button">Editar</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <% }); %>
+                            </div>
+                            <% } %>
+                </div>
+            </section>
+
         </main>
 
         <footer>

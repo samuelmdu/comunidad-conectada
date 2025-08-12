@@ -4,14 +4,14 @@ const inputs = document.querySelectorAll('#formulario input, #formulario textare
 const formulario = document.getElementById("formulario");
 
 const expresiones = {
-    nombre: /^[a-zA-ZÀ-ÿ\s]{3,45}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
+    creatorName: /^[a-zA-ZÀ-ÿ\s]{3,45}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
     anuncio: /^[a-zA-ZÀ-ÿ0-9\s]{3,45}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
     descripcion: /^[a-zA-ZÀ-ÿ0-9\s]{3,200}$/, //Admite letras mayusculas, minusculas, acentos y espacio Rango 3 a 45
     fecha: /^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
 }
 
 const campos = {
-    nombre: false,
+    creatorName: false,
     anuncio: false,
     descripcion: false,
     fecha: false
@@ -26,9 +26,9 @@ const validarFormulario = (e) => {
             //       parametro1 = condiciones, parametro2 = e.target, parametro = identificador = ""
             validarCampo(expresiones.anuncio, e.target, "anuncio")
             break;
-        case "nombre":
+        case "creatorName":
             //funcion
-            validarCampo(expresiones.nombre, e.target, "nombre");
+            validarCampo(expresiones.creatorName, e.target, "creatorName");
             break;
         case "descripcion":
             //funcion
@@ -69,11 +69,14 @@ inputs.forEach((input) => {
 
 formulario.addEventListener("submit", (e) => {
     //No deja que se recarge la pagina
+    e.preventDefault(); // frenamos envío
 
     const terminos = document.getElementById("terminos");
-    if (campos.anuncio && campos.nombre && campos.descripcion && campos.fecha && terminos.checked) {
+    if (campos.anuncio && campos.creatorName && campos.descripcion && campos.fecha && terminos.checked) {
         document.getElementById("formulario-mensaje").classList.remove("formulario-mensaje-activo");
         document.getElementById("formulario-mensaje-exito").classList.add("formulario-mensaje-exito-activo");
+
+        formulario.submit(); // Esto enviará el formulario si está todo correcto
 
         setTimeout(() => {
             location.reload();
@@ -84,3 +87,4 @@ formulario.addEventListener("submit", (e) => {
     }
 
 })
+

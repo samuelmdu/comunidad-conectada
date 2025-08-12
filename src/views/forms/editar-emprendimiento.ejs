@@ -24,173 +24,148 @@
 
         <main class="form">
             <section class="intro">
-                <h2>¿Tienes un emprendimiento? <span class="resaltado">¡Regístralo aquí!</span></h2>
-                <p>
-                    Este formulario está diseñado para que puedas crear y registrar tu emprendimiento en nuestra
-                    plataforma.<br>
-                    Al completarlo, estarás compartiendo tu proyecto con la comunidad y podrás acceder a oportunidades
-                    de<br>
-                    promoción, apoyo y visibilidad.
-                </p>
+                <h2>Editar emprendimiento</h2>
+                <p>Modifica los datos y envía la solicitud. Un administrador revisará los cambios.</p>
             </section>
 
-            <form action="/addEmprendimiento" method="POST" class="formEmprendimiento" id="formulario">
+            <form action="/actualizar-emprendimiento" method="POST" class="formEmprendimiento" id="formulario">
+                <input type="hidden" name="id" value="<%= emprendimiento._id %>">
+
                 <div class="columna1">
-                    <!-- GRUPO EMPRENDIMIENTO-->
                     <div class="formulario-grupo" id="grupo-emprendimiento">
                         <label class="formulario-label">Nombre del emprendimiento</label>
                         <div class="formulario-grupo-input">
                             <input type="text" required class="formulario-input" name="emprendimiento"
-                                id="emprendimiento" placeholder="Charles BBQ">
+                                id="emprendimiento" value="<%= emprendimiento.nombre %>">
                             <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         </div>
+                        <!-- Añadir mensaje de error -->
                         <p class="formulario-input-error">
                             El nombre debe tener entre 4 y 40 caracteres. Solo se permiten letras, números y espacios.
                         </p>
                     </div>
 
-
-                    <!-- GRUPO DESCRIPCION-->
                     <div class="formulario-grupo" id="grupo-descripcion">
                         <label class="formulario-label">Descripción breve:</label>
                         <div class="formulario-grupo-input">
-                            <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"
-                                placeholder="Somos las mejores hamburguesas del pais y con nuestro sabor Argentino"></textarea>
+                            <textarea rows="4" required class="formulario-input" name="descripcion"
+                                id="descripcion"><%= emprendimiento.descripcion %></textarea>
                             <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         </div>
+                        <!-- Añadir mensaje de error -->
                         <p class="formulario-input-error">
                             La descripción debe tener entre 10 y 300 caracteres.
                         </p>
                     </div>
 
-                    <!-- GRUPO CATEGORIAS -->
                     <div class="formulario-grupo" id="grupo-categoria">
                         <label class="formulario-label">Categoría:</label>
                         <div class="categoria-opciones">
-                            <label><input type="radio" name="categoria" value="alimentos" required> Alimentos y
+                            <label><input type="radio" name="categoria" value="alimentos"
+                                    <%=emprendimiento.categoria==='alimentos' ? 'checked' : '' %>> Alimentos y
                                 bebidas</label>
-                            <label><input type="radio" name="categoria" value="moda"> Moda y accesorios</label>
-                            <label><input type="radio" name="categoria" value="tecnologia"> Tecnología / Servicios
-                                digitales</label>
-                            <label><input type="radio" name="categoria" value="arte"> Arte y diseño</label>
-                            <label><input type="radio" name="categoria" value="educacion"> Educación / Cursos</label>
-                            <!--<label><input type="radio" name="categoria" value="otro"> Otro:</label>-->
+                            <label><input type="radio" name="categoria" value="moda"
+                                    <%=emprendimiento.categoria==='moda' ? 'checked' : '' %>> Moda y accesorios</label>
+                            <label><input type="radio" name="categoria" value="tecnologia"
+                                    <%=emprendimiento.categoria==='tecnologia' ? 'checked' : '' %>> Tecnología /
+                                Servicios digitales</label>
+                            <label><input type="radio" name="categoria" value="arte"
+                                    <%=emprendimiento.categoria==='arte' ? 'checked' : '' %>> Arte y diseño</label>
+                            <label><input type="radio" name="categoria" value="educacion"
+                                    <%=emprendimiento.categoria==='educacion' ? 'checked' : '' %>> Educación /
+                                Cursos</label>
+                            <!--<label><input type="radio" name="categoria" value="otro" id="radio-otro"> Otro</label>-->
                         </div>
                     </div>
 
-                    <!-- GRUPO OTRO (SOLO SE MUESTRA SI SE ELIGE 'Otro') -->
-                    <div class="formulario-grupo" id="grupo-otro">
-                        <div class="formulario-grupo-input">
-                            <input type="text" class="formulario-input" placeholder="Especificar..." name="otro"
-                                id="otro">
-                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
-                        </div>
-                        <p class="formulario-input-error">
-                            Si elegiste "Otro", debes especificar la categoría.
-                        </p>
-                    </div>
 
-
-                    <!-- GRUPO USUARIO-->
                     <div class="formulario-grupo" id="grupo-nombre">
                         <label class="formulario-label">Nombre del emprendedor/a:</label>
-                        <input type="text" required class="formulario-input" name="nombre" id="nombre"
-                            placeholder="Ej: Juan Pérez">
-                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="nombre" id="nombre"
+                                value="<%= emprendimiento.emprendedor %>">
+                            <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        </div>
+                        <!-- Añadir mensaje de error -->
                         <p class="formulario-input-error">
                             El nombre debe contener entre 4 y 40 caracteres. Solo letras y espacios.
                         </p>
                     </div>
-
-
                 </div>
 
                 <div class="columna2">
-
-
-
-                    <!-- GRUPO CORREO-->
                     <div class="formulario-grupo" id="grupo-correo">
                         <label class="formulario-label">Correo electrónico de contacto:</label>
-                        <input type="email" required class="formulario-input" name="correo" id="correo"
-                            placeholder="juan@gmail.com">
-                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        <div class="formulario-grupo-input">
+                            <input type="email" required class="formulario-input" name="correo" id="correo"
+                                value="<%= emprendimiento.correo %>">
+                            <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        </div>
+                        <!-- Añadir mensaje de error -->
                         <p class="formulario-input-error">
                             Debes ingresar un correo válido. Ejemplo: usuario@dominio.com
                         </p>
                     </div>
 
-
-                    <!-- GRUPO NUMERO-->
                     <div class="formulario-grupo" id="grupo-telefono">
                         <label class="formulario-label">Número de teléfono:</label>
-                        <input type="tel" required class="formulario-input" name="telefono" id="telefono"
-                            placeholder="Ej: 1234567890">
-                        <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        <div class="formulario-grupo-input">
+                            <input type="tel" required class="formulario-input" name="telefono" id="telefono"
+                                value="<%= emprendimiento.telefono %>">
+                            <i class='formulario-validacion-estado bx bxs-x-circle'></i>
+                        </div>
+                        <!-- Añadir mensaje de error -->
                         <p class="formulario-input-error">
                             El número debe tener 8 dígitos y solo contener números.
                         </p>
                     </div>
 
-
-                    <!-- GRUPO UBICACION-->
                     <div class="formulario-grupo" id="grupo-ubicacion">
                         <label class="formulario-label">Ubicación:</label>
                         <div class="formulario-grupo-input">
                             <input type="text" required class="formulario-input" name="ubicacion" id="ubicacion"
-                                placeholder="Ej: Calle Falsa 123, Ciudad">
+                                value="<%= emprendimiento.ubicacion %>">
                             <i class='formulario-validacion-estado bx bxs-x-circle'></i>
                         </div>
+                        <!-- Añadir mensaje de error -->
                         <p class="formulario-input-error">
                             La ubicación no puede estar vacía y debe tener al menos 4 caracteres.
                         </p>
                     </div>
 
+                    <!-- Campo opcional sin validación -->
                     <div class="formulario-grupo">
                         <label class="formulario-label">Red social o sitio web (opcional):</label>
-                        <input type="url" class="formulario-input"
-                            placeholder="Ej: https://www.instagram.com/tuemprendimiento" name="redSocial"
-                            id="redSocial">
+                        <div class="formulario-grupo-input">
+                            <input type="url" class="formulario-input" name="redSocial" id="redSocial"
+                                value="<%= emprendimiento.redSocial || '' %>">
+                        </div>
                     </div>
 
-                    <div class="formulario-grupo">
-                        <label class="formulario-label">Sube una imagen o logo (opcional):</label>
-                        <input type="file" class="formulario-input" accept="image/*">
-                    </div>
+                    <p class="notaFinal">Al enviar, se creará una solicitud de cambio que un admin deberá aprobar.</p>
 
-                    <p class="notaFinal">
-                        Al enviar este formulario, tu emprendimiento será revisado por el equipo y publicado
-                        próximamente en
-                        nuestra plataforma.
-                    </p>
-
-                    <!-- GRUPO TERMINOS Y CONDICIONES-->
                     <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
                         <label class="formulario-label">
                             <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos" required>
-                            <b class="formulario-span">Acepto los terminos y condiciones</b>
+                            <b class="formulario-span">Acepto los términos y condiciones</b>
                         </label>
                     </div>
 
-                    <!-- GRUPO DE CAMPOS REQUERIDOS-->
-                    <div class="formulario-mensaje " id="formulario-mensaje">
-                        <p><i class='bx bxs-ghost'>Por favor, completá correctamente todos los campos obligatorios antes
-                                de
-                                enviar.</i></p>
+                    <!-- Añadir contenedores de mensajes generales -->
+                    <div class="formulario-mensaje" id="formulario-mensaje">
+                        <p><i class='bx bxs-ghost'></i> Por favor, completá correctamente todos los campos obligatorios
+                            antes de enviar.</p>
                     </div>
                     <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió
-                        correctamente
-                    </p>
+                        correctamente</p>
 
-                    <!-- GRUPO BOTON ENVIAR-->
                     <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
                         <input type="submit" class="formulario-btn" value="Enviar">
                     </div>
                 </div>
             </form>
-
-
         </main>
+
         <!-- Footer  -->
         <%- include('../components/footer.ejs') %>
             <script src="/js/forms/form-emprendimiento.js"></script>

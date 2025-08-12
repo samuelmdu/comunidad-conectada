@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Anuncio - Comunidad Conectada</title>
+
+    <!-- Remix Icon + Montserrat -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/forms/form-anuncio.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <!-- Header  -->
+    <%- include('../components/header.ejs') %>
+
+        <!-- FORMULARIO DE Anuncio -->
+        <div class="form">
+            <section class="intro">
+                <h2>Editar anuncio <span class="resaltado">— Envía los cambios para revisión</span></h2>
+                <p>Modifica los datos del anuncio y envía la solicitud. Un administrador revisará los cambios antes de
+                    publicarlos.</p>
+            </section>
+
+            <form action="/actualizar-anuncio" method="POST" class="formAnuncio" id="formulario">
+                <input type="hidden" name="id" value="<%= anuncio._id %>">
+
+                <div class="columna1">
+                    <!-- Grupo Anuncio -->
+                    <div class="formulario-grupo" id="grupo-anuncio">
+                        <label class="formulario-label">Título del anuncio:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="anuncio" id="anuncio"
+                                placeholder="Venta de garaje" value="<%= anuncio.anuncioName %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">El título debe tener entre 4 y 40 caracteres.</p>
+                    </div>
+
+                    <!-- Grupo Descripción -->
+                    <div class="formulario-grupo" id="grupo-descripcion">
+                        <label class="formulario-label">Descripción breve del anuncio:</label>
+                        <div class="formulario-grupo-input">
+                            <textarea rows="4" required class="formulario-input" name="descripcion" id="descripcion"
+                                placeholder="Descripción breve..."><%= anuncio.description %></textarea>
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">La descripción debe tener entre 10 y 300 caracteres.</p>
+                    </div>
+                </div>
+
+                <div class="columna2">
+                    <!-- Grupo Autor -->
+                    <div class="formulario-grupo" id="grupo-creatorName">
+                        <label class="formulario-label">Autor del anuncio:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required class="formulario-input" name="creatorName" id="creatorName"
+                                placeholder="Ej: Juan Pérez" value="<%= anuncio.creatorName %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <p class="formulario-input-error">El nombre debe contener entre 4 y 40 caracteres.</p>
+                    </div>
+
+                    <!-- Grupo Fecha -->
+                    <div class="formulario-grupo" id="grupo-fecha">
+                        <label class="formulario-label">Fecha de publicación:</label>
+                        <div class="formulario-grupo-input">
+                            <input type="text" required name="fecha" id="fecha" placeholder="Ej: 08/12/2025"
+                                class="formulario-input" value="<%= anuncio.date %>">
+                            <i class="formulario-validacion-estado bx bxs-x-circle"></i>
+                        </div>
+                        <!-- Mensaje de error agregado -->
+                        <p class="formulario-input-error">Debes seleccionar una fecha válida.</p>
+                    </div>
+
+                    <!-- Grupo Imagen -->
+                    <div class="formulario-grupo">
+                        <label class="formulario-label">Imagen o archivo (opcional):</label>
+                        <input type="file" class="formulario-input" accept="image/*" name="image">
+                        <% if (anuncio.imageUrl) { %>
+                            <p class="previewLabel">Imagen actual:</p>
+                            <img src="<%= anuncio.imageUrl %>" alt="Imagen anuncio" class="preview-file">
+                            <% } %>
+                    </div>
+
+                    <p class="notaFinal">Al enviar, se creará una solicitud de cambio que un admin deberá aprobar.</p>
+
+                    <!-- Grupo Términos -->
+                    <div class="formulario-grupo formulario-grupo-terminos" id="grupo-terminos">
+                        <label class="formulario-label">
+                            <input type="checkbox" class="formulario-checkbox" name="terminos" id="terminos" required>
+                            <b class="formulario-span">Acepto los términos y condiciones</b>
+                        </label>
+                    </div>
+
+                    <!-- Mensajes y botón -->
+                    <div class="formulario-mensaje" id="formulario-mensaje">
+                        <p><i class="bx bxs-ghost"></i> Por favor, completá correctamente todos los campos obligatorios
+                            antes de enviar.</p>
+                    </div>
+                    <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">El formulario se envió
+                        correctamente</p>
+
+                    <div class="formulario-grupo" id="formulario-grupo-btn-enviar">
+                        <input type="submit" class="formulario-btn" value="Enviar">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer  -->
+        <%- include('../components/footer.ejs') %>
+            <script src="js/forms/form-anuncio.js"></script>
+            <script src="js/global/menu-responsive.js"></script>
+</body>
+
+</html>
