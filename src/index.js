@@ -191,32 +191,7 @@ app.get('/panel-admin', async (req, res) => {
 // ==========================
 // USERS
 // ==========================
-app.get('/profile', (req, res) => {
-    if (!req.session.loggedIn) {
-        res.redirect('/log-in');
-    } else {
 
-        const myPublications = async () => {
-            // Obtiene los anuncios y eventos creados por el usuario actual. 
-            const anuncios = await Anuncio.find({ creatorName: req.session.name });
-            const eventos = await Evento.find({ creatorName: req.session.name });
-            const reportes = await Reporte.find({ nombre: req.session.name });
-            const emprendimientos = await Emprendimiento.find({ nombre: req.session.name });
-
-
-
-            res.render('users/profile.ejs', {
-                anuncios: anuncios,
-                eventos: eventos,
-                reportes: reportes,
-                emprendimientos: emprendimientos,
-            })
-
-        }
-
-        myPublications();
-    }
-});
 
 app.get('/registerAdmin', async (req, res) => {
     if (!req.session.admin) {
